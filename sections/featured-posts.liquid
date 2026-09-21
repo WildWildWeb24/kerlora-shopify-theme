@@ -1,0 +1,231 @@
+{{ 'component-featured-posts.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign article_1 = section.settings.article_1
+  assign article_2 = section.settings.article_2
+  assign article_3 = section.settings.article_3
+  assign article_4 = section.settings.article_4
+  assign article_5 = section.settings.article_5
+  assign article_6 = section.settings.article_6
+  assign article_7 = section.settings.article_7
+-%}
+
+<div class="fp-section" id="fp-section-{{ section.id }}">
+  <div class="fp-content">
+
+    {%- if section.settings.heading != blank -%}
+      <div class="fp-section-head">
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="fp-grid">
+
+      {% comment %} --- Featured Cards (3 Main Image Cards) --- {% endcomment %}
+
+      {% comment %} Featured Card 1 {% endcomment %}
+      {%- if article_1 != blank -%}
+        <a href="{{ article_1.url }}" class="fp-card">
+          <div class="fp-card-image">
+            {%- if article_1.image -%}
+              {{ article_1.image | image_url: width: 900 | image_tag:
+                widths: '450, 675, 900',
+                sizes: '(min-width: 900px) 25vw, 50vw',
+                loading: 'lazy',
+                alt: article_1.image.alt | default: article_1.title
+              }}
+            {%- else -%}
+              <div class="fp-card-image-placeholder"></div>
+            {%- endif -%}
+          </div>
+          <div class="fp-card-title">{{ article_1.title }}</div>
+          <div class="fp-read-more">Read more</div>
+        </a>
+      {%- else -%}
+        <div class="fp-card">
+          <div class="fp-card-image">
+            <div class="fp-card-image-placeholder"></div>
+          </div>
+          <div class="fp-card-title">Select Featured Card 1 in section settings</div>
+          <div class="fp-read-more">Read more</div>
+        </div>
+      {%- endif -%}
+
+      {% comment %} Featured Card 2 {% endcomment %}
+      {%- if article_2 != blank -%}
+        <a href="{{ article_2.url }}" class="fp-card">
+          <div class="fp-card-image">
+            {%- if article_2.image -%}
+              {{ article_2.image | image_url: width: 900 | image_tag:
+                widths: '450, 675, 900',
+                sizes: '(min-width: 900px) 25vw, 50vw',
+                loading: 'lazy',
+                alt: article_2.image.alt | default: article_2.title
+              }}
+            {%- else -%}
+              <div class="fp-card-image-placeholder"></div>
+            {%- endif -%}
+          </div>
+          <div class="fp-card-title">{{ article_2.title }}</div>
+          <div class="fp-read-more">Read more</div>
+        </a>
+      {%- else -%}
+        <div class="fp-card">
+          <div class="fp-card-image">
+            <div class="fp-card-image-placeholder"></div>
+          </div>
+          <div class="fp-card-title">Select Featured Card 2 in section settings</div>
+          <div class="fp-read-more">Read more</div>
+        </div>
+      {%- endif -%}
+
+      {% comment %} Featured Card 3 {% endcomment %}
+      {%- if article_3 != blank -%}
+        <a href="{{ article_3.url }}" class="fp-card">
+          <div class="fp-card-image">
+            {%- if article_3.image -%}
+              {{ article_3.image | image_url: width: 900 | image_tag:
+                widths: '450, 675, 900',
+                sizes: '(min-width: 900px) 25vw, 50vw',
+                loading: 'lazy',
+                alt: article_3.image.alt | default: article_3.title
+              }}
+            {%- else -%}
+              <div class="fp-card-image-placeholder"></div>
+            {%- endif -%}
+          </div>
+          <div class="fp-card-title">{{ article_3.title }}</div>
+          <div class="fp-read-more">Read more</div>
+        </a>
+      {%- else -%}
+        <div class="fp-card">
+          <div class="fp-card-image">
+            <div class="fp-card-image-placeholder"></div>
+          </div>
+          <div class="fp-card-title">Select Featured Card 3 in section settings</div>
+          <div class="fp-read-more">Read more</div>
+        </div>
+      {%- endif -%}
+
+      {% comment %} --- Side List Items (4 List Items) --- {% endcomment %}
+      <div class="fp-list">
+
+        {% comment %} List Item 1 {% endcomment %}
+        {%- if article_4 != blank -%}
+          <div class="fp-list-item">
+            <a href="{{ article_4.url }}" class="fp-list-title">{{ article_4.title }}</a>
+            <a href="{{ article_4.url }}" class="fp-read-more">Read more</a>
+          </div>
+        {%- else -%}
+          <div class="fp-list-item">
+            <div class="fp-list-title">Select List Post 1 in section settings</div>
+            <div class="fp-read-more">Read more</div>
+          </div>
+        {%- endif -%}
+
+        {% comment %} List Item 2 {% endcomment %}
+        {%- if article_5 != blank -%}
+          <div class="fp-list-item">
+            <a href="{{ article_5.url }}" class="fp-list-title">{{ article_5.title }}</a>
+            <a href="{{ article_5.url }}" class="fp-read-more">Read more</a>
+          </div>
+        {%- else -%}
+          <div class="fp-list-item">
+            <div class="fp-list-title">Select List Post 2 in section settings</div>
+            <div class="fp-read-more">Read more</div>
+          </div>
+        {%- endif -%}
+
+        {% comment %} List Item 3 {% endcomment %}
+        {%- if article_6 != blank -%}
+          <div class="fp-list-item">
+            <a href="{{ article_6.url }}" class="fp-list-title">{{ article_6.title }}</a>
+            <a href="{{ article_6.url }}" class="fp-read-more">Read more</a>
+          </div>
+        {%- else -%}
+          <div class="fp-list-item">
+            <div class="fp-list-title">Select List Post 3 in section settings</div>
+            <div class="fp-read-more">Read more</div>
+          </div>
+        {%- endif -%}
+
+        {% comment %} List Item 4 {% endcomment %}
+        {%- if article_7 != blank -%}
+          <div class="fp-list-item">
+            <a href="{{ article_7.url }}" class="fp-list-title">{{ article_7.title }}</a>
+            <a href="{{ article_7.url }}" class="fp-read-more">Read more</a>
+          </div>
+        {%- else -%}
+          <div class="fp-list-item">
+            <div class="fp-list-title">Select List Post 4 in section settings</div>
+            <div class="fp-read-more">Read more</div>
+          </div>
+        {%- endif -%}
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Posts",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Featured Posts"
+    },
+    {
+      "type": "header",
+      "content": "Featured Cards (Main 3 Image Cards)"
+    },
+    {
+      "type": "article",
+      "id": "article_1",
+      "label": "Featured Card 1"
+    },
+    {
+      "type": "article",
+      "id": "article_2",
+      "label": "Featured Card 2"
+    },
+    {
+      "type": "article",
+      "id": "article_3",
+      "label": "Featured Card 3"
+    },
+    {
+      "type": "header",
+      "content": "Side List Items (4 Posts)"
+    },
+    {
+      "type": "article",
+      "id": "article_4",
+      "label": "List Post 1"
+    },
+    {
+      "type": "article",
+      "id": "article_5",
+      "label": "List Post 2"
+    },
+    {
+      "type": "article",
+      "id": "article_6",
+      "label": "List Post 3"
+    },
+    {
+      "type": "article",
+      "id": "article_7",
+      "label": "List Post 4"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Posts"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,323 @@
+{%- style -%}
+  .cwu-section-{{ section.id }} {
+    padding: 5rem 1.5rem;
+    max-width: 1320px;
+    margin: 0 auto;
+    font-family: var(--font-stack-body, 'Geist', sans-serif);
+    color: rgb(var(--color-foreground, 39, 39, 39));
+  }
+
+  .cwu-section-{{ section.id }} .cwu-section-head {
+    text-align: center;
+    margin-bottom: 3.5rem;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-section-head h2 {
+    font-family: var(--font-stack-header, 'Geist', sans-serif);
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: rgb(var(--color-heading, 34, 34, 34));
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-section-head p {
+    font-size: 1.0625rem;
+    font-weight: 300;
+    color: rgb(var(--color-foreground-secondary, 103, 103, 103));
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 1.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .cwu-section-{{ section.id }} .cwu-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .cwu-section-{{ section.id }} .cwu-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f5ec;
+    border: 1px solid #eae8dc;
+    border-radius: 1rem;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0, 0, 1), border-color 0.3s ease;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-card:hover {
+    transform: translateY(-5px);
+    border-color: #d8d5c4;
+    box-shadow: 0 16px 32px -8px rgba(34, 34, 34, 0.08);
+  }
+
+  .cwu-section-{{ section.id }} .cwu-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background-color: #f6f5ec;
+    border-bottom: 1px solid #eae8dc;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #e9e9e9;
+    color: #222222;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-card:hover .cwu-icon {
+    background-color: #222222;
+    color: #ffffff;
+    transform: scale(1.05);
+  }
+
+  .cwu-section-{{ section.id }} .cwu-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-card-meta {
+    flex-grow: 1;
+    min-width: 0;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-platform-label {
+    font-family: var(--font-stack-header, 'Geist', sans-serif);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    color: #222222;
+    margin: 0;
+    line-height: 1.3;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-handle {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: #676767;
+    margin-top: 0.125rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #222222;
+    flex-shrink: 0;
+    transition: all 0.25s ease;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-card:hover .cwu-arrow {
+    background-color: #222222;
+    color: #ffffff;
+    transform: translate(2px, -2px);
+  }
+
+  .cwu-section-{{ section.id }} .cwu-arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-screenshot-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background-color: #ffffff;
+    overflow: hidden;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    transition: transform 0.5s ease;
+  }
+
+  .cwu-section-{{ section.id }} .cwu-card:hover .cwu-screenshot {
+    transform: scale(1.03);
+  }
+
+  .cwu-section-{{ section.id }} .cwu-screenshot-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background-color: #faf9f5;
+    color: #676767;
+    font-size: 0.875rem;
+    font-weight: 300;
+    text-align: center;
+    border-top: 1px dashed #e0ded0;
+  }
+{%- endstyle -%}
+
+<div class="cwu-section cwu-section-{{ section.id }}">
+
+  {%- if section.settings.heading != blank -%}
+    <div class="cwu-section-head">
+      <h2>{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p>{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+  <div class="cwu-grid">
+    {%- for block in section.blocks -%}
+      {%- assign platform = block.settings.platform -%}
+
+      <a href="{{ block.settings.button_link | default: '#' }}" 
+         target="_blank" 
+         rel="noopener" 
+         class="cwu-card cwu-card--{{ platform }}" 
+         {{ block.shopify_attributes }}>
+        
+        <div class="cwu-card-header">
+          <span class="cwu-icon" aria-hidden="true">
+            {%- case platform -%}
+              {%- when 'instagram' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor" stroke="none"/></svg>
+              {%- when 'facebook' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M14 8.5h-1.5c-.9 0-1.5.6-1.5 1.5v2h3l-.4 2.5h-2.6V21" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              {%- when 'youtube' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.5 9.5l5 2.5-5 2.5z" stroke-linejoin="round" fill="currentColor"/></svg>
+              {%- when 'tiktok' -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 3c.4 2.4 2.2 4.2 4.6 4.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {%- endcase -%}
+          </span>
+          
+          <div class="cwu-card-meta">
+            <h3 class="cwu-platform-label">{{ block.settings.platform_label }}</h3>
+            {%- if block.settings.handle != blank -%}
+              <span class="cwu-handle">{{ block.settings.handle }}</span>
+            {%- endif -%}
+          </div>
+
+          <span class="cwu-arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </span>
+        </div>
+
+        <div class="cwu-screenshot-wrapper">
+          {%- if block.settings.screenshot -%}
+            {%- assign screenshot_alt = block.settings.platform_label | append: ' page preview' -%}
+            {{ block.settings.screenshot | image_url: width: 800 | image_tag:
+              widths: '400, 600, 800',
+              loading: 'lazy',
+              class: 'cwu-screenshot',
+              alt: screenshot_alt
+            }}
+          {%- else -%}
+            <div class="cwu-screenshot-placeholder">
+              <span>Upload page screenshot in section settings</span>
+            </div>
+          {%- endif -%}
+        </div>
+
+      </a>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Connect with Us",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Connect with Us"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Follow our official channels for real life activewear inspiration, news, and updates."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "platform",
+      "name": "Social platform card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "platform",
+          "label": "Platform",
+          "options": [
+            { "value": "instagram", "label": "Instagram" },
+            { "value": "facebook", "label": "Facebook" },
+            { "value": "youtube", "label": "YouTube" },
+            { "value": "tiktok", "label": "TikTok" }
+          ],
+          "default": "instagram"
+        },
+        {
+          "type": "text",
+          "id": "platform_label",
+          "label": "Display name",
+          "default": "Instagram"
+        },
+        {
+          "type": "text",
+          "id": "handle",
+          "label": "Handle",
+          "default": "@kerlora_official"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Profile link"
+        },
+        { "type": "image_picker", "id": "screenshot", "label": "Page Screenshot" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Connect with Us",
+      "blocks": [
+        { "type": "platform", "settings": { "platform": "instagram", "platform_label": "Instagram", "handle": "@kerlora_official" } },
+        { "type": "platform", "settings": { "platform": "facebook", "platform_label": "Facebook", "handle": "@kerlora_official" } },
+        { "type": "platform", "settings": { "platform": "tiktok", "platform_label": "TikTok", "handle": "@kerlora_official" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

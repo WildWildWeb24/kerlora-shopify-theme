@@ -1,0 +1,141 @@
+/* Component: Featured Posts Section - Kerlora Design Match */
+
+.fp-section {
+  padding: 5rem 1.5rem;
+  max-width: 1320px;
+  margin: 0 auto;
+  font-family: var(--font-stack-body, 'Geist', sans-serif);
+  color: rgb(var(--color-foreground, 39, 39, 39));
+}
+
+.fp-section-head {
+  margin-bottom: 2.5rem;
+}
+
+.fp-section-head h2 {
+  font-family: var(--font-stack-header, 'Geist', sans-serif);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: rgb(var(--color-heading, 34, 34, 34));
+  margin: 0;
+}
+
+.fp-grid {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 900px) {
+  .fp-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Featured Article Card */
+.fp-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #f6f5ec;
+  border: 1px solid #eae8dc;
+  border-radius: 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0, 0, 1), border-color 0.3s ease;
+}
+
+.fp-card:hover {
+  transform: translateY(-4px);
+  border-color: #d8d5c4;
+  box-shadow: 0 16px 32px -8px rgba(34, 34, 34, 0.08);
+}
+
+.fp-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: #eae7d8;
+  overflow: hidden;
+}
+
+.fp-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.fp-card:hover .fp-card-image img {
+  transform: scale(1.04);
+}
+
+.fp-card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #eae7d8, #dedbc8);
+}
+
+.fp-card-title {
+  padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+  font-family: var(--font-stack-header, 'Geist', sans-serif);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.4;
+  color: #222222;
+  flex-grow: 1;
+}
+
+.fp-read-more {
+  padding: 0 1.25rem 1.25rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #222222;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(34, 34, 34, 0.3);
+  transition: text-decoration-color 0.2s ease;
+}
+
+.fp-card:hover .fp-read-more {
+  text-decoration-color: #222222;
+}
+
+/* Side List Area */
+.fp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  justify-content: space-between;
+}
+
+.fp-list-item {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1.25rem;
+  background-color: #f6f5ec;
+  border: 1px solid #eae8dc;
+  border-radius: 0.875rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.fp-list-item:hover {
+  border-color: #d8d5c4;
+  transform: translateX(4px);
+}
+
+.fp-list-title {
+  font-family: var(--font-stack-header, 'Geist', sans-serif);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #222222;
+  text-decoration: none;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.fp-list-item .fp-read-more {
+  padding: 0;
+  font-size: 0.8125rem;
+}
