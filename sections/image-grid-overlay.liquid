@@ -1,0 +1,275 @@
+{% liquid
+  assign container = section.settings.container
+  if container == 'w-full'
+    assign container = 'container-full'
+  endif
+%}
+
+{%- style -%}
+  .m-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .m-image-grid-overlay__inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: {{ section.settings.item_gap }}px;
+  }
+
+  @media (max-width: 767px) {
+    .m-image-grid-overlay__inner {
+      grid-template-columns: 1fr;
+      gap: {{ section.settings.item_gap_mobile }}px;
+    }
+  }
+
+  .m-image-grid-overlay__item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px; /* Optional: adjust based on theme style */
+  }
+
+  .m-image-grid-overlay__image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Square aspect ratio as seen in the image */
+  }
+
+  .m-image-grid-overlay__image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .m-image-grid-overlay__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    color: #fff;
+    pointer-events: none;
+  }
+
+  .m-image-grid-overlay__heading {
+    font-size: 24px;
+    margin: 0 0 8px;
+    color: #fff;
+    line-height: 1.2;
+    font-weight: 500;
+  }
+
+  .m-image-grid-overlay__subtext {
+    font-size: 14px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+  }
+
+  .m-image-grid-overlay__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+{%- endstyle -%}
+
+<section class="m-section m-image-grid-overlay m-section-{{ section.id }} {{ section.settings.custom_class }}">
+  <div class="{{ container }} m-section-my m-section-py">
+    {% if section.settings.heading != blank or section.settings.subheading != blank %}
+      {% render 'index-section-header', section_settings: section.settings %}
+    {% endif %}
+
+    <div class="m-image-grid-overlay__inner">
+      {% for block in section.blocks %}
+        <div class="m-image-grid-overlay__item" {{ block.shopify_attributes }}>
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="m-image-grid-overlay__link"></a>
+          {% endif %}
+
+          <div class="m-image-grid-overlay__image-wrapper">
+            {% if block.settings.image != blank %}
+              {% render 'responsive-image', image: block.settings.image, image_class: 'm:w-full m:h-full' %}
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'm-placeholder-svg m:w-full m:h-full m:object-cover' }}
+            {% endif %}
+          </div>
+
+          <div class="m-image-grid-overlay__content">
+            {% if block.settings.title != blank %}
+              <h3 class="m-image-grid-overlay__heading">{{ block.settings.title }}</h3>
+            {% endif %}
+            {% if block.settings.subtext != blank %}
+              <div class="m-image-grid-overlay__subtext">
+                {{ block.settings.subtext }}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image Grid Overlay",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section header"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "default": "h3",
+      "options": [
+        {
+          "label": "Medium",
+          "value": "h3"
+        },
+        {
+          "label": "Large",
+          "value": "h2"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container type",
+      "default": "container-fluid",
+      "options": [
+        {
+          "value": "container-fluid",
+          "label": "Default"
+        },
+        {
+          "value": "w-full",
+          "label": "Full width"
+        },
+        {
+          "value": "container",
+          "label": "Use container box"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "label": "Column gap",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "item_gap_mobile",
+      "label": "Column gap on mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "text",
+      "id": "custom_class",
+      "label": "Custom classes"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image block",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Image Heading"
+        },
+        {
+          "type": "textarea",
+          "id": "subtext",
+          "label": "Subtext",
+          "default": "Add details on availability, style, or even provide a review."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Grid Overlay",
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

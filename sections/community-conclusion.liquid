@@ -1,0 +1,114 @@
+{{ 'component-community-conclusion.css' | asset_url | stylesheet_tag }}
+
+<section class="community-conclusion" id="community-conclusion-{{ section.id }}">
+  <div class="community-conclusion__container page-width">
+    <div class="community-conclusion__grid">
+
+      <!-- Image + text -->
+      <div class="community-conclusion__story">
+        {% if section.settings.image != blank %}
+          <div class="community-conclusion__image">
+            <img
+              src="{{ section.settings.image | image_url: width: 1200 }}"
+              srcset="{{ section.settings.image | image_url: width: 600 }} 600w, {{ section.settings.image | image_url: width: 1200 }} 1200w"
+              sizes="(min-width: 990px) 50vw, 100vw"
+              alt="{{ section.settings.image.alt | default: section.settings.heading | escape }}"
+              loading="lazy"
+              width="{{ section.settings.image.width }}"
+              height="{{ section.settings.image.height }}"
+            >
+          </div>
+        {% endif %}
+        <h2 class="community-conclusion__heading">{{ section.settings.heading | escape }}</h2>
+        {% if section.settings.text != blank %}
+          <div class="community-conclusion__text">{{ section.settings.text }}</div>
+        {% endif %}
+      </div>
+
+      <!-- Newsletter -->
+      <div class="community-conclusion__newsletter">
+        <h3 class="community-conclusion__newsletter-heading">{{ section.settings.form_heading | escape }}</h3>
+        {% if section.settings.form_subheading != blank %}
+          <p class="community-conclusion__newsletter-subheading">{{ section.settings.form_subheading | escape }}</p>
+        {% endif %}
+
+        {% form 'customer', id: 'CommunityConclusionNewsletterForm' %}
+          {% if form.posted_successfully? %}
+            <p class="community-conclusion__form-success">Thanks — you're on the list.</p>
+          {% endif %}
+
+          <input type="hidden" name="contact[tags]" value="newsletter">
+
+          <div class="community-conclusion__field">
+            <label class="visually-hidden" for="CommunityConclusionEmail-{{ section.id }}">Email address</label>
+            <input
+              type="email"
+              name="contact[email]"
+              id="CommunityConclusionEmail-{{ section.id }}"
+              placeholder="Enter your email address"
+              required
+            >
+          </div>
+
+          <button type="submit" class="community-conclusion__submit">
+            Subscribe
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        {% endform %}
+
+        <p class="community-conclusion__privacy">We respect your privacy. Unsubscribe at any time.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Community: Conclusion",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Movement is better together."
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>At Kerlora, we believe that the best journeys are the ones shared. Join us in making movement a joyful, collective experience.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter panel"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form heading",
+      "default": "Stay in the Loop"
+    },
+    {
+      "type": "text",
+      "id": "form_subheading",
+      "label": "Form subheading",
+      "default": "Sign up for updates on upcoming walks, community stories, and tips for your next adventure."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community: Conclusion"
+    }
+  ]
+}
+{% endschema %}

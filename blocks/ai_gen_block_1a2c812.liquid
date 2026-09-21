@@ -1,0 +1,539 @@
+{% doc %}
+  @prompt
+    I want to create a size guide table, which is interactive. you can switch between Inches & Centimeters
+    
+    I need the size guide to also have UK / EU / USA sizes as well. Below is the data for UK size guide. 
+    
+    UK | Chest (Inches) | Chest (CM) | Waist (Inches) | Waist (CM) | Hips (Inches) | Hips (CM)
+    8  | 33             | 83         | 26             | 65         | 35            | 88.5
+    10 | 35             | 88         | 28             | 70         | 37            | 93.5
+    12 | 37             | 93         | 30             | 75         | 39            | 98.5
+    14 | 39             | 98         | 31             | 80         | 41            | 103.5
+    16 | 41             | 103        | 33             | 85         | 43            | 108.5
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-size-guide-{{ ai_gen_id }} {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    padding: {{ block.settings.padding }}px;
+    background-color: {{ block.settings.background_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    display: block;
+  }
+
+  .ai-size-guide-header-{{ ai_gen_id }} {
+    margin-bottom: 24px;
+  }
+
+  .ai-size-guide-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.title_size }}px;
+    color: {{ block.settings.text_color }};
+    margin: 0 0 12px 0;
+    font-weight: 600;
+  }
+
+  .ai-size-guide-controls-{{ ai_gen_id }} {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .ai-size-guide-unit-toggle-{{ ai_gen_id }} {
+    display: inline-flex;
+    background-color: {{ block.settings.toggle_bg_color }};
+    border-radius: {{ block.settings.toggle_border_radius }}px;
+    padding: 4px;
+    gap: 4px;
+  }
+
+  .ai-size-guide-unit-btn-{{ ai_gen_id }} {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: {{ block.settings.text_color }};
+    cursor: pointer;
+    border-radius: {{ block.settings.toggle_border_radius | minus: 2 }}px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .ai-size-guide-unit-btn-{{ ai_gen_id }}.active {
+    background-color: {{ block.settings.toggle_active_bg }};
+    color: {{ block.settings.toggle_active_text }};
+  }
+
+  .ai-size-guide-table-wrapper-{{ ai_gen_id }} {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ai-size-guide-table-{{ ai_gen_id }} {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: {{ block.settings.table_text_size }}px;
+  }
+
+  .ai-size-guide-table-{{ ai_gen_id }} th,
+  .ai-size-guide-table-{{ ai_gen_id }} td {
+    padding: {{ block.settings.cell_padding }}px;
+    text-align: {{ block.settings.text_alignment }};
+    border: {{ block.settings.border_width }}px solid {{ block.settings.border_color }};
+  }
+
+  .ai-size-guide-table-{{ ai_gen_id }} th {
+    background-color: {{ block.settings.header_bg_color }};
+    color: {{ block.settings.header_text_color }};
+    font-weight: 600;
+  }
+
+  .ai-size-guide-table-{{ ai_gen_id }} td {
+    background-color: {{ block.settings.cell_bg_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-size-guide-table-{{ ai_gen_id }} tbody tr:hover td {
+    background-color: {{ block.settings.row_hover_color }};
+  }
+
+  .ai-size-guide-measurement-{{ ai_gen_id }} {
+    display: none;
+  }
+
+  .ai-size-guide-measurement-{{ ai_gen_id }}.active {
+    display: table-cell;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-size-guide-{{ ai_gen_id }} {
+      width: 100%;
+    }
+
+    .ai-size-guide-table-{{ ai_gen_id }} {
+      font-size: {{ block.settings.table_text_size | times: 0.9 }}px;
+    }
+
+    .ai-size-guide-table-{{ ai_gen_id }} th,
+    .ai-size-guide-table-{{ ai_gen_id }} td {
+      padding: {{ block.settings.cell_padding | times: 0.8 }}px;
+    }
+  }
+{% endstyle %}
+
+<size-guide-{{ ai_gen_id }} class="ai-size-guide-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-size-guide-header-{{ ai_gen_id }}">
+    {% if block.settings.title != blank %}
+      <h3 class="ai-size-guide-title-{{ ai_gen_id }}">{{ block.settings.title }}</h3>
+    {% endif %}
+
+    <div class="ai-size-guide-controls-{{ ai_gen_id }}">
+      <div class="ai-size-guide-unit-toggle-{{ ai_gen_id }}">
+        <button
+          class="ai-size-guide-unit-btn-{{ ai_gen_id }} active"
+          data-unit="inches"
+          aria-pressed="true"
+        >
+          {{ block.settings.inches_label }}
+        </button>
+        <button
+          class="ai-size-guide-unit-btn-{{ ai_gen_id }}"
+          data-unit="cm"
+          aria-pressed="false"
+        >
+          {{ block.settings.cm_label }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ai-size-guide-table-wrapper-{{ ai_gen_id }}">
+    <table class="ai-size-guide-table-{{ ai_gen_id }}">
+      <thead>
+        <tr>
+          <th>{{ block.settings.uk_label }}</th>
+          <th>{{ block.settings.eu_label }}</th>
+          <th>{{ block.settings.us_label }}</th>
+          <th class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">
+            {{ block.settings.chest_label }}
+          </th>
+          <th class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">
+            {{ block.settings.chest_label }}
+          </th>
+          <th class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">
+            {{ block.settings.waist_label }}
+          </th>
+          <th class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">
+            {{ block.settings.waist_label }}
+          </th>
+          <th class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">
+            {{ block.settings.hips_label }}
+          </th>
+          <th class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">
+            {{ block.settings.hips_label }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>8</td>
+          <td>36</td>
+          <td>4</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">33</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">83</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">26</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">65</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">35</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">88.5</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>38</td>
+          <td>6</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">35</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">88</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">28</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">70</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">37</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">93.5</td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>40</td>
+          <td>8</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">37</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">93</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">30</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">75</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">39</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">98.5</td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>42</td>
+          <td>10</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">39</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">98</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">31</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">80</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">41</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">103.5</td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td>44</td>
+          <td>12</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">41</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">103</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">33</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">85</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }} active" data-unit="inches">43</td>
+          <td class="ai-size-guide-measurement-{{ ai_gen_id }}" data-unit="cm">108.5</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</size-guide-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class SizeGuide{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+        this.currentUnit = 'inches';
+      }
+
+      connectedCallback() {
+        this.unitButtons = this.querySelectorAll('.ai-size-guide-unit-btn-{{ ai_gen_id }}');
+        this.measurementCells = this.querySelectorAll('.ai-size-guide-measurement-{{ ai_gen_id }}');
+        
+        this.setupEventListeners();
+      }
+
+      setupEventListeners() {
+        this.unitButtons.forEach(button => {
+          button.addEventListener('click', () => {
+            const unit = button.getAttribute('data-unit');
+            this.switchUnit(unit);
+          });
+        });
+      }
+
+      switchUnit(unit) {
+        if (this.currentUnit === unit) return;
+        
+        this.currentUnit = unit;
+        
+        this.unitButtons.forEach(btn => {
+          const isActive = btn.getAttribute('data-unit') === unit;
+          btn.classList.toggle('active', isActive);
+          btn.setAttribute('aria-pressed', isActive);
+        });
+        
+        this.measurementCells.forEach(cell => {
+          const cellUnit = cell.getAttribute('data-unit');
+          cell.classList.toggle('active', cellUnit === unit);
+        });
+      }
+    }
+
+    customElements.define('size-guide-{{ ai_gen_id }}', SizeGuide{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Size guide table",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Size Guide"
+    },
+    {
+      "type": "text",
+      "id": "inches_label",
+      "label": "Inches button label",
+      "default": "Inches"
+    },
+    {
+      "type": "text",
+      "id": "cm_label",
+      "label": "Centimeters button label",
+      "default": "CM"
+    },
+    {
+      "type": "header",
+      "content": "Table headers"
+    },
+    {
+      "type": "text",
+      "id": "uk_label",
+      "label": "UK size label",
+      "default": "UK"
+    },
+    {
+      "type": "text",
+      "id": "eu_label",
+      "label": "EU size label",
+      "default": "EU"
+    },
+    {
+      "type": "text",
+      "id": "us_label",
+      "label": "US size label",
+      "default": "US"
+    },
+    {
+      "type": "text",
+      "id": "chest_label",
+      "label": "Chest label",
+      "default": "Chest"
+    },
+    {
+      "type": "text",
+      "id": "waist_label",
+      "label": "Waist label",
+      "default": "Waist"
+    },
+    {
+      "type": "text",
+      "id": "hips_label",
+      "label": "Hips label",
+      "default": "Hips"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Padding",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "label": "Title size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "table_text_size",
+      "label": "Table text size",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#272727"
+    },
+    {
+      "type": "color",
+      "id": "header_bg_color",
+      "label": "Header background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "header_text_color",
+      "label": "Header text",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "cell_bg_color",
+      "label": "Cell background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "row_hover_color",
+      "label": "Row hover",
+      "default": "#f9f9f9"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "header",
+      "content": "Toggle button"
+    },
+    {
+      "type": "color",
+      "id": "toggle_bg_color",
+      "label": "Background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "toggle_active_bg",
+      "label": "Active background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "toggle_active_text",
+      "label": "Active text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "toggle_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "header",
+      "content": "Table style"
+    },
+    {
+      "type": "range",
+      "id": "cell_padding",
+      "label": "Cell padding",
+      "min": 8,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "label": "Border width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "default": 1
+    }
+  ],
+  "presets": [
+    {
+      "name": "Size guide table"
+    }
+  ]
+}
+{% endschema %}

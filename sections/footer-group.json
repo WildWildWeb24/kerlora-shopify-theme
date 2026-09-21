@@ -1,0 +1,216 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "newsletter_8TUBrf": {
+          "type": "newsletter",
+          "settings": {
+            "title": "Lets get in touch",
+            "description": "Get 10% off your first order when you sign up to the Kerlora newsletter today.",
+            "email_placeholder": "Enter your email",
+            "show_icon_input": true,
+            "button_label": "",
+            "button_position": "inline",
+            "button_style": "m-button--blank",
+            "form_style": "bordered",
+            "show_social": true,
+            "show_agree_checkbox": false,
+            "width": "33%",
+            "order_first": true,
+            "open_default": true
+          }
+        },
+        "custom_html_eajCcF": {
+          "type": "custom_html",
+          "settings": {
+            "title": "Shop",
+            "html": "<ul style=\"list-style: none; padding: 0; margin: 0; line-height:28px\">\n  <li><a href=\"https://kerlora.com/collections/outerwear\">Outerwear</a></li>\n  <li><a href=\"https://kerlora.com/collections/all-tops\">Tops</a></li>\n  <li><a href=\"https://kerlora.com/collections/active-bottoms\">Active Bottom</a></li>\n  <li><a href=\"https://kerlora.com/collections/accessories\">Accessories</a></li>\n  <li><a href=\"https://kerlora.com/collections/loungewear\">Loungewear</a></li>\n</ul>",
+            "width": "25%",
+            "order_first": false,
+            "open_default": false
+          }
+        },
+        "custom_html_9tgj9R": {
+          "type": "custom_html",
+          "settings": {
+            "title": "Kerlora",
+            "html": "<ul style=\"list-style: none; padding: 0; margin: 0; line-height:28px\">\n  <li><a href=\"https://kerlora.com/pages/about-us\">About Us</a></li>\n  <li><a href=\"https://kerlora.com/pages/contact\">Contact</a></li>\n  <li><a href=\"https://kerlora.com/blogs/kerlora-stories\">Blog</a></li>\n</ul>",
+            "width": "25%",
+            "order_first": false,
+            "open_default": false
+          }
+        },
+        "custom_html_gMetQy": {
+          "type": "custom_html",
+          "settings": {
+            "title": "Policies",
+            "html": "<ul style=\"list-style: none; padding: 0; margin: 0; line-height:28px\">\n  <li><a href=\"https://kerlora.com/pages/returns-shipping-policy\">Returns Policy</a></li>\n <li><a href=\"https://kerlora.com/pages/delivery-policy\">Shipping Policy</a></li>\n  <li><a href=\"https://kerlora.com/pages/privacy-policy\">Privacy Policy</a></li>\n  <li><a href=\"https://kerlora.com/pages/terms-conditions\">Terms & Conditions</a></li>\n   <li><a href=\"https://kerlora.com/pages/faq\">FAQs</a></li>\n</ul>",
+            "width": "25%",
+            "order_first": false,
+            "open_default": false
+          }
+        }
+      },
+      "block_order": [
+        "newsletter_8TUBrf",
+        "custom_html_eajCcF",
+        "custom_html_9tgj9R",
+        "custom_html_gMetQy"
+      ],
+      "custom_css": [
+        ".m-footer--block-spacing {width: 10%;}",
+        ".m-newsletter-form {margin-top: 24px;}",
+        ".m-footer--block-newsletter .m-footer--block-title {font-weight: 400; font-size: 25px;}",
+        "@media (min-width: 1280px) {.m-footer--block-newsletter .m-footer--block-title {font-size: 36px; margin-bottom: 12px; } .m-footer__copyright, .m-footer--bottom-menu {font-size: 14px; }}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "design": "footer-1",
+        "container": "container-fluid",
+        "bordered": false,
+        "copyright": "",
+        "show_country_selector": false,
+        "show_currency_selector": false,
+        "show_language_selector": false,
+        "show_social_links": false,
+        "enable_follow_on_shop": false,
+        "show_payment_icons": false,
+        "payment_icons_width": 300,
+        "footer_bottom_color_scheme": "",
+        "footer_bottom_menu": "",
+        "show_menu_item_divider": true
+      }
+    },
+    "custom_content_gW4P7T": {
+      "type": "custom-content",
+      "blocks": {
+        "liquid_UNBfkX": {
+          "type": "liquid",
+          "settings": {
+            "custom_liquid": "<footer class=\"custom-footer\">\n        Kerlora &copy; 2026. All Rights Reserved. Kerlora Ltd. Company No: 16277114 Registered in Kent, UK. Registered Address: First Floor, 2&ndash;3 Corner House Buildings, Red Lion Square, Hythe, Kent, CT21 5BD\n    </footer>",
+            "width": "100%",
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        },
+        "text_XNc3Qa": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "title": "",
+            "subheading": "",
+            "text": "<p>Kerlora © 2025. All Rights Reserved. Kerlora Ltd. Company No: 16277114 Registered in Kent, UK. Registered Address: First Floor, 2–3 Corner House Buildings, Red Lion Square, Hythe, Kent, CT21 5BD</p>",
+            "width": "100%",
+            "alignment": "center",
+            "align_text": "center",
+            "text_size": "medium",
+            "text_color": "inherit",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "m-button--primary",
+            "button_size": "",
+            "block_custom_class": "footer-bg-color copy-text",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "liquid_UNBfkX",
+        "text_XNc3Qa"
+      ],
+      "custom_css": [
+        ".footer-bg-color {background-color: #d9d5ca;}",
+        ".custom-footer {background-color: #d9d5ca; color: #1a1a1a; font-size: 12px; line-height: 1.5; padding: 12px 25px; text-align: center;}",
+        " /* Responsive handling for smaller screens */@media (max-width: 768px) {.custom-footer {text-align: center; padding: 20px; }}"
+      ],
+      "name": "Custom content",
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "color_scheme": "",
+        "content_color_scheme": "",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "gap": 30,
+        "gap_mobile": 16,
+        "use_scroll_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": "footer-bg-color"
+      }
+    },
+    "mobile-sticky-bar": {
+      "type": "mobile-sticky-bar",
+      "disabled": true,
+      "settings": {
+        "show_mobile_sticky": true,
+        "show_home_icon": true,
+        "show_collection_icon": true,
+        "show_cart_icon": true,
+        "show_search_icon": true,
+        "show_account_icon": false,
+        "show_wishlist_icon": false
+      }
+    },
+    "age-verifier-popup": {
+      "type": "age-verifier-popup",
+      "blocks": {
+        "block-1": {
+          "type": "heading",
+          "settings": {
+            "heading": "Confirm your age"
+          }
+        },
+        "block-2": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Are you 18 years old or older?</p>"
+          }
+        },
+        "block-3": {
+          "type": "buttons",
+          "settings": {
+            "decline_button": "No, I'm not",
+            "approve_button": "Yes, I am"
+          }
+        }
+      },
+      "block_order": [
+        "block-1",
+        "block-2",
+        "block-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "design_mode": false,
+        "enable": false,
+        "bg_blur": true,
+        "decline_heading": "Come back when you're older",
+        "decline_content": "<p>Sorry, the content of this store can't be seen by a younger audience. Come back when you're older.</p>",
+        "return_button": "Oops, I entered incorrectly"
+      }
+    }
+  },
+  "order": [
+    "footer",
+    "custom_content_gW4P7T",
+    "mobile-sticky-bar",
+    "age-verifier-popup"
+  ]
+}

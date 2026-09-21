@@ -1,3 +1,896 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "sections": {}
+  "sections": {
+    "17828901870699da93": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_7b4d157_WKQEJq": {
+          "type": "ai_gen_block_7b4d157",
+          "settings": {
+            "video_desktop": "shopify://files/videos/Kerlora-the-season-for-play-16x9.mp4",
+            "video_mobile": "shopify://files/videos/Kerlora-the-season-for-play-9x16.mp4",
+            "video_alignment_horizontal": "center",
+            "video_alignment_vertical": "center",
+            "collection_link": "the-play-list",
+            "show_button": false,
+            "button_text": "Shop now",
+            "button_link": "",
+            "button_position": "center",
+            "button_background_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_hover_background_color": "#222222",
+            "button_hover_text_color": "#ffffff",
+            "button_border_radius": 4,
+            "background_color": "#ffffff",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_7b4d157_WKQEJq"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "www_hero_banner_tqeXpA": {
+      "type": "www-hero-banner",
+      "name": "WWW Hero Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/kerlora-homepage-hero-desktop.webp",
+        "mobile_image": "shopify://shop_images/kerlora-activewear-womens-shop-mobile-comp.webp",
+        "heading": "Designed for the body you have today.",
+        "button_label": "Shop the collection",
+        "button_link": "shopify://collections/shop-all",
+        "banner_link": "shopify://collections/shop-all",
+        "desktop_height": 630,
+        "mobile_height": 500,
+        "desktop_side_padding": 28,
+        "mobile_side_padding": 16,
+        "desktop_bottom_padding": 60,
+        "mobile_bottom_padding": 40,
+        "heading_size": 60,
+        "mobile_heading_size": 38,
+        "heading_letter_spacing": -2,
+        "mobile_heading_letter_spacing": -2,
+        "heading_line_height": 10,
+        "mobile_heading_line_height": 10,
+        "heading_color": "#ffffff",
+        "button_bg": "#ffffff",
+        "button_color": "#222222",
+        "overlay": "#000000",
+        "overlay_opacity": 0
+      }
+    },
+    "empty_space_z3zLLq": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "show_divider_line": false,
+        "divider_style": "solid",
+        "divider_height": 1,
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "mix_match_collection_LziRCC": {
+      "type": "mix-match-collection",
+      "name": "KER-Product-Listing",
+      "settings": {
+        "heading": "Athleisure for real life.",
+        "text": "",
+        "collection": "shop-all",
+        "products_limit": 8,
+        "button_text": "Shop All",
+        "heading_size": 34,
+        "mobile_heading_size": 28,
+        "text_size": 16,
+        "mobile_text_size": 15,
+        "product_title_size": 14,
+        "price_size": 14,
+        "product_gap": 8,
+        "side_padding": 32,
+        "mobile_side_padding": 16,
+        "padding_top": 12,
+        "padding_bottom": 32,
+        "background": "#ffffff",
+        "text_color": "#555555",
+        "button_bg": "#111111",
+        "button_text_color": "#ffffff",
+        "button_radius": 0,
+        "button_font_size": 12
+      }
+    },
+    "www_image_with_story_RzcXfx": {
+      "type": "www-image-with-story",
+      "name": "Why Kerlora exists",
+      "settings": {
+        "heading": "Why Kerlora Exists",
+        "content": "<p>After struggling with health anxiety and the constant overthinking that came with it, founder Kersty Lorton discovered that movement could give her something she hadn’t expected: a sense of calm, clarity and release from the mental fog.</p><p>But when she looked for activewear to support her, she found herself questioning her body and whether she fitted the image of fitness that so many brands portrayed. Exercise wasn’t about perfection for Kersty. It was about showing up, finding strength and feeling better in herself.</p><p>So she created Kerlora.</p><p>Built around the belief that movement should support both body and mind, Kerlora is here to help women feel comfortable, confident and strong, however they choose to move. From the school run to strength training, a walk in the park or simply taking time for yourself, Kerlora is made for real life.</p>",
+        "button_label": "",
+        "button_link": "",
+        "image": "shopify://shop_images/kerlora-kertsy-founder.webp",
+        "image_position": "center center",
+        "image_aspect_desktop": "16 / 9",
+        "image_aspect_mobile": "4 / 3",
+        "image_radius": 0,
+        "max_width": 2000,
+        "text_width": 42,
+        "text_max_width": 760,
+        "column_gap": 64,
+        "reverse_desktop": false,
+        "mobile_gap": 28,
+        "reverse_mobile": true,
+        "heading_size_desktop": 34,
+        "heading_size_mobile": 28,
+        "body_size_desktop": 16,
+        "body_size_mobile": 16,
+        "heading_line_height": 110,
+        "body_line_height": 145,
+        "color_scheme": "default",
+        "padding_top_desktop": 40,
+        "padding_bottom_desktop": 40,
+        "padding_horizontal_desktop": 36,
+        "padding_top_mobile": 32,
+        "padding_bottom_mobile": 32,
+        "padding_horizontal_mobile": 16
+      }
+    },
+    "community_videos_rh3pd7": {
+      "type": "community-videos",
+      "blocks": {
+        "video_Ne84DF": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-social-proof-03.mp4",
+            "link": "",
+            "accessibility_label": "Kerlora community video"
+          }
+        },
+        "video_4TTgaK": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-social-proof-10.mp4",
+            "link": "",
+            "accessibility_label": "Kerlora community video"
+          }
+        },
+        "video_mwV7T3": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-social-proof-06.mp4",
+            "link": "",
+            "accessibility_label": "Kerlora community video"
+          }
+        },
+        "video_NkEPXB": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-social-proof-01.mp4",
+            "link": "",
+            "accessibility_label": "Kerlora community video"
+          }
+        },
+        "video_qqRVcU": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-social-proof-08.mp4",
+            "link": "",
+            "accessibility_label": "Kerlora community video"
+          }
+        },
+        "video_mgGm8H": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-social-proof-04.mp4",
+            "link": "",
+            "accessibility_label": "Kerlora community video"
+          }
+        },
+        "video_pc8m9A": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-social-proof-02.mp4",
+            "link": "",
+            "accessibility_label": "Kerlora community video"
+          }
+        },
+        "video_pTjwWd": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-social-proof-09.mp4",
+            "link": "",
+            "accessibility_label": "Kerlora community video"
+          }
+        }
+      },
+      "block_order": [
+        "video_Ne84DF",
+        "video_4TTgaK",
+        "video_mwV7T3",
+        "video_NkEPXB",
+        "video_qqRVcU",
+        "video_mgGm8H",
+        "video_pc8m9A",
+        "video_pTjwWd"
+      ],
+      "name": "Community videos",
+      "settings": {
+        "heading": "",
+        "heading_size": 34,
+        "mobile_heading_size": 28,
+        "heading_weight": "400",
+        "heading_bottom_spacing": 36,
+        "mobile_heading_bottom_spacing": 24,
+        "video_gap": 8,
+        "mobile_video_width": 160,
+        "mobile_video_gap": 6,
+        "autoplay_speed": 4,
+        "video_radius": 0,
+        "desktop_side_padding": 0,
+        "mobile_side_padding": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "background_color": "#ffffff",
+        "heading_color": "#111111"
+      }
+    },
+    "empty_space_KMQkcM": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "show_divider_line": false,
+        "divider_style": "solid",
+        "divider_height": 1,
+        "padding_top": 40,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "1783680721f9dfe32a": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_804f336_hN8J8m": {
+          "type": "ai_gen_block_804f336",
+          "settings": {
+            "image_1": "shopify://shop_images/kerlora-shop-shorts.jpg",
+            "collection_1": "shorts",
+            "heading_1": "Summer shorts to sweat in.",
+            "text_1": "",
+            "button_label_1": "Shop Shorts",
+            "button_link_1": "shopify://collections/shorts",
+            "image_2": "shopify://shop_images/kerlora-product-category-sport-bra.jpg",
+            "collection_2": "sports-bra",
+            "heading_2": "BRA-Vo! support & style in one. ",
+            "text_2": "",
+            "button_label_2": "Shop Sports Bras",
+            "button_link_2": "shopify://collections/sports-bra",
+            "desktop_width_percent": 100,
+            "column_gap": 10,
+            "mobile_gap": 10,
+            "section_padding": 0,
+            "image_aspect_ratio": "4 / 3",
+            "image_border_radius": 0,
+            "placeholder_bg_color": "#f4f4f4",
+            "content_padding": 20,
+            "heading_size": 60,
+            "heading_color": "#ffffff",
+            "text_size": 14,
+            "text_color": "#ffffff",
+            "text_spacing": 8,
+            "button_spacing": 16,
+            "button_font_size": 14,
+            "button_padding_vertical": 12,
+            "button_padding_horizontal": 24,
+            "button_border_radius": 4,
+            "button_border_width": 0,
+            "button_bg_color": "#ffffff",
+            "button_text_color": "#000000",
+            "button_border_color": "#ffffff",
+            "button_hover_bg_color": "#000000",
+            "button_hover_text_color": "#ffffff",
+            "button_hover_border_color": "#000000"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_804f336_hN8J8m"
+      ],
+      "settings": {}
+    },
+    "popular_categories_LP8Rgy": {
+      "type": "popular-categories",
+      "blocks": {
+        "category_JcyXxW": {
+          "type": "category",
+          "settings": {
+            "collection": "for-the-run",
+            "custom_image": "shopify://shop_images/kerlora-bra-category-04.webp",
+            "custom_title": "For the run"
+          }
+        },
+        "category_rtTRw4": {
+          "type": "category",
+          "settings": {
+            "collection": "pilates-essentials",
+            "custom_image": "shopify://shop_images/kerlora-bra-category-03.webp",
+            "custom_title": "Pilates essentials"
+          }
+        },
+        "category_YJCNpy": {
+          "type": "category",
+          "settings": {
+            "collection": "the-school-run-edit",
+            "custom_image": "shopify://shop_images/kerlora-bra-category-01webp.webp",
+            "custom_title": "School run"
+          }
+        },
+        "category_C9kELU": {
+          "type": "category",
+          "settings": {
+            "collection": "the-weekend-wardrobe",
+            "custom_image": "shopify://shop_images/kerlora-bra-category-02.webp",
+            "custom_title": "Weekend wardrobe"
+          }
+        }
+      },
+      "block_order": [
+        "category_JcyXxW",
+        "category_rtTRw4",
+        "category_YJCNpy",
+        "category_C9kELU"
+      ],
+      "name": "Popular Categories",
+      "settings": {
+        "heading": "Shop by activity",
+        "desktop_columns": 4,
+        "mobile_columns": "2",
+        "image_gap": 8,
+        "mobile_gap": 8,
+        "image_ratio": "4 / 5",
+        "image_radius": 0,
+        "enable_hover_zoom": false,
+        "side_padding": 28,
+        "mobile_side_padding": 16,
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "heading_bottom_gap": 40,
+        "title_top_gap": 6,
+        "heading_size": 34,
+        "mobile_heading_size": 28,
+        "title_size": 18,
+        "mobile_title_size": 18,
+        "background": "#ffffff",
+        "heading_color": "#111111",
+        "title_color": "#222222"
+      }
+    },
+    "mix_match_collection_HHA3Dt": {
+      "type": "mix-match-collection",
+      "name": "KER-Product-Listing",
+      "settings": {
+        "heading": "Mix & match sets",
+        "text": "Shop our range of combo pack and enjoy discounted rates.",
+        "collection": "kerlora-sets",
+        "products_limit": 8,
+        "button_text": "Shop Mix & Match Sets",
+        "heading_size": 34,
+        "mobile_heading_size": 28,
+        "text_size": 16,
+        "mobile_text_size": 15,
+        "product_title_size": 14,
+        "price_size": 14,
+        "product_gap": 8,
+        "side_padding": 32,
+        "mobile_side_padding": 16,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "background": "#ffffff",
+        "text_color": "#555555",
+        "button_bg": "#111111",
+        "button_text_color": "#ffffff",
+        "button_radius": 0,
+        "button_font_size": 12
+      }
+    },
+    "popular_categories_RhnJ6W": {
+      "type": "popular-categories",
+      "blocks": {
+        "category_6cCCUB": {
+          "type": "category",
+          "settings": {
+            "collection": "sports-bra",
+            "custom_image": "shopify://shop_images/kerlora-category-bras.webp",
+            "custom_title": ""
+          }
+        },
+        "category_NhMQ9R": {
+          "type": "category",
+          "settings": {
+            "collection": "shorts",
+            "custom_image": "shopify://shop_images/kerlora-category-shorts.webp",
+            "custom_title": ""
+          }
+        },
+        "category_dHMiUC": {
+          "type": "category",
+          "settings": {
+            "collection": "leggings",
+            "custom_image": "shopify://shop_images/kerlora-category-leggings-02.webp",
+            "custom_title": ""
+          }
+        },
+        "category_qxcbLP": {
+          "type": "category",
+          "settings": {
+            "collection": "tops",
+            "custom_image": "shopify://shop_images/kerlora-category-tops.webp",
+            "custom_title": ""
+          }
+        },
+        "category_z8GKpR": {
+          "type": "category",
+          "settings": {
+            "collection": "jackets",
+            "custom_image": "shopify://shop_images/kerlora-category-jackets.webp",
+            "custom_title": ""
+          }
+        },
+        "category_dfA3Uk": {
+          "type": "category",
+          "settings": {
+            "collection": "accessories",
+            "custom_image": "shopify://shop_images/kerlora-category-accessories.webp",
+            "custom_title": ""
+          }
+        }
+      },
+      "block_order": [
+        "category_6cCCUB",
+        "category_NhMQ9R",
+        "category_dHMiUC",
+        "category_qxcbLP",
+        "category_z8GKpR",
+        "category_dfA3Uk"
+      ],
+      "name": "Popular Categories",
+      "settings": {
+        "heading": "Popular categories",
+        "desktop_columns": 6,
+        "mobile_columns": "2",
+        "image_gap": 8,
+        "mobile_gap": 8,
+        "image_ratio": "3 / 4",
+        "image_radius": 0,
+        "enable_hover_zoom": false,
+        "side_padding": 28,
+        "mobile_side_padding": 14,
+        "padding_top": 32,
+        "padding_bottom": 32,
+        "heading_bottom_gap": 40,
+        "title_top_gap": 6,
+        "heading_size": 34,
+        "mobile_heading_size": 28,
+        "title_size": 18,
+        "mobile_title_size": 18,
+        "background": "#ffffff",
+        "heading_color": "#111111",
+        "title_color": "#222222"
+      }
+    },
+    "empty_space_YbmGDd": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "show_divider_line": false,
+        "divider_style": "solid",
+        "divider_height": 1,
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "custom_class": ""
+      }
+    },
+    "1782815985dd985d48": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_featured_carousel_mjT6cH": {
+          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {
+            "maxwidth": 1400
+          }
+        },
+        "judge_me_reviews_cards_carousel_mJG9Hf": {
+          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "show_sample_reviews": false,
+            "reviews_selection": "all",
+            "products": [
+              "black-tangerine-running-set",
+              "black-4-high-rise-shorts-with-liner",
+              "black-essential-fitted-performance-tshirt",
+              "black-high-rise-performance-pants",
+              "black-long-sleeve-performance-top",
+              "black-long-sleeve-performance-top-with-cut-out-back",
+              "strappy-back-sports-bra",
+              "black-wrap-waist-leggings",
+              "black-strappy-back-sports-bra",
+              "charcoal-wrap-waist-leggings"
+            ],
+            "filter_pinned": false,
+            "filter_featured": false,
+            "filter_custom_tags": "",
+            "star_rating": "all",
+            "show_review_media": false,
+            "display_order": "most_recent",
+            "no_image_fallback": "review_text_only",
+            "max_reviews": 20,
+            "review_length": "medium",
+            "text_size": "small",
+            "image_ratio": "1",
+            "reviews_shown": 5,
+            "show_reviewer_name": false,
+            "show_product_name": true,
+            "hide_arrows_mobile": true,
+            "arrows_position": "sides",
+            "max_width": 1100,
+            "corner_styling": "soft",
+            "header_text_color": "#000000",
+            "text_color": "#000000",
+            "card_color": "#f9f9f9",
+            "stars_color": "#efdf2a",
+            "arrows_color": "#000000",
+            "transition_speed": 5,
+            "header_text": "Customers are saying",
+            "show_average_rating": true,
+            "rating_display": "default"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_featured_carousel_mjT6cH",
+        "judge_me_reviews_cards_carousel_mJG9Hf"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "header_alignment": "center",
+        "container": "w-full",
+        "background_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "empty_space_yPj6XA": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "show_divider_line": false,
+        "divider_style": "solid",
+        "divider_height": 1,
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "custom_class": ""
+      }
+    },
+    "blog_posts_nbzkXi": {
+      "type": "blog-posts",
+      "name": "Blog posts",
+      "settings": {
+        "heading": "Welcome to the community",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "left",
+        "container": "container",
+        "color_scheme": "default",
+        "blog": "community-events",
+        "limit": 4,
+        "column": 4,
+        "column_gap": 30,
+        "mobile_gap": 10,
+        "article_image_aspect_ratio": "16/9",
+        "article_align_content": "text-left",
+        "article_show_tags": true,
+        "article_show_date": true,
+        "article_show_excerpt": true,
+        "article_show_button": true,
+        "show_button_on_header": false,
+        "button_link": "",
+        "button_text": "View More",
+        "button_style": "m-button--link",
+        "button_size": "",
+        "use_scroll_mobile": true,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "newsletter_Vj3X3x": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "form_layout": "vertical",
+        "form_design": "1",
+        "heading": "Join the Kerlora Community",
+        "description": "<p>Treat yourself to 10% Off Your First Order, Insider News and Access To The Latest Drops</p>",
+        "text_size": "h3",
+        "email_placeholder": "your@email.com",
+        "submit_button": "Sign Up Now",
+        "text_color": "black",
+        "show_icon": false,
+        "icon_img_width": "30",
+        "show_agreement": false,
+        "padding_top": 90,
+        "padding_bottom": 90,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "mix_match_collection_d3V6Hh": {
+      "type": "mix-match-collection",
+      "name": "KER-Product-Listing",
+      "settings": {
+        "heading": "Caps & socks",
+        "text": "",
+        "collection": "accessories",
+        "products_limit": 8,
+        "button_text": "Shop Accessories",
+        "heading_size": 34,
+        "mobile_heading_size": 28,
+        "text_size": 16,
+        "mobile_text_size": 15,
+        "product_title_size": 14,
+        "price_size": 14,
+        "product_gap": 8,
+        "side_padding": 32,
+        "mobile_side_padding": 16,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "background": "#ffffff",
+        "text_color": "#555555",
+        "button_bg": "#111111",
+        "button_text_color": "#ffffff",
+        "button_radius": 0,
+        "button_font_size": 12
+      }
+    },
+    "editorial_three_panel_banner_NpfxqY": {
+      "type": "editorial-three-panel-banner",
+      "name": "Editorial 3-panel banner",
+      "settings": {
+        "heading": "Designed for\nevery way\nyou move",
+        "button_text": "Shop all",
+        "button_link": "shopify://collections/shop-all",
+        "image_1": "shopify://shop_images/Kerlora-discover-01.webp",
+        "image_1_alt": "",
+        "image_1_position_x": 50,
+        "image_1_position_y": 50,
+        "image_2": "shopify://shop_images/kerlora-discover-02.webp",
+        "image_2_alt": "",
+        "image_2_position_x": 50,
+        "image_2_position_y": 50,
+        "image_3": "shopify://shop_images/kerlora-discover-03.webp",
+        "image_3_alt": "",
+        "image_3_position_x": 50,
+        "image_3_position_y": 50,
+        "desktop_height": 700,
+        "panel_1_width": 33,
+        "panel_2_width": 34,
+        "panel_3_width": 33,
+        "image_gap": 0,
+        "content_position_x": 4,
+        "content_position_y": 68,
+        "content_width": 860,
+        "heading_size": 90,
+        "heading_weight": "400",
+        "heading_line_height": 85,
+        "heading_letter_spacing": -30,
+        "heading_color": "#ffffff",
+        "mobile_height": 600,
+        "mobile_content_position_x": 7,
+        "mobile_content_position_y": 70,
+        "mobile_content_width": 340,
+        "mobile_heading_size": 58,
+        "mobile_heading_line_height": 92,
+        "mobile_autoplay": true,
+        "mobile_autoplay_speed": 5,
+        "show_mobile_dots": true,
+        "button_top_spacing": 54,
+        "mobile_button_top_spacing": 34,
+        "button_min_width": 210,
+        "mobile_button_min_width": 170,
+        "button_vertical_padding": 14,
+        "button_horizontal_padding": 26,
+        "mobile_button_vertical_padding": 13,
+        "mobile_button_horizontal_padding": 22,
+        "button_font_size": 14,
+        "mobile_button_font_size": 14,
+        "button_font_weight": "600",
+        "button_radius": 0,
+        "button_border_width": 0,
+        "button_background": "#ffffff",
+        "button_text_color": "#111111",
+        "button_border_color": "#ffffff",
+        "button_hover_background": "#111111",
+        "button_hover_text_color": "#ffffff",
+        "button_hover_border_color": "#111111",
+        "desktop_side_padding": 0,
+        "mobile_side_padding": 0,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0,
+        "border_radius": 0,
+        "mobile_border_radius": 0,
+        "section_background": "#f7f7f7"
+      }
+    },
+    "icon_box_nW3pdi": {
+      "type": "icon-box",
+      "blocks": {
+        "iconbox_hwLLdT": {
+          "type": "iconbox",
+          "settings": {
+            "image_by_url": "",
+            "title": "Free Delivery",
+            "description": "<p>On all orders over £80</p>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "m-button--link",
+            "button_size": ""
+          }
+        },
+        "iconbox_3yW6Xh": {
+          "type": "iconbox",
+          "settings": {
+            "image_by_url": "",
+            "title": "Free Returns",
+            "description": "<p>Within 14 days on all UK returns and exchanges</p>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "m-button--link",
+            "button_size": ""
+          }
+        },
+        "iconbox_dQYYDy": {
+          "type": "iconbox",
+          "settings": {
+            "image_by_url": "",
+            "title": "Flexible Payment",
+            "description": "<p>Pay with credit card, in full or in installments </p>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "m-button--link",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "iconbox_hwLLdT",
+        "iconbox_3yW6Xh",
+        "iconbox_dQYYDy"
+      ],
+      "name": "Featured promotion",
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "color_scheme": "",
+        "item_per_row": 3,
+        "item_gap": 30,
+        "item_gap_mobile": 10,
+        "card_color_scheme": "",
+        "card_style": "vertical",
+        "image_max_width": "0px",
+        "content_alignment": "center",
+        "hover_effect": "scaling-up",
+        "enable_slider": false,
+        "show_pagination": false,
+        "show_navigation": false,
+        "use_scroll_mobile": true,
+        "use_grid_column_mb": false,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "176423030978c3c507": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_fHcJjf": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "766631",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_fHcJjf"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "header_alignment": "center",
+        "container": "container",
+        "background_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "1774168858fefc0699": {
+      "type": "_blocks",
+      "settings": {}
+    }
+  },
+  "order": [
+    "17828901870699da93",
+    "www_hero_banner_tqeXpA",
+    "empty_space_z3zLLq",
+    "mix_match_collection_LziRCC",
+    "www_image_with_story_RzcXfx",
+    "community_videos_rh3pd7",
+    "empty_space_KMQkcM",
+    "1783680721f9dfe32a",
+    "popular_categories_LP8Rgy",
+    "mix_match_collection_HHA3Dt",
+    "popular_categories_RhnJ6W",
+    "empty_space_YbmGDd",
+    "1782815985dd985d48",
+    "empty_space_yPj6XA",
+    "blog_posts_nbzkXi",
+    "newsletter_Vj3X3x",
+    "mix_match_collection_d3V6Hh",
+    "editorial_three_panel_banner_NpfxqY",
+    "icon_box_nW3pdi",
+    "176423030978c3c507",
+    "1774168858fefc0699"
+  ]
 }

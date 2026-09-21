@@ -1,0 +1,235 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb_RHyjx4": {
+      "type": "breadcrumb",
+      "settings": {
+        "container": "container",
+        "text_alignment": "center",
+        "hide_current": false,
+        "hide_on_mb": false,
+        "animations": "inherit"
+      }
+    },
+    "rich_text_XgFGmT": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_LP9mCj": {
+          "type": "heading",
+          "settings": {
+            "heading": "FAQs",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LP9mCj"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "container": "container",
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 52,
+        "padding_bottom": 52,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "main": {
+      "type": "page-faqs",
+      "blocks": {
+        "content_nUxeyb": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+            "content": "<h4>Your Order</h4>"
+          }
+        },
+        "accordion-1": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I change/cancel my order?",
+            "content": "<p>Orders are processed quickly. If you need to make a change, contact us as<br/>soon as possible and we’ll do our best to help.</p>",
+            "open": true
+          }
+        },
+        "accordion-2": {
+          "type": "accordion",
+          "settings": {
+            "title": "I’ve placed an order, what happens next?",
+            "content": "<p>You’ll receive an order confirmation email straight away. Once your order has<br/>been dispatched, we’ll email you again with tracking details.</p>",
+            "open": false
+          }
+        },
+        "content_qUbcfL": {
+          "type": "content",
+          "disabled": true,
+          "settings": {
+            "content": "<h4>Delivery</h4>"
+          }
+        },
+        "accordion-3": {
+          "type": "accordion",
+          "settings": {
+            "title": "Where do you deliver to?",
+            "content": "<p>We currently deliver within the UK. Any available delivery options and costs will<br/>be shown at checkout.</p>",
+            "open": false
+          }
+        },
+        "accordion-4": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I collect my order?",
+            "content": "<p>At the moment, we don’t offer collection. All orders are delivered directly to the<br/>address specified at checkout. Free, local delivery is available within the Isle of<br/>Sheppey/Sittingbourne area.</p>",
+            "open": false
+          }
+        },
+        "accordion-5": {
+          "type": "accordion",
+          "settings": {
+            "title": "How long will my order take to arrive?",
+            "content": "<p>Orders are usually dispatched within 1-3 working days. Delivery times are<br/>approximately 2-4 business days.</p>",
+            "open": false
+          }
+        },
+        "accordion_kMYVKW": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I track my order?",
+            "content": "<p>Yes. Once your order has been dispatched, you’ll receive a tracking link by email.</p>",
+            "open": false
+          }
+        },
+        "accordion_pV8BEy": {
+          "type": "accordion",
+          "settings": {
+            "title": "What is your returns policy? (Can link to the existing policy)",
+            "content": "<p>We hope you love your Kerlora pieces, but if something isn’t quite right, you<br/>can return unworn items within 14 days. You can read our full returns <a href=\"/pages/returns-shipping-policy\" title=\"Returns & Shipping Policy\">policy here.</a></p>",
+            "open": false
+          }
+        },
+        "accordion_VMFLRy": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I return an order?",
+            "content": "<p>Email hello@kerlora.com with your order number. Full instructions are <a href=\"/pages/returns-shipping-policy\" title=\"Returns & Shipping Policy\">here</a>.</p>",
+            "open": false
+          }
+        },
+        "accordion_pyMehp": {
+          "type": "accordion",
+          "settings": {
+            "title": "Can I exchange for a different size or colour?",
+            "content": "<p>If the size or colour you’d like is in stock, we would be happy to arrange an<br/>exchange.</p>",
+            "open": false
+          }
+        },
+        "accordion_t4xgQT": {
+          "type": "accordion",
+          "settings": {
+            "title": "When will I receive my refund?",
+            "content": "<p>Once your return has been received and checked, refunds are processed<br/>within 14 working days.</p>",
+            "open": false
+          }
+        },
+        "accordion_43y9w3": {
+          "type": "accordion",
+          "settings": {
+            "title": "How do I choose the right size?",
+            "content": "<p>Each product page includes detailed sizing information as well as a size guide.<br/>If you’re between sizes or unsure, feel free to get in touch and we’ll help you<br/>decide.</p>",
+            "open": false
+          }
+        },
+        "accordion_W6z4zB": {
+          "type": "accordion",
+          "settings": {
+            "title": "What length are the bottoms?",
+            "content": "<p>Leg lengths are listed on each product page so you can find the fit that works<br/>best for you.</p>",
+            "open": false
+          }
+        },
+        "accordion_97tciG": {
+          "type": "accordion",
+          "settings": {
+            "title": "How should I care for my Kerlora pieces?",
+            "content": "<p>Care details can be found on each product page. Gentle washing and using a<br/>mesh laundry bag will help preserve the fabric and fit over time.</p>",
+            "open": false
+          }
+        },
+        "accordion_qrwnQV": {
+          "type": "accordion",
+          "settings": {
+            "title": "Are your products suitable for all types of movement?",
+            "content": "<p>Our pieces are designed for everyday movement, from Pilates and walking to<br/>gentle runs and full days on the go.</p>",
+            "open": false
+          }
+        },
+        "accordion_MDtDEN": {
+          "type": "accordion",
+          "settings": {
+            "title": "What does Kerlora stand for?",
+            "content": "<p>Kerlora was created for women who move to feel better, not to be perfect. It’s<br/>about comfort, confidence, and real life.</p>",
+            "open": false
+          }
+        },
+        "accordion_TBA8cE": {
+          "type": "accordion",
+          "settings": {
+            "title": "Who designs Kerlora?",
+            "content": "<p>Kerlora is designed by one lead female designer in the UK, working closely with<br/>the founder to bring each piece to life.</p>",
+            "open": false
+          }
+        },
+        "accordion_6eVkGg": {
+          "type": "accordion",
+          "settings": {
+            "title": "Is Kerlora a sustainable brand?",
+            "content": "<p>We’re mindful about how Kerlora is made, but we don’t claim to be fully<br/>sustainable. We focus on responsible sourcing, ethical production, and smallbatch manufacturing. You can read more about this in our Ethical Promise <a href=\"/pages/about-us\" title=\"About Us\">here</a>.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "content_nUxeyb",
+        "accordion-1",
+        "accordion-2",
+        "content_qUbcfL",
+        "accordion-3",
+        "accordion-4",
+        "accordion-5",
+        "accordion_kMYVKW",
+        "accordion_pV8BEy",
+        "accordion_VMFLRy",
+        "accordion_pyMehp",
+        "accordion_t4xgQT",
+        "accordion_43y9w3",
+        "accordion_W6z4zB",
+        "accordion_97tciG",
+        "accordion_qrwnQV",
+        "accordion_MDtDEN",
+        "accordion_TBA8cE",
+        "accordion_6eVkGg"
+      ],
+      "settings": {
+        "container": "container",
+        "color_scheme": "",
+        "menu": "",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "breadcrumb_RHyjx4",
+    "rich_text_XgFGmT",
+    "main"
+  ]
+}

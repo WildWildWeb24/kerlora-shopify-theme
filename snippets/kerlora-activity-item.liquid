@@ -1,0 +1,21 @@
+<div class="kerlora-activity-item">
+  {% if icon != blank %}
+    {{
+      icon
+      | image_url: width: 140
+      | image_tag:
+        loading: 'lazy',
+        width: 60,
+        height: 60,
+        class: 'kerlora-activity-item__icon',
+        alt: label
+    }}
+  {% else %}
+    <span
+      class="kerlora-activity-item__placeholder"
+      aria-hidden="true"
+    ></span>
+  {% endif %}
+
+  <span>{{ label }}</span>
+</div>

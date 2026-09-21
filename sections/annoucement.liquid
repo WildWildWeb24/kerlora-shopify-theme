@@ -1,0 +1,296 @@
+{{ 'announcement-bar.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'announcement-bar.js' | asset_url }}" defer="defer"></script>
+
+{% liquid
+  assign enable_slider = false
+  if section.blocks.size > 1
+    assign enable_slider = true
+  endif
+
+  assign autorotate = section.settings.autorotate
+  assign autorotate_speed = section.settings.autorotate_speed
+  assign show_divider = section.settings.show_divider
+  assign show_nav = section.settings.show_nav
+
+  assign container = section.settings.container
+  if container == 'w-full'
+    assign container = 'container-full'
+  endif
+
+  assign has_image_block = false
+  for block in section.blocks
+    if block.settings.image != blank
+      assign has_image_block = true
+    endif
+  endfor
+%}
+
+{% if section.settings.show_announcement %}
+  {% if section.settings.homepage_only == false or request.page_type == 'index' %}
+    <section
+      id="m-announcement--{{ section.id }}"
+      data-section-id="{{ section.id }}"
+      data-section-type="announcement"
+      class="m-announcement-bar m-gradient m-color-{{ section.settings.color_scheme }}"
+      {% if show_divider %}
+        style="--border-width: 1px"
+      {% endif %}
+    >
+      <m-announcement-bar
+        data-enable-slider="{{ enable_slider }}"
+        {% if enable_slider %}
+          data-enable-autoplay="{{ autorotate }}"
+          data-autoplay-speed="{{ autorotate_speed }}"
+        {% endif %}
+      >
+        <div class="m-announcement-bar__container {{ container }}">
+          <div class="m-announcement-bar__wrapper{% if enable_slider %} swiper-container{% endif %}">
+            <div class="m-announcement-bar__inner{% if enable_slider %} swiper-wrapper{% endif %}">
+              {% for block in section.blocks %}
+                <div class="m-announcement-bar__item{% if enable_slider %} swiper-slide{% endif %}">
+                  {% if block.settings.message_link != blank %}
+                    <a href="{{ block.settings.message_link }}" class="m-announcement-bar__link"></a>
+                  {% endif %}
+
+                  {% if block.settings.image != blank %}
+                    {{
+                      block.settings.image
+                      | image_url: width: 3200
+                      | image_tag:
+                        loading: 'lazy',
+                        widths: '375, 550, 750, 1100, 1500, 2000, 3200',
+                        width: block.settings.image.width,
+                        height: block.settings.image.height,
+                        class: 'm-announcement-bar__image m-announcement-bar__image--desktop',
+                        alt: block.settings.image.alt | default: 'Announcement'
+                    }}
+
+                    {% if block.settings.image_mobile != blank %}
+                      {{
+                        block.settings.image_mobile
+                        | image_url: width: 1500
+                        | image_tag:
+                          loading: 'lazy',
+                          widths: '375, 550, 750, 1100, 1500',
+                          width: block.settings.image_mobile.width,
+                          height: block.settings.image_mobile.height,
+                          class: 'm-announcement-bar__image m-announcement-bar__image--mobile',
+                          alt: block.settings.image_mobile.alt | default: 'Announcement'
+                      }}
+                    {% endif %}
+                  {% elsif block.settings.message != blank %}
+                    <div class="m-announcement-bar__content">{{ block.settings.message }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% if enable_slider %}
+            {% render 'slider-controls', show_nav: show_nav, absolute: true, container: container %}
+          {% endif %}
+        </div>
+      </m-announcement-bar>
+      {% if section.settings.show_close %}
+        <div class="m-announcement-bar__close m:flex m:items-center">
+          <svg
+            class="m-svg-icon--medium"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </div>
+        <script>
+          document.querySelector('.m-announcement-bar__close').addEventListener('click', function () {
+            document.querySelector('.m-announcement-bar').remove();
+            document.documentElement.style.setProperty('--m-announcement-height', '0px');
+          });
+        </script>
+      {% endif %}
+    </section>
+
+    <style>
+      #m-announcement--{{ section.id }} .m-announcement-bar__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 100%;
+      }
+      #m-announcement--{{ section.id }} .m-announcement-bar__item {
+        line-height: 0; /* removes extra gap under inline images */
+      }
+
+      /* Mobile/desktop image toggle */
+      #m-announcement--{{ section.id }} .m-announcement-bar__image--mobile {
+        display: none;
+      }
+      @media screen and (max-width: 749px) {
+        #m-announcement--{{ section.id }} .m-announcement-bar__image--desktop {
+          display: none;
+        }
+        #m-announcement--{{ section.id }} .m-announcement-bar__image--mobile {
+          display: block;
+        }
+      }
+
+      /* Force full-bleed / edge-to-edge when using an image, ignoring container padding */
+      {% if has_image_block %}
+        #m-announcement--{{ section.id }} .m-announcement-bar__container {
+          max-width: 100% !important;
+          width: 100% !important;
+          padding-left: 0 !important;
+          padding-right: 0 !important;
+          margin-left: 0 !important;
+          margin-right: 0 !important;
+        }
+        #m-announcement--{{ section.id }} .m-announcement-bar__wrapper,
+        #m-announcement--{{ section.id }} .m-announcement-bar__inner {
+          width: 100%;
+        }
+      {% endif %}
+    </style>
+  {% endif %}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Watch tutorial](https://foxecom.link/zDfFJy)"
+    },
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container type",
+      "default": "container",
+      "options": [
+        {
+          "value": "container-fluid",
+          "label": "Default"
+        },
+        {
+          "value": "w-full",
+          "label": "Full width"
+        },
+        {
+          "value": "container",
+          "label": "Use container box"
+        }
+      ]
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "homepage_only",
+      "label": "Home page only",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_close",
+      "label": "Show close button",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_divider",
+      "label": "Show divider",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Slider settings"
+    },
+    {
+      "type": "paragraph",
+      "content": "Slider work when more than more 2 items"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_nav",
+      "label": "Show navigation",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "autorotate",
+      "label": "Auto-rotate slides",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "autorotate_speed",
+      "label": "Change slides every",
+      "max": 10,
+      "min": 2,
+      "step": 1,
+      "unit": "s",
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Announcement item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Announcement image (desktop)",
+          "info": "If set, this replaces the text message. Shown on screens 750px and wider."
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Announcement image (mobile)",
+          "info": "Optional. Shown on screens narrower than 750px. If left blank, the desktop image will be used on mobile too."
+        },
+        {
+          "type": "textarea",
+          "id": "message",
+          "label": "Message",
+          "default": "Free shipping for all orders from $60+",
+          "info": "Used only if no image is set above."
+        },
+        {
+          "type": "url",
+          "id": "message_link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement bar",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

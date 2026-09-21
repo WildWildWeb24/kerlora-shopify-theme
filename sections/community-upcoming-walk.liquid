@@ -1,0 +1,129 @@
+{{ 'component-community-upcoming-walk.css' | asset_url | stylesheet_tag }}
+
+<section class="community-walk" id="community-walk-{{ section.id }}">
+  <div class="community-walk__container page-width">
+    <div class="community-walk__grid">
+
+      <!-- Upcoming Walk details -->
+      <div class="community-walk__details">
+        <h2 class="community-walk__heading">{{ section.settings.heading | escape }}</h2>
+
+        <ul class="community-walk__meta-list" role="list">
+          {% if section.settings.walk_date != blank %}
+            <li class="community-walk__meta-item">
+              <span class="community-walk__meta-label">Date</span>
+              <span class="community-walk__meta-value">{{ section.settings.walk_date | escape }}</span>
+            </li>
+          {% endif %}
+
+          {% if section.settings.walk_time != blank %}
+            <li class="community-walk__meta-item">
+              <span class="community-walk__meta-label">Time</span>
+              <span class="community-walk__meta-value">{{ section.settings.walk_time | escape }}</span>
+            </li>
+          {% endif %}
+
+          {% if section.settings.venue_name != blank %}
+            <li class="community-walk__meta-item">
+              <span class="community-walk__meta-label">Location</span>
+              <span class="community-walk__meta-value">{{ section.settings.venue_name | escape }}</span>
+            </li>
+          {% endif %}
+
+          {% if section.settings.walk_details != blank %}
+            <li class="community-walk__meta-item">
+              <span class="community-walk__meta-label">Details</span>
+              <span class="community-walk__meta-value">{{ section.settings.walk_details | escape }}</span>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <!-- Reserve Your Spot — Shopify Forms app slot -->
+      <div class="community-walk__form-panel">
+        <h3 class="community-walk__form-heading">{{ section.settings.form_heading | escape }}</h3>
+        {% if section.settings.form_subheading != blank %}
+          <p class="community-walk__form-subheading">{{ section.settings.form_subheading | escape }}</p>
+        {% endif %}
+
+        <div class="community-walk__form-slot">
+          {% content_for 'blocks' %}
+
+          {% if section.blocks.size == 0 %}
+            <div class="community-walk__form-placeholder">
+              Add your Shopify Forms app block here from the theme customizer.
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Community: Upcoming Walk",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Upcoming Walk"
+    },
+    {
+      "type": "text",
+      "id": "walk_date",
+      "label": "Date",
+      "default": "Sunday, Sept 15"
+    },
+    {
+      "type": "text",
+      "id": "walk_time",
+      "label": "Time",
+      "default": "9:00 AM – 11:30 AM"
+    },
+    {
+      "type": "text",
+      "id": "venue_name",
+      "label": "Venue name",
+      "info": "Displayed as the location label.",
+      "default": "Canyon Trail Head"
+    },
+    {
+      "type": "text",
+      "id": "walk_details",
+      "label": "Distance / difficulty",
+      "default": "5km · Easy Difficulty"
+    },
+    {
+      "type": "header",
+      "content": "Form panel"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form heading",
+      "default": "Reserve Your Spot"
+    },
+    {
+      "type": "text",
+      "id": "form_subheading",
+      "label": "Form subheading",
+      "default": "Join us for a morning of movement and community. Spaces are limited."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community: Upcoming Walk"
+    }
+  ]
+}
+{% endschema %}

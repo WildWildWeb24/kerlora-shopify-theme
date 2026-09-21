@@ -1,0 +1,446 @@
+{% comment %}
+Kerlora — Event Article (Blog Article template section)
+Uses ARTICLE metafields:
+- custom.event_date (date)
+- custom.location (single line text)
+- custom.card_image (file image)
+- custom.gallery_images (list of files/images)
+- custom.gallery_captions (multi-line text; one caption per line, matches gallery_images order)
+
+Theme: Minimog OS 2.0
+{% endcomment %}
+
+<section class="kerlora-event-article kerlora-event-article-{{ section.id }}" id="kerlora-event-article-{{ section.id }}">
+  {%- assign container = section.settings.container | default: 'container' -%}
+
+  {%- comment -%} Metafields (do NOT use .value) {%- endcomment -%}
+  {%- assign mf_event_date = article.metafields.custom.event_date -%}
+  {%- assign mf_location   = article.metafields.custom.location -%}
+  {%- assign mf_card       = article.metafields.custom.card_image -%}
+  {%- assign mf_gallery    = article.metafields.custom.gallery_images -%}
+  {%- assign mf_caps_raw   = article.metafields.custom.gallery_captions | default: "" -%}
+
+  {%- comment -%} captions → array (one caption per line) {%- endcomment -%}
+  {%- assign caps = mf_caps_raw | newline_to_br | split: '<br />' -%}
+
+  {%- comment -%} booleans for debug (Liquid-safe) {%- endcomment -%}
+  {%- capture has_event_date -%}{% if mf_event_date != blank %}true{% else %}false{% endif %}{%- endcapture -%}
+  {%- capture has_location -%}{% if mf_location != blank %}true{% else %}false{% endif %}{%- endcapture -%}
+  {%- capture has_card -%}{% if mf_card != blank %}true{% else %}false{% endif %}{%- endcapture -%}
+  {%- capture has_gallery -%}{% if mf_gallery != blank %}true{% else %}false{% endif %}{%- endcapture -%}
+
+  {%- assign gallery_count = 0 -%}
+  {%- if mf_gallery != blank -%}
+    {%- if mf_gallery.size != blank -%}
+      {%- assign gallery_count = mf_gallery.size -%}
+    {%- else -%}
+      {%- assign gallery_count = 1 -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  <div class="{{ container }}">
+    {%- if section.settings.show_debug -%}
+      <pre class="kea-debug">
+HAS event_date: {{ has_event_date | strip }}
+HAS location: {{ has_location | strip }}
+HAS card_image: {{ has_card | strip }}
+HAS gallery_images: {{ has_gallery | strip }}
+gallery_count: {{ gallery_count }}
+
+event_date RAW:
+{{ article.metafields.custom.event_date | json }}
+
+location RAW:
+{{ article.metafields.custom.location | json }}
+
+card_image RAW:
+{{ article.metafields.custom.card_image | json }}
+
+gallery_images RAW:
+{{ article.metafields.custom.gallery_images | json }}
+
+gallery_captions RAW:
+{{ article.metafields.custom.gallery_captions | json }}
+      </pre>
+    {%- endif -%}
+
+    <header class="kea-head">
+      {%- if mf_event_date != blank -%}
+        <p class="kea-date">{{ mf_event_date | date: "%-d %B %Y" }}</p>
+      {%- endif -%}
+
+      <h1 class="kea-title">{{ article.title }}</h1>
+
+      {%- if mf_location != blank -%}
+        <p class="kea-loc">{{ mf_location }}</p>
+      {%- endif -%}
+    </header>
+
+    {%- if mf_card != blank -%}
+      <div class="kea-hero">
+        {{ mf_card
+          | image_url: width: 2000
+          | image_tag:
+            alt: article.title,
+            loading: 'lazy',
+            widths: '640,960,1200,1600,2000'
+        }}
+      </div>
+    {%- endif -%}
+
+    {%- if article.content != blank -%}
+      <div class="kea-content rte">
+        {{ article.content }}
+      </div>
+    {%- endif -%}
+
+    {%- if mf_gallery != blank and gallery_count > 0 -%}
+      <div class="kea-gallery-wrap">
+        <div class="kea-gallery-top">
+          <h2 class="kea-gallery-title">{{ section.settings.gallery_heading | default: 'Gallery' }}</h2>
+          <p class="kea-gallery-sub">{{ gallery_count }} photo{% if gallery_count != 1 %}s{% endif %}</p>
+        </div>
+
+        <div class="kea-grid">
+          {%- for img in mf_gallery -%}
+            {%- assign idx0 = forloop.index0 -%}
+            {%- assign cap = caps[idx0] | default: "" | strip -%}
+
+            <button
+              type="button"
+              class="kea-tile js-kea-open"
+              data-index="{{ idx0 }}"
+              aria-label="Open image {{ forloop.index }} of {{ gallery_count }}"
+            >
+              <div class="kea-tile__media">
+                {{ img
+                  | image_url: width: 1200
+                  | image_tag:
+                    alt: cap | default: article.title,
+                    loading: 'lazy',
+                    widths: '360,540,720,960,1200'
+                }}
+              </div>
+
+              {%- if cap != blank -%}
+                <div class="kea-tile__cap">{{ cap }}</div>
+              {%- endif -%}
+            </button>
+          {%- endfor -%}
+        </div>
+
+        {%- capture items_json -%}
+          {%- assign first = true -%}
+          {%- for img in mf_gallery -%}
+            {%- assign idx0 = forloop.index0 -%}
+            {%- assign cap = caps[idx0] | default: "" | strip -%}
+            {%- unless first -%},{%- endunless -%}
+            {%- assign first = false -%}
+            {
+              "src": {{ img | image_url: width: 2400 | json }},
+              "thumb": {{ img | image_url: width: 420 | json }},
+              "caption": {{ cap | json }}
+            }
+          {%- endfor -%}
+        {%- endcapture -%}
+
+        <script type="application/json" class="kea-gallery-json">
+          {
+            "title": {{ article.title | json }},
+            "items": [{{ items_json | strip_newlines }}]
+          }
+        </script>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="kea-lightbox" id="kea-lightbox-{{ section.id }}" aria-hidden="true">
+    <div class="kea-lightbox__overlay js-kea-close" tabindex="-1"></div>
+
+    <div class="kea-lightbox__dialog" role="dialog" aria-modal="true" aria-label="Image gallery">
+      <button class="kea-lightbox__close js-kea-close" type="button" aria-label="Close gallery">×</button>
+
+      <div class="kea-lightbox__content">
+        <div class="kea-lightbox__left">
+          <div class="kea-lightbox__stage">
+            <button class="kea-lightbox__nav kea-lightbox__nav--prev js-kea-prev" type="button" aria-label="Previous image">‹</button>
+
+            <figure class="kea-lightbox__figure">
+              <img class="kea-lightbox__img" alt="" loading="eager" width="1600" height="1200">
+              <figcaption class="kea-lightbox__cap"></figcaption>
+            </figure>
+
+            <button class="kea-lightbox__nav kea-lightbox__nav--next js-kea-next" type="button" aria-label="Next image">›</button>
+          </div>
+
+          <div class="kea-lightbox__thumbs" aria-label="Thumbnails"></div>
+        </div>
+
+        <aside class="kea-lightbox__right">
+          <p class="kea-lightbox__title"></p>
+          <p class="kea-lightbox__count"></p>
+          <div class="kea-lightbox__caption"></div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .kerlora-event-article-{{ section.id }}{ padding: 24px 0 60px; }
+    .kerlora-event-article-{{ section.id }} .kea-debug{
+      background:#fff;border:1px solid #ddd;padding:12px;font-size:12px;white-space:pre-wrap;overflow:auto;margin:0 0 18px;
+    }
+    .kerlora-event-article-{{ section.id }} .kea-head{ text-align:center; max-width: 920px; margin: 0 auto 22px; }
+    .kerlora-event-article-{{ section.id }} .kea-date{ margin: 0 0 6px; opacity:.75; font-size:14px; }
+    .kerlora-event-article-{{ section.id }} .kea-title{ margin: 0 0 10px; font-size: 44px; line-height:1.08; }
+    @media (max-width: 768px){ .kerlora-event-article-{{ section.id }} .kea-title{ font-size: 34px; } }
+    .kerlora-event-article-{{ section.id }} .kea-loc{ margin: 0; opacity:.85; font-size: 16px; }
+    .kerlora-event-article-{{ section.id }} .kea-hero{ margin: 18px auto 18px; max-width: 980px; border-radius: 16px; overflow:hidden; background:#f4f4f4; }
+    .kerlora-event-article-{{ section.id }} .kea-hero img{ width:100%; height:auto; display:block; }
+    .kerlora-event-article-{{ section.id }} .kea-content{ max-width: 920px; margin: 0 auto 28px; }
+
+    .kerlora-event-article-{{ section.id }} .kea-gallery-wrap{ max-width: 1100px; margin: 0 auto; }
+    .kerlora-event-article-{{ section.id }} .kea-gallery-top{ display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin: 10px 0 14px; }
+    .kerlora-event-article-{{ section.id }} .kea-gallery-title{ margin:0; font-size: 20px; }
+    .kerlora-event-article-{{ section.id }} .kea-gallery-sub{ margin:0; opacity:.7; font-size: 13px; }
+
+    .kerlora-event-article-{{ section.id }} .kea-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 990px){ .kerlora-event-article-{{ section.id }} .kea-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 640px){ .kerlora-event-article-{{ section.id }} .kea-grid{ grid-template-columns: 1fr; } }
+
+    .kerlora-event-article-{{ section.id }} .kea-tile{
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 14px;
+      overflow: hidden;
+      background:#fff;
+      text-align:left;
+      padding:0;
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .kerlora-event-article-{{ section.id }} .kea-tile:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 10px 26px rgba(0,0,0,.08);
+    }
+    .kerlora-event-article-{{ section.id }} .kea-tile__media{ background:#f4f4f4; }
+    .kerlora-event-article-{{ section.id }} .kea-tile__media img{ width:100%; height:auto; display:block; }
+    .kerlora-event-article-{{ section.id }} .kea-tile__cap{ padding: 10px 12px 12px; font-size: 13px; line-height: 1.5; opacity: .9; }
+
+    .kerlora-event-article-{{ section.id }} .kea-lightbox{
+      position: fixed; inset: 0; z-index: 9999; display: none;
+    }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox.is-open{ display:block; }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__overlay{ position:absolute; inset:0; background: rgba(0,0,0,.72); }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__dialog{
+      position:absolute; inset: 24px;
+      background:#fff; border-radius: 16px; overflow:hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+    @media (max-width: 990px){ .kerlora-event-article-{{ section.id }} .kea-lightbox__dialog{ inset: 12px; border-radius: 14px; } }
+
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__close{
+      position:absolute; top:10px; right:10px;
+      width:42px; height:42px; border-radius:999px;
+      border:1px solid rgba(0,0,0,.15);
+      background:#fff; cursor:pointer; font-size:26px; line-height:1;
+      z-index:2;
+    }
+
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__content{
+      height:100%;
+      display:grid;
+      grid-template-columns: 1fr 380px;
+    }
+    @media (max-width: 990px){
+      .kerlora-event-article-{{ section.id }} .kea-lightbox__content{ grid-template-columns: 1fr; }
+      .kerlora-event-article-{{ section.id }} .kea-lightbox__right{ border-top: 1px solid rgba(0,0,0,.10); border-left: 0; }
+    }
+
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__left{
+      padding:18px; display:grid; grid-template-rows: 1fr auto; gap: 14px; min-width:0;
+    }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__stage{
+      position:relative; border-radius:14px; background:#f4f4f4; overflow:hidden;
+      display:grid; place-items:center; min-height: 420px;
+    }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__figure{ margin:0; width:100%; height:100%; display:grid; place-items:center; }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__img{ width:100%; height:100%; object-fit:contain; display:block; background:#f4f4f4; }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__cap{ display:none; }
+
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__nav{
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:44px; height:44px; border-radius:999px;
+      border:1px solid rgba(0,0,0,.15);
+      background: rgba(255,255,255,.92);
+      cursor:pointer; font-size:28px; line-height:1;
+      display:grid; place-items:center;
+    }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__nav--prev{ left:10px; }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__nav--next{ right:10px; }
+
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__thumbs{ display:flex; gap:10px; overflow-x:auto; padding-bottom:4px; }
+    .kerlora-event-article-{{ section.id }} .kea-thumb{
+      flex:0 0 auto; width:84px; height:84px; border-radius:12px; overflow:hidden;
+      border:2px solid transparent; background:#eee; padding:0; cursor:pointer;
+    }
+    .kerlora-event-article-{{ section.id }} .kea-thumb.is-active{ border-color: rgba(0,0,0,.65); }
+    .kerlora-event-article-{{ section.id }} .kea-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__right{ padding:22px 20px; border-left:1px solid rgba(0,0,0,.10); overflow:auto; }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__title{ margin:0 0 6px; font-weight:600; }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__count{ margin:0 0 14px; opacity:.75; font-size:14px; }
+    .kerlora-event-article-{{ section.id }} .kea-lightbox__caption{ line-height:1.7; font-size:15px; opacity:.92; white-space:pre-wrap; }
+  </style>
+
+  <script>
+    (function(){
+      const root = document.getElementById('kerlora-event-article-{{ section.id }}');
+      if (!root) return;
+
+      const jsonEl = root.querySelector('.kea-gallery-json');
+      if (!jsonEl) return;
+
+      let payload = null;
+      try { payload = JSON.parse(jsonEl.textContent || '{}'); }
+      catch (e) { console.error('[KEA] JSON parse failed', e); return; }
+
+      if (!payload || !payload.items || !payload.items.length) return;
+
+      const lb = root.querySelector('#kea-lightbox-{{ section.id }}');
+      if (!lb) return;
+
+      const imgEl = lb.querySelector('.kea-lightbox__img');
+      const thumbsWrap = lb.querySelector('.kea-lightbox__thumbs');
+      const titleEl = lb.querySelector('.kea-lightbox__title');
+      const countEl = lb.querySelector('.kea-lightbox__count');
+      const capEl = lb.querySelector('.kea-lightbox__caption');
+
+      const btnPrev = lb.querySelector('.js-kea-prev');
+      const btnNext = lb.querySelector('.js-kea-next');
+      const closes = lb.querySelectorAll('.js-kea-close');
+
+      let idx = 0;
+      let lastFocus = null;
+
+      function clamp(n,min,max){ return Math.max(min, Math.min(max, n)); }
+
+      function render(){
+        idx = clamp(idx, 0, payload.items.length - 1);
+        const item = payload.items[idx];
+
+        titleEl.textContent = payload.title || '';
+        countEl.textContent = (idx + 1) + ' / ' + payload.items.length;
+
+        imgEl.src = item.src;
+        imgEl.alt = (payload.title || 'Gallery image') + ' ' + (idx + 1);
+
+        capEl.textContent = item.caption || '';
+
+        thumbsWrap.querySelectorAll('.kea-thumb').forEach((b,i)=>b.classList.toggle('is-active', i === idx));
+        const active = thumbsWrap.querySelector('.kea-thumb.is-active');
+        if (active && active.scrollIntoView) active.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+      }
+
+      function buildThumbs(){
+        thumbsWrap.innerHTML = '';
+        payload.items.forEach((item,i)=>{
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'kea-thumb' + (i===0 ? ' is-active' : '');
+          b.setAttribute('aria-label', 'Open image ' + (i + 1));
+
+          const im = document.createElement('img');
+          im.loading = 'lazy';
+          im.src = item.thumb;
+          im.alt = 'Thumbnail ' + (i + 1);
+          im.width = 84;
+          im.height = 84;
+
+          b.appendChild(im);
+          b.addEventListener('click', ()=>{ idx = i; render(); });
+          thumbsWrap.appendChild(b);
+        });
+      }
+
+      function openAt(i){
+        lastFocus = document.activeElement;
+        idx = i || 0;
+        buildThumbs();
+        render();
+
+        lb.classList.add('is-open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.documentElement.style.overflow = 'hidden';
+
+        const closeBtn = lb.querySelector('.kea-lightbox__close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function close(){
+        lb.classList.remove('is-open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.documentElement.style.overflow = '';
+
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      function next(){ idx = (idx + 1) % payload.items.length; render(); }
+      function prev(){ idx = (idx - 1 + payload.items.length) % payload.items.length; render(); }
+
+      root.addEventListener('click', (e)=>{
+        const btn = e.target.closest('.js-kea-open');
+        if (!btn) return;
+        const i = parseInt(btn.getAttribute('data-index') || '0', 10);
+        openAt(isNaN(i) ? 0 : i);
+      });
+
+      if (btnNext) btnNext.addEventListener('click', next);
+      if (btnPrev) btnPrev.addEventListener('click', prev);
+      closes.forEach(b => b.addEventListener('click', close));
+
+      document.addEventListener('keydown', (e)=>{
+        if (!lb.classList.contains('is-open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft') prev();
+      });
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Kerlora Event Article",
+  "settings": [
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container",
+      "default": "container",
+      "options": [
+        { "value": "container", "label": "Container" },
+        { "value": "container-fluid", "label": "Full width" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "gallery_heading",
+      "label": "Gallery heading",
+      "default": "Gallery"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_debug",
+      "label": "Show debug box",
+      "default": false
+    }
+  ],
+  "presets": [
+    { "name": "Kerlora Event Article" }
+  ]
+}
+{% endschema %}

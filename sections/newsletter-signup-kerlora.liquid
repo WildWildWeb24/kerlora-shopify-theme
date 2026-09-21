@@ -1,0 +1,364 @@
+{% comment %}
+  Kerlora signup section
+  Layout: left card with form, right image
+{% endcomment %}
+
+<section class="kerlora-signup">
+  <style>
+    .kerlora-signup {
+      padding: 60px 0;
+      background: #f3f4f6;
+    }
+
+    .kerlora-signup__wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      background: #ffffff;
+      display: flex;
+      flex-wrap: wrap;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    .kerlora-signup__form-pane,
+    .kerlora-signup__image-pane {
+      flex: 1 1 50%;
+      min-width: 0;
+    }
+
+    .kerlora-signup__form-pane {
+      padding: 40px 40px 48px;
+    }
+
+    .kerlora-signup__logo {
+      margin-bottom: 8px;
+    }
+
+    .kerlora-signup__eyebrow {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 4px;
+      color: #6b7280;
+    }
+
+    .kerlora-signup__heading {
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .kerlora-signup__subheading {
+      font-size: 15px;
+      color: #6b7280;
+      margin-bottom: 24px;
+      max-width: 460px;
+    }
+
+    .kerlora-signup__form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .kerlora-signup__row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .kerlora-signup__label {
+      display: block;
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: #4b5563;
+    }
+
+    .kerlora-signup__label span {
+      color: #9ca3af;
+      font-weight: 400;
+      margin-left: 4px;
+    }
+
+    .kerlora-signup__input {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      padding: 10px 14px;
+      font-size: 14px;
+      line-height: 1.4;
+      outline: none;
+      background: #f9fafb;
+      transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .kerlora-signup__input:focus {
+      border-color: #111827;
+      background: #ffffff;
+      box-shadow: 0 0 0 1px #11182720;
+    }
+
+    .kerlora-signup__legal {
+      font-size: 11px;
+      color: #9ca3af;
+      margin-top: 4px;
+      max-width: 460px;
+    }
+
+    .kerlora-signup__button {
+      margin-top: 8px;
+      border-radius: 999px;
+      border: none;
+      padding: 12px 22px;
+      font-size: 14px;
+      font-weight: 500;
+      background: #111827;
+      color: #ffffff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 160px;
+      transition: background 0.15s ease, transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .kerlora-signup__button:hover {
+      background: #000000;
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.2);
+      transform: translateY(-1px);
+    }
+
+    .kerlora-signup__button:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .kerlora-signup__message {
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .kerlora-signup__message--error {
+      color: #b91c1c;
+    }
+
+    .kerlora-signup__message--success {
+      color: #15803d;
+    }
+
+    .kerlora-signup__image-pane {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .kerlora-signup__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .kerlora-signup__wrapper {
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .kerlora-signup {
+        padding: 32px 0;
+      }
+
+      .kerlora-signup__wrapper {
+    flex-direction: column; /* form first, image second */
+  }
+
+  .kerlora-signup__image-pane {
+    min-height: 220px; /* prevents huge image block */
+  }
+
+  .kerlora-signup__form-pane {
+    padding: 24px 20px 28px;
+  }
+}
+
+      .kerlora-signup__form-pane {
+        padding: 24px 20px 32px;
+      }
+
+      .kerlora-signup__row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <div class="kerlora-signup__wrapper">
+    <div class="kerlora-signup__form-pane">
+      {% if section.settings.eyebrow != blank %}
+        <p class="kerlora-signup__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="kerlora-signup__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+      {% if section.settings.subheading != blank %}
+        <p class="kerlora-signup__subheading">
+          {{ section.settings.subheading }}
+        </p>
+      {% endif %}
+
+      {%- form 'customer', id: 'kerlora-signup-form', class: 'kerlora-signup__form' -%}
+        {% if form.errors %}
+          <p class="kerlora-signup__message kerlora-signup__message--error">
+            {{ form.errors | default_errors }}
+          </p>
+        {% endif %}
+
+        {% if form.posted_successfully? %}
+          <p class="kerlora-signup__message kerlora-signup__message--success">
+            {{ section.settings.success_message }}
+          </p>
+        {% endif %}
+
+        <div class="kerlora-signup__row">
+          <div>
+            <label class="kerlora-signup__label" for="kerlora-first-name">First name</label>
+            <input
+              id="kerlora-first-name"
+              type="text"
+              name="signup_first_name"
+              class="kerlora-signup__input"
+              autocomplete="given-name"
+            >
+          </div>
+
+          <div>
+            <label class="kerlora-signup__label" for="kerlora-last-name">Last name</label>
+            <input
+              id="kerlora-last-name"
+              type="text"
+              name="signup_last_name"
+              class="kerlora-signup__input"
+              autocomplete="family-name"
+            >
+          </div>
+        </div>
+
+        <div>
+          <label class="kerlora-signup__label" for="kerlora-email">Email *</label>
+          <input
+            id="kerlora-email"
+            type="email"
+            name="contact[email]"
+            class="kerlora-signup__input"
+            autocomplete="email"
+            required
+          >
+          <input type="hidden" name="contact[tags]" value="newsletter, kerlora-signup">
+        </div>
+
+        <div class="kerlora-signup__row">
+          <div>
+            <label class="kerlora-signup__label" for="kerlora-dob">Birthday</label>
+            <input
+              id="kerlora-dob"
+              type="date"
+              name="signup_birthday"
+              class="kerlora-signup__input"
+            >
+          </div>
+
+          <div>
+            <label class="kerlora-signup__label" for="kerlora-phone">Phone number <span>(optional)</span></label>
+            <input
+              id="kerlora-phone"
+              type="tel"
+              name="signup_phone"
+              class="kerlora-signup__input"
+              autocomplete="tel"
+            >
+          </div>
+        </div>
+
+        {% if section.settings.legal_text != blank %}
+          <p class="kerlora-signup__legal">
+            {{ section.settings.legal_text }}
+          </p>
+        {% endif %}
+
+        <button class="kerlora-signup__button" type="submit">
+          {{ section.settings.button_label }}
+        </button>
+      {%- endform -%}
+    </div>
+
+    <div class="kerlora-signup__image-pane">
+      {% if section.settings.image != blank %}
+        {{ section.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', class: 'kerlora-signup__image' }}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kerlora signup",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Overline",
+      "default": "Kerlora"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Join the Kerlora circle"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Intro text",
+      "default": "Share a few quick details to get early access to drops, training edits, and member-only offers."
+    },
+    {
+      "type": "textarea",
+      "id": "legal_text",
+      "label": "Legal / privacy copy",
+      "default": "By subscribing, you agree to receive emails from Kerlora. You can unsubscribe at any time. For more information, please see our privacy policy."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Send message"
+    },
+    {
+      "type": "textarea",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "You’re in. Welcome to Kerlora."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kerlora signup"
+    }
+  ]
+}
+{% endschema %}

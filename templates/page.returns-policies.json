@@ -1,0 +1,201 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page",
+      "settings": {}
+    },
+    "image_with_text_2_x97V6c": {
+      "type": "image-with-text-2",
+      "disabled": true,
+      "name": "Image with text overlay",
+      "settings": {
+        "color_scheme": "",
+        "container": "w-full",
+        "hero_size": "adapt",
+        "show_overlay": false,
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-00.jpg",
+        "image_link": "",
+        "parallax": false,
+        "parallax_direction": "vertical",
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "",
+        "subtitle": "",
+        "text": "",
+        "button_label": "Shop now",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "button_size": "",
+        "text_alignment_mobile": "center",
+        "use_content_above": false,
+        "custom_class": "",
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
+      }
+    },
+    "product_bundles_Thn39L": {
+      "type": "product-bundles",
+      "blocks": {
+        "product_Xfr3r6": {
+          "type": "product",
+          "settings": {
+            "product": "white-kerlora-cap",
+            "top": 25,
+            "left": 33
+          }
+        },
+        "product_jr9BzQ": {
+          "type": "product",
+          "settings": {
+            "product": "black-essential-fitted-performance-tshirt",
+            "top": 61,
+            "left": 57
+          }
+        }
+      },
+      "block_order": [
+        "product_Xfr3r6",
+        "product_jr9BzQ"
+      ],
+      "disabled": true,
+      "name": "Product bundles",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "layout": "1",
+        "heading": "Under £50",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "Gift individually or together! The Kerlora Cap adds the perfect finishing touch, while our Performance T-shirt is a lightweight essential they'll reach for again and again.",
+        "header_alignment": "left",
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-02.jpg",
+        "image_position": "right",
+        "image_ratio": "original",
+        "show_reviews": false,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "product_bundles_MP6TjN": {
+      "type": "product-bundles",
+      "blocks": {
+        "product_7Ywf3f": {
+          "type": "product",
+          "settings": {
+            "product": "red-classic-sweatshirt",
+            "top": 54,
+            "left": 33
+          }
+        },
+        "product_8keDFU": {
+          "type": "product",
+          "settings": {
+            "product": "black-essential-leggings",
+            "top": 61,
+            "left": 73
+          }
+        }
+      },
+      "block_order": [
+        "product_7Ywf3f",
+        "product_8keDFU"
+      ],
+      "disabled": true,
+      "name": "Product bundles",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "layout": "1",
+        "heading": "Under £100",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "Our hand picks for under £100. Our buttery-soft Classic Sweatshirt is perfect for crisp winter days, while our signature Performance Leggings offer everyday comfort, and a super-flattering fit they'll live in.",
+        "header_alignment": "left",
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-03.jpg",
+        "image_position": "right",
+        "image_ratio": "original",
+        "show_reviews": false,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "product_bundles_FCGjET": {
+      "type": "product-bundles",
+      "blocks": {
+        "product_fUFLAJ": {
+          "type": "product",
+          "settings": {
+            "product": "grey-fitted-hoodie",
+            "top": 27,
+            "left": 33
+          }
+        },
+        "product_bjRb6K": {
+          "type": "product",
+          "disabled": true,
+          "settings": {
+            "product": "plum-seamless-leggings-with-bum-scrunch",
+            "top": 69,
+            "left": 48
+          }
+        },
+        "product_yreEWh": {
+          "type": "product",
+          "settings": {
+            "product": "plum-seamless-leggings-with-bum-scrunch",
+            "top": 61,
+            "left": 73
+          }
+        }
+      },
+      "block_order": [
+        "product_fUFLAJ",
+        "product_bjRb6K",
+        "product_yreEWh"
+      ],
+      "disabled": true,
+      "name": "Product bundles",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "layout": "1",
+        "heading": "Under £150",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "Build the ultimate activewear trio. Kerlora Seamless Sets deliver comfort and confidence, whatever the occasion. Top it off with a Kerlora cap and socks for the full fit.",
+        "header_alignment": "left",
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-04.jpg",
+        "image_position": "right",
+        "image_ratio": "original",
+        "show_reviews": false,
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_2_x97V6c",
+    "product_bundles_Thn39L",
+    "product_bundles_MP6TjN",
+    "product_bundles_FCGjET"
+  ]
+}

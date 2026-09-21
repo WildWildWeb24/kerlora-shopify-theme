@@ -1,0 +1,378 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-product-compare",
+      "disabled": true,
+      "name": "Christmas-Gifting",
+      "settings": {}
+    },
+    "image_with_text_2_4DHcg3": {
+      "type": "image-with-text-2",
+      "name": "Image with text overlay",
+      "settings": {
+        "color_scheme": "",
+        "container": "w-full",
+        "hero_size": "adapt",
+        "show_overlay": false,
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-00.jpg",
+        "image_link": "",
+        "parallax": false,
+        "parallax_direction": "vertical",
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "",
+        "subtitle": "",
+        "text": "",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "button_size": "",
+        "text_alignment_mobile": "center",
+        "use_content_above": false,
+        "custom_class": "",
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
+      }
+    },
+    "product_bundles_aAdRVM": {
+      "type": "product-bundles",
+      "blocks": {
+        "product_cFakr4": {
+          "type": "product",
+          "settings": {
+            "product": "white-kerlora-cap",
+            "top": 30,
+            "left": 48
+          }
+        },
+        "product_qEdX6F": {
+          "type": "product",
+          "settings": {
+            "product": "black-essential-fitted-performance-tshirt",
+            "top": 66,
+            "left": 55
+          }
+        },
+        "product_GfxNym": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "top": 60,
+            "left": 64
+          }
+        }
+      },
+      "block_order": [
+        "product_cFakr4",
+        "product_qEdX6F",
+        "product_GfxNym"
+      ],
+      "name": "Product bundles",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "layout": "1",
+        "heading": "Under £50",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "left",
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-02.jpg",
+        "image_position": "right",
+        "image_ratio": "original",
+        "show_reviews": false,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "product_bundles_PzzYyy": {
+      "type": "product-bundles",
+      "blocks": {
+        "product_PTaVPz": {
+          "type": "product",
+          "settings": {
+            "product": "white-essential-fitted-performance-tshirt",
+            "top": 30,
+            "left": 48
+          }
+        },
+        "product_UBzHpW": {
+          "type": "product",
+          "settings": {
+            "product": "classic-ankle-socks-mix-pack",
+            "top": 66,
+            "left": 55
+          }
+        },
+        "product_m8pQzq": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "top": 60,
+            "left": 64
+          }
+        }
+      },
+      "block_order": [
+        "product_PTaVPz",
+        "product_UBzHpW",
+        "product_m8pQzq"
+      ],
+      "name": "Product bundles",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "layout": "1",
+        "heading": "Under £50",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "left",
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-06_8f78d348-e71c-4bcc-9a01-2805afab1973.jpg",
+        "image_position": "right",
+        "image_ratio": "original",
+        "show_reviews": false,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "product_bundles_WczhcD": {
+      "type": "product-bundles",
+      "blocks": {
+        "product_89zC6d": {
+          "type": "product",
+          "settings": {
+            "product": "red-classic-sweatshirt",
+            "top": 56,
+            "left": 29
+          }
+        },
+        "product_DXgBTU": {
+          "type": "product",
+          "settings": {
+            "product": "black-essential-leggings",
+            "top": 55,
+            "left": 70
+          }
+        },
+        "product_7EEYcJ": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "top": 60,
+            "left": 64
+          }
+        }
+      },
+      "block_order": [
+        "product_89zC6d",
+        "product_DXgBTU",
+        "product_7EEYcJ"
+      ],
+      "name": "Product bundles",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "layout": "1",
+        "heading": "Under £100",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "left",
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-03.jpg",
+        "image_position": "right",
+        "image_ratio": "original",
+        "show_reviews": false,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "product_bundles_Bz8X63": {
+      "type": "product-bundles",
+      "blocks": {
+        "product_g8XTjW": {
+          "type": "product",
+          "settings": {
+            "product": "black-wrap-waist-leggings",
+            "top": 27,
+            "left": 29
+          }
+        },
+        "product_QFrpmf": {
+          "type": "product",
+          "settings": {
+            "product": "white-essential-fitted-performance-tshirt",
+            "top": 53,
+            "left": 72
+          }
+        },
+        "product_NF8MyC": {
+          "type": "product",
+          "settings": {
+            "product": "classic-ankle-socks-mix-pack",
+            "top": 60,
+            "left": 30
+          }
+        }
+      },
+      "block_order": [
+        "product_g8XTjW",
+        "product_QFrpmf",
+        "product_NF8MyC"
+      ],
+      "name": "Product bundles",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "layout": "1",
+        "heading": "Under £100",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "left",
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-05_0a392e1c-af00-410a-8d95-59a8578f15df.jpg",
+        "image_position": "right",
+        "image_ratio": "original",
+        "show_reviews": false,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "product_bundles_qH6z9U": {
+      "type": "product-bundles",
+      "blocks": {
+        "product_a6brAr": {
+          "type": "product",
+          "settings": {
+            "product": "grey-fitted-hoodie",
+            "top": 27,
+            "left": 29
+          }
+        },
+        "product_Jrqz8a": {
+          "type": "product",
+          "settings": {
+            "product": "plum-seamless-leggings-with-bum-scrunch",
+            "top": 53,
+            "left": 72
+          }
+        },
+        "product_Dc8LdW": {
+          "type": "product",
+          "settings": {
+            "product": "seamless-racer-back-sports-bra",
+            "top": 63,
+            "left": 49
+          }
+        }
+      },
+      "block_order": [
+        "product_a6brAr",
+        "product_Jrqz8a",
+        "product_Dc8LdW"
+      ],
+      "name": "Product bundles",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "layout": "1",
+        "heading": "Under £150",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "left",
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-04.jpg",
+        "image_position": "right",
+        "image_ratio": "original",
+        "show_reviews": false,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "product_bundles_FdfKgA": {
+      "type": "product-bundles",
+      "blocks": {
+        "product_hzNPh4": {
+          "type": "product",
+          "settings": {
+            "product": "shell-double-zip-high-collar-jacket",
+            "top": 27,
+            "left": 29
+          }
+        },
+        "product_88ddnp": {
+          "type": "product",
+          "settings": {
+            "product": "black-essential-leggings",
+            "top": 53,
+            "left": 72
+          }
+        },
+        "product_hCTMMk": {
+          "type": "product",
+          "settings": {
+            "product": "classic-ankle-socks-mix-pack",
+            "top": 63,
+            "left": 43
+          }
+        }
+      },
+      "block_order": [
+        "product_hzNPh4",
+        "product_88ddnp",
+        "product_hCTMMk"
+      ],
+      "name": "Product bundles",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "layout": "1",
+        "heading": "Under £150",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "left",
+        "image": "shopify://shop_images/kerlora-christmas-gifting-image-07.jpg",
+        "image_position": "right",
+        "image_ratio": "original",
+        "show_reviews": false,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_2_4DHcg3",
+    "product_bundles_aAdRVM",
+    "product_bundles_PzzYyy",
+    "product_bundles_WczhcD",
+    "product_bundles_Bz8X63",
+    "product_bundles_qH6z9U",
+    "product_bundles_FdfKgA"
+  ]
+}

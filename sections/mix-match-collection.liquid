@@ -1,0 +1,493 @@
+<section
+  class="mm-collection-section"
+  id="mm-collection-{{ section.id }}"
+>
+  <div class="mm-collection-wrap">
+    <div class="mm-header">
+      {% if section.settings.heading != blank %}
+        <h2>{{ section.settings.heading }}</h2>
+      {% endif %}
+
+      {% if section.settings.text != blank %}
+        <p>{{ section.settings.text }}</p>
+      {% endif %}
+    </div>
+
+    {% assign selected_collection = section.settings.collection %}
+
+    {% if selected_collection != blank %}
+      <div class="mm-products">
+        {% for product in selected_collection.products limit: section.settings.products_limit %}
+          <div class="mm-product-card" data-product-handle="{{ product.handle }}">
+            <div class="mm-image-wrap">
+              <a href="{{ product.url }}">
+                {% if product.featured_image %}
+                  <img
+                    src="{{ product.featured_image | image_url: width: 900 }}"
+                    alt="{{ product.featured_image.alt | default: product.title | escape }}"
+                    width="{{ product.featured_image.width }}"
+                    height="{{ product.featured_image.height }}"
+                    loading="lazy"
+                    >
+                {% endif %}
+              </a>
+
+              <button
+                class="mm-wishlist-btn"
+                type="button"
+                aria-label="Add {{ product.title | escape }} to favourites"
+                data-product-handle="{{ product.handle }}"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 21s-7.2-4.4-9.5-9.1C.5 7.8 2.8 4 6.7 4c2 0 3.7 1.1 4.6 2.7C12.3 5.1 14 4 16 4c3.9 0 6.2 3.8 4.2 7.9C19.2 16.6 12 21 12 21z"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="mm-product-info">
+              <a href="{{ product.url }}" class="mm-product-title">
+                {{ product.title }}
+              </a>
+
+              <div class="mm-price-wrap">
+                <span class="mm-price">{{ product.price | money }}</span>
+
+                {% if product.compare_at_price > product.price %}
+                  <span class="mm-compare-price">
+                    {{ product.compare_at_price | money }}
+                  </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if section.settings.button_text != blank %}
+        <a href="{{ selected_collection.url }}" class="mm-button">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  #mm-collection-{{ section.id }} {
+    background: {{ section.settings.background }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #mm-collection-{{ section.id }} .mm-collection-wrap {
+    width: 100%;
+    padding-left: {{ section.settings.side_padding }}px;
+    padding-right: {{ section.settings.side_padding }}px;
+  }
+
+  #mm-collection-{{ section.id }} .mm-header {
+    margin-bottom: 28px;
+  }
+
+  #mm-collection-{{ section.id }} .mm-header h2 {
+    margin: 0 0 10px;
+    font-size: {{ section.settings.heading_size }}px;
+    line-height: 1.05;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  #mm-collection-{{ section.id }} .mm-header p {
+    margin: 0;
+    max-width: 640px;
+    font-size: {{ section.settings.text_size }}px;
+    line-height: 1.45;
+    color: {{ section.settings.text_color }};
+  }
+
+  #mm-collection-{{ section.id }} .mm-products {
+    display: flex;
+    gap: {{ section.settings.product_gap }}px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+  }
+
+  #mm-collection-{{ section.id }} .mm-products::-webkit-scrollbar {
+    display: none;
+  }
+
+  #mm-collection-{{ section.id }} .mm-product-card {
+    flex: 0 0 calc((100% - ({{ section.settings.product_gap }}px * 3)) / 4);
+    min-width: 260px;
+    scroll-snap-align: start;
+  }
+
+  #mm-collection-{{ section.id }} .mm-image-wrap {
+    position: relative;
+    width: 100%;
+    background: #f2f2f2;
+    overflow: hidden;
+  }
+
+  #mm-collection-{{ section.id }} .mm-image-wrap a {
+    display: block;
+  }
+
+  #mm-collection-{{ section.id }} .mm-image-wrap img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  #mm-collection-{{ section.id }} .mm-wishlist-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  #mm-collection-{{ section.id }} .mm-wishlist-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: #111;
+    stroke-width: 1.7;
+    transition: all 0.2s ease;
+  }
+
+  #mm-collection-{{ section.id }} .mm-wishlist-btn.is-active svg {
+    fill: #111;
+  }
+
+  #mm-collection-{{ section.id }} .mm-product-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 12px;
+  }
+
+  #mm-collection-{{ section.id }} .mm-product-title {
+    color: #111;
+    text-decoration: none;
+    font-size: {{ section.settings.product_title_size }}px;
+    line-height: 1.3;
+  }
+
+  #mm-collection-{{ section.id }} .mm-price-wrap {
+    text-align: right;
+    white-space: nowrap;
+    font-size: {{ section.settings.price_size }}px;
+    line-height: 1.3;
+  }
+
+  #mm-collection-{{ section.id }} .mm-price {
+    display: block;
+    color: #111;
+  }
+
+  #mm-collection-{{ section.id }} .mm-compare-price {
+    display: block;
+    color: #777;
+    text-decoration: line-through;
+  }
+
+  #mm-collection-{{ section.id }} .mm-button {
+    display: inline-flex;
+    margin-top: 28px;
+    padding: 13px 24px;
+    background: {{ section.settings.button_bg }};
+    color: {{ section.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ section.settings.button_radius }}px;
+    font-size: {{ section.settings.button_font_size }}px;
+    line-height: 1;
+  }
+
+  @media screen and (max-width: 749px) {
+    #mm-collection-{{ section.id }} .mm-collection-wrap {
+      padding-left: {{ section.settings.mobile_side_padding }}px;
+      padding-right: {{ section.settings.mobile_side_padding }}px;
+    }
+
+    #mm-collection-{{ section.id }} .mm-product-card {
+      flex-basis: 78%;
+      min-width: 78%;
+    }
+
+    #mm-collection-{{ section.id }} .mm-header h2 {
+      font-size: {{ section.settings.mobile_heading_size }}px;
+    }
+
+    #mm-collection-{{ section.id }} .mm-header p {
+      font-size: {{ section.settings.mobile_text_size }}px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const section = document.querySelector('#mm-collection-{{ section.id }}');
+    if (!section) return;
+
+    const storageKey = 'kerlora_wishlist';
+    const buttons = section.querySelectorAll('.mm-wishlist-btn');
+
+    function getWishlist() {
+      try {
+        return JSON.parse(localStorage.getItem(storageKey)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveWishlist(items) {
+      localStorage.setItem(storageKey, JSON.stringify(items));
+    }
+
+    function refreshButtons() {
+      const wishlist = getWishlist();
+
+      buttons.forEach(function (button) {
+        const handle = button.dataset.productHandle;
+
+        if (wishlist.includes(handle)) {
+          button.classList.add('is-active');
+          button.setAttribute('aria-label', 'Remove from favourites');
+        } else {
+          button.classList.remove('is-active');
+          button.setAttribute('aria-label', 'Add to favourites');
+        }
+      });
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () {
+        const handle = button.dataset.productHandle;
+        let wishlist = getWishlist();
+
+        if (wishlist.includes(handle)) {
+          wishlist = wishlist.filter(function (item) {
+            return item !== handle;
+          });
+        } else {
+          wishlist.push(handle);
+        }
+
+        saveWishlist(wishlist);
+        refreshButtons();
+      });
+    });
+
+    refreshButtons();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Mix Match Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Mix & match sets"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Put your head-to-toe look together. Save up to 20% on selected sets."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products to show",
+      "min": 4,
+      "max": 20,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Shop the Mix & Match Sets"
+    },
+    {
+      "type": "header",
+      "content": "Font sizes"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "min": 24,
+      "max": 80,
+      "step": 1,
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Mobile heading size",
+      "min": 22,
+      "max": 54,
+      "step": 1,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Desktop text size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "label": "Mobile text size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "product_title_size",
+      "label": "Product title size",
+      "min": 11,
+      "max": 24,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "price_size",
+      "label": "Price size",
+      "min": 11,
+      "max": 24,
+      "step": 1,
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "product_gap",
+      "label": "Gap between products",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "side_padding",
+      "label": "Desktop side padding",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "mobile_side_padding",
+      "label": "Mobile side padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 56
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Background",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text colour",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text colour",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Button radius",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Button font size",
+      "min": 12,
+      "max": 22,
+      "step": 1,
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mix Match Collection"
+    }
+  ]
+}
+{% endschema %}

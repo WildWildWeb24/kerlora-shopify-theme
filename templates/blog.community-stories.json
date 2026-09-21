@@ -1,0 +1,229 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "blog-template",
+      "blocks": {
+        "recent_post_UwM648": {
+          "type": "recent_post",
+          "settings": {
+            "title": "Recent Post",
+            "sidebar_recent_blog_name": "community-events",
+            "sidebar_recent_blog_count": "3"
+          }
+        },
+        "sidebar_video_qdiqd6": {
+          "type": "sidebar_video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-kersty-run.mp4"
+          }
+        },
+        "social_links_KXPCDp": {
+          "type": "social_links",
+          "disabled": true,
+          "settings": {
+            "facebook_label": "Facebook",
+            "facebook_url": "https://www.facebook.com/p/Kerlora-61577826387674/",
+            "instagram_label": "Instagram",
+            "instagram_url": "https://www.instagram.com/kerloraofficial/"
+          }
+        },
+        "d3edb8bc-04ea-4ca1-90c7-408677484928": {
+          "type": "categories",
+          "settings": {
+            "title": "Shop",
+            "list_blog": "main-menu-1"
+          }
+        }
+      },
+      "block_order": [
+        "recent_post_UwM648",
+        "sidebar_video_qdiqd6",
+        "social_links_KXPCDp",
+        "d3edb8bc-04ea-4ca1-90c7-408677484928"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".kerlora-blog-sidebar-inner__title {font-size: 20px;}",
+        ".kerlora-blog-sidebar-inner__menu a,.kerlora-blog-sidebar-inner__social-link,.kerlora-blog-sidebar-inner__recent-link {font-size: 18px; line-height: 0;}"
+      ],
+      "settings": {
+        "custom_heading": "Get Inspired",
+        "hide_sidebar_mobile": true,
+        "container": "w-full",
+        "blog_intro": "The place for the latest product news, curated style guides, tips and industry relevant news.",
+        "show_sidebar": false,
+        "layout": "right_column",
+        "view": "grid",
+        "blog_list": 12,
+        "show_item_per_row": 3
+      }
+    },
+    "image_with_text_2_7c9pnT": {
+      "type": "image-with-text-2",
+      "custom_css": [
+        ".m-hero--has-overlay::before {opacity: 0.6 !important;}",
+        "@media screen and (max-width: 767px) {.m-hero--has-overlay.m-hero__mobile-no-overlay::before {display: block !important; opacity: 0.6 !important; }}"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "color_scheme": "",
+        "container": "w-full",
+        "hero_size": "adapt",
+        "show_overlay": true,
+        "image": "shopify://shop_images/kerlora-community-walk-2026.jpg",
+        "image_link": "",
+        "parallax": false,
+        "parallax_direction": "vertical",
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "Join the Kerlora Community",
+        "subtitle": "",
+        "text": "<p>Experience the power of movement and connection. Walk with us to explore new paths, share stories, and build a stronger, healthier community together.</p>",
+        "button_label": "Register Now",
+        "button_link": "",
+        "button_style": "m-button--white",
+        "button_size": "m-button--small",
+        "text_alignment_mobile": "center",
+        "mb_image": "shopify://shop_images/kerlora-2nd-community-walk.webp",
+        "use_content_above": true,
+        "custom_class": "",
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
+      }
+    },
+    "community_upcoming_walk_M66p6F": {
+      "type": "community-upcoming-walk",
+      "blocks": {
+        "forms_inline_dpqfgB": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "1131867",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#ffffff",
+            "links_color": "#1878b9",
+            "errors_color": "#e02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_dpqfgB"
+      ],
+      "name": "Community: Upcoming Walk",
+      "settings": {
+        "heading": "Upcoming Walk",
+        "walk_date": "Saturday Sept 12",
+        "walk_time": "11:00 AM – 01:00 PM",
+        "venue_name": "Minster Leas Beach, Sheppey",
+        "walk_details": "Meet outside the beach huts for a gentle,  relaxed walk.",
+        "form_heading": "Reserve Your Spot",
+        "form_subheading": ""
+      }
+    },
+    "community_stories_WaWdji": {
+      "type": "community-stories",
+      "name": "Community: Stories",
+      "settings": {
+        "blog": "community-events",
+        "max_posts": 6,
+        "heading": "Community Stories",
+        "subheading": "Read about the experiences of our walkers and how movement has changed their lives."
+      }
+    },
+    "blog_community_videos_fDp4pa": {
+      "type": "blog-community-videos",
+      "blocks": {
+        "video_item_GAywcr": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/Kerlora_SH07_37_3x4.mp4",
+            "caption": ""
+          }
+        },
+        "video_item_hhQHtY": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/Kerlora_SH18_45b_3x4.mp4",
+            "caption": ""
+          }
+        },
+        "video_item_kPKEhQ": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/Kerlora_SH18_45_3x4.mp4",
+            "caption": ""
+          }
+        },
+        "video_item_GjecdQ": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/Kerlora_SH14_43_3x4.mp4",
+            "caption": ""
+          }
+        },
+        "video_item_pmkata": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/Kerlora_SH13_43_3x4.mp4",
+            "caption": ""
+          }
+        },
+        "video_item_J8XCWg": {
+          "type": "video_item",
+          "settings": {
+            "video": "shopify://files/videos/Kerlora_SH11_40_3x4.mp4",
+            "caption": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_item_GAywcr",
+        "video_item_hhQHtY",
+        "video_item_kPKEhQ",
+        "video_item_GjecdQ",
+        "video_item_pmkata",
+        "video_item_J8XCWg"
+      ],
+      "name": "Community: Videos",
+      "settings": {
+        "heading": "Moments from the Community"
+      }
+    },
+    "community_conclusion_a6WzRP": {
+      "type": "community-conclusion",
+      "name": "Community: Conclusion",
+      "settings": {
+        "heading": "Movement is better together.",
+        "text": "<p>At Kerlora, we believe that the best journeys are the ones shared. Join us in making movement a joyful, collective experience.</p>",
+        "form_heading": "Stay in the Loop",
+        "form_subheading": "Sign up for updates on upcoming walks, community stories, and tips for your next adventure."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_2_7c9pnT",
+    "community_upcoming_walk_M66p6F",
+    "community_stories_WaWdji",
+    "blog_community_videos_fDp4pa",
+    "community_conclusion_a6WzRP"
+  ]
+}

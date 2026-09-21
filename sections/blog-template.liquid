@@ -1,0 +1,685 @@
+{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
+{{ 'blog.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign animation_effect = settings.animations
+  assign animated = false
+  if animation_effect != 'none'
+    assign animated = true
+  endif
+
+  assign show_sidebar = false
+  if section.settings.show_sidebar and section.blocks != blank
+    assign show_sidebar = true
+  endif
+
+  assign view = section.settings.view
+  assign items = section.settings.show_item_per_row
+
+  assign blog_class = 'm-blog'
+  assign blog_class = blog_class | append: ' m-blog--view-' | append: view
+
+  if show_sidebar
+    if section.settings.layout == 'left_column'
+      assign sidebar_class = 'sidebar-left'
+    else
+      assign sidebar_class = 'sidebar-right'
+    endif
+    assign blog_class = blog_class | append: ' m-blog--' | append: sidebar_class
+  else
+    assign blog_class = blog_class | append: ' m-blog--no-sidebar'
+  endif
+
+  assign container = section.settings.container
+  if container == 'w-full'
+    assign container = 'container-full'
+  endif
+-%}
+
+<style>
+  .kerlora-blog-page {
+    padding-top: 24px;
+    padding-bottom: 56px;
+  }
+
+  .kerlora-blog-header {
+    margin-bottom: 28px;
+  }
+
+  .kerlora-blog-header__title {
+    margin: 0 0 8px;
+    text-align: left;
+  }
+
+  .kerlora-blog-header__desc {
+    margin: 0;
+    max-width: 760px;
+  }
+
+  .kerlora-blog-page .m-row {
+    display: grid;
+    grid-template-columns: 320px minmax(0, 1fr);
+    gap: 48px;
+    align-items: start;
+  }
+
+  .kerlora-blog-page.sidebar-right .m-row {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+
+  .kerlora-blog-page .m-blog__wrapper {
+    min-width: 0;
+  }
+
+  .kerlora-blog-page .m-blog-sidebar {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .kerlora-blog-page .m-blog__list {
+    gap: 28px;
+  }
+
+  .kerlora-blog-page .m-blog__list .m-article-card,
+  .kerlora-blog-page .m-blog__list .article-card,
+  .kerlora-blog-page .m-blog__list .card-wrapper {
+    height: 100%;
+  }
+
+  .kerlora-blog-page .m-blog__list .m-article-card__inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .kerlora-blog-page .m-blog__list .m-article-card__content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+
+  .kerlora-blog-page .m-blog__list .m-article-card__title {
+    text-align: left;
+  }
+
+  .kerlora-blog-page .m-blog__list .m-button,
+  .kerlora-blog-page .m-blog__list .button,
+  .kerlora-blog-page .m-blog__list .btn {
+    margin-top: auto;
+  }
+
+  .kerlora-blog-sidebar-inner__block {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .kerlora-blog-sidebar-inner__block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .kerlora-blog-sidebar-inner__title {
+    margin: 0 0 18px;
+  }
+
+  .kerlora-blog-sidebar-inner__menu,
+  .kerlora-blog-sidebar-inner__socials,
+  .kerlora-blog-sidebar-inner__recent-posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .kerlora-blog-sidebar-inner__menu li + li,
+  .kerlora-blog-sidebar-inner__socials li + li,
+  .kerlora-blog-sidebar-inner__recent-posts li + li {
+    margin-top: 12px;
+  }
+
+  .kerlora-blog-sidebar-inner__menu a,
+  .kerlora-blog-sidebar-inner__social-link,
+  .kerlora-blog-sidebar-inner__recent-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .kerlora-blog-sidebar-inner__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .kerlora-blog-sidebar-inner__social-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .kerlora-blog-sidebar-inner__dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    flex: 0 0 18px;
+  }
+
+  .kerlora-blog-sidebar-inner__arrow {
+    font-size: 28px;
+    line-height: 1;
+  }
+
+  .kerlora-blog-sidebar-inner__video {
+    overflow: hidden;
+    border-radius: 24px;
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .kerlora-blog-sidebar-inner__video video,
+  .kerlora-blog-sidebar-inner__video img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  .kerlora-blog-sidebar-inner__newsletter-title {
+    margin: 0 0 10px;
+  }
+
+  .kerlora-blog-sidebar-inner__newsletter-text {
+    margin: 0 0 18px;
+  }
+
+  .kerlora-blog-sidebar-inner__newsletter-form input[type="email"] {
+    width: 100%;
+    min-height: 56px;
+    padding: 0 16px;
+    margin: 0 0 12px;
+    border: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+  }
+
+  .kerlora-blog-sidebar-inner__newsletter-form button {
+    width: 100%;
+    min-height: 56px;
+    border: 1px solid currentColor;
+    background: #111;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .kerlora-blog-sidebar-inner__recent-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .kerlora-blog-sidebar-inner__recent-thumb {
+    width: 80px;
+    min-width: 80px;
+    overflow: hidden;
+    border-radius: 6px;
+  }
+
+  .kerlora-blog-sidebar-inner__recent-thumb img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .kerlora-blog-sidebar-inner__recent-title {
+    margin: 0;
+  }
+
+  @media screen and (max-width: 991px) {
+  .kerlora-blog-page .m-row,
+  .kerlora-blog-page.sidebar-right .m-row {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  {% if section.settings.hide_sidebar_mobile %}
+    .kerlora-blog-page .m-blog-sidebar {
+      display: none;
+    }
+  {% else %}
+    .kerlora-blog-page .m-blog-sidebar {
+      max-width: 100%;
+      order: -1;
+    }
+  {% endif %}
+}
+</style>
+
+{%- capture kerlora_sidebar -%}
+  <div class="kerlora-blog-sidebar-inner">
+    {% for block in section.blocks %}
+      <div class="kerlora-blog-sidebar-inner__block" {{ block.shopify_attributes }}>
+        {% case block.type %}
+
+          {% when 'categories' %}
+            {% if block.settings.title != blank %}
+              <h3 class="kerlora-blog-sidebar-inner__title h2">{{ block.settings.title }}</h3>
+            {% endif %}
+
+            {% if block.settings.list_blog != blank %}
+              <ul class="kerlora-blog-sidebar-inner__menu">
+                {% for link in linklists[block.settings.list_blog].links %}
+                  <li>
+                    <a class="h4" href="{{ link.url }}">{{ link.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+          {% when 'social_links' %}
+            <ul class="kerlora-blog-sidebar-inner__socials">
+              {% if block.settings.facebook_url != blank %}
+                <li>
+                  <a class="kerlora-blog-sidebar-inner__social-link" href="{{ block.settings.facebook_url }}">
+                    <span class="kerlora-blog-sidebar-inner__social-left">
+                      <span class="kerlora-blog-sidebar-inner__dot"></span>
+                      <span class="h4">{{ block.settings.facebook_label }}</span>
+                    </span>
+                    <span class="kerlora-blog-sidebar-inner__arrow">&gt;</span>
+                  </a>
+                </li>
+              {% endif %}
+
+              {% if block.settings.instagram_url != blank %}
+                <li>
+                  <a class="kerlora-blog-sidebar-inner__social-link" href="{{ block.settings.instagram_url }}">
+                    <span class="kerlora-blog-sidebar-inner__social-left">
+                      <span class="kerlora-blog-sidebar-inner__dot"></span>
+                      <span class="h4">{{ block.settings.instagram_label }}</span>
+                    </span>
+                    <span class="kerlora-blog-sidebar-inner__arrow">&gt;</span>
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+
+          {% when 'sidebar_video' %}
+            <div class="kerlora-blog-sidebar-inner__video">
+              {% if block.settings.video != blank %}
+                {{
+                  block.settings.video
+                  | video_tag:
+                    image_size: '900x',
+                    autoplay: false,
+                    loop: true,
+                    controls: true,
+                    muted: true
+                }}
+              {% elsif block.settings.poster != blank %}
+                <img
+                  src="{{ block.settings.poster | image_url: width: 900 }}"
+                  alt="Sidebar media"
+                  width="{{ block.settings.poster.width }}"
+                  height="{{ block.settings.poster.height }}"
+                  loading="lazy"
+                >
+              {% endif %}
+            </div>
+
+          {% when 'newsletter' %}
+            <div class="kerlora-blog-sidebar-inner__newsletter">
+              {% if block.settings.title != blank %}
+                <h3 class="kerlora-blog-sidebar-inner__newsletter-title h2">{{ block.settings.title }}</h3>
+              {% endif %}
+
+              {% if block.settings.text != blank %}
+                <div class="kerlora-blog-sidebar-inner__newsletter-text rte">
+                  <p>{{ block.settings.text }}</p>
+                </div>
+              {% endif %}
+
+              {% form 'customer', class: 'kerlora-blog-sidebar-inner__newsletter-form' %}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <input
+                  type="email"
+                  name="contact[email]"
+                  placeholder="{{ block.settings.placeholder }}"
+                  required
+                >
+                <button type="submit" class="button">{{ block.settings.button_label }}</button>
+              {% endform %}
+            </div>
+
+          {% when 'recent_post' %}
+            {% assign recent_blog = blogs[block.settings.sidebar_recent_blog_name] %}
+            {% assign recent_count = block.settings.sidebar_recent_blog_count | plus: 0 %}
+
+            {% if block.settings.title != blank %}
+              <h5 class="kerlora-blog-sidebar-inner__title h2">{{ block.settings.title }}</h5>
+            {% endif %}
+
+            {% if recent_blog != blank %}
+              <ul class="kerlora-blog-sidebar-inner__recent-posts">
+                {% for article in recent_blog.articles limit: recent_count %}
+                  <li>
+                    <a class="kerlora-blog-sidebar-inner__recent-link" href="{{ article.url }}">
+                      {% if article.image != blank %}
+                        <div class="kerlora-blog-sidebar-inner__recent-thumb">
+                          <img
+                            src="{{ article.image | image_url: width: 160 }}"
+                            alt="{{ article.image.alt | escape | default: article.title | escape }}"
+                            width="{{ article.image.width }}"
+                            height="{{ article.image.height }}"
+                            loading="lazy"
+                          >
+                        </div>
+                      {% endif %}
+                      <div class="kerlora-blog-sidebar-inner__recent-title h5">{{ article.title }}</div>
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+        {% endcase %}
+      </div>
+    {% endfor %}
+  </div>
+{%- endcapture -%}
+
+{%- paginate blog.articles by section.settings.blog_list -%}
+<section
+  data-section-type="blog-template"
+  data-section-id="{{ section.id }}"
+  class="{{ blog_class }} kerlora-blog-page {% if section.settings.layout == 'right_column' %}sidebar-right{% endif %}">
+  <div class="{{ container }}">
+    <div class="kerlora-blog-header">
+      <h1 class="kerlora-blog-header__title h1">
+        {% if section.settings.custom_heading != blank %}
+          {{ section.settings.custom_heading }}
+        {% else %}
+          {{ blog.title }}
+        {% endif %}
+      </h1>
+
+      {% if section.settings.blog_intro != blank %}
+        <div class="kerlora-blog-header__desc rte">
+          <p>{{ section.settings.blog_intro }}</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="m-row">
+      {% if show_sidebar and section.settings.layout == 'left_column' %}
+        <div class="m-blog-sidebar{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+          {{ kerlora_sidebar }}
+        </div>
+      {% endif %}
+
+      <div class="m-blog__wrapper">
+        <div class="m-blog__list m:grid m:grid-1-cols{% if view == 'grid' %} md:m:grid-{{ items | minus: 1 }}-cols lg:m:grid-{{ items }}-cols{% endif %}">
+          {%- for article in blog.articles -%}
+            {% render 'article-card',
+              article: article,
+              view: view,
+              index: forloop.index,
+              animated: animated,
+              animation_effect: animation_effect
+            %}
+          {% endfor %}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          {%- render 'pagination', paginate: paginate, animated: animated, animation_effect: animation_effect -%}
+        {%- endif -%}
+      </div>
+
+      {% if show_sidebar and section.settings.layout == 'right_column' %}
+        <div class="m-blog-sidebar{% if animated %} m-scroll-trigger animate--{{ animation_effect }}{% endif %}">
+          {{ kerlora_sidebar }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{%- endpaginate -%}
+
+{% schema %}
+{
+  "name": "Blog pages",
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "custom_heading",
+      "label": "Custom heading",
+      "default": "Kerlora Stories"
+    },
+
+    {
+      "type": "checkbox",
+      "id": "hide_sidebar_mobile",
+      "label": "Hide sidebar on mobile",
+      "default": true
+    },
+
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container type",
+      "default": "container-fluid",
+      "options": [
+        {
+          "value": "container-fluid",
+          "label": "Default"
+        },
+        {
+          "value": "w-full",
+          "label": "Full width"
+        },
+        {
+          "value": "container",
+          "label": "Use container box"
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "blog_intro",
+      "label": "Intro text",
+      "default": "The community has been busy in action and we’ve collected many special moments of connection."
+    },
+    {
+      "type": "header",
+      "content": "Sidebar"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sidebar",
+      "label": "Show sidebar",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Placement",
+      "default": "right_column",
+      "options": [
+        {
+          "value": "left_column",
+          "label": "Left column"
+        },
+        {
+          "value": "right_column",
+          "label": "Right column"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "view",
+      "label": "Layout",
+      "default": "grid",
+      "options": [
+        {
+          "label": "Grid",
+          "value": "grid"
+        },
+        {
+          "label": "List",
+          "value": "list"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "blog_list",
+      "label": "Posts to show",
+      "default": 6,
+      "min": 2,
+      "max": 12,
+      "step": 1
+    },
+    {
+      "type": "range",
+      "id": "show_item_per_row",
+      "label": "Posts per row",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "blocks": [
+    {
+      "type": "categories",
+      "name": "Widget categories",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Categories"
+        },
+        {
+          "type": "link_list",
+          "id": "list_blog",
+          "label": "Select categories menu"
+        }
+      ]
+    },
+    {
+      "type": "social_links",
+      "name": "Widget social links",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "facebook_label",
+          "label": "Facebook label",
+          "default": "Facebook"
+        },
+        {
+          "type": "url",
+          "id": "facebook_url",
+          "label": "Facebook URL"
+        },
+        {
+          "type": "text",
+          "id": "instagram_label",
+          "label": "Instagram label",
+          "default": "Instagram"
+        },
+        {
+          "type": "url",
+          "id": "instagram_url",
+          "label": "Instagram URL"
+        }
+      ]
+    },
+    {
+      "type": "sidebar_video",
+      "name": "Widget sidebar video",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Upload video"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster",
+          "label": "Poster image"
+        }
+      ]
+    },
+    {
+      "type": "newsletter",
+      "name": "Widget newsletter",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Join the community"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Get 10% off your first order when you sign up to the Kerlora newsletter today."
+        },
+        {
+          "type": "text",
+          "id": "placeholder",
+          "label": "Input placeholder",
+          "default": "Enter email"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "SUBSCRIBE NOW"
+        }
+      ]
+    },
+    {
+      "type": "recent_post",
+      "name": "Widget recent posts",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Recent Post"
+        },
+        {
+          "type": "blog",
+          "id": "sidebar_recent_blog_name",
+          "label": "Blog Name"
+        },
+        {
+          "type": "text",
+          "id": "sidebar_recent_blog_count",
+          "label": "Post Count",
+          "info": "Integer",
+          "default": "3"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

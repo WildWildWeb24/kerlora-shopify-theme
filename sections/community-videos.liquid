@@ -1,0 +1,800 @@
+<section
+  id="community-videos-{{ section.id }}"
+  class="community-videos"
+>
+  <div class="community-videos__inner">
+    {% if section.settings.heading != blank %}
+      <h2 class="community-videos__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div
+      class="community-videos__track"
+      role="region"
+      aria-label="{{ section.settings.heading | default: 'Community videos' | escape }}"
+    >
+      {% for block in section.blocks %}
+        {% if block.settings.video != blank %}
+          {% assign poster_image = block.settings.poster_image %}
+
+          {% if poster_image == blank %}
+            {% assign poster_image = block.settings.video.preview_image %}
+          {% endif %}
+
+          <div
+            class="community-videos__card"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.link != blank %}
+              <a
+                href="{{ block.settings.link }}"
+                class="community-videos__link"
+                aria-label="{{ block.settings.accessibility_label | default: 'View community post' | escape }}"
+              >
+            {% endif %}
+
+            <video
+              class="community-videos__video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              data-lazy-video
+              {% if poster_image != blank %}
+                poster="{{ poster_image | image_url: width: 700 }}"
+              {% endif %}
+              aria-label="{{ block.settings.accessibility_label | default: 'Kerlora community video' | escape }}"
+            >
+              {% for source in block.settings.video.sources %}
+                <source
+                  data-src="{{ source.url }}"
+                  type="{{ source.mime_type }}"
+                >
+              {% endfor %}
+            </video>
+
+            {% if block.settings.link != blank %}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #community-videos-{{ section.id }} {
+    overflow: hidden;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    background-color: {{ section.settings.background_color }};
+  }
+
+  #community-videos-{{ section.id }} .community-videos__inner {
+    width: 100%;
+  }
+
+  #community-videos-{{ section.id }} .community-videos__heading {
+    margin: 0 0 {{ section.settings.heading_bottom_spacing }}px;
+    padding-right: {{ section.settings.desktop_side_padding }}px;
+    padding-left: {{ section.settings.desktop_side_padding }}px;
+    color: {{ section.settings.heading_color }};
+    font-size: {{ section.settings.heading_size }}px;
+    font-weight: {{ section.settings.heading_weight }};
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+  }
+
+  #community-videos-{{ section.id }} .community-videos__track {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    width: 100%;
+    gap: {{ section.settings.video_gap }}px;
+    padding-right: {{ section.settings.desktop_side_padding }}px;
+    padding-left: {{ section.settings.desktop_side_padding }}px;
+  }
+
+  #community-videos-{{ section.id }} .community-videos__card {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 9 / 16;
+    overflow: hidden;
+    border-radius: {{ section.settings.video_radius }}px;
+    background: #e8e8e8;
+  }
+
+  #community-videos-{{ section.id }} .community-videos__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #community-videos-{{ section.id }} .community-videos__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: cover;
+    object-position: center;
+    background: #e8e8e8;
+  }
+
+  @media screen and (max-width: 749px) {
+    #community-videos-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    #community-videos-{{ section.id }} .community-videos__heading {
+      margin-bottom: {{ section.settings.mobile_heading_bottom_spacing }}px;
+      padding-right: {{ section.settings.mobile_side_padding }}px;
+      padding-left: {{ section.settings.mobile_side_padding }}px;
+      font-size: {{ section.settings.mobile_heading_size }}px;
+    }
+
+    #community-videos-{{ section.id }} .community-videos__track {
+      display: flex;
+      width: 100%;
+      gap: {{ section.settings.mobile_video_gap }}px;
+      padding-right: {{ section.settings.mobile_side_padding }}px;
+      padding-left: {{ section.settings.mobile_side_padding }}px;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scroll-padding-left: {{ section.settings.mobile_side_padding }}px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+    }
+
+    #community-videos-{{ section.id }} .community-videos__track::-webkit-scrollbar {
+      display: none;
+    }
+
+    #community-videos-{{ section.id }} .community-videos__card {
+      flex: 0 0 {{ section.settings.mobile_video_width }}px;
+      width: {{ section.settings.mobile_video_width }}px;
+      min-width: {{ section.settings.mobile_video_width }}px;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #community-videos-{{ section.id }} .community-videos__track {
+      scroll-behavior: auto;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const sectionId = 'community-videos-{{ section.id }}';
+    const mobileQuery = window.matchMedia('(max-width: 749px)');
+    const reducedMotionQuery = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    );
+    const autoplayDelay =
+      {{ section.settings.autoplay_speed | times: 1000 }};
+
+    function initialiseCommunityVideos() {
+      const section = document.getElementById(sectionId);
+
+      if (
+        !section ||
+        section.dataset.communityVideosInitialised === 'true'
+      ) {
+        return;
+      }
+
+      section.dataset.communityVideosInitialised = 'true';
+
+      const track = section.querySelector('.community-videos__track');
+
+      const cards = Array.from(
+        section.querySelectorAll('.community-videos__card')
+      );
+
+      const videos = Array.from(
+        section.querySelectorAll('.community-videos__video')
+      );
+
+      let autoScrollTimer = null;
+      let resumeTimer = null;
+      let lazyLoadObserver = null;
+      let playbackObserver = null;
+
+      if (!track || cards.length === 0) {
+        return;
+      }
+
+      videos.forEach((video) => {
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+      });
+
+      function loadVideo(video) {
+        if (!video || video.dataset.loaded === 'true') {
+          return;
+        }
+
+        const sources = video.querySelectorAll('source[data-src]');
+
+        sources.forEach((source) => {
+          source.src = source.dataset.src;
+          source.removeAttribute('data-src');
+        });
+
+        video.dataset.loaded = 'true';
+        video.load();
+      }
+
+      function playVideo(video) {
+        loadVideo(video);
+
+        const playPromise = video.play();
+
+        if (playPromise !== undefined) {
+          playPromise.catch(() => {});
+        }
+      }
+
+      if ('IntersectionObserver' in window) {
+        lazyLoadObserver = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) {
+                return;
+              }
+
+              loadVideo(entry.target);
+              observer.unobserve(entry.target);
+            });
+          },
+          {
+            rootMargin: '250px 0px',
+            threshold: 0.01
+          }
+        );
+
+        playbackObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const video = entry.target;
+
+              if (
+                entry.isIntersecting &&
+                entry.intersectionRatio >= 0.35
+              ) {
+                playVideo(video);
+              } else {
+                video.pause();
+              }
+            });
+          },
+          {
+            threshold: [0, 0.35, 0.75]
+          }
+        );
+
+        videos.forEach((video) => {
+          lazyLoadObserver.observe(video);
+          playbackObserver.observe(video);
+        });
+      } else {
+        videos.forEach((video) => {
+          loadVideo(video);
+          playVideo(video);
+        });
+      }
+
+      function isMobile() {
+        return mobileQuery.matches;
+      }
+
+      function getCardStep() {
+        const firstCard = cards[0];
+
+        if (!firstCard) {
+          return 0;
+        }
+
+        const trackStyles = window.getComputedStyle(track);
+
+        const gap =
+          parseFloat(trackStyles.columnGap) ||
+          parseFloat(trackStyles.gap) ||
+          0;
+
+        return firstCard.getBoundingClientRect().width + gap;
+      }
+
+      function getCurrentCardIndex() {
+        const step = getCardStep();
+
+        if (!step) {
+          return 0;
+        }
+
+        return Math.round(track.scrollLeft / step);
+      }
+
+      function scrollToCard(index) {
+        const step = getCardStep();
+
+        if (!step) {
+          return;
+        }
+
+        track.scrollTo({
+          left: step * index,
+          behavior: reducedMotionQuery.matches ? 'auto' : 'smooth'
+        });
+      }
+
+      function scrollToNextCard() {
+        if (
+          !isMobile() ||
+          cards.length < 2 ||
+          document.hidden ||
+          reducedMotionQuery.matches
+        ) {
+          return;
+        }
+
+        const currentIndex = getCurrentCardIndex();
+
+        const nextIndex =
+          currentIndex >= cards.length - 1
+            ? 0
+            : currentIndex + 1;
+
+        scrollToCard(nextIndex);
+      }
+
+      function stopAutoScroll() {
+        if (autoScrollTimer !== null) {
+          window.clearInterval(autoScrollTimer);
+          autoScrollTimer = null;
+        }
+      }
+
+      function startAutoScroll() {
+        stopAutoScroll();
+
+        if (
+          !isMobile() ||
+          cards.length < 2 ||
+          document.hidden ||
+          reducedMotionQuery.matches
+        ) {
+          return;
+        }
+
+        autoScrollTimer = window.setInterval(() => {
+          scrollToNextCard();
+        }, autoplayDelay);
+      }
+
+      function pauseAndResumeAutoScroll() {
+        stopAutoScroll();
+
+        if (resumeTimer !== null) {
+          window.clearTimeout(resumeTimer);
+        }
+
+        resumeTimer = window.setTimeout(() => {
+          startAutoScroll();
+        }, 5000);
+      }
+
+      track.addEventListener(
+        'touchstart',
+        stopAutoScroll,
+        { passive: true }
+      );
+
+      track.addEventListener(
+        'touchend',
+        pauseAndResumeAutoScroll,
+        { passive: true }
+      );
+
+      track.addEventListener('pointerdown', stopAutoScroll);
+      track.addEventListener('pointerup', pauseAndResumeAutoScroll);
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          stopAutoScroll();
+
+          videos.forEach((video) => {
+            video.pause();
+          });
+        } else {
+          startAutoScroll();
+        }
+      });
+
+      const handleViewportChange = () => {
+        if (!isMobile()) {
+          stopAutoScroll();
+          track.scrollLeft = 0;
+        } else {
+          startAutoScroll();
+        }
+      };
+
+      if (typeof mobileQuery.addEventListener === 'function') {
+        mobileQuery.addEventListener(
+          'change',
+          handleViewportChange
+        );
+      } else {
+        mobileQuery.addListener(handleViewportChange);
+      }
+
+      startAutoScroll();
+
+      section.addEventListener('shopify:block:select', () => {
+        stopAutoScroll();
+      });
+
+      section.addEventListener('shopify:block:deselect', () => {
+        startAutoScroll();
+      });
+
+      section._communityVideosCleanup = () => {
+        stopAutoScroll();
+
+        if (resumeTimer !== null) {
+          window.clearTimeout(resumeTimer);
+        }
+
+        if (lazyLoadObserver) {
+          lazyLoadObserver.disconnect();
+        }
+
+        if (playbackObserver) {
+          playbackObserver.disconnect();
+        }
+
+        if (typeof mobileQuery.removeEventListener === 'function') {
+          mobileQuery.removeEventListener(
+            'change',
+            handleViewportChange
+          );
+        } else {
+          mobileQuery.removeListener(handleViewportChange);
+        }
+      };
+    }
+
+    function destroyCommunityVideos(section) {
+      if (
+        section &&
+        typeof section._communityVideosCleanup === 'function'
+      ) {
+        section._communityVideosCleanup();
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener(
+        'DOMContentLoaded',
+        initialiseCommunityVideos,
+        { once: true }
+      );
+    } else {
+      initialiseCommunityVideos();
+    }
+
+    document.addEventListener(
+      'shopify:section:load',
+      (event) => {
+        if (
+          event.target &&
+          event.target.id === sectionId
+        ) {
+          event.target.dataset.communityVideosInitialised = 'false';
+          initialiseCommunityVideos();
+        }
+      }
+    );
+
+    document.addEventListener(
+      'shopify:section:unload',
+      (event) => {
+        if (
+          event.target &&
+          event.target.id === sectionId
+        ) {
+          destroyCommunityVideos(event.target);
+        }
+      }
+    );
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Community videos",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome to the community"
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size",
+      "min": 24,
+      "max": 72,
+      "step": 1,
+      "unit": "px",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Mobile heading size",
+      "min": 22,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Heading weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Regular"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "heading_bottom_spacing",
+      "label": "Desktop space below heading",
+      "min": 8,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_bottom_spacing",
+      "label": "Mobile space below heading",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Videos"
+    },
+    {
+      "type": "range",
+      "id": "video_gap",
+      "label": "Desktop gap",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "mobile_video_width",
+      "label": "Mobile video width",
+      "min": 140,
+      "max": 300,
+      "step": 4,
+      "unit": "px",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "mobile_video_gap",
+      "label": "Mobile gap",
+      "min": 0,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "autoplay_speed",
+      "label": "Mobile slider speed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "sec",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "video_radius",
+      "label": "Video border radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "desktop_side_padding",
+      "label": "Desktop side padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "mobile_side_padding",
+      "label": "Mobile side padding",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop top padding",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop bottom padding",
+      "min": 0,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "header",
+      "content": "Colours"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#f7f7f7"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading",
+      "default": "#111111"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video",
+      "name": "Community video",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "image_picker",
+          "id": "poster_image",
+          "label": "Custom poster image",
+          "info": "Optional. The video's preview image is used when this is empty."
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Optional link"
+        },
+        {
+          "type": "text",
+          "id": "accessibility_label",
+          "label": "Accessibility label",
+          "default": "Kerlora community video"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community videos",
+      "blocks": [
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        },
+        {
+          "type": "video"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

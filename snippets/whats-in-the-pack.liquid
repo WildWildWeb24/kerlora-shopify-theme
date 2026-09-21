@@ -1,0 +1,16 @@
+{%- liquid
+  assign pack_images = product.metafields.custom.pack_images.value
+-%}
+
+{%- if pack_images != blank -%}
+  <div class="m-product-card__pack-images">
+    <p class="m-product-card__pack-title">What's in the pack</p>
+    <div class="m-product-card__pack-list">
+      {%- for pack_image in pack_images -%}
+        <div class="m-product-card__pack-item">
+          {{ pack_image | image_url: width: 64 | image_tag: loading: 'lazy', alt: pack_image.alt | default: 'Pack image' }}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

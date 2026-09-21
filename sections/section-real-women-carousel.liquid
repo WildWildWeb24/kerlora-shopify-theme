@@ -1,0 +1,113 @@
+{{ 'component-real-women-carousel.css' | asset_url | stylesheet_tag }}
+
+<div class="rw-section" id="rw-section-{{ section.id }}">
+
+  {%- if section.settings.heading != blank -%}
+    <div class="rw-section-head">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+  {%- endif -%}
+
+  <div class="rw-content">
+    <div class="rw-carousel-wrap">
+
+      <button type="button" class="rw-arrow rw-arrow-prev" aria-label="Previous images" data-rw-prev>
+        <svg viewBox="0 0 12 12"><path d="M8 1 L2 6 L8 11" stroke="#151515" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="rw-viewport" data-rw-viewport>
+        <div class="rw-row" data-rw-row>
+          {%- for block in section.blocks -%}
+            <div class="rw-item" {{ block.shopify_attributes }}>
+              {%- if block.settings.image -%}
+                {{ block.settings.image | image_url: width: 600 | image_tag:
+                  widths: '300, 450, 600',
+                  loading: 'lazy',
+                  alt: block.settings.image.alt | default: 'Kerlora community member'
+                }}
+              {%- else -%}
+                <div class="rw-item-placeholder"></div>
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            {%- for i in (1..6) -%}
+              <div class="rw-item">
+                <div class="rw-item-placeholder"></div>
+              </div>
+            {%- endfor -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      <button type="button" class="rw-arrow rw-arrow-next" aria-label="Next images" data-rw-next>
+        <svg viewBox="0 0 12 12"><path d="M4 1 L10 6 L4 11" stroke="#151515" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var section = document.getElementById('rw-section-{{ section.id }}');
+    if (!section) return;
+    var viewport = section.querySelector('[data-rw-viewport]');
+    var prevBtn = section.querySelector('[data-rw-prev]');
+    var nextBtn = section.querySelector('[data-rw-next]');
+    var item = section.querySelector('.rw-item');
+    if (!viewport || !item) return;
+
+    function visibleCount() {
+      return window.innerWidth <= 900 ? 2 : 6;
+    }
+
+    function scrollByPage(direction) {
+      var gap = 12;
+      var itemWidth = item.getBoundingClientRect().width + gap;
+      viewport.scrollBy({ left: direction * itemWidth * visibleCount(), behavior: 'smooth' });
+    }
+
+    prevBtn.addEventListener('click', function () { scrollByPage(-1); });
+    nextBtn.addEventListener('click', function () { scrollByPage(1); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Real Women in Community",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Real Women in the Community"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Real Women in Community",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

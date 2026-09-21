@@ -1,0 +1,282 @@
+<style>
+  .kerlora-blog-sidebar {
+    color: #1f1f1f;
+  }
+
+  .kerlora-blog-sidebar__block {
+    padding: 0 0 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  .kerlora-blog-sidebar__block:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .kerlora-blog-sidebar__title {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin: 0 0 18px;
+  }
+
+  .kerlora-blog-sidebar__menu,
+  .kerlora-blog-sidebar__socials {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .kerlora-blog-sidebar__menu li + li,
+  .kerlora-blog-sidebar__socials li + li {
+    margin-top: 10px;
+  }
+
+  .kerlora-blog-sidebar__menu a,
+  .kerlora-blog-sidebar__social-link {
+    text-decoration: none;
+    color: #1f1f1f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    font-size: 18px;
+    line-height: 1.4;
+  }
+
+  .kerlora-blog-sidebar__social-link-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .kerlora-blog-sidebar__icon-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    flex: 0 0 18px;
+  }
+
+  .kerlora-blog-sidebar__arrow {
+    font-size: 28px;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .kerlora-blog-sidebar__video {
+    border-radius: 24px;
+    overflow: hidden;
+    background: #e9e9e9;
+  }
+
+  .kerlora-blog-sidebar__video video,
+  .kerlora-blog-sidebar__video img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+  }
+
+  .kerlora-blog-sidebar__newsletter-title {
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 600;
+    margin: 0 0 12px;
+  }
+
+  .kerlora-blog-sidebar__newsletter-text {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 0 0 20px;
+  }
+
+  .kerlora-blog-sidebar__newsletter-form input[type="email"] {
+    width: 100%;
+    height: 58px;
+    border: 1px solid #1f1f1f;
+    background: transparent;
+    padding: 0 16px;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .kerlora-blog-sidebar__newsletter-form button {
+    width: 100%;
+    height: 58px;
+    border: 0;
+    background: #1f1f1f;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+  }
+
+  .kerlora-blog-sidebar__recent-posts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .kerlora-blog-sidebar__recent-posts li + li {
+    margin-top: 16px;
+  }
+
+  .kerlora-blog-sidebar__recent-link {
+    display: flex;
+    gap: 12px;
+    text-decoration: none;
+    color: #1f1f1f;
+    align-items: center;
+  }
+
+  .kerlora-blog-sidebar__recent-thumb {
+    width: 80px;
+    min-width: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .kerlora-blog-sidebar__recent-thumb img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .kerlora-blog-sidebar__recent-title {
+    font-size: 16px;
+    line-height: 1.35;
+  }
+</style>
+
+<div class="kerlora-blog-sidebar">
+  {% for block in section.blocks %}
+    <div class="kerlora-blog-sidebar__block" {{ block.shopify_attributes }}>
+      {% case block.type %}
+
+        {% when 'categories' %}
+          {% if block.settings.title != blank %}
+            <h3 class="kerlora-blog-sidebar__title">{{ block.settings.title }}</h3>
+          {% endif %}
+
+          {% if block.settings.list_blog != blank %}
+            <ul class="kerlora-blog-sidebar__menu">
+              {% for link in linklists[block.settings.list_blog].links %}
+                <li>
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+        {% when 'social_links' %}
+          <ul class="kerlora-blog-sidebar__socials">
+            {% if block.settings.facebook_url != blank %}
+              <li>
+                <a class="kerlora-blog-sidebar__social-link" href="{{ block.settings.facebook_url }}">
+                  <span class="kerlora-blog-sidebar__social-link-left">
+                    <span class="kerlora-blog-sidebar__icon-dot"></span>
+                    <span>{{ block.settings.facebook_label }}</span>
+                  </span>
+                  <span class="kerlora-blog-sidebar__arrow">&gt;</span>
+                </a>
+              </li>
+            {% endif %}
+
+            {% if block.settings.instagram_url != blank %}
+              <li>
+                <a class="kerlora-blog-sidebar__social-link" href="{{ block.settings.instagram_url }}">
+                  <span class="kerlora-blog-sidebar__social-link-left">
+                    <span class="kerlora-blog-sidebar__icon-dot"></span>
+                    <span>{{ block.settings.instagram_label }}</span>
+                  </span>
+                  <span class="kerlora-blog-sidebar__arrow">&gt;</span>
+                </a>
+              </li>
+            {% endif %}
+          </ul>
+
+        {% when 'sidebar_video' %}
+          <div class="kerlora-blog-sidebar__video">
+            {% if block.settings.video != blank %}
+              {{
+                block.settings.video
+                | video_tag:
+                  image_size: '800x',
+                  autoplay: false,
+                  loop: true,
+                  controls: true,
+                  muted: true
+              }}
+            {% elsif block.settings.poster != blank %}
+              <img
+                src="{{ block.settings.poster | image_url: width: 900 }}"
+                alt="Sidebar media"
+                width="{{ block.settings.poster.width }}"
+                height="{{ block.settings.poster.height }}"
+                loading="lazy"
+              >
+            {% endif %}
+          </div>
+
+        {% when 'newsletter' %}
+          <div class="kerlora-blog-sidebar__newsletter">
+            {% if block.settings.title != blank %}
+              <h3 class="kerlora-blog-sidebar__newsletter-title">{{ block.settings.title }}</h3>
+            {% endif %}
+
+            {% if block.settings.text != blank %}
+              <div class="kerlora-blog-sidebar__newsletter-text">{{ block.settings.text }}</div>
+            {% endif %}
+
+            {% form 'customer', class: 'kerlora-blog-sidebar__newsletter-form' %}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input
+                type="email"
+                name="contact[email]"
+                placeholder="{{ block.settings.placeholder }}"
+                required
+              >
+              <button type="submit">{{ block.settings.button_label }}</button>
+            {% endform %}
+          </div>
+
+        {% when 'recent_post' %}
+          {% assign recent_blog = blogs[block.settings.sidebar_recent_blog_name] %}
+          {% assign recent_count = block.settings.sidebar_recent_blog_count | plus: 0 %}
+
+          {% if block.settings.title != blank %}
+            <h3 class="kerlora-blog-sidebar__title">{{ block.settings.title }}</h3>
+          {% endif %}
+
+          {% if recent_blog != blank %}
+            <ul class="kerlora-blog-sidebar__recent-posts">
+              {% for article in recent_blog.articles limit: recent_count %}
+                <li>
+                  <a class="kerlora-blog-sidebar__recent-link" href="{{ article.url }}">
+                    {% if article.image != blank %}
+                      <div class="kerlora-blog-sidebar__recent-thumb">
+                        <img
+                          src="{{ article.image | image_url: width: 160 }}"
+                          alt="{{ article.image.alt | escape | default: article.title | escape }}"
+                          width="{{ article.image.width }}"
+                          height="{{ article.image.height }}"
+                          loading="lazy"
+                        >
+                      </div>
+                    {% endif %}
+                    <div class="kerlora-blog-sidebar__recent-title">{{ article.title }}</div>
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+
+      {% endcase %}
+    </div>
+  {% endfor %}
+</div>

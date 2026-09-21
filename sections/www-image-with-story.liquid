@@ -1,0 +1,575 @@
+{% comment %}
+  Section: Why Kerlora Exists
+  File name suggestion: www-image-with-story.liquid
+{% endcomment %}
+
+{% liquid
+  assign desktop_image = section.settings.image
+  assign mobile_image = section.settings.mobile_image | default: desktop_image
+  assign image_loading = 'lazy'
+
+  if section.index == 1
+    assign image_loading = 'eager'
+  endif
+%}
+
+<section
+  id="WhyKerlora-{{ section.id }}"
+  class="color-{{ section.settings.color_scheme }} why-kerlora-section{% if section.settings.reverse_desktop %} why-kerlora-section--reverse-desktop{% endif %}{% if section.settings.reverse_mobile %} why-kerlora-section--reverse-mobile{% endif %}"
+  style="
+    
+    --wk-max-width: {{ section.settings.max_width }}px;
+    --wk-text-width: {{ section.settings.text_width }}%;
+    --wk-image-width: {{ 100 | minus: section.settings.text_width }}%;
+    --wk-column-gap: {{ section.settings.column_gap }}px;
+    --wk-padding-top-desktop: {{ section.settings.padding_top_desktop }}px;
+    --wk-padding-bottom-desktop: {{ section.settings.padding_bottom_desktop }}px;
+    --wk-padding-horizontal-desktop: {{ section.settings.padding_horizontal_desktop }}px;
+    --wk-padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --wk-padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+    --wk-padding-horizontal-mobile: {{ section.settings.padding_horizontal_mobile }}px;
+    --wk-heading-size-desktop: {{ section.settings.heading_size_desktop }}px;
+    --wk-heading-size-mobile: {{ section.settings.heading_size_mobile }}px;
+    --wk-body-size-desktop: {{ section.settings.body_size_desktop }}px;
+    --wk-body-size-mobile: {{ section.settings.body_size_mobile }}px;
+    --wk-heading-line-height: {{ section.settings.heading_line_height | divided_by: 100.0 }};
+    --wk-body-line-height: {{ section.settings.body_line_height | divided_by: 100.0 }};
+    --wk-text-max-width: {{ section.settings.text_max_width }}px;
+    --wk-image-aspect-desktop: {{ section.settings.image_aspect_desktop }};
+    --wk-image-aspect-mobile: {{ section.settings.image_aspect_mobile }};
+    --wk-image-radius: {{ section.settings.image_radius }}px;
+  "
+>
+  <div class="why-kerlora-section__inner">
+    <div class="why-kerlora-section__text-wrap">
+      <div class="why-kerlora-section__text">
+        {% if section.settings.heading != blank %}
+          <h2 class="why-kerlora-section__heading">
+            {{ section.settings.heading | escape }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.content != blank %}
+          <div class="why-kerlora-section__content rte">
+            {{ section.settings.content }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_label != blank %}
+          <a
+            class="why-kerlora-section__button"
+            href="{{ section.settings.button_link | default: '#' }}"
+          >
+            {{ section.settings.button_label | escape }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="why-kerlora-section__media">
+      {% if desktop_image != blank %}
+        <picture>
+          {% if mobile_image != blank %}
+            <source
+              media="(max-width: 749px)"
+              srcset="
+                {{ mobile_image | image_url: width: 550 }} 550w,
+                {{ mobile_image | image_url: width: 750 }} 750w,
+                {{ mobile_image | image_url: width: 1000 }} 1000w
+              "
+              sizes="100vw"
+            >
+          {% endif %}
+
+          {{
+            desktop_image
+            | image_url: width: 2200
+            | image_tag:
+              class: 'why-kerlora-section__image',
+              loading: image_loading,
+              widths: '750, 1000, 1200, 1500, 1800, 2200',
+              sizes: '(min-width: 1200px) 58vw, (min-width: 750px) 55vw, 100vw',
+              alt: desktop_image.alt
+          }}
+        </picture>
+      {% else %}
+        <div class="why-kerlora-section__placeholder">
+          {{ 'image' | placeholder_svg_tag: 'why-kerlora-section__placeholder-svg' }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+  #WhyKerlora-{{ section.id }} {
+    background: var(--wk-background);
+    color: var(--wk-text-color);
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__inner {
+    display: flex;
+    align-items: stretch;
+    gap: var(--wk-column-gap);
+    width: 100%;
+    max-width: var(--wk-max-width);
+    margin: 0 auto;
+    padding:
+      var(--wk-padding-top-desktop)
+      var(--wk-padding-horizontal-desktop)
+      var(--wk-padding-bottom-desktop);
+    box-sizing: border-box;
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__text-wrap {
+    display: flex;
+    align-items: flex-start;
+    flex: 0 0 calc(var(--wk-text-width) - (var(--wk-column-gap) / 2));
+    min-width: 0;
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__text {
+    width: 100%;
+    max-width: var(--wk-text-max-width);
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__heading {
+    margin: 0 0 24px;
+    color: inherit;
+    font-size: var(--wk-heading-size-desktop);
+    line-height: var(--wk-heading-line-height);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__content {
+    color: inherit;
+    font-size: var(--wk-body-size-desktop);
+    line-height: var(--wk-body-line-height);
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__content > * {
+    margin-top: 0;
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__content > *:last-child {
+    margin-bottom: 0;
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__content p + p {
+    margin-top: 28px;
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    padding: 12px 20px;
+    border: 1px solid currentColor;
+    color: inherit;
+    text-decoration: none;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__button:hover {
+    background: var(--wk-text-color);
+    color: var(--wk-background);
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__media {
+    flex: 0 0 calc(var(--wk-image-width) - (var(--wk-column-gap) / 2));
+    min-width: 0;
+    aspect-ratio: var(--wk-image-aspect-desktop);
+    overflow: hidden;
+    border-radius: var(--wk-image-radius);
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__media picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__image,
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__placeholder,
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__placeholder-svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__image {
+    object-fit: cover;
+    object-position: {{ section.settings.image_position }};
+  }
+
+  #WhyKerlora-{{ section.id }} .why-kerlora-section__placeholder {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  #WhyKerlora-{{ section.id }}.why-kerlora-section--reverse-desktop .why-kerlora-section__inner {
+    flex-direction: row-reverse;
+  }
+
+  @media screen and (max-width: 749px) {
+    #WhyKerlora-{{ section.id }} .why-kerlora-section__inner {
+      flex-direction: column;
+      gap: {{ section.settings.mobile_gap }}px;
+      padding:
+        var(--wk-padding-top-mobile)
+        var(--wk-padding-horizontal-mobile)
+        var(--wk-padding-bottom-mobile);
+    }
+
+    #WhyKerlora-{{ section.id }}.why-kerlora-section--reverse-mobile .why-kerlora-section__inner {
+      flex-direction: column-reverse;
+    }
+
+    #WhyKerlora-{{ section.id }} .why-kerlora-section__text-wrap,
+    #WhyKerlora-{{ section.id }} .why-kerlora-section__media {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    #WhyKerlora-{{ section.id }} .why-kerlora-section__text {
+      max-width: none;
+    }
+
+    #WhyKerlora-{{ section.id }} .why-kerlora-section__heading {
+      margin-bottom: 18px;
+      font-size: var(--wk-heading-size-mobile);
+    }
+
+    #WhyKerlora-{{ section.id }} .why-kerlora-section__content {
+      font-size: var(--wk-body-size-mobile);
+    }
+
+    #WhyKerlora-{{ section.id }} .why-kerlora-section__content p + p {
+      margin-top: 20px;
+    }
+
+    #WhyKerlora-{{ section.id }} .why-kerlora-section__media {
+      aspect-ratio: var(--wk-image-aspect-mobile);
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Why Kerlora exists",
+  "tag": "section",
+  "class": "section-why-kerlora",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Kerlora Exists"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Text",
+      "default": "<p>After discovering the positive impact movement had on her mental wellbeing, founder Kersty wanted to create something bigger than an activewear brand.</p><p>Kerlora exists to help women feel confident, supported and empowered to move for themselves, not to chase perfection.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image",
+      "info": "Optional. The desktop image will be used when left blank."
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image focal point",
+      "default": "center center",
+      "options": [
+        { "value": "left top", "label": "Top left" },
+        { "value": "center top", "label": "Top centre" },
+        { "value": "right top", "label": "Top right" },
+        { "value": "left center", "label": "Centre left" },
+        { "value": "center center", "label": "Centre" },
+        { "value": "right center", "label": "Centre right" },
+        { "value": "left bottom", "label": "Bottom left" },
+        { "value": "center bottom", "label": "Bottom centre" },
+        { "value": "right bottom", "label": "Bottom right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_desktop",
+      "label": "Desktop image ratio",
+      "default": "16 / 9",
+      "options": [
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "4 / 3", "label": "Landscape 4:3" },
+        { "value": "3 / 2", "label": "Landscape 3:2" },
+        { "value": "16 / 9", "label": "Landscape 16:9" },
+        { "value": "2 / 1", "label": "Wide 2:1" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_mobile",
+      "label": "Mobile image ratio",
+      "default": "4 / 3",
+      "options": [
+        { "value": "1 / 1", "label": "Square" },
+        { "value": "4 / 3", "label": "Landscape 4:3" },
+        { "value": "3 / 2", "label": "Landscape 3:2" },
+        { "value": "3 / 4", "label": "Portrait 3:4" },
+        { "value": "4 / 5", "label": "Portrait 4:5" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Image corner radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Desktop layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 1000,
+      "max": 2200,
+      "step": 50,
+      "unit": "px",
+      "label": "Maximum section width",
+      "default": 2000
+    },
+    {
+      "type": "range",
+      "id": "text_width",
+      "min": 30,
+      "max": 60,
+      "step": 1,
+      "unit": "%",
+      "label": "Text column width",
+      "default": 42
+    },
+    {
+      "type": "range",
+      "id": "text_max_width",
+      "min": 300,
+      "max": 900,
+      "step": 10,
+      "unit": "px",
+      "label": "Maximum text width",
+      "default": 760
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "min": 20,
+      "max": 140,
+      "step": 4,
+      "unit": "px",
+      "label": "Column gap",
+      "default": 64
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_desktop",
+      "label": "Show image first on desktop",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "range",
+      "id": "mobile_gap",
+      "min": 12,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap between text and image",
+      "default": 28
+    },
+    {
+      "type": "checkbox",
+      "id": "reverse_mobile",
+      "label": "Show image first on mobile",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_desktop",
+      "min": 28,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop heading size",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 24,
+      "max": 48,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile heading size",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "body_size_desktop",
+      "min": 14,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Desktop body size",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "body_size_mobile",
+      "min": 14,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile body size",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "min": 90,
+      "max": 150,
+      "step": 5,
+      "unit": "%",
+      "label": "Heading line height",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "body_line_height",
+      "min": 120,
+      "max": 190,
+      "step": 5,
+      "unit": "%",
+      "label": "Body line height",
+      "default": 145
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Desktop spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_desktop",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Side padding",
+      "default": 64
+    },
+    {
+      "type": "header",
+      "content": "Mobile spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal_mobile",
+      "min": 12,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Side padding",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Kerlora exists"
+    }
+  ]
+}
+{% endschema %}

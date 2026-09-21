@@ -1,0 +1,345 @@
+{% comment %}
+Kerlora — Events Grid + Fullscreen Gallery (Metaobjects)
+Theme: Minimog OS 2.0
+{% endcomment %}
+
+<section class="kg-events" id="kg-events-{{ section.id }}">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="kg-events__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% assign events = shop.metaobjects.event.values %}
+
+    {% if events == blank %}
+      <p>No events found. Check metaobject entries + Storefront API access.</p>
+    {% else %}
+      <div class="kg-events__grid">
+        {% for event in events %}
+
+          {% assign gi_list = event.gallery_items.value | default: event.gallery_items %}
+          {% assign gallery_count = gi_list.size | default: 0 %}
+
+          {%- comment -%}
+          IMPORTANT:
+          - event.gallery_items is a LIST of metaobject references
+          - event.gallery_items.value is the resolved list (sometimes)
+          We'll build JSON by resolving each ref via ref.value (most reliable).
+          {%- endcomment -%}
+
+          {% assign gi_refs = event.gallery_items.value %}
+{% if gi_refs == blank %}
+  {% assign gi_refs = event.gallery_items %}
+{% endif %}
+{% assign gallery_count = gi_refs.size | default: 0 %}
+
+          <article class="kg-event-card">
+            {% if event.card_image != blank %}
+              <div class="kg-event-card__media">
+                {{ event.card_image
+                  | image_url: width: 1200
+                  | image_tag: alt: event.title, loading: 'lazy', widths: '400,600,800,1200'
+                }}
+              </div>
+            {% endif %}
+
+            <div class="kg-event-card__body">
+              {% if event.date != blank %}
+                <p class="kg-event-card__date">{{ event.date | date: "%-d %B %Y" }}</p>
+              {% endif %}
+
+              <h3 class="kg-event-card__title">{{ event.title }}</h3>
+
+              {% if event.location != blank %}
+                <p class="kg-event-card__location">{{ event.location }}</p>
+              {% endif %}
+
+              {% if event.description != blank %}
+                <p class="kg-event-card__desc">{{ event.description }}</p>
+              {% endif %}
+
+              <button
+                type="button"
+                class="kg-event-card__btn js-kg-open"
+                aria-haspopup="dialog"
+                {% if gallery_count == 0 %}disabled aria-disabled="true"{% endif %}
+              >
+                View Image gallery
+              </button>
+              <p style="font-size:12px;opacity:.7;margin-top:8px;">
+  Liquid gallery_count: {{ gallery_count }}
+</p>
+              {% if gallery_count == 0 %}
+                <p class="kg-event-card__note">Gallery coming soon</p>
+              {% endif %}
+            </div>
+
+            {%- comment -%} Build gallery JSON from metaobject references {%- endcomment -%}
+{% assign gi = event.gallery_items.value %}
+
+{% capture items_json %}
+  {% assign first = true %}
+  {% if gi != blank %}
+    {% for item in gi %}
+      {% assign img = item.image.value %}
+      {% if img != blank %}
+        {% unless first %},{% endunless %}
+        {% assign first = false %}
+        {
+          "src": {{ img | image_url: width: 2000 | json }},
+          "thumb": {{ img | image_url: width: 320 | json }},
+          "caption": {{ item.caption | default: "" | json }}
+        }
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endcapture %}
+
+<script type="application/json" class="kg-gallery-json">
+{
+  "title": {{ event.title | json }},
+  "items": [{{ items_json | strip_newlines | strip }}]
+}
+</script>
+
+            <script type="application/json" class="kg-gallery-json">
+            {
+              "title": {{ event.title | json }},
+              "items": [{{ items_json | strip | strip_newlines }}]
+            }
+            </script>
+
+          </article>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  {%- comment -%} Fullscreen Modal {%- endcomment -%}
+  <div class="kg-gallery" id="kg-gallery-modal-{{ section.id }}" aria-hidden="true">
+    <div class="kg-gallery__overlay js-kg-close" tabindex="-1"></div>
+
+    <div class="kg-gallery__dialog" role="dialog" aria-modal="true" aria-label="Image gallery">
+      <button class="kg-gallery__close js-kg-close" type="button" aria-label="Close gallery">×</button>
+
+      <div class="kg-gallery__content">
+        <div class="kg-gallery__left">
+          <div class="kg-gallery__stage">
+            <button class="kg-gallery__nav kg-gallery__nav--prev js-kg-prev" type="button" aria-label="Previous image">‹</button>
+
+            <figure class="kg-gallery__figure">
+              <img class="kg-gallery__img" alt="" loading="eager" width="1600" height="1200">
+            </figure>
+
+            <button class="kg-gallery__nav kg-gallery__nav--next js-kg-next" type="button" aria-label="Next image">›</button>
+          </div>
+
+          <div class="kg-gallery__thumbs" role="tablist" aria-label="Gallery thumbnails"></div>
+        </div>
+
+        <aside class="kg-gallery__right">
+          <div class="kg-gallery__meta">
+            <p class="kg-gallery__event-title"></p>
+            <p class="kg-gallery__counter"></p>
+            <div class="kg-gallery__caption"></div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    #kg-events-{{ section.id }} .kg-events__heading{ margin: 0 0 20px; }
+    #kg-events-{{ section.id }} .kg-events__grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; }
+    @media (max-width: 990px){ #kg-events-{{ section.id }} .kg-events__grid{ grid-template-columns:1fr; } }
+
+    #kg-events-{{ section.id }} .kg-event-card{ border:1px solid rgba(0,0,0,.10); overflow:hidden; background:#F4F4F4; display:flex; flex-direction:column; }
+    #kg-events-{{ section.id }} .kg-event-card__media img{ width:100%; height:auto; display:block; }
+    #kg-events-{{ section.id }} .kg-event-card__body{ padding:18px 18px 20px; }
+    #kg-events-{{ section.id }} .kg-event-card__date{ margin:0 0 10px; opacity:.8; font-size:14px; }
+    #kg-events-{{ section.id }} .kg-event-card__title{ margin:0 0 10px; font-size:26px; line-height:1.1; }
+    #kg-events-{{ section.id }} .kg-event-card__location{ margin:0 0 14px; opacity:.85; font-size:15px; }
+    #kg-events-{{ section.id }} .kg-event-card__desc{ margin:0 0 18px; opacity:.9; line-height:1.6; }
+    #kg-events-{{ section.id }} .kg-event-card__btn{ width:100%; padding:12px 14px; border:1px solid rgba(0,0,0,.35); background:transparent; border-radius:10px; cursor:pointer; font:inherit; }
+    #kg-events-{{ section.id }} .kg-event-card__btn[disabled]{ opacity:.45; cursor:not-allowed; }
+    #kg-events-{{ section.id }} .kg-event-card__note{ margin:10px 0 0; font-size:12px; opacity:.7; }
+
+    #kg-events-{{ section.id }} .kg-gallery{ position:fixed; inset:0; z-index:9999; display:none; }
+    #kg-events-{{ section.id }} .kg-gallery.is-open{ display:block; }
+    #kg-events-{{ section.id }} .kg-gallery__overlay{ position:absolute; inset:0; background:rgba(0,0,0,.72); }
+    #kg-events-{{ section.id }} .kg-gallery__dialog{ position:absolute; inset:24px; background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.35); }
+    @media (max-width: 990px){ #kg-events-{{ section.id }} .kg-gallery__dialog{ inset:12px; border-radius:14px; } }
+
+    #kg-events-{{ section.id }} .kg-gallery__close{ position:absolute; top:10px; right:10px; width:42px; height:42px; border-radius:999px; border:1px solid rgba(0,0,0,.15); background:#fff; cursor:pointer; font-size:26px; line-height:1; z-index:2; }
+
+    #kg-events-{{ section.id }} .kg-gallery__content{ height:100%; display:grid; grid-template-columns:1fr 420px; }
+    @media (max-width: 990px){ #kg-events-{{ section.id }} .kg-gallery__content{ grid-template-columns:1fr; } #kg-events-{{ section.id }} .kg-gallery__right{ border-top:1px solid rgba(0,0,0,.10); } }
+
+    #kg-events-{{ section.id }} .kg-gallery__left{ padding:18px; display:grid; grid-template-rows:1fr auto; gap:14px; min-width:0; }
+    #kg-events-{{ section.id }} .kg-gallery__stage{ position:relative; border-radius:14px; background:#f4f4f4; overflow:hidden; display:grid; place-items:center; min-height:420px; }
+    #kg-events-{{ section.id }} .kg-gallery__figure{ margin:0; width:100%; height:100%; display:grid; place-items:center; }
+    #kg-events-{{ section.id }} .kg-gallery__img{ width:100%; height:100%; object-fit:contain; display:block; background:#f4f4f4; }
+
+    #kg-events-{{ section.id }} .kg-gallery__nav{ position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:999px; border:1px solid rgba(0,0,0,.15); background:rgba(255,255,255,.92); cursor:pointer; font-size:28px; line-height:1; display:grid; place-items:center; }
+    #kg-events-{{ section.id }} .kg-gallery__nav--prev{ left:10px; }
+    #kg-events-{{ section.id }} .kg-gallery__nav--next{ right:10px; }
+
+    #kg-events-{{ section.id }} .kg-gallery__thumbs{ display:flex; gap:10px; overflow-x:auto; padding-bottom:4px; }
+    #kg-events-{{ section.id }} .kg-thumb{ flex:0 0 auto; width:84px; height:84px; border-radius:12px; overflow:hidden; border:2px solid transparent; background:#eee; padding:0; cursor:pointer; }
+    #kg-events-{{ section.id }} .kg-thumb.is-active{ border-color:rgba(0,0,0,.65); }
+    #kg-events-{{ section.id }} .kg-thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    #kg-events-{{ section.id }} .kg-gallery__right{ padding:22px 20px; border-left:1px solid rgba(0,0,0,.10); overflow:auto; }
+    #kg-events-{{ section.id }} .kg-gallery__event-title{ margin:0 0 6px; font-weight:600; }
+    #kg-events-{{ section.id }} .kg-gallery__counter{ margin:0 0 16px; opacity:.75; font-size:14px; }
+    #kg-events-{{ section.id }} .kg-gallery__caption{ line-height:1.7; font-size:15px; opacity:.92; white-space:pre-wrap; }
+  </style>
+
+  <script>
+    (function(){
+      const root = document.getElementById('kg-events-{{ section.id }}');
+      if (!root) return;
+
+      const modal = root.querySelector('#kg-gallery-modal-{{ section.id }}');
+      if (!modal) return;
+
+      const overlay = modal.querySelector('.kg-gallery__overlay');
+      const btnClose = modal.querySelectorAll('.js-kg-close');
+      const btnPrev = modal.querySelector('.js-kg-prev');
+      const btnNext = modal.querySelector('.js-kg-next');
+
+      const imgEl = modal.querySelector('.kg-gallery__img');
+      const thumbsWrap = modal.querySelector('.kg-gallery__thumbs');
+      const titleEl = modal.querySelector('.kg-gallery__event-title');
+      const counterEl = modal.querySelector('.kg-gallery__counter');
+      const captionEl = modal.querySelector('.kg-gallery__caption');
+
+      let active = null;
+      let index = 0;
+      let lastFocus = null;
+
+      function openModal(payload){
+        active = payload;
+        index = 0;
+        lastFocus = document.activeElement;
+
+        renderThumbs();
+        renderSlide();
+
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.documentElement.style.overflow = 'hidden';
+
+        const closeBtn = modal.querySelector('.kg-gallery__close');
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeModal(){
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.documentElement.style.overflow = '';
+
+        active = null;
+        index = 0;
+        thumbsWrap.innerHTML = '';
+        imgEl.removeAttribute('src');
+        imgEl.setAttribute('alt','');
+        titleEl.textContent = '';
+        counterEl.textContent = '';
+        captionEl.textContent = '';
+
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+      function renderSlide(){
+        if (!active || !active.items || !active.items.length) return;
+
+        index = clamp(index, 0, active.items.length - 1);
+        const item = active.items[index];
+
+        titleEl.textContent = active.title || '';
+        counterEl.textContent = (index + 1) + ' / ' + active.items.length;
+
+        imgEl.src = item.src;
+        imgEl.alt = (active.title || 'Gallery image') + ' ' + (index + 1);
+        captionEl.textContent = item.caption || '';
+
+        thumbsWrap.querySelectorAll('.kg-thumb').forEach((b, i) => {
+          b.classList.toggle('is-active', i === index);
+        });
+      }
+
+      function renderThumbs(){
+        thumbsWrap.innerHTML = '';
+        if (!active || !active.items || !active.items.length) return;
+
+        active.items.forEach((item, i) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'kg-thumb' + (i === 0 ? ' is-active' : '');
+          b.setAttribute('aria-label', 'Open image ' + (i + 1));
+
+          const im = document.createElement('img');
+          im.loading = 'lazy';
+          im.src = item.thumb;
+          im.alt = 'Thumbnail ' + (i + 1);
+
+          b.appendChild(im);
+          b.addEventListener('click', () => { index = i; renderSlide(); });
+          thumbsWrap.appendChild(b);
+        });
+      }
+
+      function next(){ if (!active) return; index = (index + 1) % active.items.length; renderSlide(); }
+      function prev(){ if (!active) return; index = (index - 1 + active.items.length) % active.items.length; renderSlide(); }
+
+      root.addEventListener('click', (e) => {
+        const openBtn = e.target.closest('.js-kg-open');
+        if (!openBtn || openBtn.disabled) return;
+
+        const card = openBtn.closest('.kg-event-card');
+        if (!card) return;
+
+        const jsonScript = card.querySelector('.kg-gallery-json');
+        if (!jsonScript) return;
+
+        let payload = null;
+        try { payload = JSON.parse(jsonScript.textContent || '{}'); }
+        catch (err) { console.error('Gallery JSON parse failed:', err); return; }
+
+        if (!payload || !payload.items || !payload.items.length) {
+          console.warn('No gallery items found for this event.');
+          return;
+        }
+
+        openModal(payload);
+      });
+
+      btnClose.forEach(b => b.addEventListener('click', closeModal));
+      if (overlay) overlay.addEventListener('click', closeModal);
+      if (btnNext) btnNext.addEventListener('click', next);
+      if (btnPrev) btnPrev.addEventListener('click', prev);
+
+      document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('is-open')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowRight') next();
+        if (e.key === 'ArrowLeft') prev();
+      });
+    })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Kerlora Events Grid",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Movement We’ve Shared" }
+  ],
+  "presets": [
+    { "name": "Kerlora Events Grid" }
+  ]
+}
+{% endschema %}

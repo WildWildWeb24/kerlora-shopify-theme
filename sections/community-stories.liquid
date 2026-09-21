@@ -1,0 +1,158 @@
+{{ 'component-community-stories.css' | asset_url | stylesheet_tag }}
+
+{%- assign stories_blog = section.settings.blog -%}
+{%- assign max_posts = section.settings.max_posts -%}
+
+<section class="community-stories" id="community-stories-{{ section.id }}">
+  <div class="community-stories__container page-width">
+
+    <div class="community-stories__header">
+      <h2 class="community-stories__heading">{{ section.settings.heading | escape }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="community-stories__subheading">{{ section.settings.subheading | escape }}</p>
+      {% endif %}
+    </div>
+
+    {% if stories_blog != blank and stories_blog.articles.size > 0 %}
+      <div class="community-stories__wrapper">
+
+        <button
+          type="button"
+          class="community-stories__arrow community-stories__arrow--prev"
+          data-community-stories-prev
+          aria-label="Previous stories"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+        <div class="community-stories__track" data-community-stories-track>
+          {% for article in stories_blog.articles limit: max_posts %}
+            <article class="community-stories__card">
+              <a href="{{ article.url }}" class="community-stories__card-image-link" aria-hidden="true" tabindex="-1">
+                <div class="community-stories__card-image">
+                  {% if article.image %}
+                    <img
+                      src="{{ article.image | image_url: width: 800 }}"
+                      srcset="{{ article.image | image_url: width: 400 }} 400w, {{ article.image | image_url: width: 800 }} 800w"
+                      sizes="(min-width: 990px) 33vw, 85vw"
+                      alt="{{ article.image.alt | default: article.title | escape }}"
+                      loading="lazy"
+                      width="{{ article.image.width }}"
+                      height="{{ article.image.height }}"
+                    >
+                  {% else %}
+                    <div class="community-stories__card-image-placeholder"></div>
+                  {% endif %}
+                </div>
+              </a>
+              <div class="community-stories__card-content">
+                {% if article.tags.size > 0 %}
+                  <span class="community-stories__card-tag">{{ article.tags.first | escape }}</span>
+                {% endif %}
+                <h3 class="community-stories__card-title">
+                  <a href="{{ article.url }}">{{ article.title | escape }}</a>
+                </h3>
+                <p class="community-stories__card-excerpt">
+                  {{ article.excerpt_or_content | strip_html | truncatewords: 22 }}
+                </p>
+                <a href="{{ article.url }}" class="community-stories__card-link">
+                  Read More
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </div>
+            </article>
+          {% endfor %}
+        </div>
+
+        <button
+          type="button"
+          class="community-stories__arrow community-stories__arrow--next"
+          data-community-stories-next
+          aria-label="Next stories"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+
+      </div>
+    {% else %}
+      <p class="community-stories__empty">Select a blog with posts in the section settings to display community stories here.</p>
+    {% endif %}
+
+  </div>
+</section>
+
+<script>
+  (function () {
+    var section = document.getElementById('community-stories-{{ section.id }}');
+    if (!section) return;
+
+    var track = section.querySelector('[data-community-stories-track]');
+    var prevBtn = section.querySelector('[data-community-stories-prev]');
+    var nextBtn = section.querySelector('[data-community-stories-next]');
+    if (!track || !prevBtn || !nextBtn) return;
+
+    function isMobile() {
+      return window.matchMedia('(max-width: 749px)').matches;
+    }
+
+    function scrollByCard(direction) {
+      if (isMobile()) return;
+      var card = track.querySelector('.community-stories__card');
+      if (!card) return;
+      var cardWidth = card.getBoundingClientRect().width;
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || 24);
+      track.scrollBy({ left: direction * (cardWidth + gap), behavior: 'smooth' });
+    }
+
+    prevBtn.addEventListener('click', function () { scrollByCard(-1); });
+    nextBtn.addEventListener('click', function () { scrollByCard(1); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Community: Stories",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog",
+      "info": "Select your Community Events blog. Posts from this blog populate the carousel."
+    },
+    {
+      "type": "range",
+      "id": "max_posts",
+      "label": "Number of posts to show",
+      "min": 3,
+      "max": 12,
+      "step": 1,
+      "default": 9
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Community Stories"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Read about the experiences of our walkers and how movement has changed their lives."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Community: Stories"
+    }
+  ]
+}
+{% endschema %}

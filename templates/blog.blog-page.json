@@ -1,0 +1,263 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_4xPiAD": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_WWEUty": {
+          "type": "heading",
+          "settings": {
+            "heading": "Kerlora In The Community",
+            "heading_size": "h2"
+          }
+        },
+        "text_KEbLNC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Kerlora we connect people through meaningful movement. From charity runs, strength training sessions and wellness events, we’re finding the joy in collective movement.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_WWEUty",
+        "text_KEbLNC"
+      ],
+      "custom_css": [],
+      "name": "page intro",
+      "settings": {
+        "container": "container",
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "main": {
+      "type": "blog-template",
+      "blocks": {
+        "recent_post_UwM648": {
+          "type": "recent_post",
+          "settings": {
+            "title": "Recent Post",
+            "sidebar_recent_blog_name": "community-events",
+            "sidebar_recent_blog_count": "3"
+          }
+        },
+        "sidebar_video_qdiqd6": {
+          "type": "sidebar_video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-kersty-run.mp4"
+          }
+        },
+        "social_links_KXPCDp": {
+          "type": "social_links",
+          "disabled": true,
+          "settings": {
+            "facebook_label": "Facebook",
+            "facebook_url": "https://www.facebook.com/p/Kerlora-61577826387674/",
+            "instagram_label": "Instagram",
+            "instagram_url": "https://www.instagram.com/kerloraofficial/"
+          }
+        },
+        "d3edb8bc-04ea-4ca1-90c7-408677484928": {
+          "type": "categories",
+          "settings": {
+            "title": "Shop",
+            "list_blog": "main-menu-1"
+          }
+        }
+      },
+      "block_order": [
+        "recent_post_UwM648",
+        "sidebar_video_qdiqd6",
+        "social_links_KXPCDp",
+        "d3edb8bc-04ea-4ca1-90c7-408677484928"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".kerlora-blog-sidebar-inner__title {font-size: 20px;}",
+        ".kerlora-blog-sidebar-inner__menu a,.kerlora-blog-sidebar-inner__social-link,.kerlora-blog-sidebar-inner__recent-link {font-size: 18px; line-height: 0;}"
+      ],
+      "settings": {
+        "custom_heading": "Get Inspired",
+        "hide_sidebar_mobile": true,
+        "container": "w-full",
+        "blog_intro": "The place for the latest product news, curated style guides, tips and industry relevant news.",
+        "show_sidebar": false,
+        "layout": "right_column",
+        "view": "grid",
+        "blog_list": 12,
+        "show_item_per_row": 3
+      }
+    },
+    "section_featured_posts_3FdirU": {
+      "type": "section-featured-posts",
+      "name": "Featured Posts",
+      "settings": {
+        "heading": "Featured Posts",
+        "article_1": "community-events/kerlora-x-vibetribe-bringing-the-energy-of-dance-to-london",
+        "article_2": "community-events/kerlora-at-ideas-fest-september-2026",
+        "article_3": "community-events/learning-to-run-for-my-mind-not-just-my-body",
+        "article_4": "kerlora-stories/stress-awareness-month-2026",
+        "article_5": "kerlora-stories/gentle-movement-and-momentum-into-spring-3-ways-to-get-active-and-reset-yourself-this-month",
+        "article_6": "kerlora-stories/why-is-movement-important-for-menstruation-menopause",
+        "article_7": "kerlora-stories/building-movement-habits-in-2026"
+      }
+    },
+    "section_get_inspired_izhxPR": {
+      "type": "section-get-inspired",
+      "name": "Get Inspired",
+      "settings": {
+        "heading": "Get Inspired",
+        "blog": "kerlora-stories"
+      }
+    },
+    "section_real_women_carousel_WaBgPp": {
+      "type": "section-real-women-carousel",
+      "blocks": {
+        "image_KfNPTh": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_163.png"
+          }
+        },
+        "image_g6NkqU": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_165.png"
+          }
+        },
+        "image_ATBeWe": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_162.png"
+          }
+        },
+        "image_YPaGgL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_163_a2cea04f-8483-452f-9be0-73931156494a.png"
+          }
+        },
+        "image_YeUCgW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_161_1c01c202-fe33-452c-b594-56b166692cf9.png"
+          }
+        },
+        "image_GKAtyW": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_164_bb4b8a00-7d72-4840-8204-320b78664773.png"
+          }
+        },
+        "image_3BFbf3": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_162_991cd9d1-1096-4054-ae7f-71d62d499d61.png"
+          }
+        },
+        "image_Q8TbrL": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_165_6a98d438-51d9-4432-a843-54cae0101d28.png"
+          }
+        },
+        "image_h3Rriw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_164.png"
+          }
+        },
+        "image_AGAPkJ": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_161.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_KfNPTh",
+        "image_g6NkqU",
+        "image_ATBeWe",
+        "image_YPaGgL",
+        "image_YeUCgW",
+        "image_GKAtyW",
+        "image_3BFbf3",
+        "image_Q8TbrL",
+        "image_h3Rriw",
+        "image_AGAPkJ"
+      ],
+      "name": "Real Women in Community",
+      "settings": {
+        "heading": "Real Women in the Community"
+      }
+    },
+    "section_connect_with_us_bkHVrK": {
+      "type": "section-connect-with-us",
+      "blocks": {
+        "platform_4VMJi7": {
+          "type": "platform",
+          "name": "Instagram",
+          "settings": {
+            "platform": "instagram",
+            "platform_label": "Instagram",
+            "handle": "@kerloraofficial",
+            "button_link": "https://www.instagram.com/kerloraofficial/",
+            "screenshot": "shopify://shop_images/iPad_Air.png"
+          }
+        },
+        "platform_gqwBVx": {
+          "type": "platform",
+          "name": "Facebook",
+          "settings": {
+            "platform": "facebook",
+            "platform_label": "Facebook",
+            "handle": "@kerlora",
+            "button_link": "https://www.facebook.com/p/Kerlora-61577826387674/",
+            "screenshot": "shopify://shop_images/iPad_Air_-_fb.png"
+          }
+        },
+        "platform_QWpDBY": {
+          "type": "platform",
+          "name": "Youtube",
+          "settings": {
+            "platform": "youtube",
+            "platform_label": "YouTube",
+            "handle": "@kerlora_official",
+            "button_link": "https://www.youtube.com/@Kerlora",
+            "screenshot": "shopify://shop_images/Kerlora_iPad_Air_-yt.png"
+          }
+        }
+      },
+      "block_order": [
+        "platform_4VMJi7",
+        "platform_gqwBVx",
+        "platform_QWpDBY"
+      ],
+      "name": "Connect with Us",
+      "settings": {
+        "heading": "Connect with Us",
+        "subheading": "Join our community for the latest in movement, mindfulness, and modern activewear aesthetics."
+      }
+    }
+  },
+  "order": [
+    "rich_text_4xPiAD",
+    "main",
+    "section_featured_posts_3FdirU",
+    "section_get_inspired_izhxPR",
+    "section_real_women_carousel_WaBgPp",
+    "section_connect_with_us_bkHVrK"
+  ]
+}

@@ -1,0 +1,384 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumb": {
+      "type": "breadcrumb",
+      "disabled": true,
+      "settings": {
+        "container": "container",
+        "text_alignment": "center",
+        "hide_current": false,
+        "hide_on_mb": false,
+        "animations": "inherit"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badge_ChqgGj": {
+          "type": "badge",
+          "settings": {}
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_saving": false,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "size_title": "Size"
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_atc_button": true,
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        },
+        "custom_liquid_GRH9xM": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"payment-methods-wrapper\">\n        <!-- VISA -->\n        <span class=\"payment-badge\" title=\"Visa\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/Visa.svg\" alt=\"Visa\">\n        </span>\n\n        <!-- AMEX -->\n        <span class=\"payment-badge\" title=\"American Express\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/Amex.svg\" alt=\"American Express\">\n        </span>\n\n        <!-- DinersClub -->\n        <span class=\"payment-badge\" title=\"Diners Club\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/DinersClub.svg\" alt=\"Diners Club\">\n        </span>\n\n        <!-- DISCOVER -->\n        <span class=\"payment-badge\" title=\"Discover\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/Discover.svg\" alt=\"Discover\">\n        </span>\n\n        <!-- Mastercard -->\n        <span class=\"payment-badge\" title=\"Mastercard\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/Mastercard.svg\" alt=\"Mastercard\">\n        </span>\n\n        <!-- G Pay / Google Pay -->\n        <span class=\"payment-badge\" title=\"Google Pay\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/GooglePay.svg\" alt=\"Google Pay\">\n        </span>\n\n        <!-- ApplePay -->\n        <span class=\"payment-badge\" title=\"Apple Pay\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/ApplePay.svg\" alt=\"Apple Pay\">\n        </span>\n\n        <!-- Klarna -->\n        <span class=\"payment-badge\" title=\"Klarna\">\n            <img src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/Klarna.svg\" alt=\"Klarna\">\n        </span>\n    </div>"
+          }
+        },
+        "addons": {
+          "type": "addons",
+          "settings": {
+            "show_atcp": false,
+            "show_ask_a_question": true,
+            "show_social": true
+          }
+        },
+        "foxkit_sales_boost_product_bundle_PaqkE7": {
+          "type": "shopify://apps/foxkit-upsell-bundles/blocks/product-bundle/13f41957-6b79-47c1-99a2-e52431f06fff",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "appstle_bundles_appstle_buy_x_get_y_bundle_E9qpNN": {
+          "type": "shopify://apps/appstle-bundles/blocks/appstle-buy-x-get-y-bundle/8909921b-2d24-4d68-9b12-9d045d3dcb0a",
+          "settings": {}
+        },
+        "shipping_VBJFtx": {
+          "type": "shipping",
+          "settings": {
+            "show_delivery_times": true,
+            "deliver_text": "Estimated Delivery:",
+            "deliver_days": "3",
+            "date_format": "%b %d",
+            "show_shipping_text": true,
+            "shipping_text": "<p><strong>Free Shipping: </strong>On all orders above £80</p>"
+          }
+        },
+        "trust_badge_NyBMd4": {
+          "type": "trust_badge",
+          "disabled": true,
+          "settings": {
+            "trust_badges_text": "",
+            "trust_badges_image": "shopify://shop_images/trust-band.png",
+            "trust_badges_image_width": "80%",
+            "position": "below"
+          }
+        },
+        "collapsible_tab_rcyFAh": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Product Details",
+            "content": "",
+            "liquid": "{{product.description}}",
+            "default_open": false
+          }
+        },
+        "collapsible_tab_qFdWmP": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Wash care",
+            "content": "",
+            "liquid": "<div class=\"care-container\">\n  <div class=\"care-columns\">\n    <div class=\"care-column\">\n      <h5 class=\"care-column-title\">Do's</h5>\n      <ul class=\"do-list\">\n        {% if product.metafields.custom.wash_care_do_s %}\n          {% assign do_text = product.metafields.custom.wash_care_do_s | newline_to_br %}\n          {% assign do_items = do_text | split: '<br />' %}\n          {% for item in do_items %}\n            {% unless item == blank %}\n              <li>{{ item | strip }}</li>\n            {% endunless %}\n          {% endfor %}\n        {% endif %}\n      </ul>\n    </div>\n\n    <div class=\"care-column\">\n      <h5 class=\"care-column-title\">Don't's</h5>\n      <ul class=\"dont-list\">\n        {% if product.metafields.custom.wash_care_don_t_s %}\n          {% assign dont_text = product.metafields.custom.wash_care_don_t_s | newline_to_br %}\n          {% assign dont_items = dont_text | split: '<br />' %}\n          {% for item in dont_items %}\n            {% unless item == blank %}\n              <li>{{ item | strip }}</li>\n            {% endunless %}\n          {% endfor %}\n        {% endif %}\n      </ul>\n    </div>\n  </div>\n</div>",
+            "default_open": false
+          }
+        },
+        "collapsible_tab_VYMQjN": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Delivery and payment",
+            "content": "",
+            "liquid": "<div class=\"care-container\">\n    <div class=\"care-columns\">\n        <div class=\"care-column\">\n            <ul class=\"do-list\">\n                <li>Pay using Klarna</li>\n            </ul>\n        </div>\n        \n        <div class=\"care-column\">\n            <ul class=\"do-list\">\n                <li>Standard UK delivery within 2–4 business days. Free shipping on orders above £80. A £3.99 shipping fee is applicable on orders below £80.</li>\n            </ul>\n        </div>\n    </div>\n</div>",
+            "default_open": false
+          }
+        },
+        "collapsible_tab_rCxFGc": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Return and Exchange",
+            "content": "<ul><li>Exchanges and returns are accepted within 14 days of receiving the shipment.</li><li>No returns on sale items.</li><li>Items must be in their original condition, with labels and tags intact.</li><li>Approved refunds are issued to your original payment method within 14 business days.</li><li>View our complete return and exchange policy <a href=\"/pages/returns-shipping-policy\" title=\"Returns & Shipping Policy\">here</a>.</li><li>To raise a request, email hello@kerlora.com</li></ul>",
+            "liquid": "",
+            "default_open": false
+          }
+        },
+        "judge_me_reviews_review_widget_cy3VNW": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        },
+        "description_j8DQNR": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "badge_ChqgGj",
+        "title",
+        "price",
+        "variant_picker",
+        "buy_buttons",
+        "custom_liquid_GRH9xM",
+        "addons",
+        "foxkit_sales_boost_product_bundle_PaqkE7",
+        "appstle_bundles_appstle_buy_x_get_y_bundle_E9qpNN",
+        "shipping_VBJFtx",
+        "trust_badge_NyBMd4",
+        "collapsible_tab_rcyFAh",
+        "collapsible_tab_qFdWmP",
+        "collapsible_tab_VYMQjN",
+        "collapsible_tab_rCxFGc",
+        "judge_me_reviews_review_widget_cy3VNW",
+        "description_j8DQNR"
+      ],
+      "settings": {
+        "container": "w-full",
+        "layout": "layout-3",
+        "show_atwl": false,
+        "enable_history_state": true,
+        "enable_variant_group_images": false,
+        "disable_selected_variant_default": false,
+        "show_featured_media": true,
+        "show_zoom_button": true,
+        "enable_video_autoplay": true,
+        "show_nav_media_mobile": true,
+        "show_pagination_mobile": true,
+        "use_sticky_atc": true,
+        "use_sticky_atc_on_mobile": true,
+        "enable_dynamic_checkout": true,
+        "sticky_atc_wishtlist": false,
+        "sticky_atc_compare": false
+      }
+    },
+    "176380856207f76696": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_gPNUry": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_gPNUry"
+      ],
+      "disabled": true,
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "background_color": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "product-details-tabs": {
+      "type": "product-details-tabs",
+      "blocks": {
+        "description": {
+          "type": "description",
+          "settings": {
+            "header": "Product description"
+          }
+        },
+        "tab": {
+          "type": "tab",
+          "settings": {
+            "header": "Shipping & Return",
+            "content": "<p>Shipping cost is based on weight. Just add products to your cart and use the Shipping Calculator to see the shipping price.</p><p>We want you to be 100% satisfied with your purchase. Items can be returned or exchanged within 30 days of delivery.</p>",
+            "content_page": ""
+          }
+        }
+      },
+      "block_order": [
+        "description",
+        "tab"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".m-tabs__header {justify-content: flex-start;}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_scheme": "",
+        "default_open": true,
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "collapsible_tabs_JndiBV": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "item_bHzngY": {
+          "type": "item",
+          "settings": {
+            "header": "How long does it take to process an order?",
+            "text_size": "h4",
+            "content": "<p>All the details you love about the original—with a fresh flared block heel and modern square toe. Expertly crafted using soft Nappa leather, this essential style molds and moves with you to keep you comfortably on your feet all day (and night). This boot uses leather sourced from a Leather Working Group-approved trader. The Leather Working Group (LWG) Audit Standards provide transparency and accountability within the leather supply chain—covering energy and water usage.</p>",
+            "content_page": "",
+            "open": true
+          }
+        },
+        "item_RGMrHr": {
+          "type": "item",
+          "settings": {
+            "header": "Do you ship internationally?",
+            "text_size": "h4",
+            "content": "<p>All the details you love about the original—with a fresh flared block heel and modern square toe. Expertly crafted using soft Nappa leather, this essential style molds and moves with you to keep you comfortably on your feet all day (and night). This boot uses leather sourced from a Leather Working Group-approved trader. The Leather Working Group (LWG) Audit Standards provide transparency and accountability within the leather supply chain—covering energy and water usage.</p>",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "item_nceVP8": {
+          "type": "item",
+          "settings": {
+            "header": "What is your return policy?",
+            "text_size": "h4",
+            "content": "<p>All the details you love about the original—with a fresh flared block heel and modern square toe. Expertly crafted using soft Nappa leather, this essential style molds and moves with you to keep you comfortably on your feet all day (and night). This boot uses leather sourced from a Leather Working Group-approved trader. The Leather Working Group (LWG) Audit Standards provide transparency and accountability within the leather supply chain—covering energy and water usage.</p>",
+            "content_page": "",
+            "open": false
+          }
+        },
+        "item_NQRQAp": {
+          "type": "item",
+          "settings": {
+            "header": "What are your sizing options?",
+            "text_size": "h4",
+            "content": "<p>All the details you love about the original—with a fresh flared block heel and modern square toe. Expertly crafted using soft Nappa leather, this essential style molds and moves with you to keep you comfortably on your feet all day (and night). This boot uses leather sourced from a Leather Working Group-approved trader. The Leather Working Group (LWG) Audit Standards provide transparency and accountability within the leather supply chain—covering energy and water usage.</p>",
+            "content_page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "item_bHzngY",
+        "item_RGMrHr",
+        "item_nceVP8",
+        "item_NQRQAp"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".m-collapsible--button {font-weight: 400;}",
+        ".m-collapsible + .m-collapsible {margin-top: 20px; display: block;}",
+        ".m-collapsible--content__inner {padding-bottom: 0; color: rgb(var(--color-foreground-secondary));}"
+      ],
+      "settings": {
+        "container": "container",
+        "color_scheme": "",
+        "image_position": "left",
+        "column_gap": 100,
+        "heading": "Discover more in our FAQ",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "animations": "inherit",
+        "custom_class": ""
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "remove_params": false,
+        "heading": "You Might Also Like",
+        "heading_size": "h3",
+        "text_align": "center",
+        "limit": 8,
+        "columns": 5,
+        "column_gap": 30,
+        "enable_slider": true,
+        "use_scroll_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "recent-viewed-products": {
+      "type": "recent-viewed-products",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "heading": "Recently Viewed Products",
+        "heading_size": "h3",
+        "text_align": "center",
+        "limit": 8,
+        "columns": 5,
+        "column_gap": 30,
+        "pcard_layout": "",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "hide_title": false,
+        "enable_slider": true,
+        "show_pagination": false,
+        "show_navigation": false,
+        "mobile_disable_slider": false,
+        "use_scroll_mobile": true,
+        "item_gap_mobile": 16,
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "breadcrumb",
+    "main",
+    "176380856207f76696",
+    "product-details-tabs",
+    "collapsible_tabs_JndiBV",
+    "product-recommendations",
+    "recent-viewed-products"
+  ]
+}

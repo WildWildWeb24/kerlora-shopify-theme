@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-product-compare",
+      "disabled": true,
+      "settings": {}
+    },
+    "rich_text_8E6Uig": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_D8nm8z": {
+          "type": "heading",
+          "settings": {
+            "heading": "At Kerlora, our work goes beyond athleisure wear as we focus on building a community of supported, connected and empowered women doing incredible things through the power of movement.",
+            "heading_size": "h2"
+          }
+        }
+      },
+      "block_order": [
+        "heading_D8nm8z"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "content_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "newsletter_signup_kerlora_6FtXLd": {
+      "type": "newsletter-signup-kerlora",
+      "name": "Kerlora signup",
+      "settings": {
+        "image": "shopify://shop_images/kerlora-about-us-our-mission.jpg",
+        "eyebrow": "Kerlora",
+        "heading": "Join the Kerlora circle",
+        "subheading": "For insider news, access to the latest drops before anyone else, style tips, founder updates and so much more, sign up to the Kerlora newsletter today. \n\nJoin the Kerlora community today.",
+        "legal_text": "By subscribing, you agree to receive emails from Kerlora. You can unsubscribe at any time. For more information, please see our privacy policy.",
+        "button_label": "Send message",
+        "success_message": "You’re in. Welcome to Kerlora."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_8E6Uig",
+    "newsletter_signup_kerlora_6FtXLd"
+  ]
+}

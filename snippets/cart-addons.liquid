@@ -1,0 +1,133 @@
+{% if settings.cart_notes_enable or settings.cart_estimate_shipping or settings.discount_code_enable %}
+<m-cart-addons class="m-cart-addon">
+
+  <div class="m-cart-addon__header">
+
+    {% if settings.cart_estimate_shipping %}
+      <button data-open="shipping" type="button" class="m-cart-addon--trigger-button">
+        <span class="m-cart-addon__text">Shipping</span>
+      </button>
+    {% endif %}
+
+    {% if settings.discount_code_enable %}
+      <button data-open="coupon" type="button" class="m-cart-addon--trigger-button">
+        <span class="m-cart-addon__text">Discount Code</span>
+      </button>
+    {% endif %}
+
+  </div>
+
+
+  {% if settings.cart_notes_enable %}
+  <div class="m-cart-gift-note">
+
+    <label for="Cart-note" class="m-cart-gift-note__label">
+      🎁 Gifting this order? Send a personal note
+    </label>
+
+    <textarea
+      id="Cart-note"
+      name="note"
+      rows="3"
+      class="form-field"
+      placeholder="Write your personal message here..."
+    >{{ cart.note }}</textarea>
+
+  </div>
+  {% endif %}
+
+
+
+  {% if settings.cart_estimate_shipping %}
+  <div class="m-cart-addon__body" id="m-addons-shipping">
+
+    <div class="m-cart-addon__title m:font-medium">
+      {{ 'cart.general.estimate_shipping_title' | t }}
+    </div>
+
+    <div class="m-cart-addon__content">
+
+      <div class="form-field-group">
+        <label class="form-field--label">{{ 'customer.addresses.country' | t }}</label>
+        <select
+          class="form-field"
+          id="AddressCountry"
+          name="address[country]"
+          data-default="{{ settings.default_country_estimate_shipping | default: 'US' }}">
+        </select>
+      </div>
+
+      <div class="form-field-group">
+        <label class="form-field--label">{{ 'customer.addresses.province' | t }}</label>
+        <select
+          class="form-field"
+          id="AddressProvince"
+          name="address[province]">
+        </select>
+      </div>
+
+      <div class="form-field-group">
+        <label class="form-field--label">{{ 'customer.addresses.zip' | t }}</label>
+        <input
+          class="form-field"
+          type="text"
+          id="AddressZip"
+          name="address[zip]">
+      </div>
+
+    </div>
+
+    <div class="m-cart-addon__action m:flex m:items-center m:justify-center">
+
+      <button class="m-button m-button--secondary m-cart-addon--close" data-action="shipping">
+        {{ 'cart.general.cancel' | t }}
+      </button>
+
+      <button class="m-button m-button--primary m-cart-addon--calculate" data-action="shipping">
+        {{ 'cart.general.estimate_shipping_button' | t }}
+      </button>
+
+    </div>
+
+    <div class="m-cart-addon__shipping-rate"></div>
+
+  </div>
+  {% endif %}
+
+
+
+  {% if settings.discount_code_enable %}
+  <div class="m-cart-addon__body" id="m-addons-coupon">
+
+    <div class="m-cart-addon__title m:font-medium">
+      {{ 'cart.general.coupon_title' | t }}
+    </div>
+
+    <div class="m-cart-addon__content">
+      <input
+        placeholder="{{ 'cart.general.enter_discount_code' | t }}"
+        type="text"
+        name="discount_code_input"
+        class="form-field">
+    </div>
+
+    <div class="m-cart-addon__action m:flex m:items-center m:justify-center">
+
+      <button class="m-button m-button--secondary m-cart-addon--close" data-action="coupon">
+        {{ 'cart.general.cancel' | t }}
+      </button>
+
+      <button class="m-button m-button--primary m-cart-addon--save" data-action="coupon">
+        {{ 'cart.general.save' | t }}
+      </button>
+
+    </div>
+
+  </div>
+  {% endif %}
+
+
+</m-cart-addons>
+{% endif %}
+
+<script src="{{ 'cart-addon.js' | asset_url }}" defer="defer"></script>

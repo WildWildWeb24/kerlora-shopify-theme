@@ -1,0 +1,473 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-about-us",
+      "disabled": true,
+      "settings": {}
+    },
+    "image_with_text_2_BfTkNy": {
+      "type": "image-with-text-2",
+      "name": "Image with text overlay",
+      "settings": {
+        "color_scheme": "",
+        "container": "w-full",
+        "hero_size": "adapt",
+        "show_overlay": false,
+        "image": "shopify://shop_images/kerlora-about-us-01.jpg",
+        "image_link": "",
+        "parallax": false,
+        "parallax_direction": "vertical",
+        "content_in_container": false,
+        "content_position": "left middle",
+        "text_alignment": "left",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "Find strength in movement, not perfection",
+        "subtitle": "",
+        "text": "<p>At Kerlora we know the power of mindful movement. Whether that's a morning stroll, your favourite gym class or a strength training session, Kerlora has been built with movement in mind. Get to know more about us. </p>",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "button_size": "",
+        "text_alignment_mobile": "left",
+        "mb_image": "shopify://shop_images/kerlora-about-us-01-desktop.jpg",
+        "use_content_above": false,
+        "custom_class": "",
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
+      }
+    },
+    "image_with_text_LqeT8j": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "container": "container-fluid",
+        "color_scheme": "",
+        "item_gap": 100,
+        "item_gap_mobile": 30,
+        "layout": "left",
+        "image_column_size": "6",
+        "image_overlap": false,
+        "show_image_reverse": false,
+        "hover_effect": false,
+        "image_animation": "none",
+        "image": "shopify://shop_images/kerlora-about-us-kerlora-community.jpg",
+        "link": "",
+        "link_2": "",
+        "second_image_offset_top": 10,
+        "title": "Welcome to the Kerlora community. ",
+        "sub_title": "",
+        "text": "<p>Kerlora was built from a real life connection to the power of movement. Exercise has the ability to go beyond the physical, supporting with emotional and mental clarity during the ups and downs of life. <br/><br/>With real women and real bodies in mind, Kerlora exists to remove the pressure of perfection often seen within the fitness industry. Every design is built with you in mind, giving you comfort and confidence however you move your body. <br/><br/>We offer high quality, effortless athleisure that fits into your lifestyle and your wardrobe. Taking you from the school drop off, to your weekly fitness class, run in the park or coffee date, each piece has been intentionally designed and curated into a wearable collection.   <br/><br/>At Kerlora we believe that movement goes beyond the aesthetic, allowing you to breathe easier, think clearer and connect back to what is most important. </p>",
+        "text_size": "medium",
+        "content_alignment": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--link",
+        "button_size": "",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "image_with_text_UJGXY7": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "container": "container-fluid",
+        "color_scheme": "",
+        "item_gap": 100,
+        "item_gap_mobile": 30,
+        "layout": "right",
+        "image_column_size": "6",
+        "image_overlap": false,
+        "show_image_reverse": false,
+        "hover_effect": false,
+        "image_animation": "none",
+        "image": "shopify://shop_images/kerlora-about-us-kerstys-words.png",
+        "link": "",
+        "link_2": "",
+        "second_image_offset_top": 10,
+        "title": "In Kersty’s words...",
+        "sub_title": "",
+        "text": "<p>‘For the longest time I struggled with worrying about mine and my familys health which I began to notice was giving me high levels of anxiety. I turned to movement in the hopes of finding a sense of comfort and release from the mental fog. As I moved I began to find an escape and safe sanctuary from the irrational thoughts and overthinking which were clouding my life. <br/><br/>As a mum to three amazing children I’ve realised that consistency in anything is key. Showing up for yourself on the good days and the bad days is where the real change and growth lies. And so movement became the real constant in my life to help me manage my health anxiety. <br/><br/>But when I looked for athleisure pieces to support me through this journey, I constantly  found myself looking at brands and questioning my body. How could I possibly fit into the aesthetic that they were portraying? Exercise for me wasn’t about being perfect but about finding greater physical and mental strength. And so, not seeing myself reflected in any of the brands on the market, I decided to build my own. <br/><br/>I’m not a body builder, pro athlete or fitness guru but I know the demands we face as women and how moving our bodies, being in a space of community and really being seen can make everything else feel less important. <br/><br/>Kerlora exists for you, this beautiful community that has grown from my own lived and learnt experiences. I’m so excited for you to join me on the journey.’<br/></p>",
+        "text_size": "medium",
+        "content_alignment": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--link",
+        "button_size": "",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "image_with_text_YAURBC": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "container": "container-fluid",
+        "color_scheme": "",
+        "item_gap": 100,
+        "item_gap_mobile": 30,
+        "layout": "left",
+        "image_column_size": "6",
+        "image_overlap": false,
+        "show_image_reverse": false,
+        "hover_effect": false,
+        "image_animation": "none",
+        "image": "shopify://shop_images/kerlora-about-us-our-mission.jpg",
+        "link": "",
+        "link_2": "",
+        "second_image_offset_top": 10,
+        "title": "Our Mission & Values",
+        "sub_title": "",
+        "text": "<p>At Kerlora we are committed to giving our community the freedom to find strength in movement. From physical to mental strength and clarity we exist to give you the power back. <br/><br/>With this comes the opportunity to seek inner courage as you find safety and security in movement, however it looks for you. <br/><br/>Family and community is at the heart of everything we do. Feeling connected, sharing the growth, and finding a sense of belonging is what we advocate for in our spaces. <br/><br/>And with all of this comes the need for consistency and balance. We encourage a considered and steady approach to life to ensure you look after yourself, find joy in the small things and stay strong both physically and mentally. <br/><br/>This is Kerlora. </p>",
+        "text_size": "medium",
+        "content_alignment": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--link",
+        "button_size": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "icon_box_Tqyeew": {
+      "type": "icon-box",
+      "blocks": {
+        "iconbox_yV9Bfi": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify://shop_images/kerlora-about-us-design-craftsmanship.png",
+            "image_by_url": "",
+            "title": "Design & Craftsmanship",
+            "description": "<p>Each and every Kerlora piece has been intentionally designed for the real body. When we feel comfortable, movement becomes easier and more effortless. And so comfort, ease and support have guided each design decision, leading to a collection of long lasting pieces that make you feel your best each and every time you wear them. From the choice of fabrics to the construction of each garment, at Kerlora we have consciously crafted each piece for the real woman.</p>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "m-button--link",
+            "button_size": ""
+          }
+        },
+        "iconbox_MhLMn3": {
+          "type": "iconbox",
+          "settings": {
+            "image": "shopify://shop_images/kerlora-about-us-ethical-promise.png",
+            "image_by_url": "",
+            "title": "Ethical Promise",
+            "description": "<p>At Kerlora we are committed to responsible sourcing. Each and every supplier we work with are SEDEX approved, thus meeting high standards for ethical and responsible production. This ranges from ensuring fair working conditions and  safe environments to full transparency throughout the supply chain. <br/>As a small brand we always ensure mindful small batch production. Each piece is intentionally designed to be long lasting and so catering to demand rather than overconsumption has been a key business decision. </p>",
+            "link": "",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "m-button--link",
+            "button_size": ""
+          }
+        }
+      },
+      "block_order": [
+        "iconbox_yV9Bfi",
+        "iconbox_MhLMn3"
+      ],
+      "name": "Featured promotion",
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "color_scheme": "",
+        "item_per_row": 2,
+        "item_gap": 30,
+        "item_gap_mobile": 10,
+        "card_color_scheme": "",
+        "card_style": "vertical",
+        "image_max_width": "",
+        "content_alignment": "center",
+        "hover_effect": "scaling-up",
+        "enable_slider": false,
+        "show_pagination": false,
+        "show_navigation": false,
+        "use_scroll_mobile": true,
+        "use_grid_column_mb": false,
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "newsletter_4bmwVx": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "container": "w-full",
+        "color_scheme": "footer",
+        "form_layout": "vertical",
+        "form_design": "1",
+        "heading": "Join the Movement",
+        "description": "<p>Stay up to date with all fashion news and exclusive offers</p>",
+        "text_size": "h2",
+        "email_placeholder": "Enter your email",
+        "submit_button": "Subscribe",
+        "text_color": "black",
+        "show_icon": false,
+        "icon_img_width": "30",
+        "show_agreement": false,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "instagram_WaybkD": {
+      "type": "instagram",
+      "disabled": true,
+      "name": "Instagram",
+      "settings": {
+        "heading": "On the Gram",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "@kerloraofficial",
+        "header_alignment": "center",
+        "container": "container-fluid",
+        "color_scheme": "",
+        "color_scheme_content": "",
+        "layout": "grid",
+        "images_count": 4,
+        "grid_columns": 4,
+        "gap": 30,
+        "mobile_gap": 10,
+        "profile": "https://www.instagram.com/kerloraofficial",
+        "button_label": "",
+        "button_style": "m-button--secondary",
+        "use_scroll_mobile": true,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_class": ""
+      }
+    },
+    "custom-content": {
+      "type": "custom-content",
+      "blocks": {
+        "be5d2488-3c71-471f-bb75-dbccb6970cb0": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "width": "100%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        },
+        "f5e88f1f-ff68-4d03-b686-0cb9fe62fab1": {
+          "type": "text",
+          "settings": {
+            "title": "<h4 class=\"about__block-heading\">It pains me physically to see woman victimized,<br> rendered pathetic by fashion.</h4>\n<p class=\"about__block-subheading\">Awkwardness gives me great comfort. I’ve never been cool, but I’ve felt cool. I’ve been in the<br> cool place, but I wasn’t really cool – I was trying to pass for hip or cool.</p>",
+            "subheading": "",
+            "text": "<p>A girl should be two things: classy and fabulous. I am convinced that there can be luxury in simplicity. I wanted to dress the woman who lives and works, not the woman in a painting. It’s hard to balance everything. It’s always challenging. My relationships with producers or photographers – these are relationships that took years. I can’t get sucked into that celebrity thing, because I think it’s just crass. My aim is to make the poor look rich and the rich look poor. Vanity is the healthiest thing in life. I believe that my clothes can give people a better image of themselves – that it can increase their feelings of confidence and happiness. You can hide so much behind theatrics, and I don’t need to do that any more. I don’t really know how to do casual clothes.</p>",
+            "width": "100%",
+            "alignment": "center",
+            "align_text": "center",
+            "text_size": "medium",
+            "text_color": "black",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "m-button--primary",
+            "button_size": "",
+            "block_custom_class": "sf__about-block sf__about-block-text sf__about-block-text-1",
+            "animations": "inherit"
+          }
+        },
+        "4e1fb14f-ef60-4693-b6a2-2b26063e1b70": {
+          "type": "image",
+          "settings": {
+            "link": "",
+            "width": "50%",
+            "alignment": "center",
+            "block_custom_class": "",
+            "animations": "inherit"
+          }
+        },
+        "9a3a8077-de29-4141-9162-b9484d4a85f8": {
+          "type": "html",
+          "settings": {
+            "code": "<div class=\"sf__about-custom-list\">\n  <h3>We are proudly<br> Australian.</h3>\n  <ul>\n    <li>\n      <span><img src=\"https://cdn.shopify.com/s/files/1/0561/2742/2636/files/icon1.svg?v=1627616411\"></span>\n      <div class=\"rte\">\n          <h4>Soft Fabric</h4>\n          <p class=\"text-color-subtext\">Get complimentary ground shipping on every<br> order.Don’t love it? Send it back, on us.</p>\n      </div>\n    </li>\n    <li>\n      <span><img src=\"https://cdn.shopify.com/s/files/1/0561/2742/2636/files/icon2_daf1b6c2-ef2e-416c-ae6a-a7ddd145b6c5.svg?v=1627616411\"></span>\n      <div class=\"rte\">\n          <h4>Lightweight</h4>\n          <p class=\"text-color-subtext\">Join Minimog Rewards to earn gift cards<br>\nand enjoy exclusive member benefits.</p>\n      </div>\n    </li>\n    <li>\n      <span><img src=\"https://cdn.shopify.com/s/files/1/0561/2742/2636/files/icon3.svg?v=1627616411\"></span>\n      <div class=\"rte\">\n          <h4>All Day Comfort</h4>\n          <p class=\"text-color-subtext\">We believe getting dressed should be the<br> easiest part of your day.</p>\n      </div>\n    </li>\n  </ul>\n</div>",
+            "width": "50%",
+            "block_custom_class": "sf__about-custom-html",
+            "animations": "inherit"
+          }
+        },
+        "28e3ce35-e364-43f3-ba87-18b633233063": {
+          "type": "text",
+          "settings": {
+            "title": "<h4 class=\"about__block-heading\">The world needs to move fast to make a meaningful<br> difference in the fight against climate change.</h4>",
+            "subheading": "",
+            "text": "<p>A girl should be two things: classy and fabulous. I am convinced that there can be luxury in simplicity. I wanted to dress the woman who lives and works, not the woman in a painting. It’s hard to balance everything. It’s always challenging. My relationships with producers or photographers – these are relationships that took years. I can’t get sucked into that celebrity thing, because I think it’s just crass. My aim is to make the poor look rich and the rich look poor. Vanity is the healthiest thing in life. I believe that my clothes can give people a better image of themselves – that it can increase their feelings of confidence and happiness. You can hide so much behind theatrics, and I don’t need to do that any more. I don’t really know how to do casual clothes.</p>",
+            "width": "100%",
+            "alignment": "center",
+            "align_text": "center",
+            "text_size": "medium",
+            "text_color": "black",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "m-button--primary",
+            "button_size": "",
+            "block_custom_class": "sf__about-block sf__about-block-text sf__about-block-text-2",
+            "animations": "inherit"
+          }
+        },
+        "c6a8b57f-c54c-43f1-9771-9ea5d88a2f36": {
+          "type": "text",
+          "settings": {
+            "title": "Our Team",
+            "subheading": "",
+            "text": "",
+            "width": "100%",
+            "alignment": "center",
+            "align_text": "center",
+            "text_size": "medium",
+            "text_color": "black",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "m-button--primary",
+            "button_size": "",
+            "block_custom_class": "sf__about-custom-heading",
+            "animations": "inherit"
+          }
+        },
+        "859f4ef2-676f-4587-9ae8-3a19ffa439dd": {
+          "type": "image_card",
+          "settings": {
+            "width": "33%",
+            "color_scheme": "",
+            "content_position": "bottom_left",
+            "content_alignment": "left",
+            "text_size": "medium",
+            "text_color": "black",
+            "link": "",
+            "title": "Edward Lindgren",
+            "subtitle": "<span class=\"text-color-subtext\">CHIEF OPERATING OFFICER</span>",
+            "description": "",
+            "button_label": "",
+            "button_style": "m-button--primary",
+            "button_size": "",
+            "button_fixed": false,
+            "use_content_above": false,
+            "block_custom_class": "sf__about-card-custom",
+            "animations": "inherit"
+          }
+        },
+        "a1a4a67f-c83f-4629-a006-e44f56c80bf5": {
+          "type": "image_card",
+          "settings": {
+            "width": "33%",
+            "color_scheme": "",
+            "content_position": "bottom_left",
+            "content_alignment": "left",
+            "text_size": "medium",
+            "text_color": "black",
+            "link": "",
+            "title": "Chineze Afamefuna",
+            "subtitle": "<span class=\"text-color-subtext\">MARKETING</span>",
+            "description": "",
+            "button_label": "",
+            "button_style": "m-button--primary",
+            "button_size": "",
+            "button_fixed": false,
+            "use_content_above": false,
+            "block_custom_class": "sf__about-card-custom",
+            "animations": "inherit"
+          }
+        },
+        "dc4597e9-ca80-4d0f-9e30-ff28c96dd3aa": {
+          "type": "image_card",
+          "settings": {
+            "width": "33%",
+            "color_scheme": "",
+            "content_position": "bottom_left",
+            "content_alignment": "left",
+            "text_size": "medium",
+            "text_color": "black",
+            "link": "",
+            "title": "Nado Husa",
+            "subtitle": "<span class=\"text-color-subtext\">CO-FOUNDER</span>",
+            "description": "",
+            "button_label": "",
+            "button_style": "m-button--primary",
+            "button_size": "",
+            "button_fixed": false,
+            "use_content_above": false,
+            "block_custom_class": "sf__about-card-custom",
+            "animations": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "be5d2488-3c71-471f-bb75-dbccb6970cb0",
+        "f5e88f1f-ff68-4d03-b686-0cb9fe62fab1",
+        "4e1fb14f-ef60-4693-b6a2-2b26063e1b70",
+        "9a3a8077-de29-4141-9162-b9484d4a85f8",
+        "28e3ce35-e364-43f3-ba87-18b633233063",
+        "c6a8b57f-c54c-43f1-9771-9ea5d88a2f36",
+        "859f4ef2-676f-4587-9ae8-3a19ffa439dd",
+        "a1a4a67f-c83f-4629-a006-e44f56c80bf5",
+        "dc4597e9-ca80-4d0f-9e30-ff28c96dd3aa"
+      ],
+      "disabled": true,
+      "custom_css": [
+        "@media (min-width: 1280px) {#m-custom__block--9a3a8077-de29-4141-9162-b9484d4a85f8 {padding-left: 100px; }}"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "",
+        "header_alignment": "center",
+        "container": "container",
+        "color_scheme": "",
+        "content_color_scheme": "",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "gap": 30,
+        "gap_mobile": 16,
+        "use_scroll_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": "m-about-page"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_2_BfTkNy",
+    "image_with_text_LqeT8j",
+    "image_with_text_UJGXY7",
+    "image_with_text_YAURBC",
+    "icon_box_Tqyeew",
+    "newsletter_4bmwVx",
+    "instagram_WaybkD",
+    "custom-content"
+  ]
+}

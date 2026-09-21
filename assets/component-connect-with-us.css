@@ -1,197 +1,214 @@
-/* Component: Connect with Us - Matched to Kerlora.com Design System */
-
-@import url('https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap');
-
 .cwu-section {
-  padding: 5rem 1.5rem;
-  max-width: 1320px;
-  margin: 0 auto;
-  font-family: 'Geist', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  color: #272727;
-  background-color: #ffffff;
+  padding: 80px 20px 100px 20px;
+  background: #FFFFFF;
 }
 
 .cwu-section-head {
   text-align: center;
-  margin-bottom: 3.5rem;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 650px;
+  margin: 0 auto 72px auto;
 }
 
 .cwu-section-head h2 {
-  font-family: 'Geist', sans-serif;
-  font-size: 2.25rem;
+  font-size: 40px;
   font-weight: 500;
-  letter-spacing: -0.02em;
-  color: #222222;
-  margin-top: 0;
-  margin-bottom: 0.75rem;
-  line-height: 1.25;
+  color: #151515;
+  margin: 0 0 16px 0;
 }
 
 .cwu-section-head p {
-  font-size: 1.0625rem;
-  font-weight: 300;
-  color: #676767;
+  font-size: 16px;
+  color: #5F5F5F;
   line-height: 1.6;
   margin: 0;
 }
 
-/* Kerlora 3-Column Grid */
-.cwu-grid {
-  display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-  gap: 1.75rem;
-}
-
-@media (min-width: 768px) {
-  .cwu-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
-/* Kerlora Card Aesthetics */
-.cwu-card {
+/* ---- fanned card row ---- */
+.cwu-fan {
   display: flex;
-  flex-direction: column;
-  background-color: #f6f5ec; /* Signature Kerlora warm off-white background */
-  border: 1px solid #eae8dc;
-  border-radius: 1rem;
-  overflow: hidden;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s cubic-bezier(0.2, 0, 0, 1), border-color 0.3s ease;
-}
-
-.cwu-card:hover {
-  transform: translateY(-5px);
-  border-color: #d8d5c4;
-  box-shadow: 0 16px 32px -8px rgba(34, 34, 34, 0.08);
-}
-
-/* Card Header */
-.cwu-card-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.25rem 1.5rem;
-  background-color: #f6f5ec;
-  border-bottom: 1px solid #eae8dc;
-}
-
-/* Kerlora Social Media Icon Badge */
-.cwu-icon {
-  display: inline-flex;
-  align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: #e9e9e9;
-  color: #222222;
-  flex-shrink: 0;
-  transition: all 0.3s ease;
+  align-items: flex-end;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 0;
 }
 
-.cwu-card:hover .cwu-icon {
-  background-color: #222222;
-  color: #ffffff;
-  transform: scale(1.05);
+.cwu-flip {
+  position: relative;
+  width: 240px;
+  margin-left: -48px;
+  perspective: 1600px;
+  transition: transform 350ms cubic-bezier(0.4, 0.1, 0.2, 1), z-index 0s;
+  z-index: 1;
 }
 
-.cwu-icon svg {
-  width: 20px;
-  height: 20px;
+.cwu-flip:first-child { margin-left: 0; }
+
+.cwu-flip:nth-child(1) { transform: rotate(-9deg) translateY(14px); }
+.cwu-flip:nth-child(2) { transform: rotate(-3deg) translateY(0); }
+.cwu-flip:nth-child(3) { transform: rotate(3deg) translateY(0); }
+.cwu-flip:nth-child(4) { transform: rotate(9deg) translateY(14px); }
+
+.cwu-flip:hover {
+  transform: rotate(0deg) translateY(-18px);
+  z-index: 5;
 }
 
-/* Meta Information */
-.cwu-card-meta {
-  flex-grow: 1;
-  min-width: 0;
+.cwu-flip.is-flipped {
+  transform: rotate(0deg) translateY(-18px) !important;
+  z-index: 6;
 }
 
-.cwu-platform-label {
-  font-family: 'Geist', sans-serif;
-  font-size: 1.0625rem;
-  font-weight: 500;
-  color: #222222;
-  margin: 0;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.cwu-handle {
-  display: block;
-  font-size: 0.875rem;
-  font-weight: 300;
-  color: #676767;
-  margin-top: 0.125rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Kerlora Arrow Pill Button */
-.cwu-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.7);
-  color: #222222;
-  flex-shrink: 0;
-  transition: all 0.25s ease;
-}
-
-.cwu-card:hover .cwu-arrow {
-  background-color: #222222;
-  color: #ffffff;
-  transform: translate(2px, -2px);
-}
-
-.cwu-arrow svg {
-  width: 14px;
-  height: 14px;
-}
-
-/* Screenshot Display Container */
-.cwu-screenshot-wrapper {
+.cwu-flip-inner {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
-  background-color: #ffffff;
+  height: 345px;
+  transition: transform 500ms cubic-bezier(0.4, 0.1, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.cwu-flip.is-flipped .cwu-flip-inner {
+  transform: rotateY(180deg);
+}
+
+.cwu-flip-front,
+.cwu-flip-back {
+  backface-visibility: hidden;
+  border: 1px solid #E5E5E5;
+  background: #FFFFFF;
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
   overflow: hidden;
 }
 
-.cwu-screenshot {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  transition: transform 0.5s ease;
+.cwu-flip-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  padding: 24px;
+  font: inherit;
+  color: inherit;
 }
 
-.cwu-card:hover .cwu-screenshot {
-  transform: scale(1.03);
+.cwu-icon-lg {
+  width: 56px;
+  height: 56px;
+  color: #151515;
+  margin-bottom: 20px;
+}
+.cwu-icon-lg svg { width: 100%; height: 100%; }
+
+.cwu-platform-name-lg {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #151515;
+  margin-bottom: 6px;
+}
+
+.cwu-handle-lg {
+  font-size: 13px;
+  color: #5F5F5F;
+}
+
+.cwu-tap-hint {
+  margin-top: 20px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0057B8;
+  font-weight: 600;
+}
+
+.cwu-flip-back {
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+}
+
+.cwu-flip-back-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #151515;
+}
+
+.cwu-flip-back-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 .cwu-screenshot-placeholder {
   width: 100%;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
-  background-color: #faf9f5;
-  color: #676767;
-  font-size: 0.875rem;
-  font-weight: 300;
   text-align: center;
-  border-top: 1px dashed #e0ded0;
+  padding: 20px;
+  color: #5F5F5F;
+  font-size: 12px;
+  background: #FAFAFA;
+}
+
+.cwu-screenshot {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  background: #0A0A0A;
+}
+
+.cwu-visit-label {
+  padding: 12px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #0057B8;
+  border-top: 1px solid #E5E5E5;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .cwu-fan {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .cwu-flip {
+    margin-left: 0 !important;
+    transform: none !important;
+    width: 45%;
+  }
+  .cwu-flip:hover { transform: translateY(-8px) !important; }
+  .cwu-flip.is-flipped { transform: translateY(-8px) !important; }
+}
+
+@media (max-width: 600px) {
+  .cwu-section { padding: 48px 20px; }
+  .cwu-section-head h2 { font-size: 28px; }
+  .cwu-flip { width: 100%; }
 }

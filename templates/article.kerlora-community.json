@@ -1,0 +1,60 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "kerlora_event_article_LwRzFJ": {
+      "type": "kerlora-event-article",
+      "name": "Kerlora Event Article",
+      "settings": {
+        "container": "container",
+        "gallery_heading": "Gallery",
+        "show_debug": false
+      }
+    },
+    "main": {
+      "type": "article",
+      "blocks": {
+        "categories_nXUFQW": {
+          "type": "categories",
+          "settings": {
+            "title": "Categories",
+            "list_blog": "main-menu-1"
+          }
+        }
+      },
+      "block_order": [
+        "categories_nXUFQW"
+      ],
+      "disabled": true,
+      "settings": {
+        "container": "container",
+        "sidebar_show": true,
+        "sidebar_position": "left_column",
+        "design": "layout1",
+        "blog_show_breadcrumb": false,
+        "blog_show_author": true,
+        "blog_show_date": true,
+        "blog_show_tags": true,
+        "blog_show_social": true,
+        "blog_show_comment": true,
+        "show_related_articles": true,
+        "article_align_content": "text-left",
+        "article_show_tags": false,
+        "article_show_date": false,
+        "article_show_excerpt": false,
+        "article_show_button": false
+      }
+    }
+  },
+  "order": [
+    "kerlora_event_article_LwRzFJ",
+    "main"
+  ]
+}

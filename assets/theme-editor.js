@@ -1,0 +1,1 @@
+document.addEventListener("shopify:section:load",(e=>{e.target.querySelectorAll("script[src]").forEach((e=>{const t=document.createElement("script");t.src=e.src,document.body.appendChild(t)}))}));

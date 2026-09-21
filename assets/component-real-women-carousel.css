@@ -1,0 +1,85 @@
+.rw-section {
+  padding: 48px 20px;
+  background: #FFFFFF;
+}
+
+.rw-section-head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.rw-section-head h2 {
+  font-size: 32px;
+  font-weight: 500;
+  color: #151515;
+  margin: 0;
+}
+
+.rw-content {
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.rw-carousel-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.rw-viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  flex: 1;
+}
+.rw-viewport::-webkit-scrollbar { display: none; }
+
+.rw-row {
+  display: flex;
+  gap: 12px;
+}
+
+.rw-item {
+  aspect-ratio: 3 / 4;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  width: calc((100% - 5 * 12px) / 6);
+  overflow: hidden;
+}
+
+.rw-item img,
+.rw-item-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: #D8D8D8;
+}
+
+.rw-arrow {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+.rw-arrow:hover { opacity: 0.6; }
+.rw-arrow svg { width: 14px; height: 14px; }
+
+@media (max-width: 900px) {
+  .rw-item {
+    width: calc((100% - 12px) / 2);
+  }
+}
+
+@media (max-width: 600px) {
+  .rw-section { padding: 32px 20px; }
+}

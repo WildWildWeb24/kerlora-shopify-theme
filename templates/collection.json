@@ -1,0 +1,191 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection-header": {
+      "type": "collection-page-header",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "default",
+        "container": "container-fluid",
+        "layout": "inside",
+        "image_position": "background",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "text_alignment": "left",
+        "text_color": "inherit",
+        "upper_title": false,
+        "show_desc": false,
+        "collection_all_desc": "",
+        "padding_top": 6,
+        "padding_bottom": 8,
+        "enable_bg_zoom_effect": false
+      }
+    },
+    "17836845891087bb35": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_33ab753_jjEYJ9": {
+          "type": "ai_gen_block_33ab753",
+          "settings": {
+            "desktop_width_percent": 100,
+            "padding_top": 10,
+            "padding_bottom": 10,
+            "background_color": "#ffffff",
+            "show_breadcrumbs": true,
+            "home_text": "Home",
+            "separator": "/",
+            "breadcrumb_font_size": 12,
+            "breadcrumb_spacing": 5,
+            "breadcrumb_color": "#666666",
+            "breadcrumb_hover_color": "#222222",
+            "show_title": true,
+            "title_font_size": 30,
+            "title_font_weight": "500",
+            "title_alignment": "left",
+            "title_color": "#222222"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_33ab753_jjEYJ9"
+      ],
+      "settings": {}
+    },
+    "image_with_text_2_m3D9ir": {
+      "type": "image-with-text-2",
+      "custom_css": [
+        "@media screen and (max-width: 767px) {.m-hero--content-stack {margin-bottom: 0 !important; } .hero-mobile-bottom .m-hero__inner {padding-bottom: 5px !important; }}"
+      ],
+      "name": "Image with text overlay",
+      "settings": {
+        "color_scheme": "",
+        "container": "w-full",
+        "hero_size": "adapt",
+        "show_overlay": false,
+        "image": "shopify://shop_images/kerlora-limited-time-offer-banner.webp",
+        "image_link": "",
+        "parallax": false,
+        "parallax_direction": "vertical",
+        "content_in_container": false,
+        "content_position": "center middle",
+        "text_alignment": "center",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "",
+        "subtitle": "",
+        "text": "",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--primary",
+        "button_size": "",
+        "text_alignment_mobile": "center",
+        "use_content_above": false,
+        "custom_class": "",
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
+      }
+    },
+    "main": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "banner_promotion_KppNc9": {
+          "type": "banner_promotion",
+          "disabled": true,
+          "settings": {
+            "color_scheme": "dark",
+            "text_size": "medium",
+            "text_color": "white",
+            "link": "",
+            "content_position": "bottom_center",
+            "content_alignment": "center",
+            "title": "SALE UP TO 25% OFF",
+            "subtitle": "Online Exclusive",
+            "button_label": "Shop The Sale",
+            "button_style": "m-button--primary",
+            "button_size": "",
+            "button_fixed": false
+          }
+        }
+      },
+      "block_order": [
+        "banner_promotion_KppNc9"
+      ],
+      "custom_css": [
+        ".m-banner-promotion {order: 3 !important; margin-top: 30px; margin-bottom: 0;}",
+        ".m-collection-filters-form {margin-bottom: 0;}"
+      ],
+      "settings": {
+        "container": "container-full",
+        "grid_layout": "grid",
+        "grid_columns": "4",
+        "show_columns_switcher": false,
+        "pagination_limit": 12,
+        "paginate_type": "infinite",
+        "show_sorting": true,
+        "show_filter": true,
+        "filters_type": "storefront_filters",
+        "sidebar": "fixed",
+        "sidebar_title": "Filters",
+        "limit_height_widget": true,
+        "limit_height": 300,
+        "change_product_variant_on_fitlering": true,
+        "show_product_count": true,
+        "collapsed_groups": "Product type, Brand, Vendor, Size",
+        "color_swatches": "color,colour,couleur,farbe",
+        "color_swatches_design": "list"
+      }
+    },
+    "recent-viewed": {
+      "type": "recent-viewed-products",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "heading": "Recently Viewed Products",
+        "heading_size": "h3",
+        "text_align": "left",
+        "limit": 8,
+        "columns": 5,
+        "column_gap": 30,
+        "pcard_layout": "",
+        "pcard_image_ratio": "",
+        "show_vendor": false,
+        "hide_title": false,
+        "enable_slider": true,
+        "show_pagination": false,
+        "show_navigation": false,
+        "mobile_disable_slider": false,
+        "use_scroll_mobile": true,
+        "item_gap_mobile": 16,
+        "padding_top": 40,
+        "padding_bottom": 100,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "custom_liquid_CxYCyJ": {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<section class=\"k-about-section\">\n  <div class=\"k-about-inner\">\n    <div class=\"k-about-logo\" aria-hidden=\"true\">\n      <img\n        src=\"https://kerlora.com/cdn/shop/files/Kerlora-K.svg?v=1761769912\"\n        alt=\"K logo\"\n      >\n    </div>\n\n    <div class=\"k-about-text\">\n      {% if collection.description != blank %}\n        {{ collection.description }}\n      {% else %}\n        <p><strong>Discover our buttery-soft, high-waist leggings:</strong> the ultimate athleisure staple for real\n        women, real lives. Engineered with four-way stretch and moisture-wicking performance fabric, they hug\n        every curve without pinching or sagging—so you can flow from morning school runs to evening yoga in\n        total comfort.</p>\n      {% endif %}\n    </div>\n  </div>\n</section>",
+        "custom_class": ""
+      }
+    }
+  },
+  "order": [
+    "collection-header",
+    "17836845891087bb35",
+    "image_with_text_2_m3D9ir",
+    "main",
+    "recent-viewed",
+    "custom_liquid_CxYCyJ"
+  ]
+}

@@ -1,0 +1,456 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_4xPiAD": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_WWEUty": {
+          "type": "heading",
+          "settings": {
+            "heading": "Kerlora In The Community",
+            "heading_size": "h2"
+          }
+        },
+        "text_KEbLNC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Kerlora we connect people through meaningful movement. From charity runs, strength training sessions and wellness events, we’re finding the joy in collective movement.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_WWEUty",
+        "text_KEbLNC"
+      ],
+      "name": "Rich text",
+      "settings": {
+        "container": "container",
+        "color_scheme": "",
+        "content_alignment": "left",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "empty_space_3wbUn3": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "show_divider_line": true,
+        "divider_style": "solid",
+        "divider_height": 1,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "kerlora_blog_hero_Vhttkg": {
+      "type": "kerlora-blog-hero",
+      "blocks": {
+        "article_card_AG7Bjt": {
+          "type": "article_card",
+          "settings": {
+            "article": "kerlora-stories/boutique-uk-kerlora-in-the-press",
+            "custom_title": "",
+            "custom_excerpt": ""
+          }
+        },
+        "article_card_kpVBTe": {
+          "type": "article_card",
+          "settings": {
+            "article": "community-events/learning-to-run-for-my-mind-not-just-my-body",
+            "custom_title": "",
+            "custom_excerpt": ""
+          }
+        },
+        "article_card_W4crT8": {
+          "type": "article_card",
+          "settings": {
+            "article": "kerlora-stories/mind-body-movement",
+            "custom_title": "",
+            "custom_excerpt": ""
+          }
+        }
+      },
+      "block_order": [
+        "article_card_AG7Bjt",
+        "article_card_kpVBTe",
+        "article_card_W4crT8"
+      ],
+      "name": "Kerlora Blog Hero",
+      "settings": {
+        "container": "container",
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "blog_posts_AC6Xqf": {
+      "type": "blog-posts",
+      "name": "Blog posts",
+      "settings": {
+        "heading": "Get Inspired",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "The place for the latest product news, curated style guides, tips and industry relevant news.",
+        "header_alignment": "left",
+        "container": "container",
+        "color_scheme": "",
+        "blog": "kerlora-stories",
+        "limit": 12,
+        "column": 3,
+        "column_gap": 30,
+        "mobile_gap": 10,
+        "article_image_aspect_ratio": "16/9",
+        "article_align_content": "text-left",
+        "article_show_tags": true,
+        "article_show_date": true,
+        "article_show_excerpt": true,
+        "article_show_button": true,
+        "show_button_on_header": false,
+        "button_link": "",
+        "button_text": "",
+        "button_style": "m-button--primary",
+        "button_size": "",
+        "use_scroll_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "main": {
+      "type": "blog-template",
+      "blocks": {
+        "recent_post_UwM648": {
+          "type": "recent_post",
+          "settings": {
+            "title": "Recent Post",
+            "sidebar_recent_blog_name": "community-events",
+            "sidebar_recent_blog_count": "3"
+          }
+        },
+        "sidebar_video_qdiqd6": {
+          "type": "sidebar_video",
+          "settings": {
+            "video": "shopify://files/videos/kerlora-kersty-run.mp4"
+          }
+        },
+        "social_links_KXPCDp": {
+          "type": "social_links",
+          "disabled": true,
+          "settings": {
+            "facebook_label": "Facebook",
+            "facebook_url": "https://www.facebook.com/p/Kerlora-61577826387674/",
+            "instagram_label": "Instagram",
+            "instagram_url": "https://www.instagram.com/kerloraofficial/"
+          }
+        },
+        "d3edb8bc-04ea-4ca1-90c7-408677484928": {
+          "type": "categories",
+          "settings": {
+            "title": "Shop",
+            "list_blog": "main-menu-1"
+          }
+        }
+      },
+      "block_order": [
+        "recent_post_UwM648",
+        "sidebar_video_qdiqd6",
+        "social_links_KXPCDp",
+        "d3edb8bc-04ea-4ca1-90c7-408677484928"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".kerlora-blog-sidebar-inner__title {font-size: 20px;}",
+        ".kerlora-blog-sidebar-inner__menu a,.kerlora-blog-sidebar-inner__social-link,.kerlora-blog-sidebar-inner__recent-link {font-size: 18px; line-height: 0;}"
+      ],
+      "settings": {
+        "custom_heading": "Get Inspired",
+        "hide_sidebar_mobile": true,
+        "container": "w-full",
+        "blog_intro": "The place for the latest product news, curated style guides, tips and industry relevant news.",
+        "show_sidebar": false,
+        "layout": "right_column",
+        "view": "grid",
+        "blog_list": 12,
+        "show_item_per_row": 3
+      }
+    },
+    "empty_space_mfAMYz": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "show_divider_line": true,
+        "divider_style": "solid",
+        "divider_height": 1,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "image_with_text_q7wGXh": {
+      "type": "image-with-text",
+      "name": "Image with text",
+      "settings": {
+        "heading": "",
+        "heading_size": "h3",
+        "subheading": "",
+        "container": "container",
+        "color_scheme": "",
+        "item_gap": 40,
+        "item_gap_mobile": 20,
+        "layout": "left",
+        "image_column_size": "4",
+        "image_overlap": false,
+        "show_image_reverse": false,
+        "hover_effect": false,
+        "image_animation": "none",
+        "image": "shopify://shop_images/kerlora-community-main-page.jpg",
+        "link": "",
+        "link_2": "",
+        "second_image_offset_top": 0,
+        "title": "Kersty In The Community",
+        "sub_title": "",
+        "text": "<p>You’ll often spot our founder Kersty out with the community, supporting a great cause or empowering the women around her through movement. These moments are never about being perfect, but creating the time and safe space for real women and real connection.  <br/><br/>As a busy working mum to three children, Kersty finds that the time she spends in community enables her to connect with other women like her. Sharing life experiences, creating memories and moving the body in community allows her to feel grounded when life often feels so busy. Not to mention the community spirit that actively encourages her to step away from self doubt and achieve things that she never thought were within her reach. <br/><br/>This community truly is priceless.</p>",
+        "text_size": "medium",
+        "content_alignment": "left",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "m-button--link",
+        "button_size": "",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "empty_space_bmYJQt": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "container": "container",
+        "color_scheme": "footer",
+        "show_divider_line": true,
+        "divider_style": "solid",
+        "divider_height": 1,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": ""
+      }
+    },
+    "blog_posts_npXyHz": {
+      "type": "blog-posts",
+      "name": "Blog posts",
+      "settings": {
+        "heading": "Movement We’ve Shared",
+        "heading_size": "h3",
+        "subheading": "",
+        "description": "The community has been busy in action and we’ve collected many special moments of connection.",
+        "header_alignment": "left",
+        "container": "container",
+        "color_scheme": "",
+        "blog": "community-events",
+        "limit": 12,
+        "column": 3,
+        "column_gap": 30,
+        "mobile_gap": 10,
+        "article_image_aspect_ratio": "16/9",
+        "article_align_content": "text-left",
+        "article_show_tags": true,
+        "article_show_date": true,
+        "article_show_excerpt": true,
+        "article_show_button": true,
+        "show_button_on_header": false,
+        "button_link": "",
+        "button_text": "",
+        "button_style": "m-button--primary",
+        "button_size": "",
+        "use_scroll_mobile": false,
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "brands_list_8KTWpQ": {
+      "type": "brands-list",
+      "blocks": {
+        "image_9H87Cg": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_161.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        },
+        "image_B6NFGM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_162.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        },
+        "image_GUfe8T": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_163.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        },
+        "image_78iFjC": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_164.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        },
+        "image_4AcFN8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_165.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        },
+        "image_yaL9PK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_161_1c01c202-fe33-452c-b594-56b166692cf9.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        },
+        "image_AhMdPD": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_162_991cd9d1-1096-4054-ae7f-71d62d499d61.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        },
+        "image_bprA3M": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_163_a2cea04f-8483-452f-9be0-73931156494a.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        },
+        "image_nwnYzF": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_164_bb4b8a00-7d72-4840-8204-320b78664773.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        },
+        "image_XqVLYy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Frame_165_6a98d438-51d9-4432-a843-54cae0101d28.png",
+            "image_by_url": "",
+            "image_link": "",
+            "max_width": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_9H87Cg",
+        "image_B6NFGM",
+        "image_GUfe8T",
+        "image_78iFjC",
+        "image_4AcFN8",
+        "image_yaL9PK",
+        "image_AhMdPD",
+        "image_bprA3M",
+        "image_nwnYzF",
+        "image_XqVLYy"
+      ],
+      "name": "Brands list",
+      "settings": {
+        "heading": "Real Women In The Community",
+        "heading_size": "h3",
+        "subheading": "",
+        "heading_description": "Meet the women that make this space what it is. This community would be nothing without the real women that show up with intention, commitment and openness.",
+        "header_alignment": "center",
+        "container": "container",
+        "color_scheme": "",
+        "item_per_row": 6,
+        "column_gap": 16,
+        "row_gap": 16,
+        "column_gap_mobile": 4,
+        "row_gap_mobile": 4,
+        "enable_slider": true,
+        "show_nav": false,
+        "show_pagination": false,
+        "autorotate": true,
+        "autorotate_speed": 2,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    },
+    "newsletter_xWxM7D": {
+      "type": "newsletter",
+      "name": "Newsletter",
+      "settings": {
+        "container": "w-full",
+        "color_scheme": "footer",
+        "form_layout": "vertical",
+        "form_design": "1",
+        "heading": "Join the community",
+        "description": "<p>Get 10% off your first order when you sign up to the Kerlora newsletter today.</p>",
+        "text_size": "h2",
+        "email_placeholder": "Enter your email",
+        "submit_button": "Subscribe",
+        "text_color": "black",
+        "show_icon": false,
+        "icon_img_width": "30",
+        "show_agreement": false,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "custom_class": "",
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "rich_text_4xPiAD",
+    "empty_space_3wbUn3",
+    "kerlora_blog_hero_Vhttkg",
+    "blog_posts_AC6Xqf",
+    "main",
+    "empty_space_mfAMYz",
+    "image_with_text_q7wGXh",
+    "empty_space_bmYJQt",
+    "blog_posts_npXyHz",
+    "brands_list_8KTWpQ",
+    "newsletter_xWxM7D"
+  ]
+}

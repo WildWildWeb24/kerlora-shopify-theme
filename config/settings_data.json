@@ -1,4 +1,333 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "current": {},
-  "presets": {}
+  "current": {
+    "favicon": "shopify://shop_images/favicon.png",
+    "show_scroll_top_button": false,
+    "container_width": 1480,
+    "container_fluid_width": 1480,
+    "container_fluid_offset": 30,
+    "type_base_font": "geist_n3",
+    "use_custom_font_body": false,
+    "custom_body_font": "https://cdn.shopify.com/s/files/1/0561/2742/2636/files/Jost-Regular.ttf?v=1618297125@400\nhttps://cdn.shopify.com/s/files/1/0561/2742/2636/files/Jost-Medium.ttf?v=1618297125@500\nhttps://cdn.shopify.com/s/files/1/0561/2742/2636/files/Jost-SemiBold.ttf?v=1618297125@600",
+    "custom_body_weight": "400",
+    "type_base_line_height": 28,
+    "type_header_font": "geist_n5",
+    "use_custom_font_heading": false,
+    "custom_heading_font": "https://cdn.shopify.com/s/files/1/0561/2742/2636/files/Jost-Regular.ttf?v=1618297125@400\nhttps://cdn.shopify.com/s/files/1/0561/2742/2636/files/Jost-Medium.ttf?v=1618297125@500\nhttps://cdn.shopify.com/s/files/1/0561/2742/2636/files/Jost-SemiBold.ttf?v=1618297125@600",
+    "custom_heading_weight": "100",
+    "h1_font_size": 42,
+    "h2_font_size": 42,
+    "type_header_base_size": 36,
+    "h4_font_size": 22,
+    "btn_weight": "400",
+    "img_overlay_opacity": 20,
+    "spacing_sections": 0,
+    "spacing_sections_mobile": 0,
+    "animations": "none",
+    "pcard_layout": "1",
+    "pcard_alignment": "left",
+    "pcard_image_ratio": "original",
+    "pcard_show_video": true,
+    "show_second_img": true,
+    "show_swatch_option": false,
+    "show_cart_button": false,
+    "show_quickview_button": true,
+    "show_wishlist_button": true,
+    "show_compare_button": false,
+    "show_review_badge": false,
+    "show_badge_sale": true,
+    "show_vendor": false,
+    "article_show_tags": false,
+    "article_show_date": true,
+    "article_show_excerpt": true,
+    "article_show_button": true,
+    "variant_option_design1": "button",
+    "variant_option_design2": "color",
+    "variant_option_display_name2": "",
+    "variant_option_design3": "color",
+    "product_colors": "red: #FF6961,\nyellow: #FDDA76,\nblack: #000000,\nblack band: #000000,\nblue: #8DB4D2,\ngreen: #C1E1C1,\npurple: #B19CD9,\nsilver: #EEEEEF,\nwhite: #FFFFFF,\nbrown: #836953,\nlight brown: #B5651D,\ndark turquoise: #23cddc,\norange: #FFB347,\ntan: #E9D1BF,\nviolet: #B490B0,\npink: #FFD1DC,\ngrey: #E0E0E0,\nsky: #96BDC6,\npale leaf: #CCD4BF,\nlight blue: #b1c5d4,\ndark grey: #aca69f,\nbeige: #EBE6DB,\nbeige band: #EED9C4,\ndark blue: #063e66,\ncream: #F1F2E2,\nlight pink: #FBCFCD,\nmint: #bedce3,\ndark gray: #3A3B3C,\nrosy brown: #c4a287,\nlight grey:#D3D3D3,\ncopper: #B87333,\nrose gold: #ECC5C0,\nnight blue: #151B54,\ncoral: #FF7F50,\nlight purple: #C6AEC7,\nivy green: #5b7763,\nsand: #f2d2a9,\npale grey: #878785,\nlead: #6c6b6c,\nheathered cashew: #bdb59f,\ncoca: #c7babd,\nheathered oat: #d3c1aa,\njean blue: #515d6d,\npelican: #e1d6c5,\ntoasted coconut: #9c7b58,\nnavy: #484d5b,\nheathered blue: #3c3c3c,\nheathered green: #534d36,\nheathered grey: #555c62,\nkalamata: #808487,\nslate grey: #484d5b,\ncharcoal: #8b8b8b,\nheathered charcoal: #8b8b8b",
+    "filter_color1": "Gingham",
+    "filter_color2": "flannel",
+    "filter_color3": "floral",
+    "social_sharing_blog": true,
+    "share_facebook": true,
+    "share_pinterest": true,
+    "contact_phone_number": "",
+    "contact_email": "hello@kerlora.com",
+    "social_twitter_link": "",
+    "social_twitter_label": "",
+    "social_facebook_link": "https://www.facebook.com/profile.php?id=61577826387674",
+    "social_facebook_label": "",
+    "social_pinterest_link": "",
+    "social_pinterest_label": "",
+    "social_instagram_link": "https://www.instagram.com/kerloraofficial",
+    "social_instagram_label": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_tiktok_link": "",
+    "cart_drawer_show_accelerated_button": true,
+    "discount_code_enable": true,
+    "cart_estimate_shipping": false,
+    "show_delivery_days": false,
+    "delivery_time_enable": false,
+    "wishlist_page": "wishlist",
+    "product_compare_page": "product-compare",
+    "show_agree_on_cart": false,
+    "show_agree_on_product": false,
+    "show_agree_on_register": false,
+    "show_cookie_consent": true,
+    "cookie_design_mode": true,
+    "cookie_consent_learnmore_link": "",
+    "cookie_consent_placement": "bottom",
+    "cookie_consent_theme": "black",
+    "instagram_token": "",
+    "custom_css": ".m-topbar a[href*=\"pinterest\"],\n.m-topbar a[href*=\"twitter\"], .m-topbar a[href*=\"snapchat\"], .m-topbar a[href*=\"youtube\"],.m-topbar a[href*=\"tiktok\"]  {\n\tdisplay: none;\n}\nbody .m-product-card__tag-name {\n  font-size: 12px;\n  font-weight: 500;\n  text-transform: capitalize;\n  padding: 4px 10px;\n  border-radius: 40px;\n}\n.m-icon-box--small {\n  border-top: 1px solid rgb(var(--color-border));\n}\n.m-icon-box--small .m-icon-box__heading {\n  line-height: 26px;\n  font-size: 18px;\n  margin-bottom: 6px;\n}\nbody .m-footer--block .social-media-links {\n  gap: 12px;\n  margin: 0;\n  padding: 5px 0;\n}\n\nbody .m-footer--block .social-media-links a {\n  color: #222;\n  width: 48px;\n  height: 48px;\n  padding: 0;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 50%;\n  background-color: #E9E9E9;\n  transition: all .3s;\n}\n\nbody .m-footer--block .social-media-links a:hover {\n  background-color: #222;\n  color: #fff;\n  box-shadow: 0 0 0 0.2rem #222;\n}\n\n/* Fix spacing between breadcrumb and title in collection header - 10px gap */\n.collection-page-header .breadcrumb {\n  margin-bottom: 10px !important;\n  line-height: 1.2;\n}\n\n.collection-page-header .page-title {\n  margin-top: 0 !important;\n  padding-top: 0 !important;\n  line-height: 1.2;\n  font-size: 22px;\n}\n\n.collection-page-header h1,\n.collection-page-header h2,\n.collection-page-header h3 {\n  margin-top: 0 !important;\n  padding-top: 0 !important;\n  line-height: 1.2;\n  font-size: 22px;\n}",
+    "enable_page_transition": true,
+    "show_variant_swatch_image": true,
+    "use_theme_currencies": true,
+    "theme_currencies": "USD | EUR | GBP | VND",
+    "content_for_index": [],
+    "blocks": {
+      "6868439170666289573": {
+        "type": "shopify://apps/foxkit-sales-boost/blocks/foxkit-theme-helper/13f41957-6b79-47c1-99a2-e52431f06fff",
+        "disabled": false,
+        "settings": {
+          "enable_ajax_atc": true
+        }
+      },
+      "14060646107696862457": {
+        "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "13768625480086291342": {
+        "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "disabled": false,
+        "settings": {}
+      },
+      "9674181886073616913": {
+        "type": "shopify://apps/mida-fraud-ip-blocker/blocks/blocker-script/09aab972-8c77-47b1-a9a0-4712e9f2405d",
+        "disabled": false,
+        "settings": {}
+      },
+      "2200952712151285029": {
+        "type": "shopify://apps/microsoft-clarity/blocks/brandAgents_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      },
+      "2567389343055140935": {
+        "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
+        "disabled": false,
+        "settings": {}
+      }
+    },
+    "color_schemes": {
+      "default": {
+        "settings": {
+          "background": "#ffffff",
+          "background_secondary": "#f5f5f5",
+          "background_gradient": "",
+          "text": "#272727",
+          "subtext": "#676767",
+          "heading_text": "#222222",
+          "button": "#000000",
+          "button_label": "#ffffff",
+          "outline_button_label": "#000000",
+          "button_hover": "#222222",
+          "button_text_hover": "#ffffff",
+          "price_sale": "#000000",
+          "price_regular": "#000000",
+          "form_field": "#ffffff",
+          "form_field_label": "#000000",
+          "tooltip": "#222222",
+          "tooltip_label": "#ffffff",
+          "border": "#272727"
+        }
+      },
+      "dark": {
+        "settings": {
+          "background": "#000000",
+          "background_secondary": "#f5f5f5",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "subtext": "#ffffff",
+          "heading_text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#222222",
+          "outline_button_label": "#ffffff",
+          "button_hover": "#ffffff",
+          "button_text_hover": "#222222",
+          "price_sale": "#e84e4e",
+          "price_regular": "#ffffff",
+          "form_field": "#ffffff",
+          "form_field_label": "#222222",
+          "tooltip": "#ffffff",
+          "tooltip_label": "#222222",
+          "border": "#4b4b4b"
+        }
+      },
+      "footer": {
+        "settings": {
+          "background": "#f6f5ec",
+          "background_secondary": "#f5f5f5",
+          "background_gradient": "",
+          "text": "#000000",
+          "subtext": "#666666",
+          "heading_text": "#222222",
+          "button": "#222222",
+          "button_label": "#ffffff",
+          "outline_button_label": "#222222",
+          "button_hover": "#222222",
+          "button_text_hover": "#ffffff",
+          "price_sale": "#e84e4e",
+          "price_regular": "#000000",
+          "form_field": "#ffffff",
+          "form_field_label": "#000000",
+          "tooltip": "#222222",
+          "tooltip_label": "#ffffff",
+          "border": "#dedede"
+        }
+      },
+      "badge-hot": {
+        "settings": {
+          "background": "#9a84c8",
+          "background_secondary": "#f5f5f5",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "subtext": "#ffffff",
+          "heading_text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#222222",
+          "outline_button_label": "#ffffff",
+          "button_hover": "#ffffff",
+          "button_text_hover": "#222222",
+          "price_sale": "#ffffff",
+          "price_regular": "#ffffff",
+          "form_field": "#ffffff",
+          "form_field_label": "#000000",
+          "tooltip": "#ffffff",
+          "tooltip_label": "#222222",
+          "border": "#dedede"
+        }
+      },
+      "badge-new": {
+        "settings": {
+          "background": "#49a594",
+          "background_secondary": "#f5f5f5",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "subtext": "#ffffff",
+          "heading_text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#222222",
+          "outline_button_label": "#ffffff",
+          "button_hover": "#ffffff",
+          "button_text_hover": "#222222",
+          "price_sale": "#ffffff",
+          "price_regular": "#ffffff",
+          "form_field": "#ffffff",
+          "form_field_label": "#000000",
+          "tooltip": "#ffffff",
+          "tooltip_label": "#222222",
+          "border": "#dedede"
+        }
+      },
+      "badge-sale": {
+        "settings": {
+          "background": "#da3f3f",
+          "background_secondary": "#f5f5f5",
+          "background_gradient": "",
+          "text": "#ffffff",
+          "subtext": "#ffffff",
+          "heading_text": "#ffffff",
+          "button": "#ffffff",
+          "button_label": "#222222",
+          "outline_button_label": "#ffffff",
+          "button_hover": "#ffffff",
+          "button_text_hover": "#222222",
+          "price_sale": "#ffffff",
+          "price_regular": "#ffffff",
+          "form_field": "#ffffff",
+          "form_field_label": "#000000",
+          "tooltip": "#ffffff",
+          "tooltip_label": "#222222",
+          "border": "#dedede"
+        }
+      },
+      "scheme-cee058e4-58e3-46aa-9af9-219dadc79066": {
+        "settings": {
+          "background": "#f4f4f4",
+          "background_secondary": "#f5f5f5",
+          "background_gradient": "",
+          "text": "#222222",
+          "subtext": "#666666",
+          "heading_text": "#222222",
+          "button": "#000000",
+          "button_label": "#ffffff",
+          "outline_button_label": "#000000",
+          "button_hover": "#222222",
+          "button_text_hover": "#ffffff",
+          "price_sale": "#e84e4e",
+          "price_regular": "#000000",
+          "form_field": "#f2f2f2",
+          "form_field_label": "#000000",
+          "tooltip": "#222222",
+          "tooltip_label": "#ffffff",
+          "border": "#eeeeee"
+        }
+      },
+      "scheme-09e5b5b4-774c-4b6c-8025-416ced49cc74": {
+        "settings": {
+          "background": "#dff8ef",
+          "background_secondary": "#f5f5f5",
+          "background_gradient": "",
+          "text": "#222222",
+          "subtext": "#666666",
+          "heading_text": "#222222",
+          "button": "#000000",
+          "button_label": "#ffffff",
+          "outline_button_label": "#000000",
+          "button_hover": "#222222",
+          "button_text_hover": "#ffffff",
+          "price_sale": "#e84e4e",
+          "price_regular": "#000000",
+          "form_field": "#ffffff",
+          "form_field_label": "#000000",
+          "tooltip": "#222222",
+          "tooltip_label": "#ffffff",
+          "border": "#eeeeee"
+        }
+      }
+    }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      ".m-section__subheading,.m-richtext__subtitle {font-weight: 500; font-size: 18px;}",
+      ".m-section__header {--m-section-header-spacing-bottom: 40px;}",
+      ".m-button--link {--btn-link-border: 1px;}",
+      "header {width: 100%; height: 80px; background: #fff; display: flex; align-items: center; justify-content: center; z-index: 2;}",
+      "header img {width: 170px; height: 34px; object-fit: contain;}",
+      " /* Mobile logo override */@media (max-width: 767px) {header img {width: 164px; height: 21px; }}",
+      " /* Video container fills remaining viewport */.video-bg {position: relative; width: 100%; height: calc(60vh - 50px); /* subtract header height */ overflow: hidden;}",
+      ".video-bg video {position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; pointer-events: none;}",
+      " /* Mobile video by default, desktop hidden */.desktop-video {display: none;}",
+      ".mobile-video {display: block;}",
+      " /* Swap videos at desktop breakpoint */@media (min-width: 768px) {.desktop-video {display: block; } .mobile-video {display: none; }}",
+      "footer {text-align: center;}",
+      "footer h2 {font-size: 1.125rem; /* ~18px */ font-weight: 500; margin-bottom: 1rem; color: #333;}",
+      ".social-icons {display: inline-flex; gap: 1.5rem; /* space between icons */}",
+      ".social-icons a {color: #333; font-size: 1.25rem; /* ~20px */ transition: color 0.2s;}",
+      ".social-icons a:hover {color: #0073e6; /* or your brand accent */}",
+      "@media screen and (min-width: 1024px) {.m-newsletter-section__header {margin-bottom: 8px; }}",
+      "@media screen and (min-width: 768px) {.template-product {overflow-x: hidden !important; }}"
+    ]
+  }
 }

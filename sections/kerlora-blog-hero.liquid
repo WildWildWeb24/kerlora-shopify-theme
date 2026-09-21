@@ -1,0 +1,287 @@
+{% liquid
+  assign container = section.settings.container
+  if container == 'w-full'
+    assign container = 'container-full'
+  endif
+%}
+
+<style>
+  #kerlora-blog-hero-{{ section.id }} {
+    --pt: {{ section.settings.padding_top }}px;
+    --pb: {{ section.settings.padding_bottom }}px;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} {
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__grid {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1.2fr;
+    gap: 16px;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-radius: 0;
+    min-height: 680px;
+    text-decoration: none;
+    color: #fff;
+    background: #111;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__media {
+    position: absolute;
+    inset: 0;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__media img,
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__placeholder {
+    background: linear-gradient(180deg, #d7d7d7 0%, #8d8d8d 100%);
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.45) 35%, rgba(0,0,0,0.08) 60%, rgba(0,0,0,0) 100%);
+    z-index: 2;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__content {
+    position: absolute;
+    left: 28px;
+    right: 28px;
+    bottom: 24px;
+    z-index: 3;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__title {
+    margin: 0 0 8px;
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 400;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__excerpt {
+    margin: 0;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.45;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card--large .kerlora-blog-hero__title {
+    font-size: clamp(32px, 3vw, 56px);
+    max-width: 85%;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card--large .kerlora-blog-hero__excerpt {
+    font-size: 18px;
+    max-width: 78%;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card--small .kerlora-blog-hero__title {
+    font-size: clamp(24px, 2vw, 40px);
+    max-width: 95%;
+  }
+
+  #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card--small .kerlora-blog-hero__excerpt {
+    font-size: 16px;
+    max-width: 95%;
+  }
+
+  @media screen and (max-width: 1200px) {
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__grid {
+      grid-template-columns: 1.6fr 1fr 1fr;
+    }
+
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card {
+      min-height: 560px;
+    }
+  }
+
+  @media screen and (max-width: 989px) {
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__grid {
+      grid-template-columns: 1fr;
+    }
+
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card {
+      min-height: 520px;
+    }
+
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card--large .kerlora-blog-hero__title,
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card--small .kerlora-blog-hero__title {
+      max-width: 100%;
+      font-size: clamp(28px, 5vw, 42px);
+    }
+
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card--large .kerlora-blog-hero__excerpt,
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card--small .kerlora-blog-hero__excerpt {
+      max-width: 100%;
+      font-size: 16px;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__content {
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+    }
+
+    #kerlora-blog-hero-{{ section.id }} .kerlora-blog-hero__card {
+      min-height: 420px;
+    }
+  }
+</style>
+
+<section id="kerlora-blog-hero-{{ section.id }}">
+  <div class="{{ container }}">
+    <div class="kerlora-blog-hero__grid">
+      {% for block in section.blocks limit: 3 %}
+        {% assign article = articles[block.settings.article] %}
+        {% assign custom_image = block.settings.custom_image %}
+        {% assign blog_url = '#' %}
+        {% assign blog_title = block.settings.custom_title %}
+        {% assign blog_excerpt = block.settings.custom_excerpt %}
+
+        {% if article != blank %}
+          {% assign blog_url = article.url %}
+          {% if blog_title == blank %}
+            {% assign blog_title = article.title %}
+          {% endif %}
+          {% if blog_excerpt == blank %}
+            {% assign blog_excerpt = article.excerpt | strip_html | truncate: 130 %}
+          {% endif %}
+          {% if blog_excerpt == blank %}
+            {% assign blog_excerpt = article.content | strip_html | truncate: 130 %}
+          {% endif %}
+        {% endif %}
+
+        {% assign image_to_show = custom_image %}
+        {% if image_to_show == blank and article != blank %}
+          {% assign image_to_show = article.image %}
+        {% endif %}
+
+        <a href="{{ blog_url }}" class="kerlora-blog-hero__card {% if forloop.first %}kerlora-blog-hero__card--large{% else %}kerlora-blog-hero__card--small{% endif %}" {{ block.shopify_attributes }}>
+          <div class="kerlora-blog-hero__media">
+            {% if image_to_show != blank %}
+              {{
+                image_to_show
+                | image_url: width: 1600
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '375, 550, 750, 1100, 1500, 1600',
+                  sizes: '(min-width: 990px) 33vw, 100vw',
+                  alt: blog_title
+              }}
+            {% else %}
+              <div class="kerlora-blog-hero__placeholder"></div>
+            {% endif %}
+          </div>
+
+          <div class="kerlora-blog-hero__overlay"></div>
+
+          <div class="kerlora-blog-hero__content">
+            {% if blog_title != blank %}
+              <h2 class="kerlora-blog-hero__title">{{ blog_title }}</h2>
+            {% endif %}
+
+            {% if blog_excerpt != blank %}
+              <p class="kerlora-blog-hero__excerpt">{{ blog_excerpt }}</p>
+            {% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Kerlora Blog Hero",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "container",
+      "label": "Container",
+      "default": "container",
+      "options": [
+        { "value": "container", "label": "Container" },
+        { "value": "w-full", "label": "Full width" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 20,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article_card",
+      "name": "Blog card",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Select article"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom image override"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom title override"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_excerpt",
+          "label": "Custom excerpt override"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Kerlora Blog Hero",
+      "blocks": [
+        { "type": "article_card" },
+        { "type": "article_card" },
+        { "type": "article_card" }
+      ]
+    }
+  ]
+}
+{% endschema %}

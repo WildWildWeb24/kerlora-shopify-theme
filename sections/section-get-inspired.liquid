@@ -1,0 +1,147 @@
+{{ 'component-get-inspired.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign gi_blog = section.settings.blog
+  assign gi_articles = gi_blog.articles
+  assign gi_featured = gi_articles.first
+-%}
+
+<div class="gi-section" id="gi-section-{{ section.id }}">
+  <div class="gi-content">
+
+    {%- if section.settings.heading != blank -%}
+      <div class="gi-section-head">
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="gi-grid">
+
+      <a href="{{ gi_featured.url | default: '#' }}" class="gi-featured">
+        {%- if gi_featured.image -%}
+          {{ gi_featured.image | image_url: width: 1200 | image_tag:
+            widths: '600, 900, 1200',
+            sizes: '(min-width: 900px) 55vw, 100vw',
+            loading: 'lazy',
+            class: 'gi-featured-image',
+            alt: gi_featured.image.alt | default: gi_featured.title
+          }}
+        {%- else -%}
+          <div class="gi-featured-image-placeholder"></div>
+        {%- endif -%}
+        <div class="gi-featured-text">
+          <div class="gi-featured-title">
+            {{ gi_featured.title | default: 'Most recent blog post title goes here' }}
+          </div>
+          <span class="gi-read-more">Read more</span>
+        </div>
+      </a>
+
+      <div class="gi-list-wrap">
+        <button type="button" class="gi-chevron gi-chevron-up" aria-label="View previous posts" data-gi-prev>
+          <svg viewBox="0 0 20 11"><path d="M2 9 L10 2 L18 9" stroke="#5F5F5F" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <div class="gi-list-viewport">
+          {%- assign gi_per_page = 4 -%}
+          {%- assign gi_total = gi_articles.size | minus: 1 -%}
+          {%- assign gi_page_count = gi_total | plus: gi_per_page | minus: 1 | divided_by: gi_per_page -%}
+
+          {%- if gi_articles.size > 1 -%}
+            {%- for p in (0..11) -%}
+              {%- assign gi_offset = p | times: gi_per_page | plus: 1 -%}
+              {%- if gi_offset >= gi_articles.size -%}{%- break -%}{%- endif -%}
+              <div class="gi-list-items{% if p == 0 %} is-active{% endif %}" data-gi-page="{{ p }}">
+                {%- for article in gi_articles offset: gi_offset limit: gi_per_page -%}
+                  <div class="gi-list-item">
+                    <a href="{{ article.url }}" class="gi-thumb">
+                      {%- if article.image -%}
+                        {{ article.image | image_url: width: 200 | image_tag:
+                          widths: '100, 150, 200',
+                          loading: 'lazy',
+                          alt: article.image.alt | default: article.title
+                        }}
+                      {%- endif -%}
+                    </a>
+                    <div class="gi-list-text">
+                      <a href="{{ article.url }}" class="gi-list-title">{{ article.title }}</a>
+                      <a href="{{ article.url }}" class="gi-read-more">Read more</a>
+                    </div>
+                  </div>
+                {%- endfor -%}
+              </div>
+            {%- endfor -%}
+          {%- else -%}
+            <div class="gi-list-items is-active" data-gi-page="0">
+              {%- for i in (1..4) -%}
+                <div class="gi-list-item">
+                  <div class="gi-thumb"></div>
+                  <div class="gi-list-text">
+                    <div class="gi-list-title">Placeholder post title, describing the blog briefly</div>
+                    <div class="gi-read-more">Read more</div>
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+        <button type="button" class="gi-chevron gi-chevron-down" aria-label="View more posts" data-gi-next>
+          <svg viewBox="0 0 20 11"><path d="M2 2 L10 9 L18 2" stroke="#5F5F5F" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var wrap = document.getElementById('gi-section-{{ section.id }}');
+    if (!wrap) return;
+    var pages = wrap.querySelectorAll('[data-gi-page]');
+    if (pages.length <= 1) return;
+    var current = 0;
+    var prevBtn = wrap.querySelector('[data-gi-prev]');
+    var nextBtn = wrap.querySelector('[data-gi-next]');
+
+    function show(index) {
+      pages.forEach(function (p, i) {
+        p.classList.toggle('is-active', i === index);
+      });
+    }
+
+    prevBtn.addEventListener('click', function () {
+      current = (current - 1 + pages.length) % pages.length;
+      show(current);
+    });
+    nextBtn.addEventListener('click', function () {
+      current = (current + 1) % pages.length;
+      show(current);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Get Inspired",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get Inspired"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog to pull posts from"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Get Inspired"
+    }
+  ]
+}
+{% endschema %}

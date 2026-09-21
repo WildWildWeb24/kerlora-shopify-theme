@@ -1,0 +1,78 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "page-contact",
+      "settings": {
+        "container": "container"
+      }
+    },
+    "contact-form": {
+      "type": "contact-form",
+      "blocks": {
+        "text-block-1": {
+          "type": "textblock",
+          "settings": {
+            "title": "Returns Address",
+            "content": "<p>25 Court Tree Drive, Eastchurch, Kent, ME12 4TR</p>"
+          }
+        },
+        "text-block-4": {
+          "type": "textblock",
+          "settings": {
+            "title": "Returns Policy",
+            "content": "<p>Please see <a href=\"https://kerlora.com/pages/returns-shipping-policy\"><span style=\"text-decoration:underline\">our returns policy here </span></a>for more information. </p>"
+          }
+        },
+        "textblock_htpdF7": {
+          "type": "textblock",
+          "settings": {
+            "title": "Office Address",
+            "content": "<p>Kerlora 2-3 Corner House Buildings Red Lion Square Hythe, Kent CT21 5BD United Kingdom</p>"
+          }
+        },
+        "text-block-2": {
+          "type": "textblock",
+          "settings": {
+            "title": "General Customer Enquiries, Press & Media",
+            "content": "<p>hello@kerlora.com</p>"
+          }
+        },
+        "text-block-3": {
+          "type": "socialmedia",
+          "settings": {
+            "title": "Let’s Connect"
+          }
+        }
+      },
+      "block_order": [
+        "text-block-1",
+        "text-block-4",
+        "textblock_htpdF7",
+        "text-block-2",
+        "text-block-3"
+      ],
+      "settings": {
+        "container": "container",
+        "title": "We would love to hear from you.",
+        "description": "<p>If you want to know more about Kerlora then please submit a question via the form below. </p>",
+        "show_name": true,
+        "show_phone": false,
+        "show_signup_email": false,
+        "animations": "inherit"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "contact-form"
+  ]
+}
