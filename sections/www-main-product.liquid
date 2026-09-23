@@ -1219,7 +1219,37 @@ updateVariant(findVariant());
       });
     }
     if (form && addButton) {
-      form.addEventListener('submit', (event) => { event.preventDefault(); if (!sizeWasSelected && sizeFieldset) { promptForSizeSelection(); return; } addButton.classList.add('is-loading'); addButton.disabled = true; fetch('/cart/add.js', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ items: [{ id: variantInput.value, quantity: 1 }] }) }).then((res) => (res.ok ? res.json() : Promise.reject(res))).then(async () => { const drawer = document.querySelector('m-cart-drawer'); if (drawer) { await drawer.getCart(); drawer.open(); } }).catch(() => form.submit()).finally(() => { addButton.classList.remove('is-loading'); const variant = findVariant(); addButton.disabled = !variant || !variant.available; }); });
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (!sizeWasSelected && sizeFieldset) {
+          promptForSizeSelection();
+          return;
+        }
+        addButton.classList.add('is-loading');
+        addButton.disabled = true;
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            items: [{ id: variantInput.value, quantity: 1 }],
+            sections: 'cart-drawer',
+            sections_url: window.location.pathname
+          })
+        })
+        .then((res) => (res.ok ? res.json() : Promise.reject(res)))
+        .then((e) => {
+          const drawer = document.querySelector('m-cart-drawer');
+          if (drawer) {
+            drawer.renderContents(e);
+          }
+        })
+        .catch(() => form.submit())
+        .finally(() => {
+          addButton.classList.remove('is-loading');
+          const variant = findVariant();
+          addButton.disabled = !variant || !variant.available;
+        });
+      });
     }
 
     const wishlistButton = section.querySelector('[data-wishlist-button]');

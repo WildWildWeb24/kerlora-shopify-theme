@@ -51,23 +51,57 @@ class MCartDrawer extends HTMLElement {
     if (this.classList.contains("m-cart--empty")) {
       this.classList.remove("m-cart--empty");
     }
+    const drawerItems = this.querySelector("m-cart-drawer-items");
+    if (drawerItems && drawerItems.classList.contains("m-cart--empty")) {
+      drawerItems.classList.remove("m-cart--empty");
+    }
+
     this.productId = e ? e.id : null;
+    let hasUpdatedFromSections = false;
+
     if (e && e.sections) {
       const drawerSection = e.sections["cart-drawer"] || e.sections["MinimogCartDrawer"] || e.sections["cart-template"];
-      this.getSectionsToRender().forEach((t => {
-        const el = t.selector ? document.querySelector(t.selector) : document.getElementById(t.id);
-        if (el) {
-          const sectionContent = e.sections[t.id] || drawerSection;
-          if (sectionContent) {
-            const innerHTML = this.getSectionInnerHTML(sectionContent, t.selector);
-            if (innerHTML !== null && innerHTML !== undefined) {
-              el.innerHTML = innerHTML;
+      if (drawerSection) {
+        const parsedDoc = (new DOMParser()).parseFromString(drawerSection, "text/html");
+        let totalCount = 0;
+        const qtyInputs = parsedDoc.querySelectorAll(".m-quantity__input");
+        qtyInputs.forEach(input => {
+          totalCount += parseInt(input.value || "1", 10);
+        });
+        if (totalCount === 0) {
+          totalCount = parsedDoc.querySelectorAll("[data-cart-item]").length;
+        }
+
+        this.getSectionsToRender().forEach((t => {
+          const el = t.selector ? document.querySelector(t.selector) : document.getElementById(t.id);
+          if (el) {
+            const sectionContent = e.sections[t.id] || drawerSection;
+            if (sectionContent) {
+              const innerHTML = this.getSectionInnerHTML(sectionContent, t.selector);
+              if (innerHTML !== null && innerHTML !== undefined) {
+                el.innerHTML = innerHTML;
+                hasUpdatedFromSections = true;
+              }
             }
           }
+        }));
+
+        if (hasUpdatedFromSections) {
+          this.classList.remove("m-cart--empty");
+          if (drawerItems) {
+            drawerItems.classList.remove("m-cart--empty");
+          }
+          if (totalCount > 0) {
+            this.updateCartCount(totalCount);
+          }
         }
-      }));
+      }
     }
-    this.onCartDrawerUpdate();
+
+    if (!hasUpdatedFromSections) {
+      this.onCartDrawerUpdate();
+    }
+
     setTimeout((() => {
       this.open();
     }));
