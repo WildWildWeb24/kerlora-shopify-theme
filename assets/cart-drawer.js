@@ -61,12 +61,16 @@ class MCartDrawer extends HTMLElement {
     }
     this.productId = e ? e.id : null;
     if (e && e.sections) {
+      const drawerSection = e.sections["cart-drawer"] || e.sections["MinimogCartDrawer"] || e.sections["cart-template"];
       this.getSectionsToRender().forEach((t => {
         const el = t.selector ? document.querySelector(t.selector) : document.getElementById(t.id);
-        if (el && e.sections[t.id]) {
-          const innerHTML = this.getSectionInnerHTML(e.sections[t.id], t.selector);
-          if (innerHTML !== null && innerHTML !== undefined) {
-            el.innerHTML = innerHTML;
+        if (el) {
+          const sectionContent = e.sections[t.id] || drawerSection;
+          if (sectionContent) {
+            const innerHTML = this.getSectionInnerHTML(sectionContent, t.selector);
+            if (innerHTML !== null && innerHTML !== undefined) {
+              el.innerHTML = innerHTML;
+            }
           }
         }
       }));
@@ -94,7 +98,7 @@ class MCartDrawer extends HTMLElement {
 
   onCartDrawerUpdate(e = true) {
     const route = typeof MinimogSettings !== "undefined" ? MinimogSettings.routes.cart : "/cart";
-    fetch(`${route}?section_id=cart-drawer`)
+    fetch(`${route}?section_id=cart-drawer&t=${Date.now()}`)
       .then((res => res.text()))
       .then((t => {
         this.getSectionsToRender().forEach((r => {
