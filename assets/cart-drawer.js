@@ -17,16 +17,8 @@ class MCartDrawer extends HTMLElement {
   }
 
   setHeaderCartIconAccessibility() {
-    document.querySelectorAll(".m-cart-icon-bubble").forEach((e => {
-      e.setAttribute("role", "button");
-      e.setAttribute("aria-haspopup", "dialog");
-      e.addEventListener("click", (t => {
-        if (typeof MinimogSettings !== "undefined" && MinimogSettings.enable_cart_drawer) {
-          t.preventDefault();
-          this.open(e);
-        }
-      }));
-    }));
+    // Header cart icon redirects directly to the cart page (/cart)
+    // Drawer opens only when adding products to cart
   }
 
   open(e) {
