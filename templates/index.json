@@ -72,6 +72,14 @@
         "overlay_opacity": 0
       }
     },
+    "custom_liquid_LWFjh6": {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<div class=\"custom-image-banner-desktop\">\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/prestige-winner-desktop-01.webp?v=1790321871\"\n    alt=\"House of Kiyaara\"\n    loading=\"lazy\"\n    width=\"1600\"\n    height=\"900\"\n  >\n</div>\n\n<style>\n  .custom-image-banner-desktop {\n    width: 100%;\n    text-align: center;\n    overflow: hidden;\n  }\n\n  .custom-image-banner-desktop img {\n    display: block;\n    width: 100%;\n    height: auto;\n    margin: 0 auto;\n  }\n\n  @media screen and (max-width: 749px) {\n    .custom-image-banner-desktop {\n      display: none;\n    }\n  }\n</style>",
+        "custom_class": ""
+      }
+    },
     "empty_space_z3zLLq": {
       "type": "empty-space",
       "name": "Empty space",
@@ -873,6 +881,7 @@
   "order": [
     "17828901870699da93",
     "www_hero_banner_tqeXpA",
+    "custom_liquid_LWFjh6",
     "empty_space_z3zLLq",
     "mix_match_collection_LziRCC",
     "www_image_with_story_RzcXfx",
