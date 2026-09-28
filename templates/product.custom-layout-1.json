@@ -98,6 +98,7 @@
         },
         "custom_image_B4GnGj": {
           "type": "custom_image",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/kerlora-limited-time-offer-atc.webp",
             "max_width": 400,

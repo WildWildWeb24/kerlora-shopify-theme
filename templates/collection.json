@@ -62,6 +62,7 @@
     },
     "image_with_text_2_m3D9ir": {
       "type": "image-with-text-2",
+      "disabled": true,
       "custom_css": [
         "@media screen and (max-width: 767px) {.m-hero--content-stack {margin-bottom: 0 !important; } .hero-mobile-bottom .m-hero__inner {padding-bottom: 5px !important; }}"
       ],

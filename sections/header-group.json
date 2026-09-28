@@ -16,6 +16,7 @@
       "blocks": {
         "item_dGj4GU": {
           "type": "item",
+          "disabled": true,
           "settings": {
             "image": "shopify://shop_images/Kerlora-limited-time-offer-announcement-bar.webp",
             "image_mobile": "shopify://shop_images/Kerlora-limited-time-offer-announcement-bar-mobile.webp",
