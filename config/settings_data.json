@@ -127,6 +127,11 @@
         "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
         "disabled": false,
         "settings": {}
+      },
+      "17720313207221957067": {
+        "type": "shopify://apps/cosmo-customer-account/blocks/app-embed/019e7d6e-6cac-73ec-b4a5-1a7f6b8eb91a",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
