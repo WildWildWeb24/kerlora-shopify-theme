@@ -36,7 +36,7 @@
           "type": "custom_html",
           "settings": {
             "title": "Shop",
-            "html": "<ul style=\"list-style: none; padding: 0; margin: 0; line-height:28px\">\n  <li><a href=\"https://kerlora.com/collections/outerwear\">Outerwear</a></li>\n  <li><a href=\"https://kerlora.com/collections/all-tops\">Tops</a></li>\n  <li><a href=\"https://kerlora.com/collections/active-bottoms\">Bottom</a></li>\n  <li><a href=\"https://kerlora.com/collections/accessories\">Accessories</a></li>\n  <li><a href=\"https://kerlora.com/collections/loungewear\">Loungewear</a></li>\n</ul>",
+            "html": "<ul style=\"list-style: none; padding: 0; margin: 0; line-height:28px\">\n  <li><a href=\"https://kerlora.com/collections/outerwear\">Outerwear</a></li>\n  <li><a href=\"https://kerlora.com/collections/all-tops\">Tops</a></li>\n  <li><a href=\"https://kerlora.com/collections/active-bottoms\">Bottoms</a></li>\n  <li><a href=\"https://kerlora.com/collections/accessories\">Accessories</a></li>\n  <li><a href=\"https://kerlora.com/collections/loungewear\">Loungewear</a></li>\n</ul>",
             "width": "25%",
             "order_first": false,
             "open_default": false
