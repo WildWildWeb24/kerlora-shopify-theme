@@ -401,6 +401,7 @@
     },
     "mix_match_collection_HHA3Dt": {
       "type": "mix-match-collection",
+      "disabled": true,
       "name": "KER-Product-Listing",
       "settings": {
         "heading": "Mix & match sets",
