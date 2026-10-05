@@ -881,10 +881,6 @@
         "padding_bottom": 0,
         "custom_class": ""
       }
-    },
-    "1774168858fefc0699": {
-      "type": "_blocks",
-      "settings": {}
     }
   },
   "order": [
@@ -909,7 +905,6 @@
     "mix_match_collection_d3V6Hh",
     "editorial_three_panel_banner_NpfxqY",
     "icon_box_nW3pdi",
-    "176423030978c3c507",
-    "1774168858fefc0699"
+    "176423030978c3c507"
   ]
 }
