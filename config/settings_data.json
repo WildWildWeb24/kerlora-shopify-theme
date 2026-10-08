@@ -39,10 +39,6 @@
     "show_second_img": true,
     "show_swatch_option": false,
     "show_cart_button": false,
-    "show_free_shipping_goal": true,
-    "free_shipping_threshold": 80,
-    "free_shipping_eligible_text": "Nice! You're eligible for free shipping.",
-    "free_shipping_ineligible_text": "Add {{ amount }} more to get free shipping.",
     "show_quickview_button": true,
     "show_wishlist_button": true,
     "show_compare_button": false,
@@ -82,6 +78,10 @@
     "cart_estimate_shipping": false,
     "show_delivery_days": false,
     "delivery_time_enable": false,
+    "show_free_shipping_goal": true,
+    "free_shipping_threshold": 50,
+    "free_shipping_eligible_text": "Nice! You're eligible for free shipping.",
+    "free_shipping_ineligible_text": "Add {{ amount }} more to get free shipping.",
     "wishlist_page": "wishlist",
     "product_compare_page": "product-compare",
     "show_agree_on_cart": false,
@@ -129,11 +129,6 @@
       },
       "2567389343055140935": {
         "type": "shopify://apps/microsoft-clarity/blocks/clarity_js/31c3d126-8116-4b4a-8ba1-baeda7c4aeea",
-        "disabled": false,
-        "settings": {}
-      },
-      "17720313207221957067": {
-        "type": "shopify://apps/cosmo-customer-account/blocks/app-embed/019e7d6e-6cac-73ec-b4a5-1a7f6b8eb91a",
         "disabled": false,
         "settings": {}
       }

@@ -16,18 +16,44 @@
         "subtitle": "Your saved favourites, all in one place.",
         "show_back_link": true,
         "back_link_text": "Continue shopping",
-        "show_share_button": true,
-        "share_button_text": "Share wishlist"
+        "show_share_button": false,
+        "share_button_text": "Share wishlist",
+        "heading_color": "#111111",
+        "subtitle_color": "#666666",
+        "share_btn_bg": "rgba(0,0,0,0)",
+        "share_btn_text_color": "#111111",
+        "share_btn_border_color": "#111111",
+        "empty_heading": "There are no products in your wishlist",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "recommendations": {
       "type": "mix-match-collection",
+      "name": "You may also like",
       "settings": {
         "heading": "You may also like",
         "text": "Check out product recommendations tailored to you.",
-        "collection": "all",
+        "collection": "bestsellers",
         "products_limit": 4,
-        "button_text": "Explore All Products"
+        "button_text": "",
+        "heading_size": 30,
+        "mobile_heading_size": 25,
+        "text_size": 16,
+        "mobile_text_size": 15,
+        "product_title_size": 14,
+        "price_size": 14,
+        "product_gap": 8,
+        "side_padding": 32,
+        "mobile_side_padding": 16,
+        "padding_top": 56,
+        "padding_bottom": 56,
+        "background": "#FFFFFF",
+        "text_color": "#555555",
+        "button_bg": "#111111",
+        "button_text_color": "#ffffff",
+        "button_radius": 24,
+        "button_font_size": 14
       }
     }
   },

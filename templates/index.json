@@ -48,7 +48,7 @@
       "name": "WWW Hero Banner",
       "settings": {
         "desktop_image": "shopify://shop_images/kerlora-homepage-hero-desktop.webp",
-        "mobile_image": "shopify://shop_images/kerlora-activewear-womens-shop-mobile-comp.webp",
+        "mobile_image": "shopify://shop_images/kerlora-homepage-hero-mobile.webp",
         "heading": "Designed for the body you have today.",
         "button_label": "Shop the collection",
         "button_link": "shopify://collections/shop-all",
@@ -72,7 +72,7 @@
         "overlay_opacity": 0
       }
     },
-    "custom_liquid_LWFjh6": {
+    "custom_liquid_fmwPGC": {
       "type": "custom-liquid",
       "name": "Award Banner Desktop",
       "settings": {
@@ -80,7 +80,7 @@
         "custom_class": ""
       }
     },
-    "custom_liquid_3wCdUe": {
+    "custom_liquid_r7xUeq": {
       "type": "custom-liquid",
       "name": "Award Banner Mobile",
       "settings": {
@@ -286,17 +286,17 @@
         "ai_gen_block_804f336_hN8J8m": {
           "type": "ai_gen_block_804f336",
           "settings": {
-            "image_1": "shopify://shop_images/kerlora-shop-shorts.jpg",
-            "collection_1": "shorts",
-            "heading_1": "Summer shorts to sweat in.",
+            "image_1": "shopify://shop_images/shop_loungewear.webp",
+            "collection_1": "loungewear",
+            "heading_1": "For crisp mornings and everything after.",
             "text_1": "",
-            "button_label_1": "Shop Shorts",
+            "button_label_1": "Shop Loungewear",
             "button_link_1": "shopify://collections/shorts",
-            "image_2": "shopify://shop_images/kerlora-product-category-sport-bra.jpg",
-            "collection_2": "sports-bra",
-            "heading_2": "BRA-Vo! support & style in one. ",
+            "image_2": "shopify://shop_images/Shop_performance.webp",
+            "collection_2": "performance",
+            "heading_2": "Whatever moves you.",
             "text_2": "",
-            "button_label_2": "Shop Sports Bras",
+            "button_label_2": "Shop Performance",
             "button_link_2": "shopify://collections/sports-bra",
             "desktop_width_percent": 100,
             "column_gap": 10,
@@ -619,9 +619,101 @@
     "real_customer_stories_Q97E8p": {
       "type": "real-customer-stories",
       "blocks": {
-        "judge_me_reviews_preview_badge_7XiUbE": {
-          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {}
+        "story_card_EpMnjr": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/sharon.webp",
+            "star_rating": 5,
+            "quote": "If you want a set that turns heads while feeling like a literal hug, look no further. I wore mine to a sound healing session and was stopped by almost everyone there asking about them.\nAs a UK size 16, finding loungewear that makes me feel genuinely confident and stylish can be a challenge, but the cut is so flattering. The fleece lining kept me perfectly cozy during meditation, it felt like being on a cloud.",
+            "customer_name": "Sharon Varker",
+            "customer_location": "",
+            "tagged_product": "grey-wide-leg-fleece-lined-lounge-joggers",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
+        "story_card_Cwcmre": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/vickie.webp",
+            "star_rating": 5,
+            "quote": "I absolutely love these gym leggings! They stay firmly in place while exercising and don’t roll down or need constant adjusting, even during more intense workouts. They’re comfortable, stretchy, and supportive without feeling too tight. Definitely one of the best pairs of leggings I’ve tried for the gym!",
+            "customer_name": "Vickie",
+            "customer_location": "",
+            "tagged_product": "black-essential-leggings",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
+        "story_card_aYkTUp": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/WhatsApp_Image_2026-10-06_at_01.12.43.jpg",
+            "star_rating": 5,
+            "quote": "This set is my absolute favourite. Fits perfectly and so comfy, have received lots of compliments when wearing it!",
+            "customer_name": "Sarah Jayne",
+            "customer_location": "",
+            "tagged_product": "grey-cropped-fleece-lined-lounge-sweatshirt",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
+        "story_card_JT98iJ": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/WhatsApp_Image_2026-10-05_at_17.48.41.jpg",
+            "star_rating": 5,
+            "quote": "I’m In love with this sweatshirt. It really lives up to its name “classic” — the cut is simple and timeless, easy to pair with jeans or a skirt, or leggings and it skims the hips just right without pulling or clinging. The fabric feels rich and buttery, and it’s vibrant! The red is bold enough to lift an outfit, but not too “shouty” . As a middle-aged woman, I’m not one for loud logos or branding plastered all over clothes: I love that the only badge of branding is a subtle little tab on the side seam — discreet, elegant and perfectly in keeping with a more refined style.\n\nIt’s comfortable enough for a quick gym drop-in, a weekend walk, but equally easy to dress up a little if I fancy a casual-chic coffee date. In short: classy, comfy and practical , it’s exactly what I wanted. I’d happily recommend it to anyone who likes their casual wear to feel grown-up but not fussy 🫶♥️",
+            "customer_name": "Emma H.",
+            "customer_location": "",
+            "tagged_product": "red-classic-sweatshirt",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
+        "story_card_6i4eHf": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/WhatsApp_Image_2026-10-05_at_16.51.21.jpg",
+            "star_rating": 5,
+            "quote": "I bought these shorts not only for daily exercise but also for my recent holiday (I knew there would be a lot of walking). They are so light and really comfortable to wear. I would highly recommend.",
+            "customer_name": "Sara",
+            "customer_location": "",
+            "tagged_product": "tangerine-4-high-rise-shorts-with-liner",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
+        "story_card_rwLHkz": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/Gemma.webp",
+            "star_rating": 5,
+            "quote": "This gym set is so comfortable! I love the style/fit and I had lots of compliments on the colour. It is the perfect gym outfit or even just casual wear. I have worn to gym & gym class and it is squat-proof! Really nice supportive waistband that didn’t roll down at all.\nThe material is soft and comfortable and feels durable. I will be purchasing in every colour!! Thank you!!!",
+            "customer_name": "Gemma Winter",
+            "customer_location": "",
+            "tagged_product": "plum-seamless-leggings-with-bum-scrunch",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
+        "story_card_8fiye4": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/Clara.webp",
+            "star_rating": 5,
+            "quote": "Washes very well, lovely colour, very supportive! Absolutely love this bra, always reach for it whenever I have a training session. Great for running and strength training, Colour is so pretty and the rib detailing is really different to what I see from other brands.\n\nVery flexible and doesn't dig in at all and most importantly, washes extremely well. I have washed it about 10 times and it still looks like the day I bought it.\n\nLooking to get the plum one next time or the matching leggings!",
+            "customer_name": "Clara",
+            "customer_location": "",
+            "tagged_product": "lazuli-blue-seamless-racer-back-sports-bra",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
+        "story_card_cqPJL6": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/emma_dighton.webp",
+            "star_rating": 5,
+            "quote": "I rode in these today and wow 😮 so amazing. Great feel, did not move, no rubbing. All horse riders should try these ! ❤️❤️❤️",
+            "customer_name": "Emma Dighton",
+            "customer_location": "",
+            "tagged_product": "plum-seamless-leggings-with-bum-scrunch",
+            "demo_product_title": "Serene Sports Bra"
+          }
         },
         "story_card_HgPBpV": {
           "type": "story_card",
@@ -655,7 +747,7 @@
             "quote": "Quick and easy delivery",
             "customer_name": "Naz",
             "customer_location": "LONDON, UK",
-            "tagged_product": "black-tangerine-running-set",
+            "tagged_product": "charcoal-sand-washed-modal-mix-half-zip-sweatshirt",
             "demo_product_title": "Activewear Set"
           }
         },
@@ -667,13 +759,20 @@
             "quote": "Love this top! Very comfortable and holds well",
             "customer_name": "Lorraine Calder",
             "customer_location": "LONDON, UK",
-            "tagged_product": "plum-seamless-racer-back-sports-bra",
+            "tagged_product": "lazuli-blue-seamless-racer-back-sports-bra",
             "demo_product_title": "Plum Seamless Racer Back Sports Bra"
           }
         }
       },
       "block_order": [
-        "judge_me_reviews_preview_badge_7XiUbE",
+        "story_card_EpMnjr",
+        "story_card_Cwcmre",
+        "story_card_aYkTUp",
+        "story_card_JT98iJ",
+        "story_card_6i4eHf",
+        "story_card_rwLHkz",
+        "story_card_8fiye4",
+        "story_card_cqPJL6",
         "story_card_HgPBpV",
         "story_card_debbie",
         "story_card_naz",
@@ -685,7 +784,7 @@
         "text_color": "#1c1b1a",
         "heading_color": "#111111",
         "card_border_color": "#eae6df",
-        "subheading": "REAL PEOPLE. REAL MOVEMENT.",
+        "subheading": "",
         "heading": "Loved by the Kerlora Community",
         "padding_top": 20,
         "padding_bottom": 20,
@@ -694,6 +793,9 @@
     },
     "blog_posts_nbzkXi": {
       "type": "blog-posts",
+      "custom_css": [
+        ".m-article-card__tags,.m-article-card__date {display: none;}"
+      ],
       "name": "Blog posts",
       "settings": {
         "heading": "Welcome to the community",
@@ -758,12 +860,12 @@
       ],
       "name": "Press Releases",
       "settings": {
-        "subheading": "IN THE NEWS",
+        "subheading": "",
         "heading": "Press Releases & Media",
         "text": "Discover our latest media features and announcements.",
-        "header_alignment": "center",
+        "header_alignment": "left",
         "read_more_text": "Read Full Release",
-        "button_text": "View All Press Coverage",
+        "button_text": "",
         "button_link": "",
         "image_aspect_ratio": "960 / 350",
         "max_width": 1320,
@@ -916,7 +1018,7 @@
           "settings": {
             "image_by_url": "",
             "title": "Free Delivery",
-            "description": "<p>On all orders over £50</p>",
+            "description": "<p>On all orders over £80</p>",
             "link": "",
             "button_label": "",
             "button_link": "",
@@ -942,7 +1044,7 @@
           "settings": {
             "image_by_url": "",
             "title": "Flexible Payment",
-            "description": "<p>Pay with credit card, in full or in installments&nbsp;</p>",
+            "description": "<p>Pay with credit card, in full or in installments </p>",
             "link": "",
             "button_label": "",
             "button_link": "",
@@ -956,6 +1058,7 @@
         "iconbox_3yW6Xh",
         "iconbox_dQYYDy"
       ],
+      "disabled": true,
       "name": "Featured promotion",
       "settings": {
         "heading": "",
@@ -1008,6 +1111,7 @@
       "block_order": [
         "forms_inline_fHcJjf"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "heading_size": "h3",
@@ -1019,13 +1123,18 @@
         "padding_bottom": 0,
         "custom_class": ""
       }
+    },
+    "1774168858fefc0699": {
+      "type": "_blocks",
+      "disabled": true,
+      "settings": {}
     }
   },
   "order": [
     "17828901870699da93",
     "www_hero_banner_tqeXpA",
-    "custom_liquid_LWFjh6",
-    "custom_liquid_3wCdUe",
+    "custom_liquid_fmwPGC",
+    "custom_liquid_r7xUeq",
     "empty_space_z3zLLq",
     "mix_match_collection_LziRCC",
     "www_image_with_story_RzcXfx",
@@ -1045,6 +1154,7 @@
     "mix_match_collection_d3V6Hh",
     "editorial_three_panel_banner_NpfxqY",
     "icon_box_nW3pdi",
-    "176423030978c3c507"
+    "176423030978c3c507",
+    "1774168858fefc0699"
   ]
 }

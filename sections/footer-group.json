@@ -46,9 +46,9 @@
       ],
       "name": "Benefits Bar",
       "settings": {
-        "bg_color": "#FAF8F5",
-        "text_color": "#1C1B1A",
-        "border_color": "#EAE6DF",
+        "bg_color": "#faf8f5",
+        "text_color": "#1c1b1a",
+        "border_color": "#eae6df",
         "padding_top": 24,
         "padding_bottom": 24
       }
@@ -61,7 +61,7 @@
           "settings": {
             "title": "Shop",
             "menu": "",
-            "custom_links": "Outerwear  \nTops  \nActive Bottom  \nAccessories  \nLoungewear"
+            "custom_links": "Outerwear  \nTops  \nBottoms  \nAccessories  \nLoungewear"
           }
         },
         "menu_column_8j4VRn": {
@@ -69,7 +69,7 @@
           "settings": {
             "title": "Kerlora",
             "menu": "",
-            "custom_links": "About Us  \nContact  \nBlog"
+            "custom_links": "About Us  \nContact  \nOur Stories\nCommunity"
           }
         },
         "menu_column_4hyQpX": {
@@ -88,19 +88,19 @@
       ],
       "name": "Footer Community & Menu",
       "settings": {
-        "bg_color": "#F6F5EC",
-        "text_color": "#1C1B1A",
+        "bg_color": "#f6f5ec",
+        "text_color": "#1c1b1a",
         "heading_color": "#111111",
-        "link_color": "#4A4A4A",
+        "link_color": "#4a4a4a",
         "link_hover_color": "#000000",
-        "border_color": "#EAE6DF",
+        "border_color": "#eae6df",
         "brand_subtitle": "KERLORA",
         "newsletter_title": "Join the Kerlora Community",
         "newsletter_desc": "Be the first to know about new collections, exclusive offers and upcoming events.",
         "newsletter_placeholder": "Your email address",
         "newsletter_btn_text": "Sign Up",
-        "btn_bg": "#1C1B1A",
-        "btn_text": "#FFFFFF",
+        "btn_bg": "#1c1b1a",
+        "btn_text": "#ffffff",
         "newsletter_disclaimer": "By signing up, you agree to our Privacy Policy. You can unsubscribe at any time.",
         "padding_top": 48,
         "padding_bottom": 48
@@ -164,13 +164,13 @@
       ],
       "name": "Footer Banner & Socials",
       "settings": {
-        "bg_color": "#F6F5EC",
-        "text_color": "#1C1B1A",
+        "bg_color": "#f6f5ec",
+        "text_color": "#1c1b1a",
         "heading_color": "#111111",
-        "link_color": "#4A4A4A",
-        "border_color": "#EAE6DF",
-        "banner_image": "shopify://shop_images/Kerlora-Charcoal_Sand_Washed_Modal_Mix_Half_Zip_Sweatshirt_2.jpg",
-        "banner_heading": "Move your way \nFinding strength in movement, Not perfection.",
+        "link_color": "#4a4a4a",
+        "border_color": "#eae6df",
+        "banner_image": "shopify://shop_images/footer-banner-extra-wide.webp",
+        "banner_heading": "Find strength in movement\nNot perfection",
         "social_heading": "Follow along",
         "social_desc": "Inspiration. Movement. Real life.",
         "quote_text": "Premium athleisure wear made for real life.",
@@ -180,13 +180,27 @@
     },
     "footer_trust_copyright_qLkahG": {
       "type": "footer-trust-copyright",
+      "blocks": {
+        "judge_me_reviews_trust_badge_AGhexE": {
+          "type": "shopify://apps/judge-me-reviews/blocks/trust_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "structure": "default",
+            "color": "default",
+            "star": "default",
+            "alignment": "left"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_trust_badge_AGhexE"
+      ],
       "name": "Footer Trust & Copyright",
       "settings": {
-        "bg_color": "#F6F5EC",
-        "text_color": "#1C1B1A",
+        "bg_color": "#f6f5ec",
+        "text_color": "#1c1b1a",
         "heading_color": "#111111",
-        "border_color": "#EAE6DF",
-        "jm_rating_text": "Based on 99 reviews",
+        "border_color": "#eae6df",
+        "jm_rating_text": "",
         "copyright_text": "© Kerlora 2026. All rights reserved.",
         "registration_text": "Kerlora Ltd. Registered in England & Wales, Company No. 16277114.",
         "link_terms": "",
@@ -221,7 +235,7 @@
           "type": "custom_html",
           "settings": {
             "title": "Shop",
-            "html": "<ul style=\"list-style: none; padding: 0; margin: 0; line-height:28px\">\n  <li><a href=\"https://kerlora.com/collections/outerwear\">Outerwear</a></li>\n  <li><a href=\"https://kerlora.com/collections/all-tops\">Tops</a></li>\n  <li><a href=\"https://kerlora.com/collections/active-bottoms\">Bottoms</a></li>\n  <li><a href=\"https://kerlora.com/collections/accessories\">Accessories</a></li>\n  <li><a href=\"https://kerlora.com/collections/loungewear\">Loungewear</a></li>\n</ul>",
+            "html": "<ul style=\"list-style: none; padding: 0; margin: 0; line-height:28px\">\n  <li><a href=\"https://kerlora.com/collections/outerwear\">Outerwear</a></li>\n  <li><a href=\"https://kerlora.com/collections/all-tops\">Tops</a></li>\n  <li><a href=\"https://kerlora.com/collections/active-bottoms\">Active Bottom</a></li>\n  <li><a href=\"https://kerlora.com/collections/accessories\">Accessories</a></li>\n  <li><a href=\"https://kerlora.com/collections/loungewear\">Loungewear</a></li>\n</ul>",
             "width": "25%",
             "order_first": false,
             "open_default": false
