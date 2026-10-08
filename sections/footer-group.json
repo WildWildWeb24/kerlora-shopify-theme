@@ -60,7 +60,7 @@
           "type": "menu_column",
           "settings": {
             "title": "Shop",
-            "menu": "",
+            "menu": "shop",
             "custom_links": "Outerwear  \nTops  \nBottoms  \nAccessories  \nLoungewear"
           }
         },
@@ -68,7 +68,7 @@
           "type": "menu_column",
           "settings": {
             "title": "Kerlora",
-            "menu": "",
+            "menu": "kerlora",
             "custom_links": "About Us  \nContact  \nOur Stories\nCommunity"
           }
         },
@@ -76,7 +76,7 @@
           "type": "menu_column",
           "settings": {
             "title": "Policies",
-            "menu": "",
+            "menu": "policies",
             "custom_links": "Returns Policy  \nShipping Policy  \nPrivacy Policy  \nTerms & Conditions  \nFAQs"
           }
         }
