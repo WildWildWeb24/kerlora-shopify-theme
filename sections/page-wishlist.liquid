@@ -1,13 +1,80 @@
-{% render 'page-title', title: page.title, container: 'container' %}
+<style>
+  #wishlist-template-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | default: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 0 }}px;
+  }
+  {% if section.settings.heading_color != blank %}
+    #wishlist-template-{{ section.id }} .kerlora-wishlist-title {
+      color: {{ section.settings.heading_color }} !important;
+    }
+  {% endif %}
+  {% if section.settings.subtitle_color != blank %}
+    #wishlist-template-{{ section.id }} .kerlora-wishlist-subtitle {
+      color: {{ section.settings.subtitle_color }} !important;
+    }
+  {% endif %}
+  {% if section.settings.share_btn_bg != blank %}
+    #wishlist-template-{{ section.id }} .kerlora-share-wishlist-btn {
+      background-color: {{ section.settings.share_btn_bg }} !important;
+    }
+  {% endif %}
+  {% if section.settings.share_btn_text_color != blank %}
+    #wishlist-template-{{ section.id }} .kerlora-share-wishlist-btn {
+      color: {{ section.settings.share_btn_text_color }} !important;
+    }
+  {% endif %}
+  {% if section.settings.share_btn_border_color != blank %}
+    #wishlist-template-{{ section.id }} .kerlora-share-wishlist-btn {
+      border-color: {{ section.settings.share_btn_border_color }} !important;
+    }
+  {% endif %}
+</style>
 
-<div class="container">
+<div id="wishlist-template-{{ section.id }}" class="container">
+  <!-- Wishlist Header Area -->
+  <div class="kerlora-wishlist-header">
+    <div class="kerlora-wishlist-header-left">
+      {% if section.settings.show_back_link %}
+        <a href="{{ routes.all_products_collection_url }}" class="kerlora-cart-back">
+          &larr; {{ section.settings.back_link_text | default: 'Continue shopping' }}
+        </a>
+      {% endif %}
+      <h1 class="kerlora-wishlist-title">
+        {{ section.settings.heading | default: 'Wishlist' }}
+      </h1>
+      <!-- Hidden counter span so wishlist.js updates silently without showing count in title -->
+      <span class="m-wishlist-count m:hidden" style="display:none;">0</span>
+      {% if section.settings.subtitle != blank %}
+        <p class="kerlora-wishlist-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+    {% if section.settings.show_share_button %}
+      <div class="kerlora-wishlist-header-right">
+        <button
+          type="button"
+          class="kerlora-share-wishlist-btn"
+          onclick="navigator.clipboard ? navigator.clipboard.writeText(window.location.href).then(function(){alert('Wishlist link copied to clipboard!');}) : alert('Link: ' + window.location.href);"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:6px;">
+            <circle cx="18" cy="5" r="3"></circle>
+            <circle cx="6" cy="12" r="3"></circle>
+            <circle cx="18" cy="19" r="3"></circle>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+          </svg>
+          {{ section.settings.share_button_text | default: 'Share wishlist' }}
+        </button>
+      </div>
+    {% endif %}
+  </div>
+
   <div class="m-page-content m-wishlist-page-content m-mixed-layout m-mixed-layout--mobile-scroll">
-    <div class="m-wishlist-page-content__wrapper m-mixed-layout__inner m:grid m:grid-2-cols md:m:grid-3-cols xl:m:grid-4-cols"></div>
+    <div class="m-wishlist-page-content__wrapper m-mixed-layout__inner m:grid m:grid-2-cols md:m:grid-3-cols xl:m:grid-4-cols kerlora-wishlist-grid"></div>
   </div>
 
   <div class="m-page-content m-wishlist-no-products m:hidden">
-    <h3>
-      {{ 'layout.wishlist.no_products' | t }}
+    <h3 class="m:text-center m:text-xl">
+      {{ section.settings.empty_heading | default: 'There are no products in your wishlist' }}
       <a class="m-text-link" href="{{ routes.all_products_collection_url }}">
         {{ 'layout.back_to_shopping' | t }}
       </a>
@@ -15,7 +82,118 @@
   </div>
 </div>
 
-<script>
-    {% comment %} window.themeScriptURLs.productQuickView.required = true {% endcomment %}
-    {% comment %} window.themeScriptURLs?.countdown.required = true {% endcomment %}
-</script>
+{% schema %}
+{
+  "name": "Wishlist template",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page Header"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Wishlist"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Your saved favourites, all in one place."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_back_link",
+      "label": "Show 'Continue shopping' link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "back_link_text",
+      "label": "'Continue shopping' link text",
+      "default": "Continue shopping"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_share_button",
+      "label": "Show 'Share wishlist' button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "share_button_text",
+      "label": "'Share wishlist' button text",
+      "default": "Share wishlist"
+    },
+    {
+      "type": "header",
+      "content": "Colors & Styling"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "share_btn_bg",
+      "label": "Share button background",
+      "default": "transparent"
+    },
+    {
+      "type": "color",
+      "id": "share_btn_text_color",
+      "label": "Share button text color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "share_btn_border_color",
+      "label": "Share button border color",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "Empty Wishlist"
+    },
+    {
+      "type": "text",
+      "id": "empty_heading",
+      "label": "Empty state text",
+      "default": "There are no products in your wishlist"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 0,
+      "unit": "px"
+    }
+  ]
+}
+{% endschema %}

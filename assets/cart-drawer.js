@@ -164,7 +164,8 @@ class MCartDrawer extends HTMLElement {
       { id: "cart-drawer", selector: "[data-minimog-cart-items]", block: "cart-items" },
       { id: "cart-drawer", selector: "[data-minimog-cart-discounts]", block: "cart-footer" },
       { id: "cart-drawer", selector: "[data-cart-subtotal]", block: "cart-footer" },
-      { id: "cart-drawer", selector: "[data-minimog-gift-wrapping]", block: "cart-footer" }
+      { id: "cart-drawer", selector: "[data-minimog-gift-wrapping]", block: "cart-footer" },
+      { id: "cart-drawer", selector: "[data-free-shipping-goal]", block: "cart-footer" }
     ];
   }
 
@@ -186,7 +187,8 @@ class MCartDrawerItems extends MCartTemplate {
       { id: "MinimogCartDrawer", section: "cart-drawer", selector: "[data-minimog-cart-items]" },
       { id: "MinimogCartDrawer", section: "cart-drawer", selector: "[data-minimog-cart-discounts]" },
       { id: "MinimogCartDrawer", section: "cart-drawer", selector: "[data-cart-subtotal]" },
-      { id: "MinimogCartDrawer", section: "cart-drawer", selector: "[data-minimog-gift-wrapping]" }
+      { id: "MinimogCartDrawer", section: "cart-drawer", selector: "[data-minimog-gift-wrapping]" },
+      { id: "MinimogCartDrawer", section: "cart-drawer", selector: "[data-free-shipping-goal]" }
     ];
   }
 }

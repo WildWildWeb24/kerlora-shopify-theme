@@ -1,0 +1,1172 @@
+<style>
+  .m-real-customer-stories--{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    overflow: hidden;
+  }
+
+  /* Universal 0px Radius Override (Except Pagination Dots) */
+  .m-real-customer-stories--{{ section.id }} *:not(.m-rcs__dot),
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card,
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-photo-wrapper,
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-photo,
+  .m-real-customer-stories--{{ section.id }} .m-rcs__product-pill,
+  .m-real-customer-stories--{{ section.id }} .m-rcs__product-thumb,
+  .m-real-customer-stories--{{ section.id }} .m-rcs__arrow-btn {
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+  }
+
+  /* Circular Pagination Dots Exception */
+  .m-real-customer-stories--{{ section.id }} .m-rcs__dot {
+    border-radius: 50% !important;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+  }
+
+  /* Header Area */
+  .m-real-customer-stories--{{ section.id }} .m-rcs__header {
+    margin-bottom: 36px;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__header-left {
+    max-width: 600px;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__subheading {
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: none;
+    margin-bottom: 10px;
+    color: {{ section.settings.heading_color }};
+    opacity: 0.85;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__heading {
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+    color: {{ section.settings.heading_color }};
+  }
+
+
+
+  /* Slider Container & Track */
+  .m-real-customer-stories--{{ section.id }} .m-rcs__slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__track {
+    display: flex;
+    gap: 24px;
+    align-items: stretch !important;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
+  }
+
+  /* Story Card Component & Equal Heights */
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card {
+    flex: 0 0 calc(33.333% - 16px);
+    max-width: calc(33.333% - 16px);
+    background-color: #ffffff;
+    border: 1px solid {{ section.settings.card_border_color }};
+    padding: 16px;
+    box-sizing: border-box;
+    display: flex;
+    gap: 16px;
+    box-shadow: none;
+    align-self: stretch !important;
+    height: 100% !important;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__read-more-link {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 2px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: {{ section.settings.heading_color }};
+    text-decoration: underline;
+    cursor: pointer;
+    display: inline;
+    line-height: inherit;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__read-more-link:hover {
+    opacity: 0.75;
+  }
+
+  /* Modal Overlay & Pop-up Dialog */
+  .m-rcs__modal {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 999999 !important;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .m-rcs__modal.is-open {
+    display: flex !important;
+  }
+
+  .m-rcs__modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.65) !important;
+    backdrop-filter: blur(3px);
+    z-index: 1;
+  }
+
+  .m-rcs__modal-dialog {
+    position: relative !important;
+    z-index: 2 !important;
+    background-color: #ffffff !important;
+    width: 90% !important;
+    max-width: 620px !important;
+    max-height: 85vh !important;
+    overflow-y: auto;
+    border: 1px solid {{ section.settings.card_border_color }} !important;
+    border-radius: 0 !important;
+    padding: 28px !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+  }
+
+  .m-rcs__modal-close {
+    position: absolute !important;
+    top: 14px !important;
+    right: 14px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: {{ section.settings.heading_color }} !important;
+    z-index: 3 !important;
+    transition: opacity 0.2s;
+    border-radius: 0 !important;
+  }
+
+  .m-rcs__modal-close:hover {
+    opacity: 0.6;
+  }
+
+  .m-rcs__modal-body {
+    display: flex !important;
+    gap: 24px !important;
+    align-items: flex-start !important;
+  }
+
+  .m-rcs__modal-photo-wrapper {
+    flex: 0 0 170px !important;
+    width: 170px !important;
+    aspect-ratio: 3 / 4 !important;
+    height: auto !important;
+    align-self: flex-start !important;
+    flex-shrink: 0 !important;
+    background-color: #FAF8F5 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border: 1px solid {{ section.settings.card_border_color }} !important;
+    overflow: hidden !important;
+  }
+
+  .m-rcs__modal-photo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .m-rcs__modal-content {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    min-width: 0 !important;
+  }
+
+  .m-rcs__modal-quote {
+    font-size: 14px !important;
+    line-height: 1.55 !important;
+    margin: 0 !important;
+    color: {{ section.settings.text_color }} !important;
+    white-space: pre-line !important;
+  }
+
+  /* Modal Inner Elements Explicit Styling (Body-level resilience) */
+  .m-rcs__modal .m-rcs__card-stars {
+    display: flex !important;
+    gap: 3px !important;
+    color: #111111 !important;
+    margin-bottom: 4px !important;
+  }
+
+  .m-rcs__modal .m-rcs__card-stars svg {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    max-width: 14px !important;
+    min-height: 14px !important;
+    max-height: 14px !important;
+    fill: #111111 !important;
+    flex-shrink: 0 !important;
+    display: inline-block !important;
+  }
+
+  .m-rcs__modal .m-rcs__card-line {
+    display: block !important;
+    width: 24px !important;
+    height: 1px !important;
+    background-color: {{ section.settings.card_border_color }} !important;
+    margin: 8px 0 !important;
+  }
+
+  .m-rcs__modal .m-rcs__card-author {
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    margin: 0 0 2px 0 !important;
+    color: {{ section.settings.heading_color }} !important;
+  }
+
+  .m-rcs__modal .m-rcs__card-location {
+    font-size: 11px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.5px !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+    margin: 0 !important;
+  }
+
+  .m-rcs__modal .m-rcs__product-pill {
+    background-color: #ffffff !important;
+    border: 1px solid {{ section.settings.card_border_color }} !important;
+    padding: 8px 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+    text-decoration: none !important;
+    color: inherit !important;
+    border-radius: 0 !important;
+  }
+
+  .m-rcs__modal .m-rcs__product-thumb {
+    width: 36px !important;
+    height: 36px !important;
+    object-fit: cover !important;
+    background-color: #FAF8F5 !important;
+    flex-shrink: 0 !important;
+  }
+
+  .m-rcs__modal .m-rcs__product-title {
+    font-size: 11.5px !important;
+    font-weight: 500 !important;
+    line-height: 1.3 !important;
+    margin: 0 !important;
+    color: {{ section.settings.heading_color }} !important;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-photo-wrapper {
+    flex: 0 0 45%;
+    max-width: 45%;
+    overflow: hidden;
+    position: relative;
+    background-color: #EAE6DF;
+    aspect-ratio: 3/4;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-top {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-stars {
+    display: flex;
+    gap: 3px;
+    color: #111111;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-stars svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-quote {
+    font-size: 13.5px;
+    line-height: 1.45;
+    margin: 0;
+    color: {{ section.settings.text_color }};
+    font-weight: 400;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-line {
+    width: 24px;
+    height: 1px;
+    background-color: {{ section.settings.card_border_color }};
+    margin: 6px 0;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-author {
+    font-size: 13.5px;
+    font-weight: 500;
+    margin: 0 0 2px 0;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__card-location {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0;
+  }
+
+  /* Tagged Product Pill (White Background, 0px Radius, 1-2 Line Title) */
+  .m-real-customer-stories--{{ section.id }} .m-rcs__product-pill {
+    background-color: #ffffff;
+    border: 1px solid {{ section.settings.card_border_color }};
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__product-pill:hover {
+    border-color: {{ section.settings.heading_color }};
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__product-thumb {
+    width: 36px;
+    height: 36px;
+    object-fit: cover;
+    background-color: #FAF8F5;
+    flex-shrink: 0;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__product-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__product-title {
+    font-size: 11.5px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
+    color: {{ section.settings.heading_color }};
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Controls Row (Bottom) */
+  .m-real-customer-stories--{{ section.id }} .m-rcs__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__dot {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__dot.is-active {
+    background-color: #111111;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__arrows {
+    display: flex;
+    gap: 12px;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__arrow-btn {
+    width: 42px;
+    height: 42px;
+    border: 1px solid {{ section.settings.card_border_color }};
+    background-color: #ffffff;
+    color: {{ section.settings.heading_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__arrow-btn:hover:not(:disabled) {
+    background-color: {{ section.settings.heading_color }};
+    color: #ffffff;
+    border-color: {{ section.settings.heading_color }};
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__arrow-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+  }
+
+  .m-real-customer-stories--{{ section.id }} .m-rcs__arrow-btn svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+  }
+
+  /* Responsive (< 990px) */
+  @media screen and (max-width: 989px) {
+    .m-real-customer-stories--{{ section.id }} .m-rcs__heading {
+      font-size: 28px;
+    }
+
+    .m-real-customer-stories--{{ section.id }} .m-rcs__card {
+      flex: 0 0 calc(50% - 12px);
+      max-width: calc(50% - 12px);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .m-real-customer-stories--{{ section.id }} {
+      padding-top: calc({{ section.settings.padding_top }}px * 0.65);
+    }
+
+    .m-real-customer-stories--{{ section.id }} .m-rcs__header {
+      margin-bottom: 20px;
+    }
+
+    .m-real-customer-stories--{{ section.id }} .m-rcs__track {
+      gap: 16px;
+    }
+
+    .m-real-customer-stories--{{ section.id }} .m-rcs__card {
+      flex: 0 0 100%;
+      min-width: 100%;
+      max-width: 100%;
+      flex-direction: column;
+      padding: 16px;
+      gap: 16px;
+      box-sizing: border-box;
+    }
+
+    .m-real-customer-stories--{{ section.id }} .m-rcs__card-photo-wrapper {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 100%;
+      aspect-ratio: 3 / 4;
+      object-position: {{ section.settings.mobile_photo_position }};
+    }
+
+    .m-real-customer-stories--{{ section.id }} .m-rcs__card-photo {
+      object-position: {{ section.settings.mobile_photo_position }};
+    }
+
+    .m-real-customer-stories--{{ section.id }} .m-rcs__card-content {
+      width: 100%;
+      gap: 12px;
+    }
+
+    .m-real-customer-stories--{{ section.id }} .m-rcs__card-quote {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .m-real-customer-stories--{{ section.id }} .m-rcs__product-pill {
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .m-real-customer-stories--{{ section.id }} .container {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+
+    /* Mobile Vertical Stack for Read More Popup Modal (< 768px) */
+    .m-rcs__modal-dialog {
+      width: calc(100% - 32px) !important;
+      max-width: 420px !important;
+      padding: 24px 20px !important;
+      max-height: 85vh !important;
+      overflow-y: auto !important;
+      box-sizing: border-box !important;
+    }
+
+    .m-rcs__modal-body {
+      flex-direction: column !important;
+      gap: 16px !important;
+      align-items: stretch !important;
+    }
+
+    .m-rcs__modal-photo-wrapper {
+      flex: 0 0 auto !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      max-height: 260px !important;
+      aspect-ratio: 3 / 4 !important;
+      align-self: center !important;
+    }
+
+    .m-rcs__modal-content {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    .m-rcs__modal .m-rcs__product-pill {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+  }
+
+  .m-real-customer-stories--{{ section.id }} .container {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+</style>
+
+<div class="m-real-customer-stories m-real-customer-stories--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="real-customer-stories">
+  <div class="container">
+    
+    <!-- Header -->
+    <div class="m-rcs__header">
+      <div class="m-rcs__header-left">
+        {%- if section.settings.subheading != blank -%}
+          <div class="m-rcs__subheading">{{ section.settings.subheading }}</div>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="m-rcs__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Carousel Slider -->
+    <div class="m-rcs__slider" id="rcs-slider-{{ section.id }}">
+      <div class="m-rcs__track" id="rcs-track-{{ section.id }}">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'story_card' -%}
+            <div class="m-rcs__card" {{ block.shopify_attributes }}>
+              
+              <!-- Left Photo Column -->
+              <div class="m-rcs__card-photo-wrapper">
+                {%- if block.settings.customer_image != blank -%}
+                  <img
+                    src="{{ block.settings.customer_image | image_url: width: 600 }}"
+                    alt="{{ block.settings.customer_name | escape }}"
+                    loading="lazy"
+                    class="m-rcs__card-photo"
+                  >
+                {%- else -%}
+                  <div class="m-rcs__card-photo" style="background: linear-gradient(135deg, #d4dfe8 0%, #eae6df 100%); width: 100%; height: 100%;"></div>
+                {%- endif -%}
+              </div>
+
+              <!-- Right Content Column -->
+              <div class="m-rcs__card-content">
+                <div class="m-rcs__card-top">
+                  <!-- Stars -->
+                  <div class="m-rcs__card-stars">
+                    {%- assign rating = block.settings.star_rating | default: 5 -%}
+                    {%- for i in (1..rating) -%}
+                      <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    {%- endfor -%}
+                  </div>
+
+                  <!-- Quote -->
+                  {%- if block.settings.quote != blank -%}
+                    {%- assign quote_text = block.settings.quote -%}
+                    {%- assign quote_length = quote_text | size -%}
+                    {%- if quote_length > 40 -%}
+                      {%- assign truncated_quote = quote_text | slice: 0, 40 -%}
+                      <p class="m-rcs__card-quote">
+                        “{{ truncated_quote }}...”
+                        <button type="button" class="m-rcs__read-more-link" data-open-rcs-modal="rcs-modal-{{ block.id }}">Read More</button>
+                      </p>
+                    {%- else -%}
+                      <p class="m-rcs__card-quote">
+                        “{{ quote_text }}”
+                        <button type="button" class="m-rcs__read-more-link" data-open-rcs-modal="rcs-modal-{{ block.id }}">Read More</button>
+                      </p>
+                    {%- endif -%}
+                  {%- endif -%}
+
+                  <span class="m-rcs__card-line"></span>
+
+                  <!-- Author & Location -->
+                  <div>
+                    {%- if block.settings.customer_name != blank -%}
+                      <h4 class="m-rcs__card-author">{{ block.settings.customer_name }}</h4>
+                    {%- endif -%}
+                    {%- if block.settings.customer_location != blank -%}
+                      <p class="m-rcs__card-location">{{ block.settings.customer_location }}</p>
+                    {%- endif -%}
+                  </div>
+                </div>
+
+                <!-- Tagged Product Pill (Pure Shopify Product Embed, White Background, 1-2 Lines Title) -->
+                {%- assign product = block.settings.tagged_product -%}
+                {%- if product != blank -%}
+                  <a href="{{ product.url }}" class="m-rcs__product-pill">
+                    <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title | escape }}" class="m-rcs__product-thumb" width="36" height="36">
+                    <div class="m-rcs__product-info">
+                      <span class="m-rcs__product-title">{{ product.title }}</span>
+                    </div>
+                  </a>
+                {%- elsif block.settings.demo_product_title != blank -%}
+                  <div class="m-rcs__product-pill">
+                    <div class="m-rcs__product-thumb" style="background-color: #111;"></div>
+                    <div class="m-rcs__product-info">
+                      <span class="m-rcs__product-title">{{ block.settings.demo_product_title }}</span>
+                    </div>
+                  </div>
+                {%- endif -%}
+              </div>
+
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <!-- Controls Row (Dots & Arrows) -->
+    <div class="m-rcs__controls">
+      <div class="m-rcs__dots" id="rcs-dots-{{ section.id }}"></div>
+      <div class="m-rcs__arrows">
+        <button class="m-rcs__arrow-btn" id="rcs-prev-{{ section.id }}" aria-label="Previous Slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+        </button>
+        <button class="m-rcs__arrow-btn" id="rcs-next-{{ section.id }}" aria-label="Next Slide">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pop-up Modals Container (Rendered outside slider track & container to cover 100% full screen) -->
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'story_card' -%}
+      {%- assign quote_text = block.settings.quote -%}
+      {%- if quote_text != blank -%}
+        <div class="m-rcs__modal" id="rcs-modal-{{ block.id }}" aria-hidden="true">
+          <div class="m-rcs__modal-overlay" data-close-rcs-modal></div>
+          <div class="m-rcs__modal-dialog">
+            <button type="button" class="m-rcs__modal-close" data-close-rcs-modal aria-label="Close review popup">
+              <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+
+            <div class="m-rcs__modal-body">
+              <!-- Photo Column -->
+              <div class="m-rcs__modal-photo-wrapper">
+                {%- if block.settings.customer_image != blank -%}
+                  <img
+                    src="{{ block.settings.customer_image | image_url: width: 800 }}"
+                    alt="{{ block.settings.customer_name | escape }}"
+                    class="m-rcs__modal-photo"
+                  >
+                {%- else -%}
+                  <div class="m-rcs__modal-photo-placeholder" style="background: linear-gradient(135deg, #d4dfe8 0%, #eae6df 100%); width: 100%; height: 260px;"></div>
+                {%- endif -%}
+              </div>
+
+              <!-- Content Column -->
+              <div class="m-rcs__modal-content">
+                <div class="m-rcs__card-stars">
+                  {%- assign rating = block.settings.star_rating | default: 5 -%}
+                  {%- for i in (1..rating) -%}
+                    <svg viewBox="0 0 24 24" width="14" height="14" style="width: 14px !important; height: 14px !important; fill: currentColor; flex-shrink: 0;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                  {%- endfor -%}
+                </div>
+
+                <p class="m-rcs__modal-quote">“{{ quote_text }}”</p>
+
+                <span class="m-rcs__card-line"></span>
+
+                <div>
+                  {%- if block.settings.customer_name != blank -%}
+                    <h4 class="m-rcs__card-author">{{ block.settings.customer_name }}</h4>
+                  {%- endif -%}
+                  {%- if block.settings.customer_location != blank -%}
+                    <p class="m-rcs__card-location">{{ block.settings.customer_location }}</p>
+                  {%- endif -%}
+                </div>
+
+                {%- assign product = block.settings.tagged_product -%}
+                {%- if product != blank -%}
+                  <a href="{{ product.url }}" class="m-rcs__product-pill">
+                    <img src="{{ product.featured_image | image_url: width: 100 }}" alt="{{ product.title | escape }}" class="m-rcs__product-thumb" width="36" height="36">
+                    <div class="m-rcs__product-info">
+                      <span class="m-rcs__product-title">{{ product.title }}</span>
+                    </div>
+                  </a>
+                {%- elsif block.settings.demo_product_title != blank -%}
+                  <div class="m-rcs__product-pill">
+                    <div class="m-rcs__product-thumb" style="background-color: #111;"></div>
+                    <div class="m-rcs__product-info">
+                      <span class="m-rcs__product-title">{{ block.settings.demo_product_title }}</span>
+                    </div>
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+
+<script>
+  (function() {
+    function initRcsSlider() {
+      var track = document.getElementById('rcs-track-{{ section.id }}');
+      var prevBtn = document.getElementById('rcs-prev-{{ section.id }}');
+      var nextBtn = document.getElementById('rcs-next-{{ section.id }}');
+      var dotsContainer = document.getElementById('rcs-dots-{{ section.id }}');
+      
+      if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+      var cards = track.querySelectorAll('.m-rcs__card');
+      if (cards.length === 0) return;
+
+      var currentIndex = 0;
+
+      function getVisibleCount() {
+        if (window.innerWidth < 768) return 1;
+        if (window.innerWidth < 990) return 2;
+        return 3;
+      }
+
+      function getGap() {
+        try {
+          var computed = window.getComputedStyle(track);
+          var gapVal = parseFloat(computed.gap || computed.gridGap);
+          return isNaN(gapVal) ? (window.innerWidth < 768 ? 16 : 24) : gapVal;
+        } catch(e) {
+          return window.innerWidth < 768 ? 16 : 24;
+        }
+      }
+
+      function getMaxIndex() {
+        var visible = getVisibleCount();
+        return Math.max(0, cards.length - visible);
+      }
+
+      function createDots() {
+        dotsContainer.innerHTML = '';
+        var maxIdx = getMaxIndex();
+        for (var i = 0; i <= maxIdx; i++) {
+          var dot = document.createElement('div');
+          dot.className = 'm-rcs__dot' + (i === currentIndex ? ' is-active' : '');
+          dot.setAttribute('data-index', i);
+          dot.addEventListener('click', function() {
+            currentIndex = parseInt(this.getAttribute('data-index'));
+            updateSlider();
+          });
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function updateSlider() {
+        var maxIdx = getMaxIndex();
+        if (currentIndex > maxIdx) currentIndex = maxIdx;
+        if (currentIndex < 0) currentIndex = 0;
+
+        var cardWidth = cards[0].getBoundingClientRect().width;
+        var gap = getGap();
+        var moveAmount = (cardWidth + gap) * currentIndex;
+
+        track.style.transform = 'translateX(-' + moveAmount + 'px)';
+
+        prevBtn.disabled = (currentIndex === 0);
+        nextBtn.disabled = (currentIndex >= maxIdx);
+
+        var dots = dotsContainer.querySelectorAll('.m-rcs__dot');
+        dots.forEach(function(dot, idx) {
+          if (idx === currentIndex) {
+            dot.classList.add('is-active');
+          } else {
+            dot.classList.remove('is-active');
+          }
+        });
+      }
+
+      prevBtn.onclick = function() {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateSlider();
+        }
+      };
+
+      nextBtn.onclick = function() {
+        if (currentIndex < getMaxIndex()) {
+          currentIndex++;
+          updateSlider();
+        }
+      };
+
+      createDots();
+      updateSlider();
+
+      // Touch Swipe Gesture Handler
+      var startTouchX = 0;
+      var startTouchY = 0;
+      var distTouchX = 0;
+      var distTouchY = 0;
+      var isSwiping = false;
+
+      var sliderEl = document.getElementById('rcs-slider-{{ section.id }}');
+      if (sliderEl) {
+        sliderEl.addEventListener('touchstart', function(e) {
+          if (!e.touches || e.touches.length === 0) return;
+          startTouchX = e.touches[0].clientX;
+          startTouchY = e.touches[0].clientY;
+          distTouchX = 0;
+          distTouchY = 0;
+          isSwiping = true;
+        }, { passive: true });
+
+        sliderEl.addEventListener('touchmove', function(e) {
+          if (!isSwiping || !e.touches || e.touches.length === 0) return;
+          distTouchX = startTouchX - e.touches[0].clientX;
+          distTouchY = startTouchY - e.touches[0].clientY;
+        }, { passive: true });
+
+        sliderEl.addEventListener('touchend', function() {
+          if (!isSwiping) return;
+          isSwiping = false;
+          // Check if horizontal swipe is dominant (>35px) over vertical scroll
+          if (Math.abs(distTouchX) > 35 && Math.abs(distTouchX) > Math.abs(distTouchY)) {
+            if (distTouchX > 0) {
+              // Swiped left -> move forward
+              if (currentIndex < getMaxIndex()) {
+                currentIndex++;
+                updateSlider();
+              }
+            } else {
+              // Swiped right -> move backward
+              if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+              }
+            }
+          }
+          distTouchX = 0;
+          distTouchY = 0;
+        }, { passive: true });
+      }
+
+      window.addEventListener('resize', function() {
+        createDots();
+        updateSlider();
+      });
+    }
+
+    function initRcsModals() {
+      var openBtns = document.querySelectorAll('[data-open-rcs-modal]');
+      openBtns.forEach(function(btn) {
+        btn.onclick = function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var targetId = btn.getAttribute('data-open-rcs-modal');
+          var modal = document.getElementById(targetId);
+          if (modal) {
+            document.body.appendChild(modal);
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+          }
+        };
+      });
+
+      document.querySelectorAll('[data-close-rcs-modal]').forEach(function(el) {
+        el.onclick = function(e) {
+          e.preventDefault();
+          var modal = el.closest('.m-rcs__modal');
+          if (modal) {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          }
+        };
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.m-rcs__modal.is-open').forEach(function(modal) {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
+          });
+        }
+      });
+    }
+
+    function initAll() {
+      initRcsSlider();
+      initRcsModals();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAll);
+    } else {
+      initAll();
+    }
+
+    document.addEventListener('shopify:section:load', function(e) {
+      if (e.detail.sectionId === '{{ section.id }}') {
+        initAll();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Real Customer Stories",
+  "class": "real-customer-stories-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF8F5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1C1B1A"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card Border Color",
+      "default": "#EAE6DF"
+    },
+    {
+      "type": "header",
+      "content": "Section Header Settings"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "REAL PEOPLE. REAL MOVEMENT."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Main Heading",
+      "default": "Loved by the Kerlora Community"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Mobile Photo Settings"
+    },
+    {
+      "type": "select",
+      "id": "mobile_photo_position",
+      "label": "Mobile Photo Focus Position",
+      "info": "Controls which part of the photo is visible on mobile",
+      "options": [
+        { "value": "center center", "label": "Centre (default)" },
+        { "value": "top center", "label": "Top" },
+        { "value": "bottom center", "label": "Bottom" },
+        { "value": "center left", "label": "Left" },
+        { "value": "center right", "label": "Right" },
+        { "value": "top left", "label": "Top Left" },
+        { "value": "top right", "label": "Top Right" },
+        { "value": "bottom left", "label": "Bottom Left" },
+        { "value": "bottom right", "label": "Bottom Right" }
+      ],
+      "default": "center center"
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid / Trust Badge Code",
+          "default": "<!-- Start of Judge.me Trust Badge -->{% if shop.metafields.judgeme[\"trust_badge.enabled\"] and shop.metafields.judgeme[\"trust_badge.verified_reviews_count\"] != 0 %}<div data-structure=\"outline\" data-color=\"black\" data-star=\"black\" data-alignment=\"left\"><div class='jdgm-widget jdgm-trust-badge-widget' data-widget='trust-badge' data-entry-point='trust_badge.js' data-entry-key='trust-badge/main.js'{% if shop.metafields.judgeme[\"trust_badge.modal_data\"] != blank %} data-modal-json='{{ shop.metafields.judgeme[\"trust_badge.modal_data\"] | escape }}'{% endif %}><script type='application/json' data-badge-data>{\"verified_reviews_count\": {{ shop.metafields.judgeme[\"trust_badge.verified_reviews_count\"] | json }},\"verified_average_rating\": {{ shop.metafields.judgeme[\"trust_badge.verified_average_rating\"] | default: 0 | json }},\"is_certified\": {{ shop.metafields.judgeme[\"trust_badge.is_certified\"] | default: false | json }}}</script></div></div>{% endif %}<!-- End of Judge.me Trust Badge -->"
+        }
+      ]
+    },
+    {
+      "type": "story_card",
+      "name": "Customer Story Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "customer_image",
+          "label": "Customer Portrait Photo"
+        },
+        {
+          "type": "range",
+          "id": "star_rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star Rating",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Customer Quote / Review",
+          "default": "Finally, activewear that feels as good as it looks. The fit is perfect and stays comfortable all day."
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Customer Name",
+          "default": "Emma T."
+        },
+        {
+          "type": "text",
+          "id": "customer_location",
+          "label": "Customer Location",
+          "default": "LONDON, UK"
+        },
+        {
+          "type": "header",
+          "content": "Tagged Shopify Product"
+        },
+        {
+          "type": "product",
+          "id": "tagged_product",
+          "label": "Select Shopify Product"
+        },
+        {
+          "type": "text",
+          "id": "demo_product_title",
+          "label": "Demo Product Title (Fallback if no product selected)",
+          "default": "Serene Sports Bra"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Real Customer Stories",
+      "blocks": [
+        {
+          "type": "story_card",
+          "settings": {
+            "customer_name": "Emma T.",
+            "customer_location": "LONDON, UK",
+            "quote": "Finally, activewear that feels as good as it looks. The fit is perfect and stays comfortable all day.",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "customer_name": "Priya S.",
+            "customer_location": "MANCHESTER, UK",
+            "quote": "Kerlora has become my go-to for both training and everyday wear. Incredible quality and such versatile pieces.",
+            "demo_product_title": "Move Jacket"
+          }
+        },
+        {
+          "type": "story_card",
+          "settings": {
+            "customer_name": "Sophie L.",
+            "customer_location": "BRIGHTON, UK",
+            "quote": "The softest leggings I've ever worn. They move with you and feel amazing, even on long days.",
+            "demo_product_title": "Flow Leggings"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

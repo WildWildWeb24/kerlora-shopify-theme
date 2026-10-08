@@ -5,13 +5,54 @@
   if size == null
     assign size = 'm-svg-icon'
   endif
+
+  assign instagram_url = settings.social_instagram_link
+  if instagram_url == blank or instagram_url == 'https://instagram.com' or instagram_url == 'https://www.instagram.com' or instagram_url == 'https://instagram.com/' or instagram_url == 'https://www.instagram.com/'
+    assign instagram_url = 'https://www.instagram.com/kerloraofficial/'
+  endif
+
+  assign facebook_url = settings.social_facebook_link
+  if facebook_url == blank or facebook_url == 'https://facebook.com' or facebook_url == 'https://www.facebook.com' or facebook_url == 'https://facebook.com/' or facebook_url == 'https://www.facebook.com/'
+    assign facebook_url = 'https://www.facebook.com/p/Kerlora-61577826387674/'
+  endif
+
+  assign pinterest_url = settings.social_pinterest_link
+  if pinterest_url == blank or pinterest_url == 'https://pinterest.com' or pinterest_url == 'https://www.pinterest.com' or pinterest_url == 'https://pinterest.com/' or pinterest_url == 'https://www.pinterest.com/'
+    assign pinterest_url = 'https://www.pinterest.com/somesaystudioAB/k%C3%ABlora/'
+  endif
+
+  assign youtube_url = settings.social_youtube_link
+  if youtube_url == blank or youtube_url == 'https://youtube.com' or youtube_url == 'https://www.youtube.com' or youtube_url == 'https://youtube.com/' or youtube_url == 'https://www.youtube.com/'
+    assign youtube_url = 'https://www.youtube.com/@Kerlora'
+  endif
+
+  assign tiktok_url = settings.social_tiktok_link
+  if tiktok_url == blank or tiktok_url == 'https://tiktok.com' or tiktok_url == 'https://www.tiktok.com' or tiktok_url == 'https://tiktok.com/' or tiktok_url == 'https://www.tiktok.com/'
+    assign tiktok_url = 'https://www.tiktok.com/@kerloraofficial'
+  endif
 -%}
 <div class="social-media-links{% if centermd %} md:m:justify-center {% endif %} {{ extra_classes }}">
-  {% if settings.social_pinterest_link != blank %}
+  {% if instagram_url != blank %}
     <a
       target="_blank"
       class="social-media-links--item"
-      href="{{ settings.social_pinterest_link }}"
+      href="{{ instagram_url }}"
+      rel="noreferrer"
+      aria-label="{{ settings.social_instagram_label | default: 'Instagram' }}"
+    >
+      <svg class="{{ size }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+      </svg>
+      {% if settings.social_instagram_label != blank and show_label %}
+        <span class="social-media-links--label">{{ settings.social_instagram_label }}</span>
+      {% endif %}
+    </a>
+  {% endif %}
+  {% if pinterest_url != blank %}
+    <a
+      target="_blank"
+      class="social-media-links--item"
+      href="{{ pinterest_url }}"
       rel="noreferrer"
       aria-label="{{ settings.social_pinterest_label | default: 'Pinterest' }}"
     >
@@ -23,11 +64,11 @@
       {% endif %}
     </a>
   {% endif %}
-  {% if settings.social_facebook_link != blank %}
+  {% if facebook_url != blank %}
     <a
       target="_blank"
       class="social-media-links--item"
-      href="{{ settings.social_facebook_link }}"
+      href="{{ facebook_url }}"
       rel="noreferrer"
       aria-label="{{ settings.social_facebook_label | default: 'Facebook' }}"
     >
@@ -36,22 +77,6 @@
       </svg>
       {% if settings.social_facebook_label != blank and show_label %}
         <span class="social-media-links--label">{{ settings.social_facebook_label }}</span>
-      {% endif %}
-    </a>
-  {% endif %}
-  {% if settings.social_instagram_link != blank %}
-    <a
-      target="_blank"
-      class="social-media-links--item"
-      href="{{ settings.social_instagram_link }}"
-      rel="noreferrer"
-      aria-label="{{ settings.social_instagram_label | default: 'Instagram' }}"
-    >
-      <svg class="{{ size }}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-        <path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
-      </svg>
-      {% if settings.social_instagram_label != blank and show_label %}
-        <span class="social-media-links--label">{{ settings.social_instagram_label }}</span>
       {% endif %}
     </a>
   {% endif %}
@@ -119,11 +144,11 @@
       {% endif %}
     </a>
   {% endif %}
-  {% if settings.social_youtube_link != blank %}
+  {% if youtube_url != blank %}
     <a
       target="_blank"
       class="social-media-links--item"
-      href="{{ settings.social_youtube_link }}"
+      href="{{ youtube_url }}"
       rel="noreferrer"
       aria-label="{{ settings.social_youtube_label | default: 'Youtube' }}"
     >
@@ -151,11 +176,11 @@
       {% endif %}
     </a>
   {% endif %}
-  {% if settings.social_tiktok_link != blank %}
+  {% if tiktok_url != blank %}
     <a
       target="_blank"
       class="social-media-links--item"
-      href="{{ settings.social_tiktok_link }}"
+      href="{{ tiktok_url }}"
       rel="noreferrer"
       aria-label="{{ settings.social_tiktok_label | default: 'Tiktok' }}"
     >

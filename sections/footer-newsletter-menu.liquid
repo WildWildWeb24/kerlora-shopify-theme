@@ -1,0 +1,526 @@
+<style>
+  .m-footer-newsletter-menu--{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    border-bottom: 1px solid {{ section.settings.border_color }};
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-nm__grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 48px;
+    height: auto;
+  }
+
+  /* Newsletter Column */
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter {
+    flex: 0 0 38%;
+    max-width: 460px;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__brand {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__heading {
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.15;
+    margin: 0 0 12px 0;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__desc {
+    font-size: 15px;
+    line-height: 1.45;
+    margin: 0 0 24px 0;
+    color: {{ section.settings.link_color }};
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__form {
+    margin-bottom: 12px;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__input-group,
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__input,
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__btn,
+  .m-footer-newsletter-menu--{{ section.id }} input[type="email"],
+  .m-footer-newsletter-menu--{{ section.id }} input {
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__input-group {
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__input {
+    flex: 1;
+    height: 42px;
+    padding: 0 16px;
+    background-color: #ffffff;
+    border: 1px solid {{ section.settings.border_color }};
+    border-right: none;
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    font-size: 14px;
+    color: {{ section.settings.text_color }};
+    outline: none;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__input:focus {
+    border-color: {{ section.settings.heading_color }};
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__btn {
+    height: 42px;
+    padding: 0 24px;
+    background-color: {{ section.settings.btn_bg }};
+    color: {{ section.settings.btn_text }};
+    border: 1px solid {{ section.settings.btn_bg }};
+    -webkit-appearance: none;
+    appearance: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__btn:hover {
+    opacity: 0.9;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__disclaimer {
+    font-size: 11.5px;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.55);
+  }
+
+  /* Navigation Links Columns */
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu-cols {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat({{ section.blocks.size | default: 3 }}, 1fr);
+    gap: 32px;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__title-desktop {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 18px 0;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__trigger {
+    display: none;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__list a {
+    font-size: 14px;
+    color: {{ section.settings.link_color }};
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__list a:hover {
+    color: {{ section.settings.link_hover_color }};
+  }
+
+  /* Mobile & Tablet Layout (<= 989px) */
+  @media screen and (max-width: 989px) {
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-nm__grid {
+      flex-direction: column;
+      width: 100%;
+      gap: 36px;
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter {
+      flex: 1 1 100%;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-newsletter__heading {
+      font-size: 26px;
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu-cols {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      grid-template-columns: 1fr;
+      gap: 0;
+      border-top: 1px solid {{ section.settings.border_color }};
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__col {
+      width: 100%;
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__title-desktop {
+      display: none;
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__trigger {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 16px 0;
+      background: none;
+      border: none;
+      border-bottom: 1px solid {{ section.settings.border_color }};
+      font-size: 16px;
+      font-weight: 500;
+      color: {{ section.settings.heading_color }};
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__trigger svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.3s ease;
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__trigger.is-active svg {
+      transform: rotate(180deg);
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__content {
+      width: 100%;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      border-bottom: 1px solid transparent;
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__trigger.is-active + .m-footer-menu__content {
+      border-bottom: 1px solid {{ section.settings.border_color }};
+    }
+
+    .m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__list {
+      padding: 12px 0 20px 0;
+      gap: 12px;
+      width: 100%;
+    }
+  }
+</style>
+
+<div class="m-footer-newsletter-menu m-footer-newsletter-menu--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="footer-newsletter-menu">
+  <div class="container">
+    <div class="m-footer-nm__grid">
+      
+      <!-- Newsletter Column -->
+      <div class="m-footer-newsletter">
+        {%- if section.settings.brand_subtitle != blank -%}
+          <div class="m-footer-newsletter__brand">{{ section.settings.brand_subtitle }}</div>
+        {%- endif -%}
+
+        {%- if section.settings.newsletter_title != blank -%}
+          <h3 class="m-footer-newsletter__heading">{{ section.settings.newsletter_title }}</h3>
+        {%- endif -%}
+
+        {%- if section.settings.newsletter_desc != blank -%}
+          <p class="m-footer-newsletter__desc">{{ section.settings.newsletter_desc }}</p>
+        {%- endif -%}
+
+        {%- form 'customer', class: 'm-footer-newsletter__form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <div class="m-footer-newsletter__input-group">
+            <input
+              type="email"
+              name="contact[email]"
+              class="m-footer-newsletter__input"
+              value="{{ form.email }}"
+              aria-label="{{ section.settings.newsletter_placeholder | escape }}"
+              placeholder="{{ section.settings.newsletter_placeholder | escape }}"
+              required
+            >
+            <button type="submit" class="m-footer-newsletter__btn" name="commit">
+              {{ section.settings.newsletter_btn_text | escape }}
+            </button>
+          </div>
+          {%- if form.posted_successfully? -%}
+            <p class="m-footer-newsletter__disclaimer" style="color: #2e7d32; margin-top: 8px;">
+              Thank you for subscribing!
+            </p>
+          {%- endif -%}
+        {%- endform -%}
+
+        {%- if section.settings.newsletter_disclaimer != blank -%}
+          <p class="m-footer-newsletter__disclaimer">{{ section.settings.newsletter_disclaimer }}</p>
+        {%- endif -%}
+      </div>
+
+      <!-- Navigation Link Columns -->
+      <div class="m-footer-menu-cols">
+        {%- for block in section.blocks -%}
+          <div class="m-footer-menu__col" {{ block.shopify_attributes }}>
+            
+            <!-- Desktop Header -->
+            <h4 class="m-footer-menu__title-desktop">{{ block.settings.title }}</h4>
+
+            <!-- Mobile Accordion Trigger -->
+            <button class="m-footer-menu__trigger" aria-expanded="false">
+              <span>{{ block.settings.title }}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+
+            <!-- Links Content -->
+            <div class="m-footer-menu__content">
+              <ul class="m-footer-menu__list">
+                {%- assign link_list = linklists[block.settings.menu] -%}
+                {%- if link_list != blank and link_list.links.size > 0 -%}
+                  {%- for link in link_list.links -%}
+                    <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                  {%- endfor -%}
+                {%- elsif block.settings.custom_links != blank -%}
+                  {%- assign custom_lines = block.settings.custom_links | newline_to_br | split: '<br />' -%}
+                  {%- for line in custom_lines -%}
+                    {%- assign item_title = line | strip -%}
+                    {%- if item_title != blank -%}
+                      <li><a href="#">{{ item_title }}</a></li>
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+              </ul>
+            </div>
+
+          </div>
+        {%- endfor -%}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var triggers = document.querySelectorAll('.m-footer-newsletter-menu--{{ section.id }} .m-footer-menu__trigger');
+    triggers.forEach(function(trigger) {
+      trigger.addEventListener('click', function() {
+        var isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+        this.classList.toggle('is-active');
+        
+        var content = this.nextElementSibling;
+        if (content) {
+          if (isExpanded) {
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + 'px';
+          }
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Footer Community & Menu",
+  "class": "footer-newsletter-menu-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF8F5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1C1B1A"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "link_color",
+      "label": "Link Color",
+      "default": "#4A4A4A"
+    },
+    {
+      "type": "color",
+      "id": "link_hover_color",
+      "label": "Link Hover Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border / Line Color",
+      "default": "#EAE6DF"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter Settings"
+    },
+    {
+      "type": "text",
+      "id": "brand_subtitle",
+      "label": "Brand Subtitle",
+      "default": "KERLORA"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter Title",
+      "default": "Join the Kerlora Community"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_desc",
+      "label": "Newsletter Description",
+      "default": "Be the first to know about new collections, exclusive offers and upcoming events."
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Email Input Placeholder",
+      "default": "Your email address"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_btn_text",
+      "label": "Sign Up Button Text",
+      "default": "Sign Up"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg",
+      "label": "Button Background Color",
+      "default": "#1C1B1A"
+    },
+    {
+      "type": "color",
+      "id": "btn_text",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "textarea",
+      "id": "newsletter_disclaimer",
+      "label": "Disclaimer Text",
+      "default": "By signing up, you agree to our Privacy Policy. You can unsubscribe at any time."
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_column",
+      "name": "Navigation Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Column Title",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Select Menu",
+          "info": "Select an existing Shopify navigation menu"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_links",
+          "label": "Fallback Custom Links",
+          "info": "Enter links separated by new lines if no Shopify menu is selected above.",
+          "default": "Shop All\nSports Bras\nLeggings\nShorts\nTops\nJackets\nAccessories\nMix & Match Sets\nGift Card"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Community & Menu",
+      "blocks": [
+        {
+          "type": "menu_column",
+          "settings": {
+            "title": "Shop",
+            "custom_links": "Shop All\nSports Bras\nLeggings\nShorts\nTops\nJackets\nAccessories\nMix & Match Sets\nGift Card"
+          }
+        },
+        {
+          "type": "menu_column",
+          "settings": {
+            "title": "Kerlora",
+            "custom_links": "Our Story\nCommunity Walks\nEvents\nJournal\nReviews\nAmbassadors"
+          }
+        },
+        {
+          "type": "menu_column",
+          "settings": {
+            "title": "Policies",
+            "custom_links": "Privacy Policy\nTerms & Conditions\nCookie Policy\nAccessibility\nModern Slavery\nSitemap"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

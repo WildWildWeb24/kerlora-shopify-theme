@@ -1,20 +1,29 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "page-wishlist",
-      "settings": {}
+      "settings": {
+        "heading": "Wishlist",
+        "subtitle": "Your saved favourites, all in one place.",
+        "show_back_link": true,
+        "back_link_text": "Continue shopping",
+        "show_share_button": true,
+        "share_button_text": "Share wishlist"
+      }
+    },
+    "recommendations": {
+      "type": "mix-match-collection",
+      "settings": {
+        "heading": "You may also like",
+        "text": "Check out product recommendations tailored to you.",
+        "collection": "all",
+        "products_limit": 4,
+        "button_text": "Explore All Products"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "recommendations"
   ]
 }

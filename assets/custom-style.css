@@ -36,3 +36,328 @@
 .kerlora-newsletter__button {
   width: 100%;
 }
+
+/* --- Global Wishlist Active Red Heart Rule --- */
+.m-wishlist-button.added-to-wishlist,
+.m-wishlist-button.added-to-wishlist svg,
+.m-wishlist-button.added-to-wishlist .m-svg-icon--medium {
+  color: #e63946 !important;
+  fill: #e63946 !important;
+  stroke: #e63946 !important;
+}
+
+.m-wishlist-button.added-to-wishlist svg path {
+  fill: #e63946 !important;
+  stroke: #e63946 !important;
+}
+
+/* --- Global 0px Square Corners (No Rounded Corners) for Press Releases & Articles --- */
+.m-article-card,
+.m-article-card__image,
+.m-article-card__image img,
+.m-article-card__image picture,
+.m-article-card__content,
+.m-article-card__tags,
+.m-article-card__date,
+.m-article-card__readmore,
+.custom-readmore-btn,
+.press-release-card,
+.press-release-card__image-link,
+.press-release-card__image-wrap,
+.press-release-card__image-wrap img,
+.press-release-card__placeholder,
+.press-release-card__badge,
+.press-release-card__content,
+.press-release-card__btn,
+.press-releases-main-btn {
+  border-radius: 0 !important;
+}
+
+/* ==========================================================================
+   Kerlora Custom Cart Page Styling (Matching Mockup media_1790941187483.png)
+   ========================================================================== */
+.kerlora-cart-header {
+  margin-top: 24px;
+  margin-bottom: 32px;
+}
+.kerlora-cart-back {
+  font-size: 13px;
+  color: #555;
+  text-decoration: none;
+  display: inline-block;
+  margin-bottom: 16px;
+  transition: opacity 0.2s;
+}
+.kerlora-cart-back:hover {
+  opacity: 0.7;
+}
+.kerlora-cart-title {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0 0 6px 0;
+  color: #111;
+  letter-spacing: -0.5px;
+}
+.kerlora-cart-subtitle {
+  font-size: 15px;
+  color: #666;
+  margin: 0;
+  font-weight: 300;
+}
+
+/* Cart Table Header */
+.kerlora-cart-table-header {
+  border-bottom: 1px solid #EAE6DF;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #777;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Cart Table Bottom Actions */
+.kerlora-cart-table-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid #EAE6DF;
+  margin-top: 24px;
+}
+.kerlora-cart-bottom-back {
+  font-size: 14px;
+  color: #111;
+  text-decoration: underline;
+}
+.kerlora-cart-clear-btn {
+  font-size: 14px;
+  color: #555;
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.kerlora-cart-clear-btn:hover {
+  color: #000;
+}
+
+/* Payment & Summary Sidebar Card */
+.kerlora-payment-card {
+  background-color: #F8F7F5;
+  padding: 28px 24px;
+  border-radius: 0 !important;
+  border: 1px solid #EAE6DF;
+}
+
+/* Discount Input Box */
+.kerlora-discount-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.kerlora-discount-input {
+  flex: 1;
+  background: #FFFFFF;
+  border: 1px solid #111111;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #111;
+  border-radius: 0 !important;
+  outline: none;
+}
+.kerlora-discount-apply-btn {
+  background: #111111;
+  color: #FFFFFF;
+  border: 1px solid #111111;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0 !important;
+  transition: background 0.2s;
+}
+.kerlora-discount-apply-btn:hover {
+  background: #333333;
+}
+
+/* Gifting Accordion */
+.kerlora-gifting-accordion {
+  border-top: 1px solid #EAE6DF;
+  border-bottom: 1px solid #EAE6DF;
+  padding: 14px 0;
+  margin-bottom: 20px;
+}
+.kerlora-gifting-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #222;
+  cursor: pointer;
+  list-style: none;
+}
+.kerlora-gifting-summary::-webkit-details-marker {
+  display: none;
+}
+.kerlora-gifting-textarea {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  font-size: 13px;
+  border: 1px solid #D9D5CE;
+  border-radius: 0 !important;
+  resize: vertical;
+  min-height: 70px;
+  box-sizing: border-box;
+}
+
+/* Summary Breakdown Rows */
+.kerlora-summary-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.kerlora-summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #444;
+}
+.kerlora-summary-subtext {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Total Row */
+.kerlora-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid #EAE6DF;
+  margin-bottom: 20px;
+}
+.kerlora-total-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+}
+.kerlora-total-value {
+  font-size: 20px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* Checkout Button */
+.kerlora-checkout-wrapper {
+  margin-bottom: 16px;
+}
+.kerlora-checkout-btn {
+  width: 100%;
+  background: #111111;
+  color: #FFFFFF;
+  border: none;
+  padding: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.kerlora-checkout-btn:hover {
+  background: #333333;
+}
+
+/* Accelerated Payments */
+.kerlora-accel-payments {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.kerlora-payment-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 42px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.kerlora-pay-shoppay {
+  background: #5A31F4;
+  color: #FFFFFF;
+}
+.kerlora-pay-gpay {
+  background: #FFFFFF;
+  color: #111111;
+  border: 1px solid #111111;
+}
+.kerlora-pay-paypal {
+  background: #FFFFFF;
+  color: #003087;
+  border: 1px solid #D9D5CE;
+}
+
+/* Trust Badges */
+.kerlora-trust-badges {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 12px;
+  color: #555;
+  flex-wrap: wrap;
+}
+.kerlora-trust-sep {
+  color: #CCC;
+}
+
+/* Wishlist Header & Layout (Matching Mockup media_1790941257071.png) */
+.kerlora-wishlist-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 24px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.kerlora-wishlist-title {
+  font-size: 32px;
+  font-weight: 400;
+  margin: 0 0 6px 0;
+  color: #111;
+  letter-spacing: -0.5px;
+}
+.kerlora-wishlist-subtitle {
+  font-size: 15px;
+  color: #666;
+  margin: 0;
+  font-weight: 300;
+}
+.kerlora-share-wishlist-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  border: 1px solid #111;
+  background: transparent;
+  color: #111;
+  font-size: 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.kerlora-share-wishlist-btn:hover {
+  background: #111;
+  color: #FFF;
+}

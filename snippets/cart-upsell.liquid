@@ -1,0 +1,158 @@
+{%- if settings.show_cart_upsell or context == 'page' -%}
+  {%- liquid
+    assign upsell_products = settings.cart_upsell_products
+    assign fallback_collection = custom_collection | default: settings.cart_upsell_collection
+    assign heading = heading | default: settings.cart_upsell_heading | default: 'You may also like'
+    assign subtitle = subtitle | default: settings.cart_upsell_subtitle | default: 'Check out product recommendations tailored to you.'
+    assign drawer_layout = settings.cart_drawer_upsell_layout | default: 'list'
+
+    if custom_collection != blank and custom_collection.products != blank
+      assign product_list = custom_collection.products
+    elsif custom_collection != blank and collections[custom_collection].products.size > 0
+      assign product_list = collections[custom_collection].products
+    elsif upsell_products != blank and upsell_products.count > 0
+      assign product_list = upsell_products
+    elsif fallback_collection != blank and collections[fallback_collection].products.size > 0
+      assign product_list = collections[fallback_collection].products
+    else
+      assign product_list = collections.all.products
+    endif
+  -%}
+
+  {%- if product_list != blank -%}
+    <div class="m-cart-upsell m-cart-upsell--{{ context | default: 'drawer' }} m-cart-upsell--{{ drawer_layout }}" data-cart-upsell-wrapper>
+      <div class="m-cart-upsell__header">
+        <div class="m-cart-upsell__header-text">
+          <h4 class="m-cart-upsell__title">{{ heading }}</h4>
+          {%- if subtitle != blank -%}
+            <p class="m-cart-upsell__subtitle">{{ subtitle }}</p>
+          {%- endif -%}
+        </div>
+
+        {%- unless context == 'drawer' and drawer_layout == 'list' -%}
+          <div class="m-cart-upsell__nav-controls">
+            <button
+              type="button"
+              class="m-cart-upsell__arrow m-cart-upsell__arrow--prev"
+              data-upsell-prev
+              aria-label="Previous products"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="m-cart-upsell__arrow m-cart-upsell__arrow--next"
+              data-upsell-next
+              aria-label="Next products"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </div>
+        {%- endunless -%}
+      </div>
+
+      {%- if context == 'drawer' and drawer_layout == 'list' -%}
+        {%- comment -%} LIST VIEW FOR CART DRAWER {%- endcomment -%}
+        <div class="m-cart-upsell__list">
+          {%- for product in product_list limit: 6 -%}
+            {%- liquid
+              assign variant = product.first_available_variant
+              if variant == nil
+                assign variant = product.selected_or_first_available_variant
+              endif
+            -%}
+            <div class="m-cart-upsell__item m-cart-upsell__item--list">
+              <a href="{{ product.url }}" class="m-cart-upsell__thumbnail-link">
+                <img
+                  src="{{ product.featured_image | image_url: width: 200 }}"
+                  alt="{{ product.title | escape }}"
+                  loading="lazy"
+                  width="100"
+                  height="125"
+                  class="m-cart-upsell__thumbnail"
+                >
+              </a>
+              <div class="m-cart-upsell__details">
+                <a href="{{ product.url }}" class="m-cart-upsell__product-title">{{ product.title }}</a>
+                <div class="m-cart-upsell__price">
+                  <span class="m-cart-upsell__current-price">{{ variant.price | money }}</span>
+                  {%- if variant.compare_at_price > variant.price -%}
+                    <s class="m-cart-upsell__compare-price">{{ variant.compare_at_price | money }}</s>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+
+      {%- else -%}
+        {%- comment -%} GRID VIEW FOR CART DRAWER AND CART PAGE {%- endcomment -%}
+        <div class="m-cart-upsell__grid" data-upsell-grid>
+          {%- for product in product_list limit: 12 -%}
+            {%- liquid
+              assign variant = product.first_available_variant
+              if variant == nil
+                assign variant = product.selected_or_first_available_variant
+              endif
+            -%}
+            <div class="m-cart-upsell__card">
+              <a href="{{ product.url }}" class="m-cart-upsell__card-image-link">
+                <img
+                  src="{{ product.featured_image | image_url: width: 400 }}"
+                  alt="{{ product.title | escape }}"
+                  loading="lazy"
+                  width="200"
+                  height="250"
+                  class="m-cart-upsell__card-image"
+                >
+              </a>
+              <div class="m-cart-upsell__card-info">
+                <a href="{{ product.url }}" class="m-cart-upsell__product-title">{{ product.title }}</a>
+                <div class="m-cart-upsell__price">
+                  <span class="m-cart-upsell__current-price">{{ variant.price | money }}</span>
+                  {%- if variant.compare_at_price > variant.price -%}
+                    <s class="m-cart-upsell__compare-price">{{ variant.compare_at_price | money }}</s>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <script>
+      (function() {
+        document.addEventListener('click', function(e) {
+          // Nav arrows
+          const prevBtn = e.target.closest('[data-upsell-prev]');
+          const nextBtn = e.target.closest('[data-upsell-next]');
+
+          if (prevBtn || nextBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            const wrapper = (prevBtn || nextBtn).closest('[data-cart-upsell-wrapper]');
+            if (!wrapper) return;
+            const grid = wrapper.querySelector('[data-upsell-grid]');
+            if (!grid) return;
+
+            const card = grid.querySelector('.m-cart-upsell__card');
+            const cardWidth = card ? card.offsetWidth + 12 : 200;
+            const scrollAmount = prevBtn ? -cardWidth : cardWidth;
+
+            grid.scrollBy({
+              left: scrollAmount,
+              behavior: 'smooth'
+            });
+          }
+        });
+      })();
+    </script>
+  {%- endif -%}
+{%- endif -%}

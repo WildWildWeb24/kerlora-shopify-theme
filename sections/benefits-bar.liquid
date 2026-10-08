@@ -1,0 +1,263 @@
+<style>
+  .m-benefits-bar--{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    border-top: 1px solid {{ section.settings.border_color }};
+    border-bottom: 1px solid {{ section.settings.border_color }};
+  }
+
+  .m-benefits-bar--{{ section.id }} .m-benefits-bar__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.blocks.size | default: 3 }}, 1fr);
+    align-items: center;
+    width: 100%;
+  }
+
+  .m-benefits-bar--{{ section.id }} .m-benefits-bar__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .m-benefits-bar--{{ section.id }} .m-benefits-bar__item:not(:last-child) {
+    border-right: 1px solid {{ section.settings.border_color }};
+  }
+
+  .m-benefits-bar--{{ section.id }} .m-benefits-bar__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .m-benefits-bar--{{ section.id }} .m-benefits-bar__icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: currentColor;
+  }
+
+  .m-benefits-bar--{{ section.id }} .m-benefits-bar__icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+
+  .m-benefits-bar--{{ section.id }} .m-benefits-bar__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .m-benefits-bar--{{ section.id }} .m-benefits-bar__title {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+    margin: 0;
+    color: inherit;
+  }
+
+  .m-benefits-bar--{{ section.id }} .m-benefits-bar__desc {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.4;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.65);
+  }
+
+  @media screen and (max-width: 767px) {
+    .m-benefits-bar--{{ section.id }} {
+      padding-top: {{ section.settings.padding_top | times: 0.75 | round }}px;
+      padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round }}px;
+    }
+
+    .m-benefits-bar--{{ section.id }} .m-benefits-bar__item {
+      flex-direction: column;
+      text-align: center;
+      gap: 8px;
+      padding: 0 6px;
+    }
+
+    .m-benefits-bar--{{ section.id }} .m-benefits-bar__icon svg,
+    .m-benefits-bar--{{ section.id }} .m-benefits-bar__icon img {
+      width: 28px;
+      height: 28px;
+    }
+
+    .m-benefits-bar--{{ section.id }} .m-benefits-bar__title {
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .m-benefits-bar--{{ section.id }} .m-benefits-bar__desc {
+      font-size: 10.5px;
+      line-height: 1.25;
+    }
+  }
+</style>
+
+<div class="m-benefits-bar m-benefits-bar--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="benefits-bar">
+  <div class="container">
+    <div class="m-benefits-bar__grid">
+      {%- for block in section.blocks -%}
+        <div class="m-benefits-bar__item" {{ block.shopify_attributes }}>
+          <div class="m-benefits-bar__icon">
+            {%- if block.settings.icon_image != blank -%}
+              <img
+                src="{{ block.settings.icon_image | image_url: width: 100 }}"
+                alt="{{ block.settings.title | escape }}"
+                loading="lazy"
+                width="32"
+                height="32"
+              >
+            {%- elsif block.settings.icon_svg != blank -%}
+              {{ block.settings.icon_svg }}
+            {%- else -%}
+              {%- assign default_index = forloop.index0 | modulo: 3 -%}
+              {%- case default_index -%}
+                {%- when 0 -%}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M1 3h15v13H1z"></path>
+                    <path d="M16 8h4l3 3v5h-7V8z"></path>
+                    <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                    <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                    <path d="M4 6h3M3 9h3"></path>
+                  </svg>
+                {%- when 1 -%}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                    <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                  </svg>
+                {%- else -%}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                    <line x1="2" y1="10" x2="22" y2="10"></line>
+                    <circle cx="18" cy="15" r="1"></circle>
+                  </svg>
+              {%- endcase -%}
+            {%- endif -%}
+          </div>
+          <div class="m-benefits-bar__content">
+            {%- if block.settings.title != blank -%}
+              <h5 class="m-benefits-bar__title">{{ block.settings.title }}</h5>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <p class="m-benefits-bar__desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Benefits Bar",
+  "class": "benefits-bar-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF8F5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1C1B1A"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#EAE6DF"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 10,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit Block",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image",
+          "info": "Upload custom icon image"
+        },
+        {
+          "type": "html",
+          "id": "icon_svg",
+          "label": "Icon SVG Code",
+          "info": "Paste custom inline SVG icon code"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title Label",
+          "default": "Free Delivery"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description Label",
+          "default": "On all orders over £80"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Bar",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Free Delivery",
+            "description": "On all orders over £80"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Free Returns",
+            "description": "Within 14 days on all UK returns and exchanges"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Flexible Payment",
+            "description": "Pay with credit card, in full or in instalments"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

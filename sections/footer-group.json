@@ -11,6 +11,191 @@
   "type": "footer",
   "name": "Footer",
   "sections": {
+    "benefits_bar_yqHqUW": {
+      "type": "benefits-bar",
+      "blocks": {
+        "benefit_EkFFwr": {
+          "type": "benefit",
+          "settings": {
+            "icon_svg": "",
+            "title": "Free Delivery",
+            "description": "On all orders over £50"
+          }
+        },
+        "benefit_4HHGw4": {
+          "type": "benefit",
+          "settings": {
+            "icon_svg": "",
+            "title": "Free Returns",
+            "description": "Within 14 days"
+          }
+        },
+        "benefit_8NnRVp": {
+          "type": "benefit",
+          "settings": {
+            "icon_svg": "",
+            "title": "Flexible Payment",
+            "description": "Credit card or in instalments"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_EkFFwr",
+        "benefit_4HHGw4",
+        "benefit_8NnRVp"
+      ],
+      "name": "Benefits Bar",
+      "settings": {
+        "bg_color": "#FAF8F5",
+        "text_color": "#1C1B1A",
+        "border_color": "#EAE6DF",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "footer_newsletter_menu_YU7KpR": {
+      "type": "footer-newsletter-menu",
+      "blocks": {
+        "menu_column_T7cmYi": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Shop",
+            "menu": "",
+            "custom_links": "Outerwear  \nTops  \nActive Bottom  \nAccessories  \nLoungewear"
+          }
+        },
+        "menu_column_8j4VRn": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Kerlora",
+            "menu": "",
+            "custom_links": "About Us  \nContact  \nBlog"
+          }
+        },
+        "menu_column_4hyQpX": {
+          "type": "menu_column",
+          "settings": {
+            "title": "Policies",
+            "menu": "",
+            "custom_links": "Returns Policy  \nShipping Policy  \nPrivacy Policy  \nTerms & Conditions  \nFAQs"
+          }
+        }
+      },
+      "block_order": [
+        "menu_column_T7cmYi",
+        "menu_column_8j4VRn",
+        "menu_column_4hyQpX"
+      ],
+      "name": "Footer Community & Menu",
+      "settings": {
+        "bg_color": "#F6F5EC",
+        "text_color": "#1C1B1A",
+        "heading_color": "#111111",
+        "link_color": "#4A4A4A",
+        "link_hover_color": "#000000",
+        "border_color": "#EAE6DF",
+        "brand_subtitle": "KERLORA",
+        "newsletter_title": "Join the Kerlora Community",
+        "newsletter_desc": "Be the first to know about new collections, exclusive offers and upcoming events.",
+        "newsletter_placeholder": "Your email address",
+        "newsletter_btn_text": "Sign Up",
+        "btn_bg": "#1C1B1A",
+        "btn_text": "#FFFFFF",
+        "newsletter_disclaimer": "By signing up, you agree to our Privacy Policy. You can unsubscribe at any time.",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "footer_banner_socials_XDTCqL": {
+      "type": "footer-banner-socials",
+      "blocks": {
+        "social_link_E6XYgX": {
+          "type": "social_link",
+          "settings": {
+            "title": "Instagram",
+            "platform": "instagram",
+            "url": "https://www.instagram.com/kerloraofficial/",
+            "svg_code": ""
+          }
+        },
+        "social_link_iFizF8": {
+          "type": "social_link",
+          "settings": {
+            "title": "Facebook",
+            "platform": "facebook",
+            "url": "https://www.facebook.com/p/Kerlora-61577826387674/",
+            "svg_code": ""
+          }
+        },
+        "social_link_X8pF8F": {
+          "type": "social_link",
+          "settings": {
+            "title": "TikTok",
+            "platform": "tiktok",
+            "url": "https://www.tiktok.com/@kerloraofficial",
+            "svg_code": ""
+          }
+        },
+        "social_link_FBJzCt": {
+          "type": "social_link",
+          "settings": {
+            "title": "YouTube",
+            "platform": "youtube",
+            "url": "https://www.youtube.com/@Kerlora",
+            "svg_code": ""
+          }
+        },
+        "social_link_WrtYP9": {
+          "type": "social_link",
+          "settings": {
+            "title": "Pinterest",
+            "platform": "pinterest",
+            "url": "https://www.pinterest.com/somesaystudioAB/k%C3%ABlora/",
+            "svg_code": ""
+          }
+        }
+      },
+      "block_order": [
+        "social_link_E6XYgX",
+        "social_link_iFizF8",
+        "social_link_X8pF8F",
+        "social_link_FBJzCt",
+        "social_link_WrtYP9"
+      ],
+      "name": "Footer Banner & Socials",
+      "settings": {
+        "bg_color": "#F6F5EC",
+        "text_color": "#1C1B1A",
+        "heading_color": "#111111",
+        "link_color": "#4A4A4A",
+        "border_color": "#EAE6DF",
+        "banner_image": "shopify://shop_images/Kerlora-Charcoal_Sand_Washed_Modal_Mix_Half_Zip_Sweatshirt_2.jpg",
+        "banner_heading": "Move your way \nFinding strength in movement, Not perfection.",
+        "social_heading": "Follow along",
+        "social_desc": "Inspiration. Movement. Real life.",
+        "quote_text": "Premium athleisure wear made for real life.",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "footer_trust_copyright_qLkahG": {
+      "type": "footer-trust-copyright",
+      "name": "Footer Trust & Copyright",
+      "settings": {
+        "bg_color": "#F6F5EC",
+        "text_color": "#1C1B1A",
+        "heading_color": "#111111",
+        "border_color": "#EAE6DF",
+        "jm_rating_text": "Based on 99 reviews",
+        "copyright_text": "© Kerlora 2026. All rights reserved.",
+        "registration_text": "Kerlora Ltd. Registered in England & Wales, Company No. 16277114.",
+        "link_terms": "",
+        "link_accessibility": "",
+        "link_sitemap": "",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
@@ -69,6 +254,7 @@
         "custom_html_9tgj9R",
         "custom_html_gMetQy"
       ],
+      "disabled": true,
       "custom_css": [
         ".m-footer--block-spacing {width: 10%;}",
         ".m-newsletter-form {margin-top: 24px;}",
@@ -131,6 +317,7 @@
         "liquid_UNBfkX",
         "text_XNc3Qa"
       ],
+      "disabled": true,
       "custom_css": [
         ".footer-bg-color {background-color: #d9d5ca;}",
         ".custom-footer {background-color: #d9d5ca; color: #1a1a1a; font-size: 12px; line-height: 1.5; padding: 12px 25px; text-align: center;}",
@@ -209,6 +396,10 @@
     }
   },
   "order": [
+    "benefits_bar_yqHqUW",
+    "footer_newsletter_menu_YU7KpR",
+    "footer_banner_socials_XDTCqL",
+    "footer_trust_copyright_qLkahG",
     "footer",
     "custom_content_gW4P7T",
     "mobile-sticky-bar",

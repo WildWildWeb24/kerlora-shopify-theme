@@ -73,10 +73,6 @@
             "product": "{{product}}"
           }
         },
-        "appstle_bundles_appstle_buy_x_get_y_bundle_E9qpNN": {
-          "type": "shopify://apps/appstle-bundles/blocks/appstle-buy-x-get-y-bundle/8909921b-2d24-4d68-9b12-9d045d3dcb0a",
-          "settings": {}
-        },
         "shipping_VBJFtx": {
           "type": "shipping",
           "settings": {
@@ -158,7 +154,6 @@
         "custom_liquid_GRH9xM",
         "addons",
         "foxkit_sales_boost_product_bundle_PaqkE7",
-        "appstle_bundles_appstle_buy_x_get_y_bundle_E9qpNN",
         "shipping_VBJFtx",
         "trust_badge_NyBMd4",
         "collapsible_tab_rcyFAh",

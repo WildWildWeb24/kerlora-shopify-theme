@@ -1,25 +1,31 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
       "type": "cart-template",
-      "settings": {}
+      "settings": {
+        "heading": "Shopping Cart",
+        "subtitle": "You're one step closer to feeling great.",
+        "show_back_link": true,
+        "back_link_text": "Continue shopping",
+        "show_clear_cart": true,
+        "show_upsell": true,
+        "upsell_heading": "You may also like",
+        "upsell_subtitle": "Check out product recommendations tailored to you."
+      }
     },
-    "recent-viewed-products": {
-      "type": "recent-viewed-products",
-      "settings": {}
+    "recommendations": {
+      "type": "mix-match-collection",
+      "settings": {
+        "heading": "You may also like",
+        "text": "Check out product recommendations tailored to you.",
+        "collection": "all",
+        "products_limit": 4,
+        "button_text": "Explore All Products"
+      }
     }
   },
   "order": [
     "main",
-    "recent-viewed-products"
+    "recommendations"
   ]
 }

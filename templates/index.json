@@ -539,6 +539,7 @@
         },
         "judge_me_reviews_cards_carousel_mJG9Hf": {
           "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
           "settings": {
             "show_sample_reviews": false,
             "reviews_selection": "all",
@@ -588,6 +589,7 @@
         "judge_me_reviews_featured_carousel_mjT6cH",
         "judge_me_reviews_cards_carousel_mJG9Hf"
       ],
+      "disabled": true,
       "settings": {
         "heading": "",
         "heading_size": "h3",
@@ -612,6 +614,82 @@
         "padding_top": 0,
         "padding_bottom": 60,
         "custom_class": ""
+      }
+    },
+    "real_customer_stories_Q97E8p": {
+      "type": "real-customer-stories",
+      "blocks": {
+        "judge_me_reviews_preview_badge_7XiUbE": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "story_card_HgPBpV": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/customer_1_f93ec0af-464b-4c87-8695-1a655c0ea168.webp",
+            "star_rating": 5,
+            "quote": "The fit is perfect and stays comfortable all day.",
+            "customer_name": "Emma",
+            "customer_location": "",
+            "tagged_product": "lazuli-blue-seamless-racer-back-sports-bra",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
+        "story_card_debbie": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/customer_4.webp",
+            "star_rating": 5,
+            "quote": "Very comfy socks for running 😋",
+            "customer_name": "Debbie Hodgson",
+            "customer_location": "LONDON, UK",
+            "tagged_product": "classic-crew-socks-black-pack-3-pack",
+            "demo_product_title": "Classic Crew Socks Black Pack (3 pack)"
+          }
+        },
+        "story_card_naz": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/customer_2_ddbe63ce-c419-4d59-8e6c-4db8b852db44.webp",
+            "star_rating": 5,
+            "quote": "Quick and easy delivery",
+            "customer_name": "Naz",
+            "customer_location": "LONDON, UK",
+            "tagged_product": "black-tangerine-running-set",
+            "demo_product_title": "Activewear Set"
+          }
+        },
+        "story_card_lorraine": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/customer_3_6c9c5c2c-0e7b-40cf-8ef9-e43beef98aaa.webp",
+            "star_rating": 5,
+            "quote": "Love this top! Very comfortable and holds well",
+            "customer_name": "Lorraine Calder",
+            "customer_location": "LONDON, UK",
+            "tagged_product": "plum-seamless-racer-back-sports-bra",
+            "demo_product_title": "Plum Seamless Racer Back Sports Bra"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_7XiUbE",
+        "story_card_HgPBpV",
+        "story_card_debbie",
+        "story_card_naz",
+        "story_card_lorraine"
+      ],
+      "name": "Real Customer Stories",
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#1c1b1a",
+        "heading_color": "#111111",
+        "card_border_color": "#eae6df",
+        "subheading": "REAL PEOPLE. REAL MOVEMENT.",
+        "heading": "Loved by the Kerlora Community",
+        "padding_top": 20,
+        "padding_bottom": 20,
+        "mobile_photo_position": "center center"
       }
     },
     "blog_posts_nbzkXi": {
@@ -646,6 +724,66 @@
         "padding_bottom": 40,
         "custom_class": "",
         "animations": "inherit"
+      }
+    },
+    "press_releases_home": {
+      "type": "press-releases",
+      "blocks": {
+        "press_1": {
+          "type": "article",
+          "settings": {
+            "article": "kerlora-stories/kerlora-on-kmfm-the-story-behind-the-brand",
+            "custom_publication": "",
+            "custom_title": "",
+            "custom_excerpt": "",
+            "custom_image": "shopify://shop_images/Kerlora-_KMFM-cover_1.webp",
+            "custom_url": ""
+          }
+        },
+        "press_2": {
+          "type": "article",
+          "settings": {
+            "article": "kerlora-stories/boutique-uk-kerlora-in-the-press",
+            "custom_publication": "",
+            "custom_title": "",
+            "custom_excerpt": "",
+            "custom_image": "shopify://shop_images/Boutique_UK-Kerlora_In_the_Press-cover_1.webp",
+            "custom_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "press_1",
+        "press_2"
+      ],
+      "name": "Press Releases",
+      "settings": {
+        "subheading": "IN THE NEWS",
+        "heading": "Press Releases & Media",
+        "text": "Discover our latest media features and announcements.",
+        "header_alignment": "center",
+        "read_more_text": "Read Full Release",
+        "button_text": "View All Press Coverage",
+        "button_link": "",
+        "image_aspect_ratio": "960 / 350",
+        "max_width": 1320,
+        "card_gap": 28,
+        "card_radius": 0,
+        "mobile_columns": "1",
+        "heading_size": 36,
+        "mobile_heading_size": 26,
+        "text_size": 16,
+        "card_title_size": 20,
+        "background": "#ffffff",
+        "text_color": "#111111",
+        "card_bg": "#fdfdfd",
+        "card_border": "#eaeaea",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "side_padding": 32,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40,
+        "mobile_side_padding": 16
       }
     },
     "newsletter_Vj3X3x": {
@@ -900,7 +1038,9 @@
     "empty_space_YbmGDd",
     "1782815985dd985d48",
     "empty_space_yPj6XA",
+    "real_customer_stories_Q97E8p",
     "blog_posts_nbzkXi",
+    "press_releases_home",
     "newsletter_Vj3X3x",
     "mix_match_collection_d3V6Hh",
     "editorial_three_panel_banner_NpfxqY",

@@ -3,15 +3,21 @@
 
   <div class="m-cart-addon__header">
 
-    {% if settings.cart_estimate_shipping %}
-      <button data-open="shipping" type="button" class="m-cart-addon--trigger-button">
-        <span class="m-cart-addon__text">Shipping</span>
-      </button>
-    {% endif %}
-
     {% if settings.discount_code_enable %}
       <button data-open="coupon" type="button" class="m-cart-addon--trigger-button">
         <span class="m-cart-addon__text">Discount Code</span>
+      </button>
+    {% endif %}
+
+    {% if settings.cart_notes_enable %}
+      <button data-open="note" type="button" class="m-cart-addon--trigger-button">
+        <span class="m-cart-addon__text">🎁 Gifting this order? Send a personal note</span>
+      </button>
+    {% endif %}
+
+    {% if settings.cart_estimate_shipping %}
+      <button data-open="shipping" type="button" class="m-cart-addon--trigger-button">
+        <span class="m-cart-addon__text">Shipping</span>
       </button>
     {% endif %}
 
@@ -19,19 +25,33 @@
 
 
   {% if settings.cart_notes_enable %}
-  <div class="m-cart-gift-note">
+  <div class="m-cart-addon__body" id="m-addons-note">
 
-    <label for="Cart-note" class="m-cart-gift-note__label">
+    <div class="m-cart-addon__title m:font-medium">
       🎁 Gifting this order? Send a personal note
-    </label>
+    </div>
 
-    <textarea
-      id="Cart-note"
-      name="note"
-      rows="3"
-      class="form-field"
-      placeholder="Write your personal message here..."
-    >{{ cart.note }}</textarea>
+    <div class="m-cart-addon__content">
+      <textarea
+        id="Cart-note"
+        name="note"
+        rows="4"
+        class="form-field"
+        placeholder="Write your personal message here..."
+      >{{ cart.note }}</textarea>
+    </div>
+
+    <div class="m-cart-addon__action m:flex m:items-center m:justify-center">
+
+      <button class="m-button m-button--secondary m-cart-addon--close" data-action="note">
+        {{ 'cart.general.cancel' | t }}
+      </button>
+
+      <button class="m-button m-button--primary m-cart-addon--save" data-action="note">
+        {{ 'cart.general.save' | t }}
+      </button>
+
+    </div>
 
   </div>
   {% endif %}

@@ -117,7 +117,7 @@
         "search": "show_icon",
         "show_account_icon": true,
         "show_cart_icon": true,
-        "show_wishlist_icon": false,
+        "show_wishlist_icon": true,
         "show_compare_icon": false,
         "show_currency_switcher": false,
         "show_country_selector": false,

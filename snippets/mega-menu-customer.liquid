@@ -33,6 +33,22 @@
           {{ 'customer.register.title' | t }}
         </a>
       {% endif %}
+      <a
+        href="/pages/wishlist"
+        class="m-button m-button--secondary m-wishlist-menu-button"
+        style="margin-top: 12px;"
+      >
+        {{ 'layout.wishlist.title' | t | default: 'Wishlist' }}
+      </a>
+    </div>
+  {% else %}
+    <div class="m-menu-customer__wrapper">
+      <a
+        href="/pages/wishlist"
+        class="m-button m-button--secondary m-wishlist-menu-button"
+      >
+        {{ 'layout.wishlist.title' | t | default: 'Wishlist' }}
+      </a>
     </div>
   {% endif %}
   <div class="m-menu-customer__language-currency">

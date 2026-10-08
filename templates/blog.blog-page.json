@@ -15,14 +15,14 @@
         "heading_WWEUty": {
           "type": "heading",
           "settings": {
-            "heading": "Kerlora In The Community",
+            "heading": "Kerlora Stories",
             "heading_size": "h2"
           }
         },
         "text_KEbLNC": {
           "type": "text",
           "settings": {
-            "text": "<p>At Kerlora we connect people through meaningful movement. From charity runs, strength training sessions and wellness events, we’re finding the joy in collective movement.</p>"
+            "text": "<p>The place for the latest product news, curated style guides, tips, wellness and movement inspiration.</p>"
           }
         }
       },
@@ -49,7 +49,7 @@
           "type": "recent_post",
           "settings": {
             "title": "Recent Post",
-            "sidebar_recent_blog_name": "community-events",
+            "sidebar_recent_blog_name": "kerlora-stories",
             "sidebar_recent_blog_count": "3"
           }
         },
@@ -105,13 +105,13 @@
       "name": "Featured Posts",
       "settings": {
         "heading": "Featured Posts",
-        "article_1": "community-events/kerlora-x-vibetribe-bringing-the-energy-of-dance-to-london",
-        "article_2": "community-events/kerlora-at-ideas-fest-september-2026",
-        "article_3": "community-events/learning-to-run-for-my-mind-not-just-my-body",
-        "article_4": "kerlora-stories/stress-awareness-month-2026",
-        "article_5": "kerlora-stories/gentle-movement-and-momentum-into-spring-3-ways-to-get-active-and-reset-yourself-this-month",
-        "article_6": "kerlora-stories/why-is-movement-important-for-menstruation-menopause",
-        "article_7": "kerlora-stories/building-movement-habits-in-2026"
+        "article_1": "kerlora-stories/boutique-uk-kerlora-in-the-press",
+        "article_2": "kerlora-stories/mind-body-movement",
+        "article_3": "kerlora-stories/stress-awareness-month-2026",
+        "article_4": "kerlora-stories/gentle-movement-and-momentum-into-spring-3-ways-to-get-active-and-reset-yourself-this-month",
+        "article_5": "kerlora-stories/why-is-movement-important-for-menstruation-menopause",
+        "article_6": "kerlora-stories/building-movement-habits-in-2026",
+        "article_7": "kerlora-stories/kerlora-on-kmfm-the-story-behind-the-brand"
       }
     },
     "section_get_inspired_izhxPR": {

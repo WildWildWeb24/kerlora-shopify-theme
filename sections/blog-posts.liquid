@@ -35,6 +35,47 @@
     --column-gap-mobile: {{ section.settings.mobile_gap }}px;
     --row-gap: {{ section.settings.column_gap | plus: 10 }}px;
   }
+  #m-blog-grid-{{ section.id }} .container,
+  #m-blog-grid-{{ section.id }} .container-fluid {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+  @media screen and (min-width: 768px) {
+    #m-blog-grid-{{ section.id }} .m-mixed-layout__inner {
+      display: grid !important;
+      align-items: stretch !important;
+      width: 100% !important;
+    }
+  }
+  #m-blog-grid-{{ section.id }} .m\:column {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  #m-blog-grid-{{ section.id }} .m-article-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    width: 100% !important;
+    flex: 1 1 auto !important;
+  }
+  #m-blog-grid-{{ section.id }} .m-article-card__content {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    justify-content: space-between !important;
+  }
+  #m-blog-grid-{{ section.id }} .readmore-wrapper {
+    margin-top: auto !important;
+  }
+  @media screen and (max-width: 767px) {
+    #m-blog-grid-{{ section.id }} .container,
+    #m-blog-grid-{{ section.id }} .container-fluid {
+      padding-left: 16px !important;
+      padding-right: 16px !important;
+    }
+  }
 </style>
 <section
   id="m-blog-grid-{{ section.id }}"

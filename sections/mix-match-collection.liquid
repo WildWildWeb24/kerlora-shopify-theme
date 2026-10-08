@@ -13,9 +13,18 @@
       {% endif %}
     </div>
 
-    {% assign selected_collection = section.settings.collection %}
+    {% liquid
+      assign col_setting = section.settings.collection
+      if col_setting != blank and col_setting.products.size > 0
+        assign selected_collection = col_setting
+      elsif col_setting != blank and collections[col_setting].products.size > 0
+        assign selected_collection = collections[col_setting]
+      else
+        assign selected_collection = collections.all
+      endif
+    %}
 
-    {% if selected_collection != blank %}
+    {% if selected_collection != blank and selected_collection.products.size > 0 %}
       <div class="mm-products">
         {% for product in selected_collection.products limit: section.settings.products_limit %}
           <div class="mm-product-card" data-product-handle="{{ product.handle }}">
@@ -33,7 +42,7 @@
               </a>
 
               <button
-                class="mm-wishlist-btn"
+                class="mm-wishlist-btn m-wishlist-button"
                 type="button"
                 aria-label="Add {{ product.title | escape }} to favourites"
                 data-product-handle="{{ product.handle }}"
@@ -167,8 +176,15 @@
     transition: all 0.2s ease;
   }
 
+  #mm-collection-{{ section.id }} .mm-wishlist-btn.added-to-wishlist svg,
   #mm-collection-{{ section.id }} .mm-wishlist-btn.is-active svg {
-    fill: #111;
+    fill: #e63946 !important;
+    stroke: #e63946 !important;
+  }
+  #mm-collection-{{ section.id }} .mm-wishlist-btn.added-to-wishlist svg path,
+  #mm-collection-{{ section.id }} .mm-wishlist-btn.is-active svg path {
+    fill: #e63946 !important;
+    stroke: #e63946 !important;
   }
 
   #mm-collection-{{ section.id }} .mm-product-info {
@@ -238,59 +254,9 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    const section = document.querySelector('#mm-collection-{{ section.id }}');
-    if (!section) return;
-
-    const storageKey = 'kerlora_wishlist';
-    const buttons = section.querySelectorAll('.mm-wishlist-btn');
-
-    function getWishlist() {
-      try {
-        return JSON.parse(localStorage.getItem(storageKey)) || [];
-      } catch (e) {
-        return [];
-      }
+    if (window.MinimogTheme && window.MinimogTheme.Wishlist) {
+      window.MinimogTheme.Wishlist.setWishlistButtonsState();
     }
-
-    function saveWishlist(items) {
-      localStorage.setItem(storageKey, JSON.stringify(items));
-    }
-
-    function refreshButtons() {
-      const wishlist = getWishlist();
-
-      buttons.forEach(function (button) {
-        const handle = button.dataset.productHandle;
-
-        if (wishlist.includes(handle)) {
-          button.classList.add('is-active');
-          button.setAttribute('aria-label', 'Remove from favourites');
-        } else {
-          button.classList.remove('is-active');
-          button.setAttribute('aria-label', 'Add to favourites');
-        }
-      });
-    }
-
-    buttons.forEach(function (button) {
-      button.addEventListener('click', function () {
-        const handle = button.dataset.productHandle;
-        let wishlist = getWishlist();
-
-        if (wishlist.includes(handle)) {
-          wishlist = wishlist.filter(function (item) {
-            return item !== handle;
-          });
-        } else {
-          wishlist.push(handle);
-        }
-
-        saveWishlist(wishlist);
-        refreshButtons();
-      });
-    });
-
-    refreshButtons();
   });
 </script>
 

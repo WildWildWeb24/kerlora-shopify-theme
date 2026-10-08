@@ -1,0 +1,45 @@
+{%- if settings.show_free_shipping_goal -%}
+  {%- liquid
+    assign threshold_val = settings.free_shipping_threshold | default: 0
+    assign threshold_cents = threshold_val | times: 100
+    assign cart_total = cart.total_price
+
+    if threshold_cents == 0 or cart_total >= threshold_cents
+      assign is_eligible = true
+      assign percentage = 100
+      assign remaining_cents = 0
+    else
+      assign is_eligible = false
+      assign remaining_cents = threshold_cents | minus: cart_total
+      assign percentage = cart_total | times: 100 | divided_by: threshold_cents
+      if percentage > 100
+        assign percentage = 100
+      endif
+    endif
+  -%}
+
+  <div
+    class="m-free-shipping-goal"
+    data-free-shipping-goal
+  >
+    <div class="m-free-shipping-goal__text">
+      {%- if is_eligible -%}
+        <span class="m-free-shipping-goal__icon">🎉</span>
+        <span class="m-free-shipping-goal__message">{{ settings.free_shipping_eligible_text }}</span>
+      {%- else -%}
+        {%- assign formatted_remaining = remaining_cents | money -%}
+        {%- assign amount_placeholder = '{{ amount }}' -%}
+        <span class="m-free-shipping-goal__icon">🚚</span>
+        <span class="m-free-shipping-goal__message">
+          {{- settings.free_shipping_ineligible_text | replace: amount_placeholder, formatted_remaining -}}
+        </span>
+      {%- endif -%}
+    </div>
+    <div class="m-free-shipping-goal__bar-track">
+      <div
+        class="m-free-shipping-goal__bar-fill"
+        style="width: {{ percentage }}%;"
+      ></div>
+    </div>
+  </div>
+{%- endif -%}

@@ -1,26 +1,160 @@
 <style>
+  /* Universal 0px Radius for Article Cards */
+  .m-article-card,
+  .m-article-card__image,
+  .m-article-card__image img,
+  .m-article-card__content,
   .custom-readmore-btn {
-    display: block;
-    width: 100%;
-    padding: 10px 20px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    text-align: center;
-    text-decoration: none;
-    font-weight: 500;
-    color: #000;
-    background: #fff;
-    transition: all 0.3s ease;
-}
+    border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+  }
 
-.custom-readmore-btn:hover {
-    background: #000;
-    color: #fff;
-}
+  /* Desktop Grid Layout: Force grid and stretch alignment on desktop */
+  @media screen and (min-width: 768px) {
+    .m-blog-grid .m-mixed-layout__inner,
+    .m-mixed-layout__inner {
+      display: grid !important;
+      align-items: stretch !important;
+      width: 100% !important;
+    }
+  }
 
-.readmore-wrapper{
-    text-align: center;
-}
+  .m-blog-grid .m\:column,
+  .m-mixed-layout__inner .m\:column {
+    display: flex !important;
+    flex-direction: column !important;
+    align-self: stretch !important;
+    height: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .m-article-card {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    width: 100% !important;
+    flex: 1 1 auto !important;
+    box-sizing: border-box !important;
+  }
+
+  .m-article-card__image {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .m-article-card__image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .m-article-card__content {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    justify-content: space-between !important;
+    padding: 24px 20px !important;
+    background: #F4F4F4 !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Strict Clamped Title for Uniform Line Height Across Desktop & Mobile */
+  .m-article-card__title {
+    font-size: 18px !important;
+    line-height: 1.35 !important;
+    font-weight: 500 !important;
+    margin: 6px 0 10px 0 !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    height: 2.7em !important;
+    max-height: 2.7em !important;
+  }
+
+  @media screen and (min-width: 640px) {
+    .m-article-card__title {
+      font-size: 20px !important;
+      height: 2.7em !important;
+      max-height: 2.7em !important;
+    }
+  }
+
+  .m-article-card__title a {
+    color: #111111 !important;
+    text-decoration: none !important;
+  }
+
+  /* Strict Clamped Excerpt */
+  .m-article-card__excerpt {
+    font-size: 13.5px !important;
+    line-height: 1.45 !important;
+    color: #555555 !important;
+    margin-bottom: 20px !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+    overflow: hidden !important;
+    height: 2.9em !important;
+    max-height: 2.9em !important;
+  }
+
+  /* Read More Button Pushed Flush to Bottom Edge Across All Devices */
+  .m-article-card .readmore-wrapper {
+    margin-top: auto !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+
+  .m-article-card .custom-readmore-btn {
+    display: block !important;
+    width: 100% !important;
+    padding: 12px 20px !important;
+    border: 1px solid #111111 !important;
+    text-align: center !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    color: #111111 !important;
+    background: #ffffff !important;
+    transition: all 0.25s ease !important;
+    box-sizing: border-box !important;
+  }
+
+  .m-article-card .custom-readmore-btn:hover {
+    background: #111111 !important;
+    color: #ffffff !important;
+  }
+
+  @media screen and (max-width: 767px) {
+    .m-mixed-layout--mobile-scroll .m-mixed-layout__inner {
+      display: flex !important;
+      align-items: stretch !important;
+    }
+    .m-mixed-layout--mobile-scroll .m\:column {
+      display: flex !important;
+      flex-direction: column !important;
+      align-self: stretch !important;
+      height: auto !important;
+    }
+    .m-mixed-layout--mobile-scroll .m-article-card {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+      flex: 1 1 auto !important;
+    }
+    .m-mixed-layout--mobile-scroll .m-article-card__content {
+      display: flex !important;
+      flex-direction: column !important;
+      flex: 1 1 auto !important;
+      justify-content: space-between !important;
+    }
+    .m-mixed-layout--mobile-scroll .readmore-wrapper {
+      margin-top: auto !important;
+    }
+  }
 </style>
 {% liquid
   if content_align == nil

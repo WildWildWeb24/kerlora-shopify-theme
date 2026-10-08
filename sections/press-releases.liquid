@@ -1,0 +1,758 @@
+<section
+  class="press-releases-section"
+  id="press-releases-{{ section.id }}"
+>
+  <div class="press-releases-wrap">
+    {% if section.settings.heading != blank or section.settings.text != blank %}
+      <div class="press-releases-header press-releases-header--{{ section.settings.header_alignment }}">
+        {% if section.settings.subheading != blank %}
+          <span class="press-releases-subheading">{{ section.settings.subheading }}</span>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="press-releases-heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        {% if section.settings.text != blank %}
+          <p class="press-releases-text">{{ section.settings.text }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    <div class="press-releases-grid">
+      {% if section.blocks.size > 0 %}
+        {% for block in section.blocks %}
+          {% liquid
+            assign article = block.settings.article
+            assign pub_name = block.settings.custom_publication
+            assign card_title = block.settings.custom_title
+            assign card_excerpt = block.settings.custom_excerpt
+            assign card_image = block.settings.custom_image
+            assign card_url = block.settings.custom_url
+
+            if article != blank
+              if card_title == blank
+                assign card_title = article.title
+              endif
+              if card_excerpt == blank
+                if article.excerpt != blank
+                  assign card_excerpt = article.excerpt | strip_html
+                else
+                  assign card_excerpt = article.content | strip_html | truncatewords: 25, '...'
+                endif
+              endif
+              if card_image == blank
+                assign card_image = article.image
+              endif
+              if card_url == blank
+                assign card_url = article.url
+              endif
+            endif
+
+            if card_title == blank
+              assign card_title = 'Press Release Title #' | append: forloop.index
+            endif
+            if card_excerpt == blank
+              assign card_excerpt = 'Discover our latest press feature and brand announcement published in top news outlets.'
+            endif
+            if card_url == blank
+              assign card_url = '#'
+            endif
+          %}
+
+          <div class="press-release-card" {{ block.shopify_attributes }}>
+            <a href="{{ card_url }}" class="press-release-card__image-link" aria-label="{{ card_title | escape }}">
+              <div class="press-release-card__image-wrap">
+                {% if card_image != blank %}
+                  <img
+                    src="{{ card_image | image_url: width: 1000 }}"
+                    alt="{{ card_image.alt | default: card_title | escape }}"
+                    width="{{ card_image.width | default: 1000 }}"
+                    height="{{ card_image.height | default: 600 }}"
+                    loading="lazy"
+                  >
+                {% else %}
+                  <div class="press-release-card__placeholder">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l5 5v11a2 2 0 01-2 2z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M14 4v5h5M9 12h6M9 16h4"></path>
+                    </svg>
+                  </div>
+                {% endif %}
+
+                {% if pub_name != blank %}
+                  <span class="press-release-card__badge">{{ pub_name }}</span>
+                {% elsif article.published_at != blank %}
+                  <span class="press-release-card__badge">{{ article.published_at | date: "%b %d, %Y" }}</span>
+                {% endif %}
+              </div>
+            </a>
+
+            <div class="press-release-card__content">
+              {% if pub_name != blank and article.published_at != blank %}
+                <div class="press-release-card__meta">
+                  <span class="press-release-card__source">{{ pub_name }}</span>
+                  <span class="press-release-card__dot">•</span>
+                  <span class="press-release-card__date">{{ article.published_at | date: "%B %d, %Y" }}</span>
+                </div>
+              {% endif %}
+
+              <h3 class="press-release-card__title">
+                <a href="{{ card_url }}">{{ card_title }}</a>
+              </h3>
+
+              {% if card_excerpt != blank %}
+                <p class="press-release-card__excerpt">{{ card_excerpt }}</p>
+              {% endif %}
+
+              <div class="press-release-card__footer">
+                <a href="{{ card_url }}" class="press-release-card__btn">
+                  <span>{{ section.settings.read_more_text | default: 'Read Full Release' }}</span>
+                  <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        {% for i in (1..2) %}
+          <div class="press-release-card">
+            <a href="#" class="press-release-card__image-link" aria-label="Sample Press Feature {{ i }}">
+              <div class="press-release-card__image-wrap">
+                <div class="press-release-card__placeholder">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l5 5v11a2 2 0 01-2 2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 4v5h5M9 12h6M9 16h4"></path>
+                  </svg>
+                </div>
+                <span class="press-release-card__badge">PRESS RELEASE</span>
+              </div>
+            </a>
+            <div class="press-release-card__content">
+              <div class="press-release-card__meta">
+                <span class="press-release-card__source">FEATURED ARTICLE</span>
+                <span class="press-release-card__dot">•</span>
+                <span class="press-release-card__date">Recent News</span>
+              </div>
+              <h3 class="press-release-card__title">
+                <a href="#">Kerlora Featured in Major Fashion & Activewear Press Release {{ i }}</a>
+              </h3>
+              <p class="press-release-card__excerpt">
+                Select any article from your store's blogs or customize press coverage links directly in the theme editor settings.
+              </p>
+              <div class="press-release-card__footer">
+                <a href="#" class="press-release-card__btn">
+                  <span>{{ section.settings.read_more_text | default: 'Read Full Release' }}</span>
+                  <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    {% if section.settings.button_text != blank %}
+      <div class="press-releases-footer">
+        <a href="{{ section.settings.button_link | default: '/blogs/news' }}" class="press-releases-main-btn">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  #press-releases-{{ section.id }} {
+    background-color: {{ section.settings.background | default: '#ffffff' }};
+    padding-top: {{ section.settings.padding_top | default: 60 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | default: 60 }}px;
+    color: {{ section.settings.text_color | default: '#111111' }};
+  }
+
+  #press-releases-{{ section.id }} .press-releases-wrap {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 32px;
+    padding-right: 32px;
+    box-sizing: border-box;
+  }
+
+  #press-releases-{{ section.id }} .press-releases-header {
+    margin-bottom: 36px;
+  }
+
+  #press-releases-{{ section.id }} .press-releases-header--left {
+    text-align: left;
+  }
+
+  #press-releases-{{ section.id }} .press-releases-header--center {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 680px;
+  }
+
+  #press-releases-{{ section.id }} .press-releases-header--right {
+    text-align: right;
+  }
+
+  #press-releases-{{ section.id }} .press-releases-subheading {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #777777;
+    margin-bottom: 8px;
+  }
+
+  #press-releases-{{ section.id }} .press-releases-heading {
+    margin: 0 0 12px;
+    font-size: {{ section.settings.heading_size | default: 36 }}px;
+    line-height: 1.15;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: inherit;
+  }
+
+  #press-releases-{{ section.id }} .press-releases-text {
+    margin: 0;
+    font-size: {{ section.settings.text_size | default: 16 }}px;
+    line-height: 1.5;
+    color: #555555;
+  }
+
+  /* 2 CARDS PER VIEW GRID */
+  #press-releases-{{ section.id }} .press-releases-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: {{ section.settings.card_gap | default: 28 }}px;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card {
+    display: flex;
+    flex-direction: column;
+    background: {{ section.settings.card_bg | default: '#fdfdfd' }};
+    border: 1px solid {{ section.settings.card_border | default: '#eaeaea' }};
+    border-radius: {{ section.settings.card_radius | default: 0 }}px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.07);
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__image-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__image-wrap {
+    position: relative;
+    width: 100%;
+    aspect-ratio: {{ section.settings.image_aspect_ratio | default: '960 / 350' }};
+    background: transparent;
+    border-radius: 0;
+    overflow: hidden;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card:hover .press-release-card__image-wrap img {
+    transform: scale(1.05);
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f0f0f0;
+    color: #a0a0a0;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__placeholder svg {
+    width: 48px;
+    height: 48px;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 0;
+    z-index: 2;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 24px;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #777777;
+    margin-bottom: 10px;
+    font-weight: 500;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__source {
+    color: #111111;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__dot {
+    color: #cccccc;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__title {
+    margin: 0 0 12px;
+    font-size: {{ section.settings.card_title_size | default: 20 }}px;
+    line-height: 1.35;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__title a:hover {
+    color: #555555;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__excerpt {
+    margin: 0 0 20px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: #666666;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__footer {
+    margin-top: auto;
+    padding-top: 12px;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #111111;
+    text-decoration: none;
+    transition: gap 0.2s ease, color 0.2s ease;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__btn svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__btn:hover {
+    color: #444444;
+  }
+
+  #press-releases-{{ section.id }} .press-release-card__btn:hover svg {
+    transform: translateX(4px);
+  }
+
+  #press-releases-{{ section.id }} .press-releases-footer {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  #press-releases-{{ section.id }} .press-releases-main-btn {
+    display: inline-block;
+    padding: 14px 32px;
+    background: #111111;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 0px;
+    transition: background 0.2s ease, transform 0.2s ease;
+  }
+
+  #press-releases-{{ section.id }} .press-releases-main-btn:hover {
+    background: #333333;
+    transform: translateY(-1px);
+  }
+
+  @media screen and (max-width: 767px) {
+    #press-releases-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top | default: 40 }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom | default: 40 }}px;
+    }
+
+    #press-releases-{{ section.id }} .press-releases-wrap {
+      padding-left: {{ section.settings.mobile_side_padding | default: 16 }}px;
+      padding-right: {{ section.settings.mobile_side_padding | default: 16 }}px;
+    }
+
+    #press-releases-{{ section.id }} .press-releases-heading {
+      font-size: {{ section.settings.mobile_heading_size | default: 26 }}px;
+    }
+
+    #press-releases-{{ section.id }} .press-releases-grid {
+      grid-template-columns: repeat({{ section.settings.mobile_columns | default: 1 }}, 1fr);
+      gap: 16px;
+    }
+
+    #press-releases-{{ section.id }} .press-release-card__content {
+      padding: 16px;
+    }
+
+    #press-releases-{{ section.id }} .press-release-card__title {
+      font-size: 17px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Press Releases",
+  "tag": "section",
+  "class": "press-releases-section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "In the News"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Press Releases & Media"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Description",
+      "default": "Explore our latest announcements, news coverage, and brand features."
+    },
+    {
+      "type": "select",
+      "id": "header_alignment",
+      "label": "Header alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Card & Button Labels"
+    },
+    {
+      "type": "text",
+      "id": "read_more_text",
+      "label": "Card button label",
+      "default": "Read Full Release"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Section bottom button text",
+      "default": "View All Press Coverage"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Section bottom button link"
+    },
+    {
+      "type": "header",
+      "content": "Styling & Layout"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Cover Image Proportions",
+      "options": [
+        { "value": "960 / 350", "label": "960x350 Banner (Exact Fit - Recommended)" },
+        { "value": "2.5 / 1", "label": "Extra Wide (2.5:1)" },
+        { "value": "2.25 / 1", "label": "Wide Banner (2.25:1)" },
+        { "value": "21 / 9", "label": "Ultrawide (21:9)" },
+        { "value": "16 / 9", "label": "Standard Landscape (16:9)" }
+      ],
+      "default": "960 / 350"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width (px)",
+      "min": 1000,
+      "max": 1600,
+      "step": 20,
+      "default": 1320
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards (px)",
+      "min": 12,
+      "max": 48,
+      "step": 4,
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "label": "Card corner radius (px)",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "Mobile columns",
+      "options": [
+        { "value": "1", "label": "1 Card per row" },
+        { "value": "2", "label": "2 Cards per row" }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Desktop heading size (px)",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Mobile heading size (px)",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Description text size (px)",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_title_size",
+      "label": "Card title size (px)",
+      "min": 16,
+      "max": 28,
+      "step": 1,
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#fdfdfd"
+    },
+    {
+      "type": "color",
+      "id": "card_border",
+      "label": "Card border color",
+      "default": "#eaeaea"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding (px)",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "side_padding",
+      "label": "Desktop side padding (px)",
+      "min": 12,
+      "max": 60,
+      "step": 4,
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile top padding (px)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile bottom padding (px)",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_side_padding",
+      "label": "Mobile side padding (px)",
+      "min": 8,
+      "max": 32,
+      "step": 4,
+      "default": 16
+    }
+  ],
+  "blocks": [
+    {
+      "type": "article",
+      "name": "Press Article",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "Select Article",
+          "info": "Choose any article from your store's blogs."
+        },
+        {
+          "type": "text",
+          "id": "custom_publication",
+          "label": "Publication / Source Name",
+          "info": "e.g. VOGUE, FORBES, ELLE, PRESS RELEASE"
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Title Override",
+          "info": "Leave blank to use the selected article title"
+        },
+        {
+          "type": "textarea",
+          "id": "custom_excerpt",
+          "label": "Custom Excerpt Override",
+          "info": "Leave blank to use the article excerpt"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Feature Image",
+          "info": "Leave blank to use the article image"
+        },
+        {
+          "type": "url",
+          "id": "custom_url",
+          "label": "Custom Link / External URL",
+          "info": "Override link destination if feature is hosted on an external site"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press Releases",
+      "blocks": [
+        {
+          "type": "article",
+          "settings": {
+            "custom_publication": "FORBES",
+            "custom_title": "How Kerlora Is Redefining Modern Activewear For Every Body",
+            "custom_excerpt": "An in-depth look into Kerlora's commitment to inclusive sizing, functional luxury, and high-performance design."
+          }
+        },
+        {
+          "type": "article",
+          "settings": {
+            "custom_publication": "VOGUE",
+            "custom_title": "The Season for Play: Essential Sets for Everyday Movement",
+            "custom_excerpt": "Featured in Vogue's curated collection of top activewear sets designed for performance, comfort, and style."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

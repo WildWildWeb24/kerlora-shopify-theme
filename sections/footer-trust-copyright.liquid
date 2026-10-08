@@ -1,0 +1,514 @@
+<style>
+  .m-footer-tc--{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    color: {{ section.settings.text_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    border-top: 1px solid {{ section.settings.border_color }};
+  }
+
+  /* Upper Row: Review App (Left) | Vertical Line | Payment Badges (Right) */
+  .m-footer-tc--{{ section.id }} .m-footer-tc__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid {{ section.settings.border_color }};
+    width: 100%;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-review-app {
+    display: flex;
+    align-items: center;
+    justify-content: left !important;
+    justify-content: flex-start !important;
+    flex-shrink: 0;
+    min-height: 32px;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Sleek Single-Line Horizontal Badge (Border-free & Transparent) */
+  .m-footer-tc--{{ section.id }} .m-footer-jm__badge-wrapper,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge-widget,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge-widget *,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge *,
+  .m-footer-tc--{{ section.id }} .jdgm-temp-widget,
+  .m-footer-tc--{{ section.id }} .jdgm-temp-widget * {
+    display: inline-flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: left !important;
+    justify-content: flex-start !important;
+    float: none !important;
+    clear: none !important;
+    white-space: nowrap !important;
+    box-sizing: border-box !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-jm__badge-wrapper,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge-widget,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge {
+    padding: 2px 0 !important;
+    border: none !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    gap: 8px !important;
+    margin: 0 !important;
+    height: auto !important;
+    min-height: 32px !important;
+    width: auto !important;
+    max-width: 100% !important;
+    text-decoration: none !important;
+    color: {{ section.settings.heading_color }} !important;
+  }
+
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge__link,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge__icon,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge__text {
+    gap: 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge__logo,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge-widget svg,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge svg {
+    height: 14px !important;
+    max-height: 14px !important;
+    width: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge__certified,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge__rating,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge__stars,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge__reviews-count,
+  .m-footer-tc--{{ section.id }} .jdgm-trust-badge__description {
+    font-size: 12px !important;
+    line-height: 1 !important;
+    margin: 0 2px !important;
+    padding: 0 !important;
+  }
+
+  /* Targeted Judge.me & Review App Styling */
+  /* Hide any medallion, square badge box, or extra icons injected by Judge.me app */
+  .m-footer-tc--{{ section.id }} .jdgm-all-reviews-rating__medallion,
+  .m-footer-tc--{{ section.id }} .jdgm-medallion,
+  .m-footer-tc--{{ section.id }} .jdgm-all-reviews-rating .jdgm-all-reviews-rating__stars,
+  .m-footer-tc--{{ section.id }} .jdgm-all-reviews-rating .jdgm-all-reviews-rating__text,
+  .m-footer-tc--{{ section.id }} .jdgm-picture-icon,
+  .m-footer-tc--{{ section.id }} .jdgm-badge-icon,
+  .m-footer-tc--{{ section.id }} .jdgm-histogram,
+  .m-footer-tc--{{ section.id }} .jdgm-all-reviews-histogram,
+  .m-footer-tc--{{ section.id }} .jdgm-write-rev-link,
+  .m-footer-tc--{{ section.id }} .jdgm-subtab,
+  .m-footer-tc--{{ section.id }} a[href*="write-a-review"],
+  .m-footer-tc--{{ section.id }} br {
+    display: none !important;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-jm__badge-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-jm__stars {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    color: #ffb703;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-jm__stars svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-jm__text {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: {{ section.settings.heading_color }};
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-tc__divider {
+    display: block;
+    width: 1px;
+    height: 52px;
+    background-color: {{ section.settings.border_color }};
+    flex-shrink: 0;
+  }
+
+  /* Payment Provider Badges (Strict 1 Single Row on Desktop) */
+  @media screen and (min-width: 990px) {
+    .m-footer-tc--{{ section.id }} .m-footer-payments {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: center !important;
+      gap: 8px !important;
+      justify-content: flex-end;
+      white-space: nowrap !important;
+      flex-shrink: 0 !important;
+    }
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-payment__item {
+    height: 26px;
+    padding: 2px 9px;
+    background-color: #ffffff;
+    border: 1px solid {{ section.settings.border_color }};
+    border-radius: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-payment__item svg,
+  .m-footer-tc--{{ section.id }} .m-footer-payment__item img {
+    height: 16px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* Bottom Row: Centered Copyright & Legal Info */
+  .m-footer-tc--{{ section.id }} .m-footer-tc__bottom {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    width: 100%;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-tc__copyright {
+    font-size: 12.5px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.85;
+    margin: 0;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-tc__reg {
+    font-size: 12px;
+    color: {{ section.settings.text_color }};
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-tc__legal-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 4px;
+    list-style: none;
+    padding: 0;
+    white-space: nowrap;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-tc__legal-links a {
+    font-size: 12.5px;
+    color: {{ section.settings.text_color }};
+    text-decoration: none;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-tc__legal-links a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-tc__sep {
+    font-size: 11px;
+    opacity: 0.4;
+  }
+
+  /* Mobile Structure (Responsive Scaling & Clean Flex Row) */
+  @media screen and (max-width: 989px) {
+    .m-footer-tc--{{ section.id }} .m-footer-tc__top {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 20px;
+      width: 100%;
+    }
+
+    .m-footer-tc--{{ section.id }} .m-footer-review-app {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: left !important;
+      justify-content: flex-start !important;
+    }
+
+    .m-footer-tc--{{ section.id }} .m-footer-jm__badge-wrapper {
+      gap: 5px;
+    }
+
+    .m-footer-tc--{{ section.id }} .m-footer-jm__stars svg {
+      width: 13px;
+      height: 13px;
+    }
+
+    .m-footer-tc--{{ section.id }} .m-footer-jm__text {
+      font-size: 11.5px;
+    }
+
+    .m-footer-tc--{{ section.id }} .m-footer-tc__divider {
+      display: block;
+      width: 1px;
+      height: 48px;
+      background-color: {{ section.settings.border_color }};
+      flex-shrink: 0;
+    }
+
+    .m-footer-tc--{{ section.id }} .m-footer-payments {
+      flex: 1;
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 6px !important;
+      white-space: normal !important;
+    }
+
+    .m-footer-tc--{{ section.id }} .m-footer-payment__item {
+      height: 24px;
+      padding: 2px 7px;
+    }
+
+    .m-footer-tc--{{ section.id }} .m-footer-tc__bottom {
+      padding-top: 16px;
+      gap: 6px;
+    }
+
+    .m-footer-tc--{{ section.id }} .m-footer-tc__legal-links {
+      gap: 10px;
+    }
+  }
+</style>
+
+<div class="m-footer-tc m-footer-tc--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="footer-trust-copyright">
+  <div class="container">
+    
+    <!-- Upper Row: Review App | Vertical Line | Payment Badges -->
+    <div class="m-footer-tc__top">
+      
+      <!-- Clean Rectangular Review Rating Bar -->
+      <div class="m-footer-review-app">
+        {%- assign custom_block_rendered = false -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'custom_liquid' -%}
+            {{ block.settings.custom_liquid }}
+            {%- assign custom_block_rendered = true -%}
+          {%- elsif block.type == '@app' -%}
+            {%- render block -%}
+            {%- assign custom_block_rendered = true -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        {%- if custom_block_rendered == false -%}
+          {%- if shop.metafields.judgeme["trust_badge.enabled"] and shop.metafields.judgeme["trust_badge.verified_reviews_count"] != 0 -%}
+            <!-- Start of Judge.me Trust Badge -->
+            <div data-structure="desktop-horizontal" data-color="black" data-star="black" data-alignment="left">
+              <div class='jdgm-widget jdgm-trust-badge-widget' data-widget='trust-badge' data-entry-point='trust_badge.js' data-entry-key='trust-badge/main.js'{% if shop.metafields.judgeme["trust_badge.modal_data"] != blank %} data-modal-json='{{ shop.metafields.judgeme["trust_badge.modal_data"] | escape }}'{% endif %}>
+                <script type='application/json' data-badge-data>{"verified_reviews_count": {{ shop.metafields.judgeme["trust_badge.verified_reviews_count"] | json }},"verified_average_rating": {{ shop.metafields.judgeme["trust_badge.verified_average_rating"] | default: 0 | json }},"is_certified": {{ shop.metafields.judgeme["trust_badge.is_certified"] | default: false | json }}}</script>
+              </div>
+            </div>
+            <!-- End of Judge.me Trust Badge -->
+          {%- else -%}
+            <div class="m-footer-jm__badge-wrapper">
+              <div class="m-footer-jm__stars">
+                {%- for i in (1..5) -%}
+                  <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                {%- endfor -%}
+              </div>
+              <div class="m-footer-jm__text">
+                {%- assign rating_text = section.settings.jm_rating_text -%}
+                {%- if rating_text == blank -%}
+                  {%- assign rating_text = 'Based on 99 reviews' -%}
+                {%- endif -%}
+                <span>{{ rating_text }}</span>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endif -%}
+      </div>
+
+      <div class="m-footer-tc__divider"></div>
+
+      <!-- Payment Provider Badges Grid -->
+      <div class="m-footer-payments">
+        {%- if shop.enabled_payment_types.size > 0 -%}
+          {%- for type in shop.enabled_payment_types -%}
+            <div class="m-footer-payment__item">
+              {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="m-footer-payment__item"><strong style="font-size: 10px; font-weight: 500; color: #1a1f71;">VISA</strong></div>
+          <div class="m-footer-payment__item"><strong style="font-size: 10px; font-weight: 500; color: #eb001b;">Mastercard</strong></div>
+          <div class="m-footer-payment__item"><strong style="font-size: 10px; font-weight: 500; color: #000000;"> Pay</strong></div>
+          <div class="m-footer-payment__item"><strong style="font-size: 10px; font-weight: 500; color: #ffb3c7;">Klarna.</strong></div>
+          <div class="m-footer-payment__item"><strong style="font-size: 10px; font-weight: 500; color: #003087;">PayPal</strong></div>
+          <div class="m-footer-payment__item"><strong style="font-size: 10px; font-weight: 500; color: #4285f4;">G Pay</strong></div>
+          <div class="m-footer-payment__item"><strong style="font-size: 10px; font-weight: 500; color: #5a31f4;">shop</strong></div>
+        {%- endif -%}
+      </div>
+
+    </div>
+
+    <!-- Bottom Row: Centered Copyright & Legal Links -->
+    <div class="m-footer-tc__bottom">
+      <p class="m-footer-tc__copyright">{{ section.settings.copyright_text }}</p>
+      {%- if section.settings.registration_text != blank -%}
+        <p class="m-footer-tc__reg">{{ section.settings.registration_text }}</p>
+      {%- endif -%}
+      
+      <div class="m-footer-tc__legal-links">
+        <a href="{{ section.settings.link_terms | default: '/policies/terms-of-service' }}">Website Terms of Use</a>
+        <span class="m-footer-tc__sep">|</span>
+        <a href="{{ section.settings.link_accessibility | default: '#' }}">Accessibility</a>
+        <span class="m-footer-tc__sep">|</span>
+        <a href="{{ section.settings.link_sitemap | default: '/pages/sitemap' }}">Sitemap</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Footer Trust & Copyright",
+  "class": "footer-trust-copyright-section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#FAF8F5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#1C1B1A"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border / Line Color",
+      "default": "#EAE6DF"
+    },
+    {
+      "type": "header",
+      "content": "Judge.me Review Settings"
+    },
+    {
+      "type": "text",
+      "id": "jm_rating_text",
+      "label": "Review Rating Text",
+      "default": "4.9/5 based on 1,000+ reviews"
+    },
+    {
+      "type": "header",
+      "content": "Copyright & Legal Settings"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© Kerlora 2026. All rights reserved."
+    },
+    {
+      "type": "text",
+      "id": "registration_text",
+      "label": "Registration Text",
+      "default": "Kerlora Ltd. Registered in England & Wales, Company No. 16277114."
+    },
+    {
+      "type": "url",
+      "id": "link_terms",
+      "label": "Terms of Use Link"
+    },
+    {
+      "type": "url",
+      "id": "link_accessibility",
+      "label": "Accessibility Link"
+    },
+    {
+      "type": "url",
+      "id": "link_sitemap",
+      "label": "Sitemap Link"
+    },
+    {
+      "type": "header",
+      "content": "Section Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "custom_liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "custom_liquid",
+          "label": "Custom Liquid / Trust Badge Code",
+          "default": "<!-- Start of Judge.me Trust Badge -->{% if shop.metafields.judgeme[\"trust_badge.enabled\"] and shop.metafields.judgeme[\"trust_badge.verified_reviews_count\"] != 0 %}<div data-structure=\"outline\" data-color=\"black\" data-star=\"black\" data-alignment=\"left\"><div class='jdgm-widget jdgm-trust-badge-widget' data-widget='trust-badge' data-entry-point='trust_badge.js' data-entry-key='trust-badge/main.js'{% if shop.metafields.judgeme[\"trust_badge.modal_data\"] != blank %} data-modal-json='{{ shop.metafields.judgeme[\"trust_badge.modal_data\"] | escape }}'{% endif %}><script type='application/json' data-badge-data>{\"verified_reviews_count\": {{ shop.metafields.judgeme[\"trust_badge.verified_reviews_count\"] | json }},\"verified_average_rating\": {{ shop.metafields.judgeme[\"trust_badge.verified_average_rating\"] | default: 0 | json }},\"is_certified\": {{ shop.metafields.judgeme[\"trust_badge.is_certified\"] | default: false | json }}}</script></div></div>{% endif %}<!-- End of Judge.me Trust Badge -->"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Footer Trust & Copyright"
+    }
+  ]
+}
+{% endschema %}
