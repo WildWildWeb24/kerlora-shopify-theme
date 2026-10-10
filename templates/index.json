@@ -619,6 +619,18 @@
     "real_customer_stories_Q97E8p": {
       "type": "real-customer-stories",
       "blocks": {
+        "story_card_r7jjtK": {
+          "type": "story_card",
+          "settings": {
+            "customer_image": "shopify://shop_images/jazmine.webp",
+            "star_rating": 5,
+            "quote": "This full set is the most amazing quality and so comfortable. It fits well and is true to size. I get compliments every time I wear it. Can’t wait to get the grey set. Delivery was super fast and customer service was brilliant as I wasn’t sure on sizing but I got quick responses and help when I needed it. Thank you so much.",
+            "customer_name": "Jazmin Rayner",
+            "customer_location": "",
+            "tagged_product": "blue-cropped-fleece-lined-lounge-sweatshirt",
+            "demo_product_title": "Serene Sports Bra"
+          }
+        },
         "story_card_EpMnjr": {
           "type": "story_card",
           "settings": {
@@ -765,6 +777,7 @@
         }
       },
       "block_order": [
+        "story_card_r7jjtK",
         "story_card_EpMnjr",
         "story_card_Cwcmre",
         "story_card_aYkTUp",
