@@ -217,6 +217,9 @@
       {% endif %}
 
       {%- form 'customer', id: 'kerlora-signup-form', class: 'kerlora-signup__form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter, kerlora-signup">
+        <input type="hidden" name="contact[accepts_marketing]" value="true">
+
         {% if form.errors %}
           <p class="kerlora-signup__message kerlora-signup__message--error">
             {{ form.errors | default_errors }}
@@ -235,7 +238,7 @@
             <input
               id="kerlora-first-name"
               type="text"
-              name="signup_first_name"
+              name="contact[first_name]"
               class="kerlora-signup__input"
               autocomplete="given-name"
             >
@@ -246,7 +249,7 @@
             <input
               id="kerlora-last-name"
               type="text"
-              name="signup_last_name"
+              name="contact[last_name]"
               class="kerlora-signup__input"
               autocomplete="family-name"
             >
@@ -263,7 +266,6 @@
             autocomplete="email"
             required
           >
-          <input type="hidden" name="contact[tags]" value="newsletter, kerlora-signup">
         </div>
 
         <div class="kerlora-signup__row">
@@ -272,7 +274,7 @@
             <input
               id="kerlora-dob"
               type="date"
-              name="signup_birthday"
+              name="contact[note][Birthday]"
               class="kerlora-signup__input"
             >
           </div>
@@ -282,7 +284,7 @@
             <input
               id="kerlora-phone"
               type="tel"
-              name="signup_phone"
+              name="contact[phone]"
               class="kerlora-signup__input"
               autocomplete="tel"
             >
