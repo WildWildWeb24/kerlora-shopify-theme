@@ -136,6 +136,11 @@
         "type": "shopify://apps/mailchimp-email-sms/blocks/mailchimp_for_shopify_script/e3b67dce-fd41-4b61-b3cf-961c12344cde",
         "disabled": false,
         "settings": {}
+      },
+      "17720313207221957067": {
+        "type": "shopify://apps/cosmo/blocks/app-embed/019e7d6e-6cac-73ec-b4a5-1a7f6b8eb91a",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
