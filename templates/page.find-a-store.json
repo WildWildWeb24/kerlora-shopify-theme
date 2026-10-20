@@ -11,6 +11,7 @@
   "sections": {
     "3e26d8d1-3cda-4cf6-b659-e1e118b00070": {
       "type": "custom-code",
+      "disabled": true,
       "settings": {
         "custom_css": ".m-store-info {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  column-gap: 70px;\n  row-gap: 70px;\n  margin-top: 50px;\n}\n\n.m-store-info__item a {\n  text-decoration: underline;\n}\n\n.m-store-info__item h4 {\n  line-height: 26px;\n  margin-bottom: 10px;\n}\n\n.m-store-info__item ul {\n  display: flex;\n  align-items: center;\n  margin: 0 -15px;\n  margin-top: 20px;\n}\n\n.m-store-info__item ul li {\n  padding: 0 15px;\n}\n\n@media (max-width: 767px) {\n  .m-store-info {\n    grid-template-columns: auto;\n    row-gap: 20px;\n    margin-top: 10px;\n  }\n}\n@media (min-width: 768px) {\n  .m-store-info {\n    column-gap: 50px;\n    row-gap: 40px;\n    margin-top: 30px;\n  }\n}\n@media (min-width: 1024px) {\n  .m-store-info {\n    column-gap: 30px;\n    row-gap: 30px;\n    margin-top: 30px;\n  }\n}"
       }
@@ -117,13 +118,23 @@
       "block_order": [
         "ai_gen_block_1a2c812_pLmxJp"
       ],
+      "disabled": true,
       "name": "Size-Guide-Table",
       "settings": {}
+    },
+    "custom_liquid_HDXE3d": {
+      "type": "custom-liquid",
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<img\n  src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/Kerlora-size-guide-web.jpg?v=1785315573\"\n  alt=\"size guide\"\n  loading=\"lazy\"\n  style=\"display: block; width: 100%; max-width: 900px; height: auto; margin: 0 auto;\"\n>",
+        "custom_class": ""
+      }
     }
   },
   "order": [
     "3e26d8d1-3cda-4cf6-b659-e1e118b00070",
     "main",
-    "17835156928fdcdb5d"
+    "17835156928fdcdb5d",
+    "custom_liquid_HDXE3d"
   ]
 }
