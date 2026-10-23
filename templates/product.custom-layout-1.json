@@ -175,6 +175,22 @@
             "margin_top": 0,
             "margin_bottom": 20
           }
+        },
+        "accordion_dKFEei": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Terms & Conditions",
+            "content_source": "custom",
+            "content": "<p>These terms apply to all KËRLORA e-gift cards bought from kerlora.com. By buying or using a KËRLORA e-gift card, you agree to these terms.</p><h4>1. Who we are</h4><p>KËRLORA e-gift cards are issued by Kerlora Limited, trading as KËRLORA, First Floor, 2–3 Corner House Building, Red Lion Square, Hythe, Kent CT21 5BD (“KËRLORA”, “we”, “us”). You can contact us at <a href=\"mailto:hello@kerlora.com\">hello@kerlora.com</a>.</p><h4>2. Buying an e-gift card</h4><ul><li>E-gift cards are available in the values shown on kerlora.com at the time of purchase.</li><li>E-gift cards are priced in pounds sterling (GBP) and can only be bought and redeemed in GBP.</li><li>E-gift cards cannot be bought using another KËRLORA gift card or discount code.</li><li>We may limit the number or value of e-gift cards bought in a single order.</li></ul><h4>3. Delivery</h4><ul><li>Your e-gift card will be sent by email to the address you give at checkout, either to you or directly to the recipient, usually within a few minutes of purchase.</li><li>If you have scheduled delivery for a later date, it will be sent on that date.</li><li>Please check that the email address is correct. We are not responsible for an e-gift card sent to an incorrect address that you provided.</li><li>If your e-gift card hasn’t arrived, please check your junk or spam folder, then contact us at <a href=\"mailto:hello@kerlora.com\">hello@kerlora.com</a>.</li></ul><h4>4. Using your e-gift card</h4><ul><li>E-gift cards can be used to buy products on kerlora.com only.</li><li>To use your e-gift card, enter the code at checkout.</li><li>E-gift cards cannot be exchanged for cash, credit, or refunded, except as set out in section 7.</li><li>E-gift cards cannot be used to buy other gift cards.</li><li>If your order costs more than the value left on your e-gift card, you can pay the difference using another accepted payment method.</li><li>E-gift cards can be used alongside discount codes unless a promotion states otherwise.</li></ul><h4>5. Balance</h4><ul><li>You don’t need to spend the full value in one go. Any unused balance stays on your e-gift card until it expires.</li><li>You can check your balance at checkout on kerlora.com or by contacting us.</li></ul><h4>6. Expiry</h4><ul><li>E-gift cards are valid for 12 months from the date of purchase. The expiry date is shown on the e-gift card email.</li><li>Any balance left after the expiry date will be lost and cannot be refunded or extended.</li></ul><h4>7. Cancellations and refunds</h4><ul><li>If you change your mind, you can cancel your e-gift card purchase within 14 days of buying it, provided it has not been used. Contact us at <a href=\"mailto:hello@kerlora.com\">hello@kerlora.com</a> and we will refund you in full to your original payment method within 14 days.</li><li>After 14 days, or once any part of the e-gift card has been used, it cannot be cancelled or refunded.</li><li>Only the original purchaser can request a cancellation.</li><li>This does not affect your statutory rights.</li></ul><h4>8. Returning items bought with an e-gift card</h4><ul><li>Items bought with an e-gift card can be returned under our Returns Policy, available on kerlora.com.</li><li>Any refund for the part of an order paid by e-gift card will be credited back to an e-gift card. Any part paid by another method will be refunded to that method.</li></ul><h4>9. Lost, stolen or misused codes</h4><ul><li>Please treat your e-gift card code like cash and keep it safe.</li><li>We are not responsible if your e-gift card is lost, stolen, or used without your permission, unless this is caused by our error.</li><li>If you think your code has been misused, contact us as soon as possible and we will do what we reasonably can to help.</li></ul><h4>10. Fraud</h4><p>We may cancel an e-gift card, or refuse to accept it, if we reasonably believe it was obtained or is being used fraudulently or unlawfully.</p><h4>11. Our responsibility</h4><p>If a valid e-gift card cannot be used because of a fault on our side, we will replace it or refund the unused balance. Nothing in these terms limits our responsibility where it would be unlawful to do so, or affects your statutory rights.</p><h4>12. Changes to these terms</h4><p>We may update these terms from time to time. The terms in force when you bought your e-gift card will apply to it, unless a change is required by law.</p><h4>13. Governing law</h4><p>These terms are governed by the laws of England and Wales. You may bring proceedings in the courts of England and Wales, or, if you live in Scotland or Northern Ireland, in the courts of your home country.</p><h4>14. Contact us</h4><p>Questions about your e-gift card? Email us at <a href=\"mailto:hello@kerlora.com\">hello@kerlora.com</a>.</p>",
+            "open_by_default": false,
+            "row_height": 58,
+            "heading_size": 14,
+            "content_size": 13,
+            "line_height": 160,
+            "border_color": "#c8c8c8",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
         }
       },
       "block_order": [
@@ -190,7 +206,8 @@
         "dynamic_checkout_MBj3Bm",
         "payment_terms_DtLBeM",
         "payment_methods_jeAayX",
-        "delivery_shipping_VQGEr4"
+        "delivery_shipping_VQGEr4",
+        "accordion_dKFEei"
       ],
       "name": "WWW Main product",
       "settings": {
