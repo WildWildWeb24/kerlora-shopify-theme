@@ -1,0 +1,100 @@
+<style>
+  #GiftCardSteps-{{ section.id }} {
+    background: {{ section.settings.background }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_side }}px {{ section.settings.padding_bottom }}px;
+    margin: {{ section.settings.margin_top }}px 0 {{ section.settings.margin_bottom }}px;
+    text-align: center;
+  }
+  #GiftCardSteps-{{ section.id }} .gcs__title { margin: 0 0 {{ section.settings.title_gap }}px; font-size: {{ section.settings.title_size }}px; font-weight: 400; color: {{ section.settings.title_color }}; }
+  #GiftCardSteps-{{ section.id }} .gcs__list { list-style: none; margin: 0 auto; padding: 0; max-width: {{ section.settings.max_width }}px; display: flex; }
+  #GiftCardSteps-{{ section.id }} .gcs__step { position: relative; flex: 1 1 0; padding: 0 {{ section.settings.step_padding }}px; }
+  #GiftCardSteps-{{ section.id }} .gcs__marker { position: relative; height: 30px; margin-bottom: 18px; }
+  #GiftCardSteps-{{ section.id }} .gcs__marker::before,
+  #GiftCardSteps-{{ section.id }} .gcs__marker::after { content: ''; position: absolute; top: 50%; height: 1px; background: {{ section.settings.line_color }}; width: 50%; }
+  #GiftCardSteps-{{ section.id }} .gcs__marker::before { left: 0; }
+  #GiftCardSteps-{{ section.id }} .gcs__marker::after { right: 0; }
+  #GiftCardSteps-{{ section.id }} .gcs__step:first-child .gcs__marker::before,
+  #GiftCardSteps-{{ section.id }} .gcs__step:last-child .gcs__marker::after { display: none; }
+  #GiftCardSteps-{{ section.id }} .gcs__step { margin: 0; }
+  #GiftCardSteps-{{ section.id }} .gcs__marker { margin-left: -{{ section.settings.step_padding }}px; margin-right: -{{ section.settings.step_padding }}px; }
+  #GiftCardSteps-{{ section.id }} .gcs__num {
+    position: relative; z-index: 1; width: 30px; height: 30px; margin: 0 auto; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 12px;
+    background: {{ section.settings.circle_bg }}; color: {{ section.settings.circle_text }};
+  }
+  #GiftCardSteps-{{ section.id }} .gcs__step-title { margin: 0 0 8px; font-size: {{ section.settings.step_title_size }}px; font-weight: 500; color: {{ section.settings.step_title_color }}; }
+  #GiftCardSteps-{{ section.id }} .gcs__step-desc { margin: 0; font-size: {{ section.settings.step_text_size }}px; line-height: 1.6; color: {{ section.settings.step_text_color }}; }
+  @media (max-width: 767px) {
+    #GiftCardSteps-{{ section.id }} { padding-left: 20px; padding-right: 20px; }
+    #GiftCardSteps-{{ section.id }} .gcs__list { flex-direction: column; gap: 32px; }
+    #GiftCardSteps-{{ section.id }} .gcs__marker::before,
+    #GiftCardSteps-{{ section.id }} .gcs__marker::after { display: none !important; }
+  }
+</style>
+
+<section id="GiftCardSteps-{{ section.id }}">
+  {%- if section.settings.title != blank -%}
+    <h2 class="gcs__title">{{ section.settings.title }}</h2>
+  {%- endif -%}
+  <ol class="gcs__list">
+    {%- for block in section.blocks -%}
+      <li class="gcs__step" {{ block.shopify_attributes }}>
+        <div class="gcs__marker"><span class="gcs__num">{{ forloop.index }}</span></div>
+        {%- if block.settings.title != blank -%}<h3 class="gcs__step-title">{{ block.settings.title }}</h3>{%- endif -%}
+        {%- if block.settings.description != blank -%}<p class="gcs__step-desc">{{ block.settings.description }}</p>{%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ol>
+</section>
+
+{% schema %}
+{
+  "name": "Gift card steps",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "title", "label": "Title", "default": "Your gift card, in three simple steps." },
+    { "type": "range", "id": "title_size", "label": "Title size", "min": 18, "max": 56, "step": 1, "default": 28 },
+    { "type": "color", "id": "title_color", "label": "Title color", "default": "#222222" },
+    { "type": "range", "id": "title_gap", "label": "Space below title", "min": 0, "max": 100, "step": 4, "default": 40, "unit": "px" },
+
+    { "type": "header", "content": "Steps" },
+    { "type": "color", "id": "circle_bg", "label": "Checkpoint background", "default": "#262626" },
+    { "type": "color", "id": "circle_text", "label": "Checkpoint number", "default": "#ffffff" },
+    { "type": "color", "id": "line_color", "label": "Connecting line", "default": "#dddddd" },
+    { "type": "range", "id": "step_title_size", "label": "Step title size", "min": 12, "max": 28, "step": 1, "default": 16 },
+    { "type": "color", "id": "step_title_color", "label": "Step title color", "default": "#222222" },
+    { "type": "range", "id": "step_text_size", "label": "Step description size", "min": 11, "max": 22, "step": 1, "default": 14 },
+    { "type": "color", "id": "step_text_color", "label": "Step description color", "default": "#777777" },
+    { "type": "range", "id": "step_padding", "label": "Step inner padding (left/right)", "min": 0, "max": 80, "step": 2, "default": 24, "unit": "px" },
+
+    { "type": "header", "content": "Layout & spacing" },
+    { "type": "color", "id": "background", "label": "Section background", "default": "#ffffff" },
+    { "type": "range", "id": "max_width", "label": "Max width", "min": 600, "max": 1400, "step": 20, "default": 960, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 160, "step": 4, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 160, "step": 4, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "default": 40, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "default": 80, "unit": "px" },
+    { "type": "range", "id": "padding_side", "label": "Padding left/right", "min": 0, "max": 120, "step": 4, "default": 48, "unit": "px" }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Copy your code" },
+        { "type": "textarea", "id": "description", "label": "Description", "default": "Tap “Copy the code” above. Keep it ready for checkout." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift card steps",
+      "blocks": [
+        { "type": "step", "settings": { "title": "Copy your code", "description": "Tap “Copy the code” above. Keep it ready for checkout." } },
+        { "type": "step", "settings": { "title": "Find your favourites", "description": "Explore the store and add the pieces you love to your bag." } },
+        { "type": "step", "settings": { "title": "Redeem at checkout", "description": "Choose “Pay by gift card” at checkout and enter your code to use your gift card." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

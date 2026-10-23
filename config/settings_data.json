@@ -98,6 +98,102 @@
     "show_variant_swatch_image": true,
     "use_theme_currencies": true,
     "theme_currencies": "USD | EUR | GBP | VND",
+    "sections": {
+      "gift-card-hero": {
+        "type": "gift-card-hero",
+        "settings": {
+          "card_image": "shopify://shop_images/exec-05bbab2e-4db4-4fe4-9aef-20c6246723da.png",
+          "card_bg_color": "#8fb8d6",
+          "logo": "shopify://shop_images/logo.webp",
+          "logo_card_width": 36,
+          "card_text": "Gift Card",
+          "denomination": "",
+          "code_label_card": "Gift Card Code",
+          "card_text_color": "#111111",
+          "heading": "Your next favourite starts here.",
+          "heading_size": 44,
+          "description": "[amount] to spend on whatever feels like you.",
+          "text_size": 15,
+          "code_label": "Your gift card code",
+          "copy_label": "Copy the code",
+          "copied_label": "Copied!",
+          "continue_label": "Continue shopping",
+          "continue_url": "shopify://collections/bestsellers",
+          "note": "Enter your code in the gift card field at checkout.",
+          "background": "#ffffff",
+          "heading_color": "#222222",
+          "text_color": "#222222",
+          "field_bg": "#f3f3f3",
+          "field_border": "#dddddd",
+          "primary_bg": "#262626",
+          "primary_text": "#ffffff",
+          "secondary_bg": "#ffffff",
+          "secondary_text": "#222222",
+          "secondary_border": "#222222",
+          "max_width": 1200,
+          "card_column_width": 60,
+          "info_max_width": 440,
+          "column_gap": 72,
+          "margin_top": 0,
+          "margin_bottom": 0,
+          "padding_top": 80,
+          "padding_bottom": 60,
+          "padding_side": 48
+        }
+      },
+      "gift-card-steps": {
+        "type": "gift-card-steps",
+        "blocks": {
+          "step_qy4Fmw": {
+            "type": "step",
+            "settings": {
+              "title": "Copy your code",
+              "description": "Tap “Copy the code” above. Keep it ready for checkout."
+            }
+          },
+          "step_aGT69Q": {
+            "type": "step",
+            "settings": {
+              "title": "Find your favourites",
+              "description": "Explore the store and add the pieces you love to your bag."
+            }
+          },
+          "step_dHfBHA": {
+            "type": "step",
+            "settings": {
+              "title": "Redeem at checkout",
+              "description": "Choose “Pay by gift card” at checkout and enter your code to use your gift card."
+            }
+          }
+        },
+        "block_order": [
+          "step_qy4Fmw",
+          "step_aGT69Q",
+          "step_dHfBHA"
+        ],
+        "settings": {
+          "title": "Your gift card, in three simple steps.",
+          "title_size": 28,
+          "title_color": "#222222",
+          "title_gap": 40,
+          "circle_bg": "#262626",
+          "circle_text": "#ffffff",
+          "line_color": "#dddddd",
+          "step_title_size": 16,
+          "step_title_color": "#222222",
+          "step_text_size": 14,
+          "step_text_color": "#777777",
+          "step_padding": 24,
+          "background": "#ffffff",
+          "max_width": 960,
+          "margin_top": 0,
+          "margin_bottom": 0,
+          "padding_top": 40,
+          "padding_bottom": 80,
+          "padding_side": 48
+        }
+      }
+    },
     "content_for_index": [],
     "blocks": {
       "6868439170666289573": {

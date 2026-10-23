@@ -1,0 +1,196 @@
+{%- liquid
+  assign code = gift_card.code | format_code
+  if section.settings.denomination != blank
+    assign amount = section.settings.denomination
+  elsif settings.currency_code_enabled
+    assign amount = gift_card.initial_value | money_with_currency
+  else
+    assign amount = gift_card.initial_value | money_without_trailing_zeros
+  endif
+  assign amount = amount | strip_html
+  assign description = section.settings.description | replace: '[amount]', amount
+-%}
+
+<style>
+  #GiftCardHero-{{ section.id }} {
+    --gc-heading: {{ section.settings.heading_color }};
+    --gc-text: {{ section.settings.text_color }};
+    --gc-card-text: {{ section.settings.card_text_color }};
+    --gc-field-bg: {{ section.settings.field_bg }};
+    --gc-field-border: {{ section.settings.field_border }};
+    --gc-primary-bg: {{ section.settings.primary_bg }};
+    --gc-primary-text: {{ section.settings.primary_text }};
+    --gc-secondary-bg: {{ section.settings.secondary_bg }};
+    --gc-secondary-text: {{ section.settings.secondary_text }};
+    --gc-secondary-border: {{ section.settings.secondary_border }};
+    background: {{ section.settings.background }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_side }}px {{ section.settings.padding_bottom }}px;
+    margin: {{ section.settings.margin_top }}px 0 {{ section.settings.margin_bottom }}px;
+  }
+  #GiftCardHero-{{ section.id }} .gch__inner {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: {{ section.settings.card_column_width }}fr {{ 100 | minus: section.settings.card_column_width }}fr;
+    gap: {{ section.settings.column_gap }}px;
+    align-items: center;
+  }
+  #GiftCardHero-{{ section.id }} .gch__card {
+    position: relative;
+    aspect-ratio: 1024 / 593;
+    container-type: inline-size;
+    background-color: {{ section.settings.card_bg_color }};
+    color: var(--gc-card-text);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+  }
+  #GiftCardHero-{{ section.id }} .gch__card-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  #GiftCardHero-{{ section.id }} .gch__card-content { position: absolute; inset: 0; }
+  #GiftCardHero-{{ section.id }} .gch__card-content > * { position: absolute; left: 5.5cqw; margin: 0; }
+  #GiftCardHero-{{ section.id }} .gch__brand { top: 11.5cqw; width: {{ section.settings.logo_card_width }}cqw; }
+  #GiftCardHero-{{ section.id }} .gch__logo { width: 100%; height: auto; display: block; }
+  #GiftCardHero-{{ section.id }} .gch__logo-text { font-size: 5cqw; letter-spacing: .15em; font-weight: 500; }
+  #GiftCardHero-{{ section.id }} .gch__card-label { margin-top: 1cqw; font-size: 2.6cqw; letter-spacing: .14em; text-transform: uppercase; line-height: 1.2; }
+  #GiftCardHero-{{ section.id }} .gch__amount { top: 24cqw; font-size: 6.4cqw; line-height: 1.1; }
+  #GiftCardHero-{{ section.id }} .gch__rule { top: 36.5cqw; width: 9.5cqw; height: 2px; background: currentColor; opacity: .35; }
+  #GiftCardHero-{{ section.id }} .gch__card-code-label { top: 38.2cqw; font-size: 1.8cqw; letter-spacing: .06em; line-height: 1.3; }
+  #GiftCardHero-{{ section.id }} .gch__card-code { top: 41.6cqw; font-size: 2.5cqw; letter-spacing: .1em; white-space: nowrap; line-height: 1.3; }
+  #GiftCardHero-{{ section.id }} .gch__info { color: var(--gc-text); }
+  #GiftCardHero-{{ section.id }} .gch__info { max-width: {{ section.settings.info_max_width }}px; width: 100%; }
+  #GiftCardHero-{{ section.id }} .gch__heading { margin: 0; color: var(--gc-heading); font-size: {{ section.settings.heading_size }}px; line-height: 1.1; font-weight: 400; letter-spacing: -.02em; }
+  #GiftCardHero-{{ section.id }} .gch__desc { margin: 12px 0 0; font-size: {{ section.settings.text_size }}px; opacity: .8; }
+  #GiftCardHero-{{ section.id }} .gch__label { display: block; margin: 20px 0 6px; font-size: 14px; }
+  #GiftCardHero-{{ section.id }} .gch__code-field {
+    width: 100%; box-sizing: border-box; padding: 13px 16px; font: inherit; font-size: 16px; letter-spacing: .1em;
+    background: var(--gc-field-bg); border: 1px solid var(--gc-field-border); color: var(--gc-text); border-radius: 0;
+  }
+  #GiftCardHero-{{ section.id }} .gch__btn {
+    display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; box-sizing: border-box;
+    margin-top: 10px; padding: 13px; font: inherit; font-size: 14px; cursor: pointer; text-decoration: none; border-radius: 0;
+  }
+  #GiftCardHero-{{ section.id }} .gch__btn--primary { background: var(--gc-primary-bg); color: var(--gc-primary-text); border: 1px solid var(--gc-primary-bg); }
+  #GiftCardHero-{{ section.id }} .gch__btn--secondary { background: var(--gc-secondary-bg); color: var(--gc-secondary-text); border: 1px solid var(--gc-secondary-border); }
+  #GiftCardHero-{{ section.id }} .gch__note { margin: 16px 0 0; font-size: 13px; opacity: .7; }
+  @media (max-width: 767px) {
+    #GiftCardHero-{{ section.id }} { padding-left: 20px; padding-right: 20px; }
+    #GiftCardHero-{{ section.id }} .gch__inner { grid-template-columns: 1fr; gap: 32px; }
+    #GiftCardHero-{{ section.id }} .gch__heading { font-size: {{ section.settings.heading_size | times: 0.7 | round }}px; }
+  }
+</style>
+
+<section id="GiftCardHero-{{ section.id }}">
+  <div class="gch__inner">
+    <div class="gch__card">
+      {%- if section.settings.card_image != blank -%}
+        {{ section.settings.card_image | image_url: width: 1600 | image_tag: class: 'gch__card-bg', loading: 'eager', widths: '600, 900, 1200, 1600', alt: '' }}
+      {%- endif -%}
+      <div class="gch__card-content">
+        <div class="gch__brand">
+          {%- if section.settings.logo != blank -%}
+            {{ section.settings.logo | image_url: width: 800 | image_tag: class: 'gch__logo', alt: shop.name }}
+          {%- else -%}
+            <div class="gch__logo-text">{{ shop.name | upcase }}</div>
+          {%- endif -%}
+          {%- if section.settings.card_text != blank -%}
+            <div class="gch__card-label">{{ section.settings.card_text }}</div>
+          {%- endif -%}
+        </div>
+        <div class="gch__amount">{{ amount }}</div>
+        <div class="gch__rule"></div>
+        <div class="gch__card-code-label">{{ section.settings.code_label_card }}</div>
+        <div class="gch__card-code">{{ code }}</div>
+      </div>
+    </div>
+
+    <div class="gch__info">
+      <h1 class="gch__heading">{{ section.settings.heading }}</h1>
+      {%- if description != blank -%}<p class="gch__desc">{{ description }}</p>{%- endif -%}
+      <label class="gch__label" for="GiftCardCode-{{ section.id }}">{{ section.settings.code_label }}</label>
+      <input id="GiftCardCode-{{ section.id }}" class="gch__code-field gift-card__number" type="text" value="{{ code }}" readonly>
+      <button type="button" class="gch__btn gch__btn--primary" data-gch-copy data-copied="{{ section.settings.copied_label | escape }}" data-label="{{ section.settings.copy_label | escape }}">
+        <span>{{ section.settings.copy_label }}</span>
+      </button>
+      <a class="gch__btn gch__btn--secondary" href="{{ section.settings.continue_url | default: shop.url }}">
+        <span>{{ section.settings.continue_label }}</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h12M9 3l5 5-5 5" stroke="currentColor" stroke-width="1.2"/></svg>
+      </a>
+      {%- if section.settings.note != blank -%}<p class="gch__note">{{ section.settings.note }}</p>{%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('GiftCardHero-{{ section.id }}');
+    if (!root) return;
+    var btn = root.querySelector('[data-gch-copy]');
+    var input = root.querySelector('.gch__code-field');
+    btn.addEventListener('click', function () {
+      var done = function () {
+        var span = btn.querySelector('span');
+        span.textContent = btn.dataset.copied;
+        setTimeout(function () { span.textContent = btn.dataset.label; }, 2000);
+      };
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(input.value).then(done);
+      } else {
+        input.select();
+        document.execCommand('copy');
+        done();
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Gift card",
+  "settings": [
+    { "type": "header", "content": "Gift card (left)" },
+    { "type": "image_picker", "id": "card_image", "label": "Card background image" },
+    { "type": "color", "id": "card_bg_color", "label": "Card fallback background", "default": "#8fb8d6" },
+    { "type": "image_picker", "id": "logo", "label": "Logo" },
+    { "type": "range", "id": "logo_card_width", "label": "Logo width (% of card width)", "min": 10, "max": 60, "step": 1, "default": 36, "unit": "%" },
+    { "type": "text", "id": "card_text", "label": "Card text", "default": "GIFT CARD" },
+    { "type": "text", "id": "denomination", "label": "Denomination (e.g. £20)", "info": "Leave blank to use the real gift card value." },
+    { "type": "text", "id": "code_label_card", "label": "Card code label", "default": "Gift Card Code" },
+    { "type": "color", "id": "card_text_color", "label": "Card text color", "default": "#111111" },
+
+    { "type": "header", "content": "Content (right)" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Your next favourite starts here." },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 24, "max": 80, "step": 2, "default": 38 },
+    { "type": "textarea", "id": "description", "label": "Description", "default": "[amount] to spend on whatever feels like you.", "info": "Use [amount] to insert the denomination." },
+    { "type": "range", "id": "text_size", "label": "Description size", "min": 12, "max": 24, "step": 1, "default": 15 },
+    { "type": "text", "id": "code_label", "label": "Code field label", "default": "Your gift card code" },
+    { "type": "text", "id": "copy_label", "label": "Copy button label", "default": "Copy the code" },
+    { "type": "text", "id": "copied_label", "label": "Copied message", "default": "Copied!" },
+    { "type": "text", "id": "continue_label", "label": "Continue button label", "default": "Continue shopping" },
+    { "type": "url", "id": "continue_url", "label": "Continue button link", "info": "Defaults to the homepage." },
+    { "type": "text", "id": "note", "label": "Note", "default": "Enter your code in the gift card field at checkout." },
+
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "heading_color", "label": "Heading", "default": "#222222" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#222222" },
+    { "type": "color", "id": "field_bg", "label": "Code field background", "default": "#f3f3f3" },
+    { "type": "color", "id": "field_border", "label": "Code field border", "default": "#dddddd" },
+    { "type": "color", "id": "primary_bg", "label": "Copy button background", "default": "#262626" },
+    { "type": "color", "id": "primary_text", "label": "Copy button text", "default": "#ffffff" },
+    { "type": "color", "id": "secondary_bg", "label": "Continue button background", "default": "#ffffff" },
+    { "type": "color", "id": "secondary_text", "label": "Continue button text", "default": "#222222" },
+    { "type": "color", "id": "secondary_border", "label": "Continue button border", "default": "#222222" },
+
+    { "type": "header", "content": "Spacing" },
+    { "type": "range", "id": "max_width", "label": "Max width", "min": 800, "max": 1600, "step": 20, "default": 1200, "unit": "px" },
+    { "type": "range", "id": "card_column_width", "label": "Card column width (%)", "info": "Higher = bigger gift card, narrower content.", "min": 40, "max": 75, "step": 5, "default": 60, "unit": "%" },
+    { "type": "range", "id": "info_max_width", "label": "Right content max width", "min": 320, "max": 640, "step": 20, "default": 440, "unit": "px" },
+    { "type": "range", "id": "column_gap", "label": "Column gap", "min": 0, "max": 160, "step": 4, "default": 56, "unit": "px" },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 160, "step": 4, "default": 0, "unit": "px" },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 160, "step": 4, "default": 0, "unit": "px" },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "default": 80, "unit": "px" },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "default": 60, "unit": "px" },
+    { "type": "range", "id": "padding_side", "label": "Padding left/right", "min": 0, "max": 120, "step": 4, "default": 48, "unit": "px" }
+  ],
+  "presets": [{ "name": "Gift card" }]
+}
+{% endschema %}
