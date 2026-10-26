@@ -59,8 +59,8 @@
             "heading": "Shop by",
             "container": "inherit",
             "banner_style": "outside",
-            "banner_image": "shopify://shop_images/kerlora-menu-comfort.jpg",
-            "banner_link": "",
+            "banner_image": "shopify://shop_images/menu_banner.webp",
+            "banner_link": "shopify://products/e-gift-card",
             "banner_title": "",
             "banner_desc": "",
             "banner_button_text": "Shop now"
