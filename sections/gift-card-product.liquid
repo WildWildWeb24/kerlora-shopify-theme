@@ -1,0 +1,496 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign today = 'now' | date: '%Y-%m-%d'
+  assign max_date = 'now' | date: '%s' | plus: 7776000 | date: '%Y-%m-%d'
+  assign product_form_id = 'GiftCardProductForm-' | append: section.id
+-%}
+
+<style>
+  #GCP-{{ section.id }} {
+    background: {{ section.settings.background }};
+    color: {{ section.settings.text_color }};
+    padding: {{ section.settings.padding_top }}px {{ section.settings.padding_side }}px {{ section.settings.padding_bottom }}px;
+    margin: {{ section.settings.margin_top }}px 0 {{ section.settings.margin_bottom }}px;
+  }
+  #GCP-{{ section.id }} * { box-sizing: border-box; }
+  #GCP-{{ section.id }} .gcp__inner { max-width: {{ section.settings.max_width }}px; margin: 0 auto; text-align: center; }
+  #GCP-{{ section.id }} .gcp__block { margin-top: var(--mt, 0); margin-bottom: var(--mb, 0); }
+  #GCP-{{ section.id }} .gcp__heading { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 14px; font-size: var(--title-size, 17px); font-weight: 500; color: var(--title-color, #171717); }
+  #GCP-{{ section.id }} .gcp__num { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 6px; border-radius: 999px; background: var(--num-bg, #262626); color: var(--num-text, #fff); font-size: 12px; }
+  #GCP-{{ section.id }} .gcp__help { margin: 12px 0 0; font-size: 12px; color: var(--help-color, #6b6b6b); }
+  #GCP-{{ section.id }} .gcp__visually-hidden, #GCP-{{ section.id }} .gcp__choice input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+
+  /* Featured image */
+  #GCP-{{ section.id }} .gcp__image-wrap { margin-left: auto; margin-right: auto; max-width: var(--img-max, 440px); }
+  #GCP-{{ section.id }} .gcp__image-wrap.is-sticky { position: sticky; top: var(--sticky-top, 0px); z-index: 5; padding: var(--img-pad, 12px) 0; background: var(--img-bg, #fff); }
+  #GCP-{{ section.id }} .gcp__image { position: relative; aspect-ratio: var(--img-ratio, 1.727); overflow: hidden; border-radius: var(--img-radius, 0); background: #e9eef2; box-shadow: var(--img-shadow, none); }
+  #GCP-{{ section.id }} .gcp__image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+  /* Designs */
+  #GCP-{{ section.id }} .gcp__designs { display: grid; grid-template-columns: repeat(var(--per-row, 3), 1fr); gap: 10px; }
+  #GCP-{{ section.id }} .gcp__design { position: relative; cursor: pointer; display: block; }
+  #GCP-{{ section.id }} .gcp__design input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  #GCP-{{ section.id }} .gcp__thumb { display: block; aspect-ratio: 1.727; border: 2px solid transparent; outline: 1px solid var(--border, #d4d4d4); overflow: hidden; background: #eee; }
+  #GCP-{{ section.id }} .gcp__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #GCP-{{ section.id }} .gcp__design input:checked + .gcp__thumb { border-color: var(--accent, #262626); outline-color: var(--accent, #262626); }
+  #GCP-{{ section.id }} .gcp__design input:focus-visible + .gcp__thumb { outline: 2px solid var(--accent, #262626); outline-offset: 2px; }
+  #GCP-{{ section.id }} .gcp__design-name { display: block; margin-top: 6px; font-size: 12px; color: var(--help-color, #6b6b6b); }
+
+  /* Denominations */
+  #GCP-{{ section.id }} .gcp__amounts { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+  #GCP-{{ section.id }} .gcp__choice { position: relative; }
+  #GCP-{{ section.id }} .gcp__choice span { display: inline-flex; align-items: center; justify-content: center; min-width: 84px; height: var(--btn-h, 46px); padding: 0 18px; border: 1px solid var(--border, #d4d4d4); background: var(--field-bg, #fff); color: var(--btn-text, #222); font-size: var(--btn-size, 15px); border-radius: var(--btn-radius, 0); cursor: pointer; }
+  #GCP-{{ section.id }} .gcp__choice input:checked + span { background: var(--accent, #262626); color: var(--accent-text, #fff); border-color: var(--accent, #262626); }
+  #GCP-{{ section.id }} .gcp__choice input:disabled + span { opacity: .4; text-decoration: line-through; cursor: not-allowed; }
+  #GCP-{{ section.id }} .gcp__choice input:focus-visible + span { outline: 2px solid var(--accent, #262626); outline-offset: 2px; }
+
+  /* Recipient form */
+  #GCP-{{ section.id }} .gcp__field { text-align: left; }
+  #GCP-{{ section.id }} .gcp__field + .gcp__field { margin-top: 12px; }
+  #GCP-{{ section.id }} .gcp__field label { display: block; margin-bottom: 6px; font-size: 13px; color: var(--label-color, #222); }
+  #GCP-{{ section.id }} .gcp__field input[type=text], #GCP-{{ section.id }} .gcp__field input[type=email], #GCP-{{ section.id }} .gcp__field input[type=date], #GCP-{{ section.id }} .gcp__field textarea { width: 100%; padding: 12px 14px; font: inherit; font-size: 14px; color: var(--label-color, #222); background: var(--field-bg, #fff); border: 1px solid var(--border, #d4d4d4); border-radius: 0; }
+  #GCP-{{ section.id }} .gcp__field textarea { resize: vertical; }
+  #GCP-{{ section.id }} .gcp__count { display: block; margin-top: 4px; font-size: 12px; color: var(--help-color, #6b6b6b); text-align: right; }
+  #GCP-{{ section.id }} .gcp__error { margin: 12px 0 0; font-size: 13px; color: #b42318; }
+
+  /* Buttons */
+  #GCP-{{ section.id }} .gcp__btn { display: flex; align-items: center; justify-content: center; width: 100%; height: var(--btn-h, 50px); font: inherit; font-size: var(--btn-size, 14px); letter-spacing: .02em; cursor: pointer; border-radius: var(--btn-radius, 0); }
+  #GCP-{{ section.id }} .gcp__btn + .gcp__btn { margin-top: 12px; }
+  #GCP-{{ section.id }} .gcp__btn--primary { background: var(--btn-bg, #262626); color: var(--btn-text, #fff); border: 1px solid var(--btn-bg, #262626); }
+  #GCP-{{ section.id }} .gcp__btn--secondary { background: var(--btn2-bg, #fff); color: var(--btn2-text, #222); border: 1px solid var(--btn2-text, #222); }
+  #GCP-{{ section.id }} .gcp__btn[disabled] { opacity: .5; cursor: not-allowed; }
+  #GCP-{{ section.id }} .gcp__note { margin: 14px 0 0; font-size: 12px; line-height: 1.5; color: var(--help-color, #6b6b6b); }
+
+  @media (max-width: 767px) {
+    #GCP-{{ section.id }} { padding-left: 20px; padding-right: 20px; }
+    #GCP-{{ section.id }} .gcp__image-wrap { max-width: 100%; }
+    #GCP-{{ section.id }} .gcp__designs { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+
+<section id="GCP-{{ section.id }}" data-gcp>
+  <div class="gcp__inner">
+    {%- form 'product', product, id: product_form_id, class: 'gcp__form', data-gcp-form: '' -%}
+      <input type="hidden" name="id" value="{{ current_variant.id }}" data-gcp-variant-id>
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+
+          {%- when 'featured_image' -%}
+            {%- assign img = product.featured_media -%}
+            {%- if img == blank -%}{%- assign img = block.settings.fallback_image -%}{%- endif -%}
+            <div
+              class="gcp__block gcp__image-wrap{% if block.settings.sticky %} is-sticky{% endif %}"
+              style="--mt: {{ block.settings.margin_top }}px; --mb: {{ block.settings.margin_bottom }}px; --img-max: {{ block.settings.max_width }}px; --sticky-top: {{ block.settings.sticky_top }}px; --img-pad: {{ block.settings.padding }}px; --img-bg: {{ block.settings.sticky_background }}; --img-radius: {{ block.settings.radius }}px; --img-ratio: {{ img.aspect_ratio | default: 1.727 }}; --img-shadow: {% if block.settings.shadow %}0 18px 36px rgba(0,0,0,.12){% else %}none{% endif %};"
+              data-gcp-image-wrap
+              data-swap="{{ block.settings.swap_on_design }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="gcp__image">
+                {%- if img != blank -%}
+                  {{ img | image_url: width: 1600 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1600', alt: product.title, data-gcp-main-image: '' }}
+                {%- endif -%}
+              </div>
+            </div>
+
+          {%- when 'design' -%}
+            <div
+              class="gcp__block"
+              style="--mt: {{ block.settings.margin_top }}px; --mb: {{ block.settings.margin_bottom }}px; --title-size: {{ block.settings.title_size }}px; --title-color: {{ block.settings.title_color }}; --num-bg: {{ block.settings.number_background }}; --num-text: {{ block.settings.number_color }}; --accent: {{ block.settings.selected_color }}; --border: {{ block.settings.border_color }}; --help-color: {{ block.settings.help_color }}; --per-row: {{ block.settings.per_row }};"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.title != blank -%}
+                <h2 class="gcp__heading">
+                  {%- if block.settings.number != blank -%}<span class="gcp__num">{{ block.settings.number }}</span>{%- endif -%}
+                  {{ block.settings.title }}
+                </h2>
+              {%- endif -%}
+              <div class="gcp__designs" role="radiogroup" aria-label="{{ block.settings.title | escape }}">
+                {%- assign design_index = 0 -%}
+                {%- for i in (1..6) -%}
+                  {%- assign name_key = 'design_' | append: i | append: '_name' -%}
+                  {%- assign image_key = 'design_' | append: i | append: '_image' -%}
+                  {%- assign d_name = block.settings[name_key] -%}
+                  {%- assign d_image = block.settings[image_key] -%}
+                  {%- if d_image != blank or d_name != blank -%}
+                    <label class="gcp__design">
+                      <input type="radio" name="properties[Design]" value="{{ d_name | default: i | escape }}" data-gcp-design data-full="{% if d_image != blank %}{{ d_image | image_url: width: 1600 }}{% endif %}" {% if design_index == 0 %}checked{% endif %}>
+                      <span class="gcp__thumb">
+                        {%- if d_image != blank -%}
+                          {{ d_image | image_url: width: 400 | image_tag: loading: 'lazy', widths: '200, 300, 400', alt: d_name }}
+                        {%- endif -%}
+                      </span>
+                      {%- if d_name != blank -%}<span class="gcp__design-name">{{ d_name }}</span>{%- endif -%}
+                    </label>
+                    {%- assign design_index = design_index | plus: 1 -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              {%- if block.settings.help_text != blank -%}<p class="gcp__help">{{ block.settings.help_text }}</p>{%- endif -%}
+            </div>
+
+          {%- when 'denomination' -%}
+            <div
+              class="gcp__block"
+              style="--mt: {{ block.settings.margin_top }}px; --mb: {{ block.settings.margin_bottom }}px; --title-size: {{ block.settings.title_size }}px; --title-color: {{ block.settings.title_color }}; --num-bg: {{ block.settings.number_background }}; --num-text: {{ block.settings.number_color }}; --accent: {{ block.settings.selected_background }}; --accent-text: {{ block.settings.selected_text_color }}; --border: {{ block.settings.border_color }}; --field-bg: {{ block.settings.button_background }}; --btn-text: {{ block.settings.button_text_color }}; --btn-h: {{ block.settings.button_height }}px; --btn-size: {{ block.settings.font_size }}px; --btn-radius: {{ block.settings.radius }}px; --help-color: {{ block.settings.help_color }};"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.title != blank -%}
+                <h2 class="gcp__heading">
+                  {%- if block.settings.number != blank -%}<span class="gcp__num">{{ block.settings.number }}</span>{%- endif -%}
+                  {{ block.settings.title }}
+                </h2>
+              {%- endif -%}
+              <div class="gcp__amounts" role="radiogroup" aria-label="{{ block.settings.title | escape }}">
+                {%- for variant in product.variants -%}
+                  <label class="gcp__choice">
+                    <input type="radio" name="gcp-amount" value="{{ variant.id }}" data-available="{{ variant.available }}" {% if variant.id == current_variant.id %}checked{% endif %} {% unless variant.available %}disabled{% endunless %}>
+                    <span>{%- if block.settings.show_variant_title and variant.title != 'Default Title' -%}{{ variant.title }}{%- else -%}{{ variant.price | money_without_trailing_zeros }}{%- endif -%}</span>
+                  </label>
+                {%- endfor -%}
+              </div>
+              {%- if block.settings.help_text != blank -%}<p class="gcp__help">{{ block.settings.help_text }}</p>{%- endif -%}
+            </div>
+
+          {%- when 'recipient_form' -%}
+            <div
+              class="gcp__block"
+              style="--mt: {{ block.settings.margin_top }}px; --mb: {{ block.settings.margin_bottom }}px; --title-size: {{ block.settings.title_size }}px; --title-color: {{ block.settings.title_color }}; --num-bg: {{ block.settings.number_background }}; --num-text: {{ block.settings.number_color }}; --border: {{ block.settings.border_color }}; --field-bg: {{ block.settings.field_background }}; --label-color: {{ block.settings.label_color }}; --help-color: {{ block.settings.help_color }};"
+              data-gcp-recipient
+              data-require-email="{{ block.settings.require_email }}"
+              {{ block.shopify_attributes }}
+            >
+              {%- if block.settings.title != blank -%}
+                <h2 class="gcp__heading">
+                  {%- if block.settings.number != blank -%}<span class="gcp__num">{{ block.settings.number }}</span>{%- endif -%}
+                  {{ block.settings.title }}
+                </h2>
+              {%- endif -%}
+              <div class="gcp__field">
+                <label for="GCP-email-{{ block.id }}">{{ block.settings.email_label }}</label>
+                <input type="email" id="GCP-email-{{ block.id }}" name="properties[Recipient email]" autocomplete="off" data-gcp-email>
+              </div>
+              {%- if block.settings.show_name -%}
+                <div class="gcp__field">
+                  <label for="GCP-name-{{ block.id }}">{{ block.settings.name_label }}</label>
+                  <input type="text" id="GCP-name-{{ block.id }}" name="properties[Recipient name]" autocomplete="off">
+                </div>
+              {%- endif -%}
+              {%- if block.settings.show_from -%}
+                <div class="gcp__field">
+                  <label for="GCP-from-{{ block.id }}">{{ block.settings.from_label }}</label>
+                  <input type="text" id="GCP-from-{{ block.id }}" name="properties[From]" autocomplete="name">
+                </div>
+              {%- endif -%}
+              {%- if block.settings.show_message -%}
+                <div class="gcp__field">
+                  <label for="GCP-message-{{ block.id }}">{{ block.settings.message_label }}</label>
+                  <textarea rows="4" id="GCP-message-{{ block.id }}" name="properties[Message]" maxlength="{{ block.settings.max_characters }}" data-gcp-message></textarea>
+                  <span class="gcp__count"><span data-gcp-count>0</span>/{{ block.settings.max_characters }}</span>
+                </div>
+              {%- endif -%}
+              {%- if block.settings.show_send_on -%}
+                <div class="gcp__field">
+                  <label for="GCP-send-{{ block.id }}">{{ block.settings.send_on_label }}</label>
+                  <input type="date" id="GCP-send-{{ block.id }}" name="properties[Send on]" min="{{ today }}" max="{{ max_date }}" value="{{ today }}">
+                </div>
+              {%- endif -%}
+              <p class="gcp__error" role="alert" data-gcp-error hidden>{{ block.settings.email_error }}</p>
+            </div>
+
+          {%- when 'add_to_cart' -%}
+            <div
+              class="gcp__block"
+              style="--mt: {{ block.settings.margin_top }}px; --mb: {{ block.settings.margin_bottom }}px; --btn-bg: {{ block.settings.button_background }}; --btn-text: {{ block.settings.button_text_color }}; --btn2-bg: {{ block.settings.secondary_background }}; --btn2-text: {{ block.settings.secondary_text_color }}; --btn-h: {{ block.settings.button_height }}px; --btn-size: {{ block.settings.font_size }}px; --btn-radius: {{ block.settings.radius }}px; --help-color: {{ block.settings.note_color }};"
+              {{ block.shopify_attributes }}
+            >
+              <p class="gcp__error" role="alert" data-gcp-cart-error hidden>{{ block.settings.generic_error }}</p>
+              <button type="submit" name="add" class="gcp__btn gcp__btn--primary" data-gcp-add data-add-label="{{ block.settings.add_label | escape }}" data-sold-out-label="{{ block.settings.sold_out_label | escape }}" {% unless current_variant.available %}disabled{% endunless %}>
+                <span data-gcp-add-text>{% if current_variant.available %}{{ block.settings.add_label }}{% else %}{{ block.settings.sold_out_label }}{% endif %}</span>
+              </button>
+              {%- if block.settings.show_buy_now -%}
+                <button type="button" class="gcp__btn gcp__btn--secondary" data-gcp-buy>{{ block.settings.buy_now_label }}</button>
+              {%- endif -%}
+              {%- if block.settings.note != blank -%}<p class="gcp__note">{{ block.settings.note }}</p>{%- endif -%}
+            </div>
+
+        {%- endcase -%}
+      {%- endfor -%}
+    {%- endform -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('GCP-{{ section.id }}');
+    if (!root) return;
+    var form = root.querySelector('[data-gcp-form]');
+    var variantInput = root.querySelector('[data-gcp-variant-id]');
+    var addBtn = root.querySelector('[data-gcp-add]');
+    var buyBtn = root.querySelector('[data-gcp-buy]');
+    var recipient = root.querySelector('[data-gcp-recipient]');
+    var emailInput = root.querySelector('[data-gcp-email]');
+    var errorBox = recipient ? recipient.querySelector('[data-gcp-error]') : null;
+    var cartError = root.querySelector('[data-gcp-cart-error]');
+    var requireEmail = recipient ? recipient.getAttribute('data-require-email') === 'true' : false;
+
+    /* Design picker -> swap featured image (optional) */
+    var wrap = root.querySelector('[data-gcp-image-wrap]');
+    var mainImg = root.querySelector('[data-gcp-main-image]');
+    var originalSrc = mainImg ? mainImg.getAttribute('src') : null;
+    var originalSrcset = mainImg ? mainImg.getAttribute('srcset') : null;
+    var swap = wrap && wrap.getAttribute('data-swap') === 'true';
+    root.querySelectorAll('[data-gcp-design]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        if (!swap || !mainImg) return;
+        var full = r.getAttribute('data-full');
+        if (full) { mainImg.removeAttribute('srcset'); mainImg.src = full; }
+        else if (originalSrc) { mainImg.src = originalSrc; if (originalSrcset) mainImg.setAttribute('srcset', originalSrcset); }
+      });
+    });
+
+    /* Denomination picker -> variant */
+    function setAddState(available) {
+      if (!addBtn) return;
+      addBtn.disabled = !available;
+      var text = addBtn.querySelector('[data-gcp-add-text]');
+      if (text) text.textContent = available ? addBtn.getAttribute('data-add-label') : addBtn.getAttribute('data-sold-out-label');
+      if (buyBtn) buyBtn.disabled = !available;
+    }
+    root.querySelectorAll('input[name="gcp-amount"]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        variantInput.value = r.value;
+        setAddState(r.getAttribute('data-available') === 'true');
+      });
+    });
+
+    /* Message counter */
+    var msg = root.querySelector('[data-gcp-message]');
+    var count = root.querySelector('[data-gcp-count]');
+    if (msg && count) msg.addEventListener('input', function () { count.textContent = msg.value.length; });
+
+    function buildItem() {
+      var item = { id: variantInput.value, quantity: 1, properties: {} };
+      var fd = new FormData(form);
+      fd.forEach(function (value, key) {
+        var m = key.match(/^properties\[(.+)\]$/);
+        if (m && String(value).trim() !== '') item.properties[m[1]] = String(value);
+      });
+      if (item.properties['Recipient email']) {
+        item.properties['__shopify_send_gift_card_to_recipient'] = 'on';
+      } else {
+        delete item.properties['Send on'];
+        delete item.properties['Recipient name'];
+        delete item.properties['Message'];
+      }
+      return item;
+    }
+
+    function valid() {
+      if (!emailInput) return true;
+      var value = emailInput.value.trim();
+      var ok = true;
+      if (requireEmail && (!value || !emailInput.checkValidity())) ok = false;
+      if (!requireEmail && value && !emailInput.checkValidity()) ok = false;
+      if (errorBox) errorBox.hidden = ok;
+      if (!ok) emailInput.focus();
+      return ok;
+    }
+
+    function add(goCheckout) {
+      if (!valid()) return;
+      var buttons = [addBtn, buyBtn].filter(Boolean);
+      buttons.forEach(function (b) { b.disabled = true; });
+      if (cartError) cartError.hidden = true;
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ items: [buildItem()], sections: 'cart-drawer', sections_url: window.location.pathname })
+      })
+      .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
+      .then(function (data) {
+        if (goCheckout) { window.location.href = '/checkout'; return; }
+        var drawer = document.querySelector('m-cart-drawer');
+        if (drawer && drawer.renderContents) { drawer.renderContents(data); } else { window.location.href = '/cart'; }
+      })
+      .catch(function () { if (cartError) cartError.hidden = false; })
+      .finally(function () { buttons.forEach(function (b) { b.disabled = false; }); });
+    }
+
+    form.addEventListener('submit', function (e) { e.preventDefault(); add(false); });
+    if (buyBtn) buyBtn.addEventListener('click', function () { add(true); });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Gift card product",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Colors" },
+    { "type": "color", "id": "background", "label": "Section background", "default": "#ffffff" },
+    { "type": "color", "id": "text_color", "label": "Base text", "default": "#222222" },
+    { "type": "header", "content": "Layout & spacing" },
+    { "type": "range", "id": "max_width", "label": "Content width", "min": 400, "max": 1000, "step": 20, "unit": "px", "default": 640 },
+    { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 160, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_top", "label": "Padding top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 40 },
+    { "type": "range", "id": "padding_bottom", "label": "Padding bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 72 },
+    { "type": "range", "id": "padding_side", "label": "Padding left/right", "min": 0, "max": 120, "step": 4, "unit": "px", "default": 24 }
+  ],
+  "blocks": [
+    {
+      "type": "featured_image",
+      "name": "Featured image",
+      "limit": 1,
+      "settings": [
+        { "type": "paragraph", "content": "Shows the product's featured image." },
+        { "type": "image_picker", "id": "fallback_image", "label": "Fallback image", "info": "Used only if the product has no image." },
+        { "type": "checkbox", "id": "sticky", "label": "Sticky while scrolling", "default": true },
+        { "type": "range", "id": "sticky_top", "label": "Sticky offset from top", "info": "Increase if a sticky header covers the image.", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+        { "type": "color", "id": "sticky_background", "label": "Sticky background", "default": "#ffffff" },
+        { "type": "checkbox", "id": "swap_on_design", "label": "Swap image when a design is chosen", "default": false },
+        { "type": "range", "id": "max_width", "label": "Max width", "min": 240, "max": 1000, "step": 20, "unit": "px", "default": 440 },
+        { "type": "range", "id": "radius", "label": "Corner radius", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+        { "type": "checkbox", "id": "shadow", "label": "Drop shadow", "default": true },
+        { "type": "range", "id": "padding", "label": "Padding (top/bottom)", "min": 0, "max": 60, "step": 2, "unit": "px", "default": 12 },
+        { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 0 },
+        { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 16 }
+      ]
+    },
+    {
+      "type": "design",
+      "name": "Choose a design",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "number", "label": "Step number", "info": "Leave blank for no number.", "default": "1" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Choose a design" },
+        { "type": "text", "id": "help_text", "label": "Helper text" },
+        { "type": "range", "id": "per_row", "label": "Designs per row", "min": 2, "max": 5, "step": 1, "default": 3 },
+        { "type": "header", "content": "Designs" },
+        { "type": "text", "id": "design_1_name", "label": "Design 1 name", "default": "Classic" },
+        { "type": "image_picker", "id": "design_1_image", "label": "Design 1 image", "info": "Recommended ratio 1024 x 593." },
+        { "type": "text", "id": "design_2_name", "label": "Design 2 name" },
+        { "type": "image_picker", "id": "design_2_image", "label": "Design 2 image" },
+        { "type": "text", "id": "design_3_name", "label": "Design 3 name" },
+        { "type": "image_picker", "id": "design_3_image", "label": "Design 3 image" },
+        { "type": "text", "id": "design_4_name", "label": "Design 4 name" },
+        { "type": "image_picker", "id": "design_4_image", "label": "Design 4 image" },
+        { "type": "text", "id": "design_5_name", "label": "Design 5 name" },
+        { "type": "image_picker", "id": "design_5_image", "label": "Design 5 image" },
+        { "type": "text", "id": "design_6_name", "label": "Design 6 name" },
+        { "type": "image_picker", "id": "design_6_image", "label": "Design 6 image" },
+        { "type": "header", "content": "Colors & size" },
+        { "type": "color", "id": "title_color", "label": "Title", "default": "#171717" },
+        { "type": "range", "id": "title_size", "label": "Title size", "min": 13, "max": 32, "step": 1, "unit": "px", "default": 17 },
+        { "type": "color", "id": "number_background", "label": "Number background", "default": "#262626" },
+        { "type": "color", "id": "number_color", "label": "Number text", "default": "#ffffff" },
+        { "type": "color", "id": "selected_color", "label": "Selected border", "default": "#262626" },
+        { "type": "color", "id": "border_color", "label": "Border", "default": "#d4d4d4" },
+        { "type": "color", "id": "help_color", "label": "Secondary text", "default": "#6b6b6b" },
+        { "type": "header", "content": "Spacing" },
+        { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 24 },
+        { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 0 }
+      ]
+    },
+    {
+      "type": "denomination",
+      "name": "Choose a denomination",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "number", "label": "Step number", "info": "Leave blank for no number.", "default": "2" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Choose an amount" },
+        { "type": "text", "id": "help_text", "label": "Helper text", "default": "This gift card can only be used online in the currency shown." },
+        { "type": "checkbox", "id": "show_variant_title", "label": "Show variant name instead of price", "default": false },
+        { "type": "header", "content": "Colors & size" },
+        { "type": "color", "id": "title_color", "label": "Title", "default": "#171717" },
+        { "type": "range", "id": "title_size", "label": "Title size", "min": 13, "max": 32, "step": 1, "unit": "px", "default": 17 },
+        { "type": "color", "id": "number_background", "label": "Number background", "default": "#262626" },
+        { "type": "color", "id": "number_color", "label": "Number text", "default": "#ffffff" },
+        { "type": "color", "id": "button_background", "label": "Button background", "default": "#ffffff" },
+        { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#222222" },
+        { "type": "color", "id": "border_color", "label": "Button border", "default": "#d4d4d4" },
+        { "type": "color", "id": "selected_background", "label": "Selected background", "default": "#262626" },
+        { "type": "color", "id": "selected_text_color", "label": "Selected text", "default": "#ffffff" },
+        { "type": "color", "id": "help_color", "label": "Secondary text", "default": "#6b6b6b" },
+        { "type": "range", "id": "button_height", "label": "Button height", "min": 32, "max": 70, "step": 2, "unit": "px", "default": 46 },
+        { "type": "range", "id": "font_size", "label": "Button font size", "min": 11, "max": 22, "step": 1, "unit": "px", "default": 15 },
+        { "type": "range", "id": "radius", "label": "Button corner radius", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+        { "type": "header", "content": "Spacing" },
+        { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 },
+        { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 0 }
+      ]
+    },
+    {
+      "type": "recipient_form",
+      "name": "Recipient form",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "number", "label": "Step number", "info": "Leave blank for no number.", "default": "3" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Make it personal" },
+        { "type": "checkbox", "id": "require_email", "label": "Require recipient email", "default": true, "info": "Off = buyer can leave it blank and keep the code themselves." },
+        { "type": "text", "id": "email_label", "label": "Email label", "default": "To (recipient's email)" },
+        { "type": "checkbox", "id": "show_name", "label": "Show recipient name field", "default": true },
+        { "type": "text", "id": "name_label", "label": "Recipient name label", "default": "Recipient's name" },
+        { "type": "checkbox", "id": "show_from", "label": "Show \"From\" field", "default": true },
+        { "type": "text", "id": "from_label", "label": "From label", "default": "From (your name)" },
+        { "type": "checkbox", "id": "show_message", "label": "Show message field", "default": true },
+        { "type": "text", "id": "message_label", "label": "Message label", "default": "Message" },
+        { "type": "range", "id": "max_characters", "label": "Message max characters", "min": 50, "max": 500, "step": 10, "default": 150 },
+        { "type": "checkbox", "id": "show_send_on", "label": "Show delivery date field", "default": true },
+        { "type": "text", "id": "send_on_label", "label": "Delivery date label", "default": "Delivery date" },
+        { "type": "text", "id": "email_error", "label": "Email error message", "default": "Please enter a valid recipient email address." },
+        { "type": "header", "content": "Colors & size" },
+        { "type": "color", "id": "title_color", "label": "Title", "default": "#171717" },
+        { "type": "range", "id": "title_size", "label": "Title size", "min": 13, "max": 32, "step": 1, "unit": "px", "default": 17 },
+        { "type": "color", "id": "number_background", "label": "Number background", "default": "#262626" },
+        { "type": "color", "id": "number_color", "label": "Number text", "default": "#ffffff" },
+        { "type": "color", "id": "label_color", "label": "Labels & input text", "default": "#222222" },
+        { "type": "color", "id": "field_background", "label": "Field background", "default": "#ffffff" },
+        { "type": "color", "id": "border_color", "label": "Field border", "default": "#d4d4d4" },
+        { "type": "color", "id": "help_color", "label": "Secondary text", "default": "#6b6b6b" },
+        { "type": "header", "content": "Spacing" },
+        { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 },
+        { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 0 }
+      ]
+    },
+    {
+      "type": "add_to_cart",
+      "name": "Add to cart",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "add_label", "label": "Button label", "default": "Add to cart" },
+        { "type": "text", "id": "sold_out_label", "label": "Sold out label", "default": "Sold out" },
+        { "type": "text", "id": "generic_error", "label": "Error message", "default": "Something went wrong. Please try again." },
+        { "type": "checkbox", "id": "show_buy_now", "label": "Show \"Buy it now\" button", "default": false },
+        { "type": "text", "id": "buy_now_label", "label": "Buy it now label", "default": "Buy it now" },
+        { "type": "text", "id": "note", "label": "Footnote", "default": "E-gift cards are delivered by email on the date you choose." },
+        { "type": "header", "content": "Colors & size" },
+        { "type": "color", "id": "button_background", "label": "Button background", "default": "#262626" },
+        { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#ffffff" },
+        { "type": "color", "id": "secondary_background", "label": "Buy it now background", "default": "#ffffff" },
+        { "type": "color", "id": "secondary_text_color", "label": "Buy it now text & border", "default": "#222222" },
+        { "type": "color", "id": "note_color", "label": "Footnote", "default": "#6b6b6b" },
+        { "type": "range", "id": "button_height", "label": "Button height", "min": 40, "max": 72, "step": 2, "unit": "px", "default": 50 },
+        { "type": "range", "id": "font_size", "label": "Font size", "min": 11, "max": 22, "step": 1, "unit": "px", "default": 14 },
+        { "type": "range", "id": "radius", "label": "Corner radius", "min": 0, "max": 30, "step": 1, "unit": "px", "default": 0 },
+        { "type": "header", "content": "Spacing" },
+        { "type": "range", "id": "margin_top", "label": "Margin top", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 32 },
+        { "type": "range", "id": "margin_bottom", "label": "Margin bottom", "min": 0, "max": 100, "step": 2, "unit": "px", "default": 0 }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift card product",
+      "blocks": [
+        { "type": "featured_image" },
+        { "type": "design" },
+        { "type": "denomination" },
+        { "type": "recipient_form" },
+        { "type": "add_to_cart" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,152 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "gift-card-product",
+      "blocks": {
+        "featured_image": {
+          "type": "featured_image",
+          "settings": {
+            "sticky": true,
+            "sticky_top": 0,
+            "sticky_background": "#ffffff",
+            "swap_on_design": false,
+            "max_width": 440,
+            "radius": 0,
+            "shadow": true,
+            "padding": 12,
+            "margin_top": 0,
+            "margin_bottom": 16
+          }
+        },
+        "design": {
+          "type": "design",
+          "disabled": true,
+          "settings": {
+            "number": "1",
+            "title": "Choose a design",
+            "help_text": "",
+            "per_row": 3,
+            "design_1_name": "Classic",
+            "design_2_name": "",
+            "design_3_name": "",
+            "design_4_name": "",
+            "design_5_name": "",
+            "design_6_name": "",
+            "title_color": "#171717",
+            "title_size": 17,
+            "number_background": "#262626",
+            "number_color": "#ffffff",
+            "selected_color": "#262626",
+            "border_color": "#d4d4d4",
+            "help_color": "#6b6b6b",
+            "margin_top": 24,
+            "margin_bottom": 0
+          }
+        },
+        "denomination": {
+          "type": "denomination",
+          "settings": {
+            "number": "1",
+            "title": "Choose an amount",
+            "help_text": "This gift card can only be used online in the currency shown.",
+            "show_variant_title": false,
+            "title_color": "#171717",
+            "title_size": 17,
+            "number_background": "#262626",
+            "number_color": "#ffffff",
+            "button_background": "#ffffff",
+            "button_text_color": "#222222",
+            "border_color": "#d4d4d4",
+            "selected_background": "#262626",
+            "selected_text_color": "#ffffff",
+            "help_color": "#6b6b6b",
+            "button_height": 46,
+            "font_size": 15,
+            "radius": 0,
+            "margin_top": 32,
+            "margin_bottom": 0
+          }
+        },
+        "recipient_form": {
+          "type": "recipient_form",
+          "settings": {
+            "number": "1",
+            "title": "Make it personal",
+            "require_email": true,
+            "email_label": "To (recipient's email)",
+            "show_name": true,
+            "name_label": "Recipient's name",
+            "show_from": true,
+            "from_label": "From (your name)",
+            "show_message": true,
+            "message_label": "Message",
+            "max_characters": 150,
+            "show_send_on": true,
+            "send_on_label": "Send  to the recipient on",
+            "email_error": "Please enter a valid recipient email address.",
+            "title_color": "#171717",
+            "title_size": 17,
+            "number_background": "#262626",
+            "number_color": "#ffffff",
+            "label_color": "#222222",
+            "field_background": "#ffffff",
+            "border_color": "#d4d4d4",
+            "help_color": "#6b6b6b",
+            "margin_top": 32,
+            "margin_bottom": 0
+          }
+        },
+        "add_to_cart": {
+          "type": "add_to_cart",
+          "settings": {
+            "add_label": "Add to cart",
+            "sold_out_label": "Sold out",
+            "generic_error": "Something went wrong. Please try again.",
+            "show_buy_now": false,
+            "buy_now_label": "Buy it now",
+            "note": "E-gift cards are delivered by email on the date you choose.",
+            "button_background": "#262626",
+            "button_text_color": "#ffffff",
+            "secondary_background": "#ffffff",
+            "secondary_text_color": "#222222",
+            "note_color": "#6b6b6b",
+            "button_height": 50,
+            "font_size": 14,
+            "radius": 0,
+            "margin_top": 32,
+            "margin_bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "featured_image",
+        "design",
+        "denomination",
+        "recipient_form",
+        "add_to_cart"
+      ],
+      "settings": {
+        "background": "#ffffff",
+        "text_color": "#222222",
+        "max_width": 640,
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 40,
+        "padding_bottom": 72,
+        "padding_side": 24
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
