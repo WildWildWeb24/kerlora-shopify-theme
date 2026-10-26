@@ -924,6 +924,20 @@
         "animations": "inherit"
       }
     },
+    "empty_space_N6cqRX": {
+      "type": "empty-space",
+      "name": "Empty space",
+      "settings": {
+        "container": "container-fluid",
+        "color_scheme": "",
+        "show_divider_line": false,
+        "divider_style": "solid",
+        "divider_height": 1,
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "custom_class": ""
+      }
+    },
     "image_with_text_2_ccRtUQ": {
       "type": "image-with-text-2",
       "custom_css": [
@@ -1117,6 +1131,7 @@
     "blog_posts_nbzkXi",
     "press_releases_home",
     "newsletter_Vj3X3x",
+    "empty_space_N6cqRX",
     "image_with_text_2_ccRtUQ",
     "mix_match_collection_d3V6Hh",
     "editorial_three_panel_banner_NpfxqY",
