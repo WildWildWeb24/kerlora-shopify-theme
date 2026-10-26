@@ -924,22 +924,36 @@
         "animations": "inherit"
       }
     },
-    "featured_product_xcXXtJ": {
-      "type": "featured-product",
-      "disabled": true,
-      "name": "Gift Card Product",
+    "image_with_text_2_ccRtUQ": {
+      "type": "image-with-text-2",
+      "name": "Image with text overlay",
       "settings": {
-        "container": "container",
-        "featured_product": "e-gift-card",
-        "column_gap": 100,
-        "column_gap_mobile": 30,
-        "image_placement": "left",
-        "show_thumbnails": true,
-        "show_quantity_selector": false,
-        "enable_payment_button": true,
-        "show_share_buttons": true,
+        "color_scheme": "",
+        "container": "w-full",
+        "hero_size": "adapt",
+        "show_overlay": false,
+        "image": "shopify://shop_images/gift_card_banner_desktop.webp",
+        "image_link": "",
+        "parallax": false,
+        "parallax_direction": "vertical",
+        "content_in_container": false,
+        "content_position": "left middle",
+        "text_alignment": "left",
+        "text_size": "medium",
+        "text_color": "white",
+        "title": "A little gift<br>\nA world of choice",
+        "subtitle": "",
+        "text": "<p>Let them choose their next favorite.&nbsp;</p>",
+        "button_label": "Shop E-Gift Card",
+        "button_link": "shopify://products/e-gift-card",
+        "button_style": "m-button--white",
+        "button_size": "m-button--small",
+        "text_alignment_mobile": "left",
+        "mb_image": "shopify://shop_images/gift_card_banner_mob.webp",
+        "use_content_above": true,
         "custom_class": "",
-        "animations": "inherit"
+        "animations": "inherit",
+        "enable_bg_zoom_effect": true
       }
     },
     "mix_match_collection_d3V6Hh": {
@@ -1100,7 +1114,7 @@
     "blog_posts_nbzkXi",
     "press_releases_home",
     "newsletter_Vj3X3x",
-    "featured_product_xcXXtJ",
+    "image_with_text_2_ccRtUQ",
     "mix_match_collection_d3V6Hh",
     "editorial_three_panel_banner_NpfxqY",
     "176423030978c3c507"
