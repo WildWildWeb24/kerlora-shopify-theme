@@ -926,6 +926,7 @@
     },
     "featured_product_xcXXtJ": {
       "type": "featured-product",
+      "disabled": true,
       "name": "Gift Card Product",
       "settings": {
         "container": "container",
