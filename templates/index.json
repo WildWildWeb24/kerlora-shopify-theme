@@ -1137,10 +1137,53 @@
         "custom_class": ""
       }
     },
-    "1774168858fefc0699": {
-      "type": "_blocks",
-      "disabled": true,
-      "settings": {}
+    "new_featured_product_UDNmhY": {
+      "type": "new-featured-product",
+      "blocks": {
+        "title_d8nTeA": {
+          "type": "title",
+          "settings": {}
+        },
+        "price_F9XHyq": {
+          "type": "price",
+          "settings": {
+            "show_saving": false,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "variant_picker_bEijbA": {
+          "type": "variant_picker",
+          "settings": {}
+        },
+        "buy_buttons_EymWdP": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_atc_button": true,
+            "show_dynamic_checkout": true
+          }
+        }
+      },
+      "block_order": [
+        "title_d8nTeA",
+        "price_F9XHyq",
+        "variant_picker_bEijbA",
+        "buy_buttons_EymWdP"
+      ],
+      "name": "Featured product",
+      "settings": {
+        "container": "container",
+        "color_scheme": "",
+        "featured_product": "e-gift-card",
+        "enable_variant_group_images": false,
+        "column_gap": 100,
+        "column_gap_mobile": 30,
+        "image_placement": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "custom_class": "",
+        "animations": "inherit"
+      }
     }
   },
   "order": [
@@ -1168,6 +1211,6 @@
     "editorial_three_panel_banner_NpfxqY",
     "icon_box_nW3pdi",
     "176423030978c3c507",
-    "1774168858fefc0699"
+    "new_featured_product_UDNmhY"
   ]
 }
