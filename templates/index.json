@@ -926,7 +926,7 @@
     },
     "featured_product_xcXXtJ": {
       "type": "featured-product",
-      "name": "[Legacy] Featured product",
+      "name": "Gift Card Product",
       "settings": {
         "container": "container",
         "featured_product": "e-gift-card",
