@@ -544,6 +544,52 @@
                   {{ block.settings.content }}
                 </div>
 
+              {% when 'gift_card_recipient' %}
+                {%- liquid
+                  assign recipient_active = false
+                  if block.settings.enabled
+                    if product.gift_card? or block.settings.show_on_all_products
+                      assign recipient_active = true
+                    endif
+                  endif
+                -%}
+                {%- if recipient_active -%}
+                  <div
+                    class="www-product__block www-product__recipient"
+                    data-gift-recipient
+                    style="--block-mt: {{ block.settings.margin_top }}px; --block-mb: {{ block.settings.margin_bottom }}px; --rcp-pad: {{ block.settings.padding }}px; --rcp-text: {{ block.settings.text_color }}; --rcp-border: {{ block.settings.border_color }}; --rcp-bg: {{ block.settings.background }}; --rcp-field-bg: {{ block.settings.field_background }}; --rcp-accent: {{ block.settings.accent_color }}; --rcp-size: {{ block.settings.font_size }}px;"
+                    {{ block.shopify_attributes }}
+                  >
+                    <label class="www-product__recipient-toggle">
+                      <input type="checkbox" data-recipient-toggle>
+                      <span class="www-product__recipient-box" aria-hidden="true"></span>
+                      <span>{{ block.settings.checkbox_label }}</span>
+                    </label>
+                    <div class="www-product__recipient-fields" data-recipient-fields hidden>
+                      <input type="hidden" name="properties[__shopify_send_gift_card_to_recipient]" value="on" disabled data-recipient-flag>
+                      <div class="www-product__recipient-field">
+                        <input type="email" name="properties[Recipient email]" placeholder="{{ block.settings.email_placeholder }}" autocomplete="off" disabled data-recipient-email>
+                      </div>
+                      <div class="www-product__recipient-field">
+                        <input type="text" name="properties[Recipient name]" placeholder="{{ block.settings.name_placeholder }}" autocomplete="off" disabled data-recipient-name>
+                      </div>
+                      <div class="www-product__recipient-field">
+                        <textarea rows="3" name="properties[Message]" maxlength="{{ block.settings.max_characters }}" placeholder="{{ block.settings.message_placeholder }}" disabled data-recipient-message></textarea>
+                        <small>{{ block.settings.max_characters }} {{ block.settings.max_characters_label }}</small>
+                      </div>
+                      {%- if block.settings.show_send_on -%}
+                        {%- assign today = 'now' | date: '%Y-%m-%d' -%}
+                        {%- assign max_date = 'now' | date: '%s' | plus: 7776000 | date: '%Y-%m-%d' -%}
+                        <div class="www-product__recipient-field">
+                          <label for="Recipient-send-on-{{ section.id }}">{{ block.settings.send_on_label }}</label>
+                          <input type="date" id="Recipient-send-on-{{ section.id }}" name="properties[Send on]" min="{{ today }}" max="{{ max_date }}" disabled data-recipient-send-on>
+                        </div>
+                      {%- endif -%}
+                      <p class="www-product__recipient-error" role="alert" data-recipient-error hidden>{{ block.settings.email_error }}</p>
+                    </div>
+                  </div>
+                {%- endif -%}
+
               {% when 'add_to_cart' %}
                 <div
                   class="www-product__block"
@@ -872,6 +918,21 @@
     overflow: visible;
   }
   #www-product-{{ section.id }} .www-product__block { margin-top: var(--block-mt, 0); margin-bottom: var(--block-mb, 0); }
+  #www-product-{{ section.id }} .www-product__recipient { padding: var(--rcp-pad, 0px); background: var(--rcp-bg, transparent); color: var(--rcp-text, #171717); font-size: var(--rcp-size, 14px); }
+  #www-product-{{ section.id }} .www-product__recipient-toggle { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  #www-product-{{ section.id }} .www-product__recipient-toggle input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  #www-product-{{ section.id }} .www-product__recipient-box { flex: 0 0 18px; width: 18px; height: 18px; border: 1px solid var(--rcp-border, #555); background: var(--rcp-field-bg, #fff); position: relative; }
+  #www-product-{{ section.id }} .www-product__recipient-toggle input:checked + .www-product__recipient-box { background: var(--rcp-accent, #171717); border-color: var(--rcp-accent, #171717); }
+  #www-product-{{ section.id }} .www-product__recipient-toggle input:checked + .www-product__recipient-box::after { content: ''; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
+  #www-product-{{ section.id }} .www-product__recipient-toggle input:focus-visible + .www-product__recipient-box { outline: 2px solid var(--rcp-accent, #171717); outline-offset: 2px; }
+  #www-product-{{ section.id }} .www-product__recipient-fields { margin-top: 14px; padding-top: 16px; border-top: 1px solid var(--rcp-border, #ddd); }
+  #www-product-{{ section.id }} .www-product__recipient-field + .www-product__recipient-field { margin-top: 12px; }
+  #www-product-{{ section.id }} .www-product__recipient-field label { display: block; margin-bottom: 6px; }
+  #www-product-{{ section.id }} .www-product__recipient-field input,
+  #www-product-{{ section.id }} .www-product__recipient-field textarea { width: 100%; box-sizing: border-box; padding: 11px 12px; font: inherit; color: inherit; background: var(--rcp-field-bg, #fff); border: 1px solid var(--rcp-border, #ddd); border-radius: 0; }
+  #www-product-{{ section.id }} .www-product__recipient-field textarea { resize: vertical; }
+  #www-product-{{ section.id }} .www-product__recipient-field small { display: block; margin-top: 4px; opacity: .65; font-size: 12px; }
+  #www-product-{{ section.id }} .www-product__recipient-error { margin: 12px 0 0; color: #b42318; font-size: 13px; }
   #www-product-{{ section.id }} .www-product__text-left, #www-product-{{ section.id }} .www-product__align-left { text-align: left; }
   #www-product-{{ section.id }} .www-product__text-center, #www-product-{{ section.id }} .www-product__align-center { text-align: center; }
   #www-product-{{ section.id }} .www-product__text-right, #www-product-{{ section.id }} .www-product__align-right { text-align: right; }
@@ -1454,13 +1515,34 @@ updateVariant(findVariant());
           promptForSizeSelection();
           return;
         }
+        const cartItem = { id: variantInput.value, quantity: 1 };
+        const recipientBox = form.querySelector('[data-gift-recipient]');
+        const recipientToggle = recipientBox && recipientBox.querySelector('[data-recipient-toggle]');
+        if (recipientToggle && recipientToggle.checked) {
+          const emailInput = recipientBox.querySelector('[data-recipient-email]');
+          const recipientError = recipientBox.querySelector('[data-recipient-error]');
+          if (!emailInput.value.trim() || !emailInput.checkValidity()) {
+            if (recipientError) recipientError.hidden = false;
+            emailInput.focus();
+            return;
+          }
+          if (recipientError) recipientError.hidden = true;
+          const props = {};
+          recipientBox.querySelectorAll('[data-recipient-fields] input:not(:disabled), [data-recipient-fields] textarea:not(:disabled)').forEach((field) => {
+            if (field.name && field.value !== '') {
+              const match = field.name.match(/^properties\[(.+)\]$/);
+              if (match) props[match[1]] = field.value;
+            }
+          });
+          cartItem.properties = props;
+        }
         addButton.classList.add('is-loading');
         addButton.disabled = true;
         fetch('/cart/add.js', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
-            items: [{ id: variantInput.value, quantity: 1 }],
+            items: [cartItem],
             sections: 'cart-drawer',
             sections_url: window.location.pathname
           })
@@ -1479,6 +1561,19 @@ updateVariant(findVariant());
           addButton.disabled = !variant || !variant.available;
         });
       });
+    }
+
+    const recipientWrap = section.querySelector('[data-gift-recipient]');
+    if (recipientWrap) {
+      const rToggle = recipientWrap.querySelector('[data-recipient-toggle]');
+      const rFields = recipientWrap.querySelector('[data-recipient-fields]');
+      const rInputs = rFields.querySelectorAll('input, textarea');
+      const syncRecipient = () => {
+        rFields.hidden = !rToggle.checked;
+        rInputs.forEach((field) => { field.disabled = !rToggle.checked; });
+      };
+      rToggle.addEventListener('change', syncRecipient);
+      syncRecipient();
     }
 
     const wishlistButton = section.querySelector('[data-wishlist-button]');
@@ -1981,6 +2076,36 @@ updateVariant(findVariant());
         { "type": "color", "id": "color", "label": "Colour", "default": "#171717" },
         { "type": "range", "id": "margin_top", "label": "Top spacing", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 0 },
         { "type": "range", "id": "margin_bottom", "label": "Bottom spacing", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 14 }
+      ]
+    },
+    {
+      "type": "gift_card_recipient",
+      "name": "Gift card recipient form",
+      "limit": 1,
+      "settings": [
+        { "type": "checkbox", "id": "enabled", "label": "Enable recipient form (e-gift cards)", "default": false, "info": "Off = completely hidden on the storefront. Turn on for the e-gift card product only." },
+        { "type": "checkbox", "id": "show_on_all_products", "label": "Show on non-gift-card products too", "default": false, "info": "Leave off so the form only appears on gift card products." },
+        { "type": "header", "content": "Text" },
+        { "type": "text", "id": "checkbox_label", "label": "Checkbox label", "default": "I want to send this as a gift" },
+        { "type": "text", "id": "email_placeholder", "label": "Recipient email placeholder", "default": "Recipient email" },
+        { "type": "text", "id": "name_placeholder", "label": "Recipient name placeholder", "default": "Recipient name (optional)" },
+        { "type": "text", "id": "message_placeholder", "label": "Message placeholder", "default": "Message (optional)" },
+        { "type": "range", "id": "max_characters", "label": "Message max characters", "min": 50, "max": 500, "step": 10, "default": 200 },
+        { "type": "text", "id": "max_characters_label", "label": "Max characters label", "default": "characters max" },
+        { "type": "checkbox", "id": "show_send_on", "label": "Show \"Send on\" date field", "default": true },
+        { "type": "text", "id": "send_on_label", "label": "Send on label", "default": "Send on (optional, within 90 days)" },
+        { "type": "text", "id": "email_error", "label": "Email error message", "default": "Please enter a valid recipient email." },
+        { "type": "header", "content": "Colours & size" },
+        { "type": "color", "id": "text_color", "label": "Text", "default": "#171717" },
+        { "type": "color", "id": "border_color", "label": "Borders", "default": "#cfcfcf" },
+        { "type": "color", "id": "background", "label": "Block background", "default": "#ffffff" },
+        { "type": "color", "id": "field_background", "label": "Field background", "default": "#ffffff" },
+        { "type": "color", "id": "accent_color", "label": "Checkbox accent", "default": "#171717" },
+        { "type": "range", "id": "font_size", "label": "Font size", "min": 11, "max": 20, "step": 1, "unit": "px", "default": 14 },
+        { "type": "header", "content": "Spacing" },
+        { "type": "range", "id": "padding", "label": "Padding", "min": 0, "max": 40, "step": 2, "unit": "px", "default": 0 },
+        { "type": "range", "id": "margin_top", "label": "Top spacing", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 0 },
+        { "type": "range", "id": "margin_bottom", "label": "Bottom spacing", "min": 0, "max": 80, "step": 2, "unit": "px", "default": 16 }
       ]
     },
     {

@@ -107,6 +107,31 @@
             "margin_bottom": 8
           }
         },
+        "gift_card_recipient_x1": {
+          "type": "gift_card_recipient",
+          "settings": {
+            "enabled": true,
+            "show_on_all_products": false,
+            "checkbox_label": "I want to send this as a gift",
+            "email_placeholder": "Recipient email",
+            "name_placeholder": "Recipient name (optional)",
+            "message_placeholder": "Message (optional)",
+            "max_characters": 200,
+            "max_characters_label": "characters max",
+            "show_send_on": true,
+            "send_on_label": "Send on (optional, within 90 days)",
+            "email_error": "Please enter a valid recipient email.",
+            "text_color": "#171717",
+            "border_color": "#cfcfcf",
+            "background": "#ffffff",
+            "field_background": "#ffffff",
+            "accent_color": "#171717",
+            "font_size": 14,
+            "padding": 0,
+            "margin_top": 0,
+            "margin_bottom": 16
+          }
+        },
         "add_to_cart_pea7xr": {
           "type": "add_to_cart",
           "settings": {
@@ -202,6 +227,7 @@
         "colour_products_3mCBHr",
         "variant_picker_eE8Yex",
         "custom_image_B4GnGj",
+        "gift_card_recipient_x1",
         "add_to_cart_pea7xr",
         "dynamic_checkout_MBj3Bm",
         "payment_terms_DtLBeM",
