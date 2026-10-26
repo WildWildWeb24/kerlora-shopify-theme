@@ -926,6 +926,9 @@
     },
     "image_with_text_2_ccRtUQ": {
       "type": "image-with-text-2",
+      "custom_css": [
+        "@media (max-width: 767px) {.m-hero__title {font-size: 24px !important; line-height: 1.2; } .m-hero__text, .m-hero__text p {font-size: 14px !important; line-height: 1.4; }}"
+      ],
       "name": "Image with text overlay",
       "settings": {
         "color_scheme": "",
