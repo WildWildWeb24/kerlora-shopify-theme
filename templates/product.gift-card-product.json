@@ -79,7 +79,7 @@
         "recipient_form": {
           "type": "recipient_form",
           "settings": {
-            "number": "1",
+            "number": "2",
             "title": "Make it personal",
             "require_email": true,
             "email_label": "To (recipient's email)",
