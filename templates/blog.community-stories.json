@@ -141,14 +141,13 @@
       "block_order": [
         "forms_inline_dpqfgB"
       ],
-      "disabled": true,
       "name": "Community: Upcoming Walk",
       "settings": {
         "heading": "Upcoming Walk",
-        "walk_date": "Saturday Sept 12",
-        "walk_time": "11:00 AM – 01:00 PM",
-        "venue_name": "Minster Leas Beach, Sheppey",
-        "walk_details": "Meet outside the beach huts for a gentle,  relaxed walk.",
+        "walk_date": "Sunday Nov 29",
+        "walk_time": "11:30 AM – 01:30 PM",
+        "venue_name": "Hucking Forest, near Maidstone",
+        "walk_details": "We’ll meet at The Hook and Hatchet pub, where there is free parking. Everyone is welcome and you can go at your own pace.",
         "form_heading": "Reserve Your Spot",
         "form_subheading": ""
       }
