@@ -9,40 +9,6 @@
  */
 {
   "sections": {
-    "17828901870699da93": {
-      "type": "_blocks",
-      "blocks": {
-        "ai_gen_block_7b4d157_WKQEJq": {
-          "type": "ai_gen_block_7b4d157",
-          "settings": {
-            "video_desktop": "shopify://files/videos/Kerlora-the-season-for-play-16x9.mp4",
-            "video_mobile": "shopify://files/videos/Kerlora-the-season-for-play-9x16.mp4",
-            "video_alignment_horizontal": "center",
-            "video_alignment_vertical": "center",
-            "collection_link": "the-play-list",
-            "show_button": false,
-            "button_text": "Shop now",
-            "button_link": "",
-            "button_position": "center",
-            "button_background_color": "#000000",
-            "button_text_color": "#ffffff",
-            "button_hover_background_color": "#222222",
-            "button_hover_text_color": "#ffffff",
-            "button_border_radius": 4,
-            "background_color": "#ffffff",
-            "padding_top": 0,
-            "padding_bottom": 0,
-            "border_radius": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "ai_gen_block_7b4d157_WKQEJq"
-      ],
-      "disabled": true,
-      "settings": {}
-    },
     "www_hero_banner_tqeXpA": {
       "type": "www-hero-banner",
       "name": "WWW Hero Banner",
@@ -527,81 +493,6 @@
         "custom_class": ""
       }
     },
-    "1782815985dd985d48": {
-      "type": "apps",
-      "blocks": {
-        "judge_me_reviews_featured_carousel_mjT6cH": {
-          "type": "shopify://apps/judge-me-reviews/blocks/featured_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {
-            "maxwidth": 1400
-          }
-        },
-        "judge_me_reviews_cards_carousel_mJG9Hf": {
-          "type": "shopify://apps/judge-me-reviews/blocks/cards_carousel/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "disabled": true,
-          "settings": {
-            "show_sample_reviews": false,
-            "reviews_selection": "all",
-            "products": [
-              "black-tangerine-running-set",
-              "black-4-high-rise-shorts-with-liner",
-              "black-essential-fitted-performance-tshirt",
-              "black-high-rise-performance-pants",
-              "black-long-sleeve-performance-top",
-              "black-long-sleeve-performance-top-with-cut-out-back",
-              "strappy-back-sports-bra",
-              "black-wrap-waist-leggings",
-              "black-strappy-back-sports-bra",
-              "charcoal-wrap-waist-leggings"
-            ],
-            "filter_pinned": false,
-            "filter_featured": false,
-            "filter_custom_tags": "",
-            "star_rating": "all",
-            "show_review_media": false,
-            "display_order": "most_recent",
-            "no_image_fallback": "review_text_only",
-            "max_reviews": 20,
-            "review_length": "medium",
-            "text_size": "small",
-            "image_ratio": "1",
-            "reviews_shown": 5,
-            "show_reviewer_name": false,
-            "show_product_name": true,
-            "hide_arrows_mobile": true,
-            "arrows_position": "sides",
-            "max_width": 1100,
-            "corner_styling": "soft",
-            "header_text_color": "#000000",
-            "text_color": "#000000",
-            "card_color": "#f9f9f9",
-            "stars_color": "#efdf2a",
-            "arrows_color": "#000000",
-            "transition_speed": 5,
-            "header_text": "Customers are saying",
-            "show_average_rating": true,
-            "rating_display": "default"
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_featured_carousel_mjT6cH",
-        "judge_me_reviews_cards_carousel_mJG9Hf"
-      ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h3",
-        "subheading": "",
-        "header_alignment": "center",
-        "container": "w-full",
-        "background_color": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": ""
-      }
-    },
     "empty_space_yPj6XA": {
       "type": "empty-space",
       "name": "Empty space",
@@ -1072,46 +963,31 @@
         "section_background": "#f7f7f7"
       }
     },
-    "176423030978c3c507": {
-      "type": "apps",
+    "1793181068f6c5db2d": {
+      "type": "_blocks",
       "blocks": {
-        "forms_inline_fHcJjf": {
-          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+        "ai_gen_block_62b60e2_T7EpmX": {
+          "type": "ai_gen_block_62b60e2",
           "settings": {
-            "form_id": "766631",
-            "text_color": "#202020",
-            "button_background_color": "#202020",
-            "button_label_color": "#ffffff",
-            "links_color": "#1878b9",
-            "errors_color": "#e02229",
-            "text_alignment": "center",
-            "form_alignment": "center",
-            "padding_top": 0,
-            "padding_bottom": 24,
-            "padding_right": 0,
-            "padding_left": 0
-          }
+            "heading": "Join the Kerlora newsletter",
+            "body": "Sign up for news, new arrivals and updates from Kerlora.",
+            "email_label": "Email address",
+            "email_placeholder": "Enter your email address",
+            "button_label": "Sign up",
+            "success_message": "Thanks for signing up. Your subscription has been received.",
+            "close_label": "Close newsletter signup",
+            "desktop_width_percent": 100
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "forms_inline_fHcJjf"
+        "ai_gen_block_62b60e2_T7EpmX"
       ],
-      "disabled": true,
-      "settings": {
-        "heading": "",
-        "heading_size": "h3",
-        "subheading": "",
-        "header_alignment": "center",
-        "container": "container",
-        "background_color": "",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "custom_class": ""
-      }
+      "settings": {}
     }
   },
   "order": [
-    "17828901870699da93",
     "www_hero_banner_tqeXpA",
     "custom_liquid_fmwPGC",
     "custom_liquid_r7xUeq",
@@ -1125,7 +1001,6 @@
     "mix_match_collection_HHA3Dt",
     "popular_categories_RhnJ6W",
     "empty_space_YbmGDd",
-    "1782815985dd985d48",
     "empty_space_yPj6XA",
     "real_customer_stories_Q97E8p",
     "blog_posts_nbzkXi",
@@ -1135,6 +1010,6 @@
     "image_with_text_2_ccRtUQ",
     "mix_match_collection_d3V6Hh",
     "editorial_three_panel_banner_NpfxqY",
-    "176423030978c3c507"
+    "1793181068f6c5db2d"
   ]
 }
