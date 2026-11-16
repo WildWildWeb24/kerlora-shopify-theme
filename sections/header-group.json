@@ -26,9 +26,8 @@
         },
         "item_BWwKCM": {
           "type": "item",
-          "disabled": true,
           "settings": {
-            "message": "Designed in the UK",
+            "message": "Free shipping over £50",
             "message_link": ""
           }
         }
