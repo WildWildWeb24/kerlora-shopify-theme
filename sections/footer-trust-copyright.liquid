@@ -302,6 +302,97 @@
       gap: 10px;
     }
   }
+  /* Trust area: Buy Women Built, Judge.me and payment icons */
+.m-footer-tc--{{ section.id }} .m-footer-tc__top {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(0, 1.4fr);
+  grid-template-areas: "bwb reviews payments";
+  align-items: center;
+  gap: 24px;
+  border-bottom: 0;
+}
+
+.m-footer-tc--{{ section.id }} .m-footer-bwb {
+  grid-area: bwb;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.m-footer-tc--{{ section.id }} .m-footer-bwb img {
+  display: block;
+  width: 100px;
+  max-width: 100%;
+  height: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.m-footer-tc--{{ section.id }} .m-footer-review-app {
+  grid-area: reviews;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.m-footer-tc--{{ section.id }} .m-footer-tc__divider {
+  display: none;
+}
+
+.m-footer-tc--{{ section.id }} .m-footer-payments {
+  grid-area: payments;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 6px !important;
+  min-width: 0;
+  max-width: 100%;
+  white-space: normal !important;
+}
+
+/* Mobile: logo above Judge.me on the left, payments on the right */
+@media screen and (max-width: 989px) {
+  .m-footer-tc--{{ section.id }} .m-footer-tc__top {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    grid-template-areas:
+      "bwb payments"
+      "reviews payments";
+    column-gap: 12px;
+    row-gap: 12px;
+    align-items: center;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-bwb {
+    align-self: end;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-bwb img {
+    width: 88px;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-review-app {
+    align-self: start;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-payments {
+    align-self: center;
+    justify-content: flex-end !important;
+    gap: 6px !important;
+  }
+
+  .m-footer-tc--{{ section.id }} .m-footer-payment__item {
+    height: 24px;
+    padding: 2px 5px;
+  }
+}
 </style>
 
 <div class="m-footer-tc m-footer-tc--{{ section.id }}" data-section-id="{{ section.id }}" data-section-type="footer-trust-copyright">
@@ -309,6 +400,9 @@
     
     <!-- Upper Row: Review App | Vertical Line | Payment Badges -->
     <div class="m-footer-tc__top">
+      <div class="m-footer-bwb">
+        <img src="{{ 'buy_women_buit_logo.svg' | file_url }}" alt="KËRLORA is a proud member of Buy Women Built" loading="lazy">
+      </div>
       
       <!-- Clean Rectangular Review Rating Bar -->
       <div class="m-footer-review-app">
