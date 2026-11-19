@@ -201,6 +201,15 @@
             "margin_bottom": 20
           }
         },
+        "custom_liquid_tyKhae": {
+          "type": "custom_liquid",
+          "disabled": true,
+          "settings": {
+            "custom_liquid": "<style>\n  #bwb-badge-{{ block.id }} {\n    display: flex;\n    align-items: center;\n    gap: 12px;\n    max-width: 100%;\n    padding: 8px 0;\n    color: inherit;\n    text-decoration: none;\n  }\n\n  #bwb-badge-{{ block.id }} img {\n    display: block;\n    flex: 0 0 48px;\n    width: 48px;\n    height: auto;\n    border: 0;\n    background: transparent;\n    box-shadow: none;\n  }\n\n  #bwb-badge-{{ block.id }} span {\n    font-family: inherit;\n    font-size: 13px;\n    line-height: 1.5;\n  }\n\n  #bwb-badge-{{ block.id }}:focus-visible {\n    outline: 2px solid currentColor;\n    outline-offset: 4px;\n  }\n</style>\n\n<a\n  id=\"bwb-badge-{{ block.id }}\"\n  href=\"https://buywomenbuilt.com\"\n>\n  <img\n    src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/buy_women_buit_logo.svg?v=1795001364\"\n    alt=\"KËRLORA is a proud member of Buy Women Built\"\n    loading=\"lazy\"\n  >\n  <span>Proud member of Buy Women Built</span>\n</a>",
+            "margin_top": 0,
+            "margin_bottom": 8
+          }
+        },
         "accordion_dKFEei": {
           "type": "accordion",
           "settings": {
@@ -233,6 +242,7 @@
         "payment_terms_DtLBeM",
         "payment_methods_jeAayX",
         "delivery_shipping_VQGEr4",
+        "custom_liquid_tyKhae",
         "accordion_dKFEei"
       ],
       "name": "WWW Main product",
