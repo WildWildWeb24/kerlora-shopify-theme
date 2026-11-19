@@ -175,6 +175,14 @@
 
           {% for block in section.blocks %}
             {% case block.type %}
+              {% when 'custom_liquid' %}
+  <div
+    class="www-product__block www-product__block--custom-liquid"
+    style="--block-mt: {{ block.settings.margin_top }}px; --block-mb: {{ block.settings.margin_bottom }}px;"
+    {{ block.shopify_attributes }}
+  >
+    {{ block.settings.custom_liquid }}
+  </div>
               {% when 'breadcrumbs' %}
                 <div
                   class="www-product__block www-product__block--breadcrumbs"
@@ -1951,6 +1959,37 @@ updateVariant(findVariant());
     { "type": "color", "id": "border_color", "label": "Borders", "default": "#c8c8c8" }
   ],
   "blocks": [
+    {
+  "type": "custom_liquid",
+  "name": "Custom Liquid",
+  "settings": [
+    {
+      "type": "liquid",
+      "id": "custom_liquid",
+      "label": "Custom Liquid"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Top spacing",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Bottom spacing",
+      "min": 0,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    }
+  ]
+},
     {
       "type": "breadcrumbs",
       "name": "Breadcrumbs",
