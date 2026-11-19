@@ -195,9 +195,9 @@
         "judge_me_reviews_trust_badge_AGhexE"
       ],
       "custom_css": [
-        ".m-footer-tc .m-footer-bwb {display: none !important; }",
-        " .m-footer-tc .m-footer-tc__top {grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); grid-template-areas: \"reviews payments\"; }",
-        " @media screen and (max-width: 989px) {.m-footer-tc .m-footer-tc__top {grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-areas: \"reviews payments\"; } }"
+        ".m-footer-tc .m-footer-bwb {display: none !important;}",
+        ".m-footer-tc .m-footer-tc__top {grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); grid-template-areas: \"reviews payments\";}",
+        "@media screen and (max-width: 989px) {.m-footer-tc .m-footer-tc__top {grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); grid-template-areas: \"reviews payments\"; }}"
       ],
       "name": "Footer Trust & Copyright",
       "settings": {
