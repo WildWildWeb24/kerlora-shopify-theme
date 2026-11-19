@@ -176,9 +176,9 @@
           "type": "delivery_shipping",
           "settings": {
             "show_top_divider": true,
-            "font_size": 13,
-            "icon_size": 22,
-            "row_gap": 14,
+            "font_size": 12,
+            "icon_size": 18,
+            "row_gap": 8,
             "border_color": "#c8c8c8",
             "show_delivery_estimate": true,
             "delivery_heading": "Estimated Delivery:",
@@ -262,6 +262,15 @@
         "background_color": "#ffffff",
         "text_color": "#171717",
         "border_color": "#c8c8c8"
+      }
+    },
+    "custom_liquid_wJ9hxK": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "name": "Custom liquid",
+      "settings": {
+        "custom_liquid": "<style>\n  .buy-women-built-badge {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    width: fit-content;\n    max-width: 100%;\n    margin: 10px 0;\n    color: inherit;\n    font: inherit;\n    font-size: 13px;\n    line-height: 1.35;\n  }\n  .buy-women-built-badge img {\n    display: block;\n    width: 48px;\n    max-width: 24vw;\n    height: auto;\n    border: 0;\n    flex: 0 0 auto;\n  }\n  @media (max-width: 480px) {\n    .buy-women-built-badge { gap: 8px; font-size: 12px; }\n  }\n</style>\n<div class=\"buy-women-built-badge\">\n  <a href=\"https://buywomenbuilt.com\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"KËRLORA is a proud member of Buy Women Built\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0944/5625/0633/files/buy_women_buit_logo.svg?v=1795001364\" alt=\"KËRLORA is a proud member of Buy Women Built\" loading=\"lazy\">\n  </a>\n  <span>Proud member of Buy Women Built</span>\n</div>",
+        "custom_class": ""
       }
     },
     "www_product_information_tabs_7y7Rx7": {
@@ -529,6 +538,7 @@
   },
   "order": [
     "www_main_product_dzpQW4",
+    "custom_liquid_wJ9hxK",
     "www_product_information_tabs_7y7Rx7",
     "main",
     "product-details-tabs",
